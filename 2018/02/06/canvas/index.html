@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: -react | DJM的博客</title>
+  <title>Canvas画布 | DJM的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="DJM的博客">
-<meta property="og:url" content="http://yoursite.com/tags/react/index.html">
+  <meta name="description" content="Canvas画布123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293    &amp;lt;canvas">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Canvas画布">
+<meta property="og:url" content="http://yoursite.com/2018/02/06/canvas/index.html">
 <meta property="og:site_name" content="DJM的博客">
+<meta property="og:description" content="Canvas画布123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293    &amp;lt;canvas">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-21T09:18:56.865Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DJM的博客">
+<meta name="twitter:title" content="Canvas画布">
+<meta name="twitter:description" content="Canvas画布123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293    &amp;lt;canvas">
   
     <link rel="alternative" href="/atom.xml" title="DJM的博客" type="application/atom+xml">
   
@@ -162,60 +166,185 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-canvas" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/06/react/" class="archive-article-date">
-  	<time datetime="2018-07-06T02:02:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-06</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/06/react/">react</a>
+    <h1 class="article-title" itemprop="name">
+      Canvas画布
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">-react</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        <a href="/2018/02/06/canvas/" class="archive-article-date">
+  	<time datetime="2018-02-06T15:51:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Canvas画布"><a href="#Canvas画布" class="headerlink" title="Canvas画布"></a>Canvas画布</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line">    &lt;canvas id=<span class="string">"tutorial"</span> width=<span class="string">"300"</span> height=<span class="string">"300"</span>&gt;你的浏览器不支持 canvas，请升级你的浏览器。&lt;<span class="regexp">/canvas&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ &lt;script&gt;</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ &lt;canvas&gt; 只有两个可选的属性 width、heigth 属性​如果不给 &lt;canvas&gt; 设置 widht、height 属性时，则默认 width为300、height 为 150，单位都是 px。也可以使用 css 属性来设置宽高，但是如宽高属性和初始比例不一致，他会出现扭曲。</span></span><br><span class="line"><span class="regexp">    </span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ ## 绘制路径</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ beginPath()</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 新建一条路径，路径一旦创建成功，图形绘制命令被指向到路径上生成路径</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ moveTo(x, y)</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 把画笔移动到指定的坐标(x, y) 。相当于设置路径的起始点坐标。</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ closePath()</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 闭合路径之后，图形绘制命令又重新指向到上下文中</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ stroke()</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 通过线条来绘制图形轮廓，描边stroke不会自动closePath()</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ fill()</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 通过填充路径的内容区域生成实心的图形，如果path没有闭合，则fill()会自动闭合路径。</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ ## 绘制矩形</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 1、fillRect(x, y, width, height)：绘制一个填充的矩形。</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 2、strokeRect(x, y, width, height)：绘制一个矩形的边框。</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 3、clearRect(x, y, widh, height)：清除指定的矩形区域，然后这块区域会变的完全透明。</span></span><br><span class="line"><span class="regexp">    </span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ ## 绘制圆弧，有两个方法可以绘制圆弧：</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ arc(x, y, r, 起点所在的弧度, 结束点所在的弧度, 控制顺时针还是逆时针)</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ arc(490, 245, 200, startRad, endRad, true);</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ arcTo(x1, y1, x2, y2, radius): 根据给定的控制点和半径画一段圆弧，最后再以直线连接两个控制点。</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 参数x1、y1：控制点1坐标   参数x2、y2：控制点2坐标  参数：radius圆弧半径</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 这个方法可以这样理解。绘制的弧形是由两条切线所决定。</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 第 1 条切线：起始点和控制点1决定的直线。</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 第 2 条切线：控制点1和控制点2决定的直线。</span></span><br><span class="line"><span class="regexp">    </span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ ## 五、添加样式和颜色</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ fillStyle = color 设置图形的填充颜色</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ strokeStyle = color 设置图形轮廓的颜色</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 1. color 可以是表示 css 颜色值的字符串、渐变对象或者图案对象。</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 2. 默认情况下，线条和填充颜色都是黑色。</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 3. 一旦您设置了 strokeStyle 或者 fillStyle 的值，那么这个新值就会成为新绘制的图形的默认值。如果你要给每个图形上不同的颜色，你需要重新设置 fillStyle 或 strokeStyle 的值。</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 代码模板</span></span><br><span class="line"><span class="regexp">    function draw()&#123;</span></span><br><span class="line"><span class="regexp">        var canvas = document.getElementById('tutorial');</span></span><br><span class="line"><span class="regexp">        if(!canvas.getContext) return;</span></span><br><span class="line"><span class="regexp">        var mcontext = canvas.getContext("2d");</span></span><br><span class="line"><span class="regexp">        /</span><span class="regexp">/开始代码</span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/ 开始一条新的路径</span></span><br><span class="line"><span class="regexp">        mcontext.beginPath();  </span></span><br><span class="line"><span class="regexp">        /</span><span class="regexp">/ 设置画笔的属性</span></span><br><span class="line"><span class="regexp">        mcontext.strokeStyle = '#f00';  /</span><span class="regexp">/ 画笔颜色</span></span><br><span class="line"><span class="regexp">        mcontext.lineWidth = 10;  /</span><span class="regexp">/ 画笔粗细</span></span><br><span class="line"><span class="regexp">        /</span><span class="regexp">/ 设置填充色</span></span><br><span class="line"><span class="regexp">        mcontext.fillStyle = '#0f0';</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">    draw();</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 1. 获取canvas元素</span></span><br><span class="line"><span class="regexp">    var mcanvas = document.querySelector('#mycanvas');</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 2. 获取上下文对象（或者说是画笔）</span></span><br><span class="line"><span class="regexp">    var mcontext = mcanvas.getContext('2d');</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 画三角形</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 3. 开始一条路径</span></span><br><span class="line"><span class="regexp">    mcontext.beginPath();</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 4. 设置起点（将画笔移动到画布的指定位置）</span></span><br><span class="line"><span class="regexp">    mcontext.moveTo(40, 40);</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 5. 绘制直线</span></span><br><span class="line"><span class="regexp">    mcontext.lineTo(200, 40);</span></span><br><span class="line"><span class="regexp">    mcontext.lineTo(200, 200);</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 6. 闭合起点和结束点</span></span><br><span class="line"><span class="regexp">    mcontext.closePath();</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 7. 描边（画线）</span></span><br><span class="line"><span class="regexp">    mcontext.stroke();</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 画正方形</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 1. 开始一条新的路径</span></span><br><span class="line"><span class="regexp">    mcontext.beginPath();</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 2.设置画笔的属性</span></span><br><span class="line"><span class="regexp">    mcontext.strokeStyle = '#f00';  /</span><span class="regexp">/ 画笔颜色</span></span><br><span class="line"><span class="regexp">    mcontext.lineWidth = 10;  /</span><span class="regexp">/ 画笔粗细</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 3. 设置起点</span></span><br><span class="line"><span class="regexp">    mcontext.moveTo(400, 40);</span></span><br><span class="line"><span class="regexp">    mcontext.lineTo(400, 240);</span></span><br><span class="line"><span class="regexp">    mcontext.lineTo(600, 240);</span></span><br><span class="line"><span class="regexp">    mcontext.lineTo(600, 40);</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 4. 闭合路径</span></span><br><span class="line"><span class="regexp">    mcontext.closePath();</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 5. 设置填充色</span></span><br><span class="line"><span class="regexp">    mcontext.fillStyle = '#0f0';</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 6. 填充图形</span></span><br><span class="line"><span class="regexp">    mcontext.fill();</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 7. 描边</span></span><br><span class="line"><span class="regexp">    mcontext.stroke();</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ &lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
 
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>Thank you!<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/02/06/canvas/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/02/06/css2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          CSS点滴积累2
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2018/02/06/donghua/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CSS3动画、过渡、2D3D转换</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="canvas" data-title="Canvas画布" data-url="http://yoursite.com/2018/02/06/canvas/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -238,9 +367,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
@@ -316,10 +445,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">-Angular</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -333,10 +458,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">-react</a>
               </li>
              
               <li class="article-tag-list-item">

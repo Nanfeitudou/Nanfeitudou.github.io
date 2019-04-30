@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>npm 用法 | DJM的博客</title>
+  <title>swiper基础学习 | DJM的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="123456789101112131415161718192021222324252627282930313233343536371.得到原本的镜像地址npm get registry &amp;gt; https://registry.npmjs.org/设成淘宝的npm config set registry http://registry.npm.taobao.org/ 2.换成原来的npm con">
+  <meta name="description" content="swiper  动态添加数据，轮播不会自己更新1234567observer:true,//修改swiper自己或子元素时，自动初始化swiperobserveParents:false,//修改swiper的父元素时，自动初始化swiperonSlideChangeEnd: function(swiper)&amp;#123;　　　swiper.update();　　　mySwiper.startAut">
 <meta property="og:type" content="article">
-<meta property="og:title" content="npm 用法">
-<meta property="og:url" content="http://yoursite.com/2018/07/15/npm/index.html">
+<meta property="og:title" content="swiper基础学习">
+<meta property="og:url" content="http://yoursite.com/2018/05/11/swiper/index.html">
 <meta property="og:site_name" content="DJM的博客">
-<meta property="og:description" content="123456789101112131415161718192021222324252627282930313233343536371.得到原本的镜像地址npm get registry &amp;gt; https://registry.npmjs.org/设成淘宝的npm config set registry http://registry.npm.taobao.org/ 2.换成原来的npm con">
+<meta property="og:description" content="swiper  动态添加数据，轮播不会自己更新1234567observer:true,//修改swiper自己或子元素时，自动初始化swiperobserveParents:false,//修改swiper的父元素时，自动初始化swiperonSlideChangeEnd: function(swiper)&amp;#123;　　　swiper.update();　　　mySwiper.startAut">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-18T15:45:02.786Z">
+<meta property="og:updated_time" content="2019-04-30T01:44:07.615Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="npm 用法">
-<meta name="twitter:description" content="123456789101112131415161718192021222324252627282930313233343536371.得到原本的镜像地址npm get registry &amp;gt; https://registry.npmjs.org/设成淘宝的npm config set registry http://registry.npm.taobao.org/ 2.换成原来的npm con">
+<meta name="twitter:title" content="swiper基础学习">
+<meta name="twitter:description" content="swiper  动态添加数据，轮播不会自己更新1234567observer:true,//修改swiper自己或子元素时，自动初始化swiperobserveParents:false,//修改swiper的父元素时，自动初始化swiperonSlideChangeEnd: function(swiper)&amp;#123;　　　swiper.update();　　　mySwiper.startAut">
   
     <link rel="alternative" href="/atom.xml" title="DJM的博客" type="application/atom+xml">
   
@@ -166,28 +166,27 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-npm" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-swiper" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      npm 用法
+      swiper基础学习
     </h1>
   
 
         
-        <a href="/2018/07/15/npm/" class="archive-article-date">
-  	<time datetime="2018-07-15T09:18:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-15</time>
+        <a href="/2018/05/11/swiper/" class="archive-article-date">
+  	<time datetime="2018-05-11T14:35:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-11</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>得到原本的镜像地址</span><br><span class="line">npm <span class="keyword">get</span> registry </span><br><span class="line">&gt; https://registry.npmjs.org/</span><br><span class="line"></span><br><span class="line">设成淘宝的</span><br><span class="line">npm config <span class="keyword">set</span> registry http://registry.npm.taobao.org/</span><br><span class="line"> </span><br><span class="line">2.换成原来的</span><br><span class="line">npm config <span class="keyword">set</span> registry https://registry.npmjs.org/</span><br><span class="line"></span><br><span class="line">1.临时使用</span><br><span class="line">npm --registry https://registry.npm.taobao.org install express</span><br><span class="line"> 2.持久使用</span><br><span class="line">npm config <span class="keyword">set</span> registry https://registry.npm.taobao.org</span><br><span class="line">3. 配置后可通过下面方式来验证是否成功 </span><br><span class="line">npm config <span class="keyword">get</span> registry </span><br><span class="line">// 或 </span><br><span class="line">npm info express</span><br><span class="line">4 .通过cnpm使用 淘宝镜像</span><br><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br><span class="line">// 使用</span><br><span class="line">cnpm install express</span><br><span class="line"></span><br><span class="line">5.nrm切换源</span><br><span class="line">安装 npm install -g nrm</span><br><span class="line">使用：列出可选的源</span><br><span class="line">nrm ls </span><br><span class="line">npm ---- https://registry.npmjs.org/</span><br><span class="line">cnpm --- http://r.cnpmjs.org/</span><br><span class="line">taobao - http://registry.npm.taobao.org/</span><br><span class="line">eu-----http://registry.npmjs.eu/</span><br><span class="line">au-----http://registry.npmjs.org.au/</span><br><span class="line">sl-----http://npm.strongloop.com/</span><br><span class="line">nj-----https://registry.nodejitsu.com/</span><br><span class="line"></span><br><span class="line">解决办法，升级之后运行：npm cache clean --force</span><br><span class="line">即可解决pm install出现”Unexpected end of JSON input while parsing near”错误。</span><br></pre></td></tr></table></figure>
-
+        <h2 id="swiper-动态添加数据，轮播不会自己更新"><a href="#swiper-动态添加数据，轮播不会自己更新" class="headerlink" title="swiper  动态添加数据，轮播不会自己更新"></a>swiper  动态添加数据，轮播不会自己更新</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">observer:<span class="literal">true</span>,<span class="comment">//修改swiper自己或子元素时，自动初始化swiper</span></span><br><span class="line">observeParents:<span class="literal">false</span>,<span class="comment">//修改swiper的父元素时，自动初始化swiper</span></span><br><span class="line">onSlideChangeEnd: <span class="function"><span class="keyword">function</span>(<span class="params">swiper</span>)</span>&#123;</span><br><span class="line">　　　swiper.update();</span><br><span class="line">　　　mySwiper.startAutoplay();</span><br><span class="line">　　  mySwiper.reLoop();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -266,7 +265,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/15/npm/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/05/11/swiper/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -280,18 +279,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/07/15/image/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/05/12/echarts/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          前端|加载的图片太多或者太大怎么办
+          echarts
         
       </div>
     </a>
   
   
-    <a href="/2018/07/15/time/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">时间、日期、边距、高宽问题</div>
+    <a href="/2018/04/26/zhengze/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">正则表达式</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -319,7 +318,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="npm" data-title="npm 用法" data-url="http://yoursite.com/2018/07/15/npm/"></div>
+	<div class="ds-thread" data-thread-key="swiper" data-title="swiper基础学习" data-url="http://yoursite.com/2018/05/11/swiper/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

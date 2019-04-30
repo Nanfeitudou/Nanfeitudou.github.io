@@ -6,18 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Vue.js学习笔记 | DJM的博客</title>
+  <title>Vue生命周期 指令等基础学习 | DJM的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Vue.js框架1.vue有两大核心：数据驱动和组件。Vue.js的核心实现中使用了ES5的Object.defineProperty特性，IE8及以下版本浏览器是不兼容的，所以，你的项目需要兼容这些较低版本的浏览器的话，那么，Vue.js就不适用了。2.什么是MVVMMVVM可以拆分成：View — ViewModel — Model三部分 ，左侧的View相当于我们的DOM内容，ViewMod">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vue.js学习笔记">
+<meta property="og:title" content="Vue生命周期 指令等基础学习">
 <meta property="og:url" content="http://yoursite.com/2018/06/20/vuenote/index.html">
 <meta property="og:site_name" content="DJM的博客">
 <meta property="og:description" content="Vue.js框架1.vue有两大核心：数据驱动和组件。Vue.js的核心实现中使用了ES5的Object.defineProperty特性，IE8及以下版本浏览器是不兼容的，所以，你的项目需要兼容这些较低版本的浏览器的话，那么，Vue.js就不适用了。2.什么是MVVMMVVM可以拆分成：View — ViewModel — Model三部分 ，左侧的View相当于我们的DOM内容，ViewMod">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-30T14:32:57.000Z">
+<meta property="og:updated_time" content="2019-04-30T01:30:10.707Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vue.js学习笔记">
+<meta name="twitter:title" content="Vue生命周期 指令等基础学习">
 <meta name="twitter:description" content="Vue.js框架1.vue有两大核心：数据驱动和组件。Vue.js的核心实现中使用了ES5的Object.defineProperty特性，IE8及以下版本浏览器是不兼容的，所以，你的项目需要兼容这些较低版本的浏览器的话，那么，Vue.js就不适用了。2.什么是MVVMMVVM可以拆分成：View — ViewModel — Model三部分 ，左侧的View相当于我们的DOM内容，ViewMod">
   
     <link rel="alternative" href="/atom.xml" title="DJM的博客" type="application/atom+xml">
@@ -173,7 +173,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Vue.js学习笔记
+      Vue生命周期 指令等基础学习
     </h1>
   
 
@@ -196,7 +196,7 @@
 <p>computed 计算属性必须return一个东西，它的结果会被缓存，除非依赖的数据变化才会重新计算，主要当作属性来使用，不适合业务逻辑处理<br>watch 属性是一个对象，键是需要观察的表达式，值是对应的回调函数，主要用来监听某些特定数据的变化，从而进行某些具体业务逻辑的实现，可以看作是computed 和 methods 的结合体；<br>methods 方法表示一个具体的操作，用于业务逻辑的处理</p>
 </blockquote>
 <h2 id="使用-JavaScript-表达式"><a href="#使用-JavaScript-表达式" class="headerlink" title="使用 JavaScript 表达式"></a>使用 JavaScript 表达式</h2><p>对于所有的数据绑定，Vue.js 都提供了完全的 JavaScript 表达式支持。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; number + <span class="number">1</span> &#125;&#125;  <span class="comment">// 1.加减乘除运算：   </span></span><br><span class="line">&#123;&#123; ok ? <span class="string">'YES'</span> : <span class="string">'NO'</span> &#125;&#125; <span class="comment">//2.三元运算符：</span></span><br><span class="line">&lt;div v-bind:id=<span class="string">"'list-' + id"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span> <span class="comment">//3.字符串拼接</span></span><br><span class="line">&#123;&#123; message.split(<span class="string">''</span>).reverse().join(<span class="string">''</span>) &#125;&#125; <span class="comment">//4.表达式写法</span></span><br><span class="line"><span class="comment">// 这些表达式会在所属 Vue 实例的数据作用域下作为 JavaScript 被解析。有个限制就是，每个绑定都只能包含单个表达式，所以下面的例子都不会生效。</span></span><br><span class="line"><span class="comment">// &lt;!-- 这是语句，不是表达式 --&gt;</span></span><br><span class="line">&#123;&#123; <span class="keyword">var</span> a = <span class="number">1</span> &#125;&#125;</span><br><span class="line"><span class="comment">// &lt;!-- 流控制也不会生效，请使用三元表达式 --&gt;</span></span><br><span class="line">&#123;&#123; <span class="keyword">if</span> (ok) &#123; <span class="keyword">return</span> message &#125; &#125;&#125;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">在模板中放入太多的逻辑会让模板过重且难以维护。当你想要在模板中多次引用此处的翻转字符串时，就会更加难以处理。</span><br><span class="line">所以，对于任何复杂逻辑，你都应当使用计算属性。</span><br><span class="line">&lt;div id=<span class="string">"example"</span>&gt;</span><br><span class="line">  &lt;p&gt;Original message: <span class="string">"&#123;&#123; message &#125;&#125;"</span>&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">  &lt;p&gt;Computed reversed message: "&#123;&#123; reversedMessage &#125;&#125;"&lt;/</span>p&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">    var vm = new Vue(&#123;</span></span><br><span class="line"><span class="regexp">        el: '#example',</span></span><br><span class="line"><span class="regexp">        data: &#123;</span></span><br><span class="line"><span class="regexp">            message: 'Hello'</span></span><br><span class="line"><span class="regexp">        &#125;,</span></span><br><span class="line"><span class="regexp">        computed: &#123;</span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/ 计算属性的 getter</span></span><br><span class="line"><span class="regexp">            reversedMessage: function () &#123;</span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/ `this` 指向 vm 实例</span></span><br><span class="line"><span class="regexp">            return this.message.split('').reverse().join('')</span></span><br><span class="line"><span class="regexp">            &#125;</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">    &#125;)</span></span><br><span class="line"><span class="regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在模板中放入太多的逻辑会让模板过重且难以维护。当你想要在模板中多次引用此处的翻转字符串时，就会更加难以处理。</span></span><br><span class="line"><span class="comment">//所以，对于任何复杂逻辑，你都应当使用计算属性。</span></span><br><span class="line">&lt;div id=<span class="string">"example"</span>&gt;</span><br><span class="line">  &lt;p&gt;Original message: <span class="string">"&#123;&#123; message &#125;&#125;"</span>&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">  &lt;p&gt;Computed reversed message: "&#123;&#123; reversedMessage &#125;&#125;"&lt;/</span>p&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">    var vm = new Vue(&#123;</span></span><br><span class="line"><span class="regexp">        el: '#example',</span></span><br><span class="line"><span class="regexp">        data: &#123;</span></span><br><span class="line"><span class="regexp">            message: 'Hello'</span></span><br><span class="line"><span class="regexp">        &#125;,</span></span><br><span class="line"><span class="regexp">        computed: &#123;</span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/ 计算属性的 getter</span></span><br><span class="line"><span class="regexp">            reversedMessage: function () &#123;</span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/ `this` 指向 vm 实例</span></span><br><span class="line"><span class="regexp">            return this.message.split('').reverse().join('')</span></span><br><span class="line"><span class="regexp">            &#125;</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">    &#125;)</span></span><br><span class="line"><span class="regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
 <h2 id="必须掌握的10个指令"><a href="#必须掌握的10个指令" class="headerlink" title="必须掌握的10个指令"></a>必须掌握的10个指令</h2><p><strong>1. v-text 指令</strong><br>v-text  指令用于更新标签包含的文本，它的作用跟双大括号的效果一样。我们看看它的用法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">        <span class="comment">// 它的作用跟&#123;&#123; msg &#125;&#125;效果是一样的</span></span><br><span class="line">    &lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">        &lt;p v-text=<span class="string">"msg"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line">        &lt;p&gt;&#123;&#123;msg&#125;&#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="keyword">let</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el:<span class="string">"#app"</span>,</span><br><span class="line">    data:&#123;</span><br><span class="line">        msg:<span class="string">'hello,vue'</span></span><br><span class="line">    &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
 <hr>
 <p><strong>2. v-html 指令</strong><br>data数据字符串包含了html标签，要想标签不被当作普通的字符串渲染出来，就得用 v-html 指令。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">   &lt;p v-html=<span class="string">"msg"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">let app = new Vue(&#123;</span></span><br><span class="line"><span class="regexp">   el:"#app",</span></span><br><span class="line"><span class="regexp">   data:&#123;</span></span><br><span class="line"><span class="regexp">     msg:'&lt;b&gt;hello,vue&lt;/</span>b&gt;<span class="string">'</span></span><br><span class="line"><span class="string">   &#125;</span></span><br><span class="line"><span class="string">&#125;);</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br></pre></td></tr></table></figure></p>
@@ -333,11 +333,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/06/21/vuecli/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/06/20/vuenote2/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Vue-CLI-Guide
+          Vue生命周期 指令等基础学习
         
       </div>
     </a>
@@ -372,7 +372,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="vuenote" data-title="Vue.js学习笔记" data-url="http://yoursite.com/2018/06/20/vuenote/"></div>
+	<div class="ds-thread" data-thread-key="vuenote" data-title="Vue生命周期 指令等基础学习" data-url="http://yoursite.com/2018/06/20/vuenote/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -514,10 +514,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vue.js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ajax</a>
               </li>
              
@@ -531,6 +527,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JSONP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vue.js</a>
               </li>
              
               <li class="article-tag-list-item">

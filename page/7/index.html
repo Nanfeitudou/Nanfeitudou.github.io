@@ -164,6 +164,74 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-seo" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/13/seo/">前端SEO的常用知识点</a>
+    </h1>
+  
+
+        
+        <a href="/2018/06/13/seo/" class="archive-article-date">
+  	<time datetime="2018-06-13T08:07:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="SEO-工作的目的"><a href="#SEO-工作的目的" class="headerlink" title="SEO 工作的目的"></a>SEO 工作的目的</h2><p>seo 的工作目的是为了让网站更利于让各大搜索引擎抓取和收录，增加产品的曝光率。<br>对普通的网站有一个统一的思路，就是尽量向前端优化、减少数据库操作、减少磁盘IO。 向前端优化指的是，在不影响功能和体验的情况下，能在浏览器执行的不要在服务端执行，能在缓存服务器上直接返回的不要到应用服务器，程序能直接取得的结果不要到外部取得，本机内能取得的数据不要到远程取，内存能取到的不要到磁盘取，缓存中有的不要去数据库查询。减少数据库操作指减少更新次数、缓存结果减少查询次数、将数据库执行的操作尽可能的让你的程序完成（例如join查询），减少磁盘IO指尽量不使用文件系统作为缓存、减少读写文件次数等。程序优化永远要优化慢的部分，换语言是无法”优化”的。</p>
+<h3 id="html提高渲染速度的写法"><a href="#html提高渲染速度的写法" class="headerlink" title="html提高渲染速度的写法"></a>html提高渲染速度的写法</h3><p>1、禁止使用iframe（阻塞父文档onload事件）<br>    iframe会阻塞主页面的Onload事件；<br>    搜索引擎的检索程序无法解读这种页面，不利于SEO;<br>    iframe和主页面共享连接池，而浏览器对相同域的连接有限制，所以会影响页面的并行加载。<br>    使用 iframe 之前需要考虑这两个缺点。如果需要使用 iframe，最好是通过 javascript 动态给 iframe 添加 src 属性值，这样可以绕开以上两个问题。<br>2、禁止使用gif图片实现loading效果（降低CPU消耗，提升渲染性能）；<br>3、使用CSS3代码代替JS动画（尽可能避免重绘重排以及回流）；<br>4、对于一些小图标，可以使用base64位编码，以减少网络请求。但不建议大图使用，比较耗费CPU；<br>    小图标优势在于：<br>    1.减少HTTP请求；<br>    2.避免文件跨域；<br>    3.修改及时生效；<br>5、<strong>网站 TDK 标签的设置</strong>。title,description,keywords，根据产品业务，概括出核心关键词作为 TDK 的内容，每个页面都不一样。如果每个页面的 keywords 都一样的话，搜索引起会持怀疑态度，觉得你有作弊嫌疑。有 meta 的 canonical 设置，一个网站还通过多个 url 访问，canonical 就是用来告诉搜索引擎，这么多个 url 中最有价值最重要的一个 url，一般是网站的首页。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=<span class="string">"canonical"</span> href=<span class="string">"http://www.xxxxxx.xxx/"</span> /&gt;</span><br></pre></td></tr></table></figure></p>
+<p>6、网站布局要做到样式与页面分离，删除页面中不必要的标签和元素。<br>7、页面生成要尽量小，要压缩页面的大小，页面尽量使用静态或伪静态。<br>8、所有的CSS、JS都要使用外部调用。<br>9、外部调用的JS文件的代码能放在底部的尽量放在底部，页面调用的css文件的代码尽量都放在head内，同一页面尽量不要超过3个JS外部调用。<br>10、<strong>h1~h6 标签合理使用</strong>h1 标签一个页面只能出现 1 次，h2 标签一般作为二级标题或者文章的小标题。最合理的使用时 h1~h6 按顺序层层嵌套下去，不可以断层或者反序。此外，h1 标签可以用在 logo 上，但要确保一个网页只有一个 h1 标签。<br>11、除首页外别的页面要加面包屑型路径，导航一定要清晰。<br>12、网站一定要兼容脑残的IE各版本和FF等主流浏览器，这个虽然感觉对SEO影响不大，但是作为前端，这也是最基本的吧。<br>13、图片img 标签一定要添加ALT属性注明图片的含义，链接一定要添加title属性。<br>14、网站结构呈扁平状树型，目录结构不宜过深，每个页面离首页最多点击3次，过深不利于搜索引擎的抓取。<br>15、增加网站的 404 页面，并测试其返回状态码为404。一个是利于用户体验，最主要的是防止蜘蛛爬虫的丢失。但有一点要注意，不要设置自动跳转到首页，会被搜索引擎认为是在作弊，你在 404 页面设置一个引导链接让用户自己点就可以。<br>16、确保网站代码无误，HTML能通过W3C版本。<br>17、安装百度的自动推送代码，作用是当页面被访问的时候，页面的 url 会自动推送给百度搜索引擎，有利于网页更快地被百度发现。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> bp = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</span><br><span class="line">        <span class="keyword">var</span> curProtocol = <span class="built_in">window</span>.location.protocol.split(<span class="string">':'</span>)[<span class="number">0</span>]; </span><br><span class="line">        <span class="keyword">if</span>(curProtocol === <span class="string">'https'</span>)&#123;</span><br><span class="line">            bp.src = <span class="string">'https://zz.bdstatic.com/linksubmit/push.js'</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            bp.src = <span class="string">'http://push.zhanzhang.baidu.com/push.js'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> s = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"script"</span>)[<span class="number">0</span>];     s.parentNode.insertBefore(bp, s);</span><br><span class="line">    &#125;)();</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>18、<strong>设置 nofollow 属性值</strong>。a 标签的 rel=”nofollow”， 表示不希望搜索引擎继续追踪的链接，取消这个链接在整站所占的权重比。一般是其他网站的链接、a 标签启动 QQ 聊天，webapp 拨打电话。<br>19、<strong>建立 robots.txt 文件</strong>。robots 文件是搜索引擎登录网站第一个访问的文件，robots 可以设置允许被访问的搜索引擎，最主要的还是设置允许 Allow 和不允许 Disallow 访问的目录和文件，少写 Disallow，多写 Allow，用意是引导爬虫抓取网站的信息。<br>另外， 在 robots 文件底部指明网站 sitemap 文件的目录，爬虫读取其中的 sitemap 路径，接着抓取其中相链接的网页。提高网站的收录量。<br>案例：淘宝的robots文档 <a href="https://www.taobao.com/robots.txt" target="_blank" rel="noopener">https://www.taobao.com/robots.txt</a><br>20、<strong>建立网站的 sitemap 地图文件</strong>。sitemap 是一个将网站栏目和连接归类的一个文件， 可以更好地将网站展示给搜索引擎，提高爬虫的爬取效率。sitemap 地图文件包含<br>html(针对用户)和 xml(针对搜索引擎)两种。<br>当网站更新频繁的时候，sitemap 文件要做到自动更新(程序实现)，更新不频繁的可以手动更新提交。<br>案例：<a href="http://www.sitemap-xml.org/" target="_blank" rel="noopener">http://www.sitemap-xml.org/</a></p>
+<h3 id="CSS提高渲染速度的写法"><a href="#CSS提高渲染速度的写法" class="headerlink" title="CSS提高渲染速度的写法"></a>CSS提高渲染速度的写法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、不要使用*&#123;&#125;</span><br><span class="line">    经常有前端开发人员使用*&#123;<span class="attr">margin</span>:<span class="number">0</span>; padding:<span class="number">0</span>&#125;来进行CSS重置，这种方法虽然写起来简单，但是渲染起来浏览器引擎要遍历所有的标签，很影响效率，强烈建议不要这样使用！</span><br><span class="line">    建议的的解决办法：把你常用到的这些标签进行处理；例如：body,li,p,h1&#123;<span class="attr">margin</span>:<span class="number">0</span>; padding:<span class="number">0</span>&#125;，可以参考一下大网站的CSS重置代码。</span><br><span class="line"><span class="number">2</span>、页面上少用绝对定位</span><br><span class="line">    绝对定位（position:absolute ）是网页布局中很常用到的，特别是作一些浮动效果时，也会让页面看起来非常的酷。但因为浏览器的渲染机制，网页中如果使用过多的绝对定位，会让你的网页变得非常的慢。</span><br><span class="line">    建议的解决办法：尽可能少用，能用变通实现同样的效果，就用变通的办法。</span><br><span class="line"><span class="number">3</span>、让属性尽可能多的去继承</span><br><span class="line">    尽可能让一些属性子可以继承父级元素，而不是覆盖父级元素。</span><br><span class="line"><span class="number">4</span>、CSS的层次不能太多</span><br><span class="line">    #zishu .info .tool .sidebar h2&#123; font-size:12px;&#125;，这是非常不推荐的，推荐写法：.zishu-s-h2&#123;font-size:12px;&#125;。</span><br><span class="line"><span class="number">5</span>、不要放空的<span class="class"><span class="keyword">class</span></span></span><br><span class="line"><span class="class">    别放空的的<span class="title">class</span>或没有的<span class="title">class</span>在<span class="title">HTML</span>代码中，这样无意义。</span></span><br><span class="line"><span class="class">6、合理的布局</span></span><br><span class="line"><span class="class">    合理的布局，可以改变<span class="title">CSS</span>的写法以及渲染过程，可以多多参考大网站的布局方式。</span></span><br></pre></td></tr></table></figure>
+<h3 id="如何提高网页的加载速度"><a href="#如何提高网页的加载速度" class="headerlink" title="如何提高网页的加载速度"></a>如何提高网页的加载速度</h3><p>页面打开的快慢，可以用两个指标描述：<br>一个是ready时间，一个是load时间<br>优化策略：<br><strong>一、减少渲染阻塞：</strong><br>1、避免head标签JS阻塞<br>所有放在head标签里面的CSS和JS都会阻塞渲染，如果这些CSS和JS需要加载很久，页面就会空白，两种解决方法：第一种是把script放到body里面，第二种是给script加defer属性（defer属性是HTML5新增的属性，一旦script是defer延迟的，那么script将会异步加载，但是不会马上执行，会在所有元素解析完之后执行）正常script执行——&gt;内联script 执行。并行加载，串行执行。<br>在页面中，要么在页面中间的script要么使用原生的API，要么把用的一些函数写成head标签里面内联的script。<br>浏览器同时加载资源数是有限的，chrome对同一个域名的资源，每次同时只能建立6个TCP连接。<br>如果页面的交互比图片的展示更重要，把script写在head标签加上defer是可取的，如果页面的展示更重要那么放在body后面。<br>2、减少head标签里的css资源<br>在head里面阻塞页面渲染，在body里面加载好会重排，layout好dom会重排。<br>3、不要放太多的base64放在css里面<br>放太多的base64放在css里面，会导致css膨胀，解决方案，图标文字，将svg转化为icon，方便也颜色控制。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@media(min-width: <span class="number">501</span>px)&#123;</span><br><span class="line">    .img&#123;</span><br><span class="line">        background-picture: url(large.png);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@media(max-width: <span class="number">500</span>px)&#123;</span><br><span class="line">    .img&#123;</span><br><span class="line">        background-picture: url(small.png);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 大屏加载large图，小屏加载small图</span></span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/06/13/seo/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-echarts2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -184,7 +252,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="使用-dataset-管理数据"><a href="#使用-dataset-管理数据" class="headerlink" title="使用 dataset 管理数据"></a>使用 dataset 管理数据</h2><p>ECharts 4 开始支持了 dataset 组件用于单独的数据集声明，从而数据可以单独管理，被多个组件复用，并且可以基于数据指定数据到视觉的映射。</p>
+        <h2 id="tooltip提示框格式化便捷加入自带的小圆点标识"><a href="#tooltip提示框格式化便捷加入自带的小圆点标识" class="headerlink" title="tooltip提示框格式化便捷加入自带的小圆点标识"></a>tooltip提示框格式化便捷加入自带的小圆点标识</h2><p>formatter: function(params) {<br>    var result = ‘’;<br>    params.forEach(function (item) {<br>        result += item.marker + “ “ + item.seriesName + “ : “ + item.value +”<br>“;<br>    });<br>    return result;<br>}</p>
+<h2 id="柱图item"><a href="#柱图item" class="headerlink" title="柱图item"></a>柱图item</h2><p>柱图 itemStyle-normal-color 如果设置了渐变色，tooltip中就获取不到正确的颜色<br>解决方法：legend–&gt;selected, 通过波尔值控制tooltip显示的图例<br>selected:{<br>    ‘计划’:true,<br>    ‘实际’:true,<br>    ‘line’:false,<br>    ‘dotted’:false,<br>},<br>缺点：’line’ 和’dotted’ 被隐藏<br>背景效果、柱图渐变色、tooltip提示，三者有1个不能正常显示</p>
+<h2 id="tooltip的3种显示方式"><a href="#tooltip的3种显示方式" class="headerlink" title="tooltip的3种显示方式"></a>tooltip的3种显示方式</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">tooltip: &#123;</span><br><span class="line">    trigger: <span class="string">'axis'</span>,</span><br><span class="line">    axisPointer: &#123;</span><br><span class="line">        type: <span class="string">'shadow'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 方式一</span></span><br><span class="line">    <span class="comment">// 默认值配合legend--selected选项</span></span><br><span class="line">    <span class="comment">// 方式二</span></span><br><span class="line">    formatter: <span class="string">'&#123;b0&#125;&lt;br/&gt;&#123;a0&#125;: &#123;c0&#125;&lt;br/&gt;&#123;a1&#125;: &#123;c1&#125;'</span>,</span><br><span class="line">    <span class="comment">// 方式三</span></span><br><span class="line">    formatter: <span class="function"><span class="keyword">function</span> (<span class="params">params</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> result = params[<span class="number">0</span>].name + <span class="string">'&lt;/br&gt;'</span>;</span><br><span class="line">        params.length = <span class="number">2</span>;</span><br><span class="line">        params.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</span><br><span class="line">            result += item.marker + <span class="string">" "</span> + item.seriesName + <span class="string">" : "</span> + item.value + <span class="string">"&lt;/br&gt;"</span>;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">// 方式一</span></span><br><span class="line">legend: &#123;</span><br><span class="line">    data: [<span class="string">'计划'</span>, <span class="string">'实际'</span>],</span><br><span class="line">    selected:&#123;</span><br><span class="line">        <span class="string">'计划'</span>:<span class="literal">true</span>,</span><br><span class="line">        <span class="string">'实际'</span>:<span class="literal">true</span>,</span><br><span class="line">        <span class="string">'line'</span>:<span class="literal">false</span>,</span><br><span class="line">        <span class="string">'dotted'</span>:<span class="literal">false</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    textStyle: &#123;</span><br><span class="line">        color: <span class="string">'#ccc'</span></span><br><span class="line">    &#125;,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h2 id="多条柱颜色设置方式"><a href="#多条柱颜色设置方式" class="headerlink" title="多条柱颜色设置方式"></a>多条柱颜色设置方式</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 随机显示</span></span><br><span class="line"><span class="comment">//color:function(d)&#123;return "#"+Math.floor(Math.random()*(256*256*256-1)).toString(16);&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定制显示（按顺序）</span></span><br><span class="line">color: <span class="function"><span class="keyword">function</span>(<span class="params">params</span>) </span>&#123; </span><br><span class="line">    <span class="keyword">var</span> colorList = [<span class="string">'#C33531'</span>,<span class="string">'#EFE42A'</span>,<span class="string">'#64BD3D'</span>,<span class="string">'#EE9201'</span>,<span class="string">'#29AAE3'</span>, <span class="string">'#B74AE5'</span>,<span class="string">'#0AAF9F'</span>,<span class="string">'#E89589'</span>,<span class="string">'#16A085'</span>,<span class="string">'#4A235A'</span>,<span class="string">'#C39BD3 '</span>,<span class="string">'#F9E79F'</span>,<span class="string">'#BA4A00'</span>,<span class="string">'#ECF0F1'</span>,<span class="string">'#616A6B'</span>,<span class="string">'#EAF2F8'</span>,<span class="string">'#4A235A'</span>,<span class="string">'#3498DB'</span> ]; </span><br><span class="line">    <span class="keyword">return</span> colorList[params.dataIndex] </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//柱状图上显示数据</span></span><br><span class="line">label: &#123;</span><br><span class="line">    show: <span class="string">"true"</span>,</span><br><span class="line">    position: <span class="string">"top"</span>,</span><br><span class="line">    color: <span class="string">"#FFF"</span>,</span><br><span class="line">    fontWeight: <span class="string">"bolder"</span>,</span><br><span class="line">    backgroundColor: <span class="string">"auto"</span>,</span><br><span class="line">    fontSize: <span class="string">"20"</span></span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">//平均值</span></span><br><span class="line">markLine: &#123;</span><br><span class="line">    data: [&#123; <span class="attr">type</span>: <span class="string">"average"</span>, <span class="attr">name</span>: <span class="string">"平均值"</span> &#125;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="图表标题设置"><a href="#图表标题设置" class="headerlink" title="图表标题设置"></a>图表标题设置</h2><p>注意，如果不定义 rich 属性，则不能指定 width 和 height。<br>1, 字符串模板<br>模板变量有 {a}, {b}，{c}，{d}，{e}，分别表示系列名，数据名，数据值等。 在 trigger 为 ‘axis’ 的时候，会有多个系列的数据，此时可以通过 {a0}, {a1}, {a2} 这种后面加索引的方式表示系列的索引。 不同图表类型下的 {a}，{b}，{c}，{d} 含义不一样。 其中变量{a}, {b}, {c}, {d}在不同图表类型下代表数据含义为：<br>折线（区域）图、柱状（条形）图、K线图 : {a}（系列名称），{b}（类目值），{c}（数值）, {d}（无）<br>散点图（气泡）图 : {a}（系列名称），{b}（数据名称），{c}（数值数组）, {d}（无）<br>地图 : {a}（系列名称），{b}（区域名称），{c}（合并数值）, {d}（无）<br>饼图、仪表盘、漏斗图: {a}（系列名称），{b}（数据项名称），{c}（数值）, {d}（百分比）<br>1、URL 为图片链接例如：<br>‘image://<a href="http://xxx.xxx.xxx/a/b.png&#39;" target="_blank" rel="noopener">http://xxx.xxx.xxx/a/b.png&#39;</a><br>2、URL 为 dataURI 例如：<br>‘image://data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7’<br>3、可以通过 ‘path://‘ 将图标设置为任意的矢量路径。<br>‘path://M30.9,53.2C16.8,53.2,5.3,41.7,5.3,27.6S16.8,2,30.9,2C45,2,56.4,13.5,56.4,27.6S45,53.2,30.9,53.2z M30.9,3.5C17.6,3.5,6.8,14.4,6.8,27.6c0,13.3,10.8,24.1,24.101,24.1C44.2,51.7,55,40.9,55,27.6C54.9,14.4,44.1,3.5,30.9,3.5z M36.9,35.8c0,0.601-0.4,1-0.9,1h-1.3c-0.5,0-0.9-0.399-0.9-1V19.5c0-0.6,0.4-1,0.9-1H36c0.5,0,0.9,0.4,0.9,1V35.8z M27.8,35.8 c0,0.601-0.4,1-0.9,1h-1.3c-0.5,0-0.9-0.399-0.9-1V19.5c0-0.6,0.4-1,0.9-1H27c0.5,0,0.9,0.4,0.9,1L27.8,35.8L27.8,35.8z’</p>
+<h2 id="echarts-图表"><a href="#echarts-图表" class="headerlink" title="echarts 图表"></a>echarts 图表</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">color处理函数里面的颜色如果使用rgb格式，带opacity会出现itemStyle块闪动</span><br><span class="line">color: <span class="function"><span class="keyword">function</span>(<span class="params">params</span>) </span>&#123; </span><br><span class="line">    <span class="keyword">var</span> colorList = [<span class="string">'#C33531'</span>,<span class="string">'#EFE42A'</span>,<span class="string">'#64BD3D'</span>,<span class="string">'#EE9201'</span>,<span class="string">'#29AAE3'</span>, <span class="string">'#B74AE5'</span>,<span class="string">'#0AAF9F'</span>,<span class="string">'#E89589'</span>,<span class="string">'#16A085'</span>,<span class="string">'#4A235A'</span>,<span class="string">'#C39BD3 '</span>,<span class="string">'#F9E79F'</span>,<span class="string">'#BA4A00'</span>,<span class="string">'#ECF0F1'</span>,<span class="string">'#616A6B'</span>,<span class="string">'#EAF2F8'</span>,<span class="string">'#4A235A'</span>,<span class="string">'#3498DB'</span> ]; </span><br><span class="line">    <span class="keyword">return</span> colorList[params.dataIndex] </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="提示框属性"><a href="#提示框属性" class="headerlink" title="提示框属性"></a>提示框属性</h2><p>tooltip–confine   [ default: false ] 是否将 tooltip 框限制在图表的区域内。<br>当图表外层的 dom 被设置为 ‘overflow: hidden’，或者移动端窄屏，导致 tooltip 超出外界被截断时，此配置比较有用。<br><!-- 将提示框固定在顶部 --><br>position:function (point, params, dom, rect, size) {<br>                // 固定在顶部<br>                return [point[0], ‘10%’];<br>            },<br>参数：<br>point: 鼠标位置，如 [20, 40]。<br>params: 同 formatter 的参数相同。<br>dom: tooltip 的 dom 对象。<br>rect: 只有鼠标在图形上时有效，是一个用x, y, width, height四个属性表达的图形包围盒。<br>size: 包括 dom 的尺寸和 echarts 容器的当前尺寸，例如：{contentSize: [width, height], viewSize: [width, height]}。</p>
+<h2 id="echarts-制作map图表"><a href="#echarts-制作map图表" class="headerlink" title="echarts 制作map图表"></a>echarts 制作map图表</h2><p>注意：<br>传入省份json数据，不带‘省’字<br>this.$echarts.registerMap(‘山东’, res.data);   正确<br>传入市级json数据，带‘市’字<br>this.$echarts.registerMap(‘枣庄市’, res.data);  正确</p>
+<h2 id="使用-dataset-管理数据"><a href="#使用-dataset-管理数据" class="headerlink" title="使用 dataset 管理数据"></a>使用 dataset 管理数据</h2><p>ECharts 4 开始支持了 dataset 组件用于单独的数据集声明，从而数据可以单独管理，被多个组件复用，并且可以基于数据指定数据到视觉的映射。</p>
 <h2 id="数据到图形的映射"><a href="#数据到图形的映射" class="headerlink" title="数据到图形的映射"></a>数据到图形的映射</h2><p>指定 dataset 的列（column）还是行（row）映射为图形系列（series）。这件事可以使用 series.seriesLayoutBy 属性来配置。默认是按照列（column）来映射。<br>指定维度映射的规则：如何从 dataset 的维度（一个“维度”的意思是一行/列）映射到坐标轴（如 X、Y 轴）、提示框（tooltip）、标签（label）、图形元素大小颜色等（visualMap）。这件事可以使用 series.encode 属性，以及 visualMap 组件（如果有需要映射颜色大小等视觉维度的话）来配置。 </p>
 <h2 id="按行还是按列做映射"><a href="#按行还是按列做映射" class="headerlink" title="按行还是按列做映射"></a>按行还是按列做映射</h2><p>有了数据表之后，使用者可以灵活得配置：数据如何对应到轴和图形系列。<br>用户可以使用 seriesLayoutBy 配置项，改变图表对于行列的理解。seriesLayoutBy 可取值：<br>‘column’: 默认值。系列被安放到 dataset 的列上面。<br>‘row’: 系列被安放到 dataset 的行上面。</p>
 <h2 id="维度（dimension）"><a href="#维度（dimension）" class="headerlink" title="维度（dimension）"></a>维度（dimension）</h2><p>常用图表所描述的数据大部分是“二维表”结构，上述的例子中，我们都使用二维数组来容纳二维表。现在，当我们把系列（series）对应到“列”的时候，那么每一列就称为一个“维度（dimension）”，而每一行称为数据项（item）。反之，如果我们把系列（series）对应到表行，那么每一行就是“维度（dimension）”，每一列就是数据项（item）。</p>
@@ -280,150 +356,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/05/12/echarts/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-zhengze" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/26/zhengze/">正则表达式</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/26/zhengze/" class="archive-article-date">
-  	<time datetime="2018-04-26T08:28:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="正则表达式修饰符"><a href="#正则表达式修饰符" class="headerlink" title="正则表达式修饰符"></a>正则表达式修饰符</h2><p>i    执行对大小写不敏感的匹配。<br>g    执行全局匹配（查找所有匹配而非在找到第一个匹配后停止）。<br>m    执行多行匹配。</p>
-<h2 id="正则表达式模式"><a href="#正则表达式模式" class="headerlink" title="正则表达式模式"></a>正则表达式模式</h2><p>[abc]    查找方括号之间的任何字符。<br>[^abc]    查找任何不在方括号之间的字符。<br>[0-9]    查找任何从 0 至 9 的数字。<br>[a-z]    查找任何从小写 a 到小写 z 的字符。<br>[A-Z]    查找任何从大写 A 到大写 Z 的字符。<br>[A-z]    查找任何从大写 A 到小写 z 的字符。<br>[adgk]    查找给定集合内的任何字符。<br>[^adgk]    查找给定集合外的任何字符。<br>(red|blue|green)    查找任何指定的选项。</p>
-<h2 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h2><p>\反斜杠本身用\表示<br>. 查找单个字符，除了换行和行结束符。\t.h 查找t和h中间的单个字符<br>\w 查找单词字符  单词字符包括：a-z、A-Z、0-9，以及下划线, 包含 _ (下划线) 字符。<br>\W 查找非单词字符<br>\d 查找数字<br>\D 查找非数字字符<br>\s 查找空白字符<br>\S 查找非空白字符<br>\b 匹配单词边界  \bapp匹配单词开头带app的’app’,app\b匹配单词结尾带app的’app’<br>\B 匹配非单词边界<br>\0 查找NULL字符<br>\n 查找换行符   返回换行符被找到的位置。如果未找到匹配，则返回 -1。<br>\f 查找换页符<br>\r 查找回车符<br>\t 查找制表符<br>\v 查找垂直制表符<br>\XXX 查找以八进制数xxx规定的字符<br>\xdd 查找以十六进制数dd规定的字符<br>\uxxxx 查找以十六进制数xxxx规定的Unicode字符</p>
-<h2 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h2><p>n+ 至少一个n<br>n* 0个或多个n<br>n? 0个或1个n<br>n{x} 匹配x个n的序列字符串<br>n{x,} 匹配至少x个n的序列字符串<br>n{x,y} 匹配连续出现少x个，至多y个的序列字符串<br>n$ 匹配任何结尾为n的字符串<br>^n 匹配任何开头为n的字符串<br>?=n 匹配任何其后紧跟字符串n的字符串<br>?!n 匹配任何其后没有紧接指定字符串n的字符串</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">^[a-zA-Z0-9_]&#123;1,&#125;$      // 所有包含一个以上的字母、数字或下划线的字符串 </span><br><span class="line">^[1-9][0-9]&#123;0,&#125;$        // 所有的正整数 </span><br><span class="line">^\-&#123;0,1&#125;[0-9]&#123;1,&#125;$      // 所有的整数 </span><br><span class="line">^[-]?[0-9]+\.?[0-9]+$   // 所有的浮点数</span><br><span class="line">最后一个例子不太好理解，是吗？这么看吧：以一个可选的负号 ([-]?) 开头 (^)、跟着1个或更多的数字([0-9]+)、和一个小数点(\.)再跟上1个或多个数字([0-9]+)，并且后面没有其他任何东西($)。下面你将知道能够使用的更为简单的方法。</span><br><span class="line"></span><br><span class="line">特殊字符 ? 与 &#123;0,1&#125; 是相等的，它们都代表着： 0个或1个前面的内容 或 前面的内容是可选的 。所以刚才的例子可以简化为：</span><br><span class="line">^\-?[0-9]&#123;1,&#125;\.?[0-9]&#123;1,&#125;$</span><br><span class="line"></span><br><span class="line">特殊字符 * 与 &#123;0,&#125; 是相等的，它们都代表着 0 个或多个前面的内容 。最后，字符 + 与 &#123;1,&#125; 是相等的，表示 1 个或多个前面的内容 ，所以上面的4个例子可以写成：</span><br><span class="line">^[a-zA-Z0-9_]+$      // 所有包含一个以上的字母、数字或下划线的字符串 </span><br><span class="line">^[1-9][0-9]*$        // 所有的正整数 </span><br><span class="line">^\-?[0-9]+$          // 所有的整数 </span><br><span class="line">^\-?[0-9]+\.?[0-9]*$ // 所有的浮点数</span><br></pre></td></tr></table></figure>
-<h2 id="正则表达式-运算符优先级"><a href="#正则表达式-运算符优先级" class="headerlink" title="正则表达式 - 运算符优先级"></a>正则表达式 - 运算符优先级</h2><ul>
-<li>\                            转义符</li>
-<li>(), (?:), (?=), []        圆括号和方括号</li>
-<li>*, +, ?, {n}, {n,}, {n,m}    限定符</li>
-<li>^, $, \任何元字符、任何字符    定位点和序列（即：位置和顺序）</li>
-<li>|                            替换，”或”操作,字符具有高于替换运算符的优先级，使得”m|food”匹配”m”或”food”。若要匹配”mood”或”food”，请使用括号创建子表达式，从而产生”(m|f)ood”。</li>
-</ul>
-<h2 id="正则表达式对象使用的方法"><a href="#正则表达式对象使用的方法" class="headerlink" title="正则表达式对象使用的方法"></a>正则表达式对象使用的方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// i是ignorecase的缩写</span></span><br><span class="line">	<span class="keyword">var</span> exp1 = <span class="regexp">/hell/i</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// test()方法是检索字符串中指定的值，返回值为true或false</span></span><br><span class="line">	<span class="built_in">console</span>.log(exp1.test(<span class="string">'Hello world'</span>));</span><br><span class="line">	<span class="comment">// exec()方法检索字符串中指定的值，返回找到的值，并确定其位置。</span></span><br><span class="line">	<span class="keyword">var</span> app = exp1.exec(<span class="string">'Hello world'</span>)</span><br><span class="line">	<span class="built_in">console</span>.log(app);</span><br></pre></td></tr></table></figure>
-<h2 id="字符串对象中使用正则的方法"><a href="#字符串对象中使用正则的方法" class="headerlink" title="字符串对象中使用正则的方法"></a>字符串对象中使用正则的方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">'HellO world'</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// split()</span></span><br><span class="line">	<span class="built_in">console</span>.log(str.split(<span class="string">'o'</span>));</span><br><span class="line">	<span class="built_in">console</span>.log(str.split(<span class="regexp">/o/i</span>));</span><br><span class="line"></span><br><span class="line">	<span class="comment">// match()</span></span><br><span class="line">	<span class="built_in">console</span>.log(str.match(<span class="string">'ll'</span>));</span><br><span class="line">	<span class="built_in">console</span>.log(str.match(<span class="regexp">/o/ig</span>));</span><br><span class="line"></span><br><span class="line">	<span class="comment">// search()</span></span><br><span class="line">	<span class="comment">// 该方法会忽略标志 g</span></span><br><span class="line"></span><br><span class="line">	<span class="built_in">console</span>.log(str.search(<span class="string">'l'</span>)); <span class="comment">// 2</span></span><br><span class="line">	<span class="built_in">console</span>.log(str.search(<span class="regexp">/l/g</span>)); <span class="comment">// 2 </span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// replace()</span></span><br><span class="line">	<span class="comment">// 替换字符串中指定的字串</span></span><br><span class="line">	<span class="built_in">console</span>.log(str.replace(<span class="string">'l'</span>, <span class="string">'i'</span>));</span><br><span class="line">	<span class="built_in">console</span>.log(str.replace(<span class="regexp">/l/g</span>, <span class="string">'H'</span>));</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// console.log(str);</span></span><br></pre></td></tr></table></figure>
-<h2 id="一、校验数字的表达式"><a href="#一、校验数字的表达式" class="headerlink" title="一、校验数字的表达式"></a>一、校验数字的表达式</h2><ul>
-<li>数字：^[0-9]*$</li>
-<li>n位的数字：^\d{n}$</li>
-<li>至少n位的数字：^\d{n,}$</li>
-<li>m-n位的数字：^\d{m,n}$</li>
-<li>零和非零开头的数字：^(0|[1-9][0-9]*)$</li>
-<li>非零开头的最多带两位小数的数字：^([1-9][0-9]*)+(.[0-9]{1,2})?$</li>
-<li>带1-2位小数的正数或负数：^(-)?\d+(.\d{1,2})$</li>
-<li>正数、负数、和小数：^(-|+)?\d+(.\d+)?$</li>
-<li>有两位小数的正实数：^[0-9]+(.[0-9]{2})?$</li>
-<li>有1~3位小数的正实数：^[0-9]+(.[0-9]{1,3})?$</li>
-<li>非零的正整数：^[1-9]\d<em>$ 或 ^([1-9][0-9]</em>){1,3}$ 或 ^+?[1-9][0-9]*$</li>
-<li>非零的负整数：^-[1-9][]0-9”<em>$ 或 ^-[1-9]\d</em>$</li>
-<li>非负整数：^\d+$ 或 ^[1-9]\d*|0$</li>
-<li>非正整数：^-[1-9]\d*|0$ 或 ^((-\d+)|(0+))$</li>
-<li>非负浮点数：^\d+(.\d+)?$ 或 ^[1-9]\d<em>.\d</em>|0.\d<em>[1-9]\d</em>|0?.0+|0$</li>
-<li>非正浮点数：^((-\d+(.\d+)?)|(0+(.0+)?))$ 或 ^(-([1-9]\d<em>.\d</em>|0.\d<em>[1-9]\d</em>))|0?.0+|0$</li>
-<li>正浮点数：^[1-9]\d<em>.\d</em>|0.\d<em>[1-9]\d</em>$ 或 ^(([0-9]+.[0-9]<em>[1-9][0-9]</em>)|([0-9]<em>[1-9][0-9]</em>.[0-9]+)|([0-9]<em>[1-9][0-9]</em>))$</li>
-<li>负浮点数：^-([1-9]\d<em>.\d</em>|0.\d<em>[1-9]\d</em>)$ 或 ^(-(([0-9]+.[0-9]<em>[1-9][0-9]</em>)|([0-9]<em>[1-9][0-9]</em>.[0-9]+)|([0-9]<em>[1-9][0-9]</em>)))$</li>
-<li>浮点数：^(-?\d+)(.\d+)?$ 或 ^-?([1-9]\d<em>.\d</em>|0.\d<em>[1-9]\d</em>|0?.0+|0)$<h2 id="二、校验字符的表达式"><a href="#二、校验字符的表达式" class="headerlink" title="二、校验字符的表达式"></a>二、校验字符的表达式</h2></li>
-<li>汉字：^[\u4e00-\u9fa5]{0,}$</li>
-<li>英文和数字：^[A-Za-z0-9]+$ 或 ^[A-Za-z0-9]{4,40}$</li>
-<li>长度为3-20的所有字符：^.{3,20}$</li>
-<li>由26个英文字母组成的字符串：^[A-Za-z]+$</li>
-<li>由26个大写英文字母组成的字符串：^[A-Z]+$</li>
-<li>由26个小写英文字母组成的字符串：^[a-z]+$</li>
-<li>由数字和26个英文字母组成的字符串：^[A-Za-z0-9]+$</li>
-<li>由数字、26个英文字母或者下划线组成的字符串：^\w+$ 或 ^\w{3,20}$</li>
-<li>中文、英文、数字包括下划线：^[\u4E00-\u9FA5A-Za-z0-9_]+$</li>
-<li>中文、英文、数字但不包括下划线等符号：^[\u4E00-\u9FA5A-Za-z0-9]+$ 或 ^[\u4E00-\u9FA5A-Za-z0-9]{2,20}$</li>
-<li>可以输入含有^%&amp;’,;=?$\”等字符：[^%&amp;’,;=?$\x22]+</li>
-<li>禁止输入含有~的字符：[^~\x22]+<h2 id="三、特殊需求表达式"><a href="#三、特殊需求表达式" class="headerlink" title="三、特殊需求表达式"></a>三、特殊需求表达式</h2></li>
-<li>Email地址：^\w+([-+.]\w+)<em>@\w+([-.]\w+)</em>.\w+([-.]\w+)*$</li>
-<li>域名：[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(/.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+/.?</li>
-<li>InternetURL：[a-zA-z]+://[^\s]<em> 或 ^http://([\w-]+.)+[\w-]+(/[\w-./?%&amp;=]</em>)?$</li>
-<li>手机号码：^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$</li>
-<li>电话号码(“XXX-XXXXXXX”、”XXXX-XXXXXXXX”、”XXX-XXXXXXX”、”XXX-XXXXXXXX”、”XXXXXXX”和”XXXXXXXX)：^((\d{3,4}-)|\d{3.4}-)?\d{7,8}$</li>
-<li>国内电话号码(0511-4405222、021-87888822)：\d{3}-\d{8}|\d{4}-\d{7}</li>
-<li>电话号码正则表达式（支持手机号码，3-4位区号，7-8位直播号码，1－4位分机号）: ((\d{11})|^((\d{7,8})|(\d{4}|\d{3})-(\d{7,8})|(\d{4}|\d{3})-(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1})|(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1}))$)</li>
-<li>身份证号(15位、18位数字)，最后一位是校验位，可能为数字或字符X：(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)</li>
-<li>帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)：^[a-zA-Z][a-zA-Z0-9_]{4,15}$</li>
-<li>密码(以字母开头，长度在6~18之间，只能包含字母、数字和下划线)：^[a-zA-Z]\w{5,17}$</li>
-<li>强密码(必须包含大小写字母和数字的组合，不能使用特殊字符，长度在 8-10 之间)：^(?=.<em>\d)(?=.</em>[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,10}$</li>
-<li>强密码(必须包含大小写字母和数字的组合，可以使用特殊字符，长度在8-10之间)：^(?=.<em>\d)(?=.</em>[a-z])(?=.*[A-Z]).{8,10}$</li>
-<li>日期格式：^\d{4}-\d{1,2}-\d{1,2}</li>
-<li>一年的12个月(01～09和1～12)：^(0?[1-9]|1[0-2])$</li>
-<li>一个月的31天(01～09和1～31)：^((0?[1-9])|((1|2)[0-9])|30|31)$</li>
-<li>钱的输入格式：<ul>
-<li>有四种钱的表示形式我们可以接受:”10000.00” 和 “10,000.00”, 和没有 “分” 的 “10000” 和 “10,000”：^[1-9][0-9]*$</li>
-<li>这表示任意一个不以0开头的数字,但是,这也意味着一个字符”0”不通过,所以我们采用下面的形式：^(0|[1-9][0-9]*)$</li>
-<li>一个0或者一个不以0开头的数字.我们还可以允许开头有一个负号：^(0|-?[1-9][0-9]*)$</li>
-<li>这表示一个0或者一个可能为负的开头不为0的数字.让用户以0开头好了.把负号的也去掉,因为钱总不能是负的吧。下面我们要加的是说明可能的小数部分：^[0-9]+(.[0-9]+)?$</li>
-<li>必须说明的是,小数点后面至少应该有1位数,所以”10.”是不通过的,但是 “10” 和 “10.2” 是通过的：^[0-9]+(.[0-9]{2})?$</li>
-<li>这样我们规定小数点后面必须有两位,如果你认为太苛刻了,可以这样：^[0-9]+(.[0-9]{1,2})?$</li>
-<li>这样就允许用户只写一位小数.下面我们该考虑数字中的逗号了,我们可以这样：^[0-9]{1,3}(,[0-9]{3})*(.[0-9]{1,2})?$</li>
-<li>1到3个数字,后面跟着任意个 逗号+3个数字,逗号成为可选,而不是必须：^([0-9]+|[0-9]{1,3}(,[0-9]{3})*)(.[0-9]{1,2})?$</li>
-<li>备注：这就是最终结果了,别忘了”+”可以用”*”替代如果你觉得空字符串也可以接受的话(奇怪,为什么?)最后,别忘了在用函数时去掉去掉那个反斜杠,一般的错误都在这里</li>
-</ul>
-</li>
-<li>xml文件：^([a-zA-Z]+-?)+[a-zA-Z0-9]+\.[x|X][m|M][l|L]$</li>
-<li>中文字符的正则表达式：[\u4e00-\u9fa5]</li>
-<li>双字节字符：[^\x00-\xff] (包括汉字在内，可以用来计算字符串的长度(一个双字节字符长度计2，ASCII字符计1))</li>
-<li>空白行的正则表达式：\n\s*\r (可以用来删除空白行)</li>
-<li>HTML标记的正则表达式：&lt;(\S<em>?)[^&gt;]</em>&gt;.<em>?|&lt;.</em>? /&gt; ( 首尾空白字符的正则表达式：^\s<em>|\s</em>$或(^\s<em>)|(\s</em>$) (可以用来删除行首行尾的空白字符(包括空格、制表符、换页符等等)，非常有用的表达式)</li>
-<li>腾讯QQ号：[1-9][0-9]{4,} (腾讯QQ号从10000开始)</li>
-<li>中国邮政编码：[1-9]\d{5}(?!\d) (中国邮政编码为6位数字)</li>
-<li>IP地址：((?:(?:25[0-5]|2[0-4]\d|[01]?\d?\d)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d?\d))</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/26/zhengze/">展开全文 >></a>
         </p>
       
 
@@ -574,10 +506,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vue.js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ajax</a>
               </li>
              
@@ -591,6 +519,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JSONP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vue.js</a>
               </li>
              
               <li class="article-tag-list-item">

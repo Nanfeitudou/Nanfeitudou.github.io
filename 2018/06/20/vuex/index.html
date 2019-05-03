@@ -6,20 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>博客管理工具Hexo | DJM的博客</title>
+  <title>Vuex | DJM的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="安装构建工具全局安装 hexo-cli 1$ cnpm install hexo-cli -g 检验版本信息version 1$ hexo version 显示版本信息。 初始化站点init 1$ hexo init [folder] 初始化站点。如果没有提供 folder，Hexo会在当前目录下创建站点。 新建文章页面new 123$ hexo new [layout] &amp;lt;title&amp;gt">
-<meta name="keywords" content="hexo">
+  <meta name="description" content="Mutation更改 Vuex 的 store 中的状态的唯一方法是提交 mutation在 Vuex 中，mutation 都是同步事务：store.commit(‘increment’)// 任何由 “increment” 导致的状态变更都应该在此刻完成。 ActionAction 类似于 mutation，不同在于：  Action 提交的是 mutation，而不是直接变更状态。 Acti">
 <meta property="og:type" content="article">
-<meta property="og:title" content="博客管理工具Hexo">
-<meta property="og:url" content="http://yoursite.com/2017/05/30/hexo-a/index.html">
+<meta property="og:title" content="Vuex">
+<meta property="og:url" content="http://yoursite.com/2018/06/20/vuex/index.html">
 <meta property="og:site_name" content="DJM的博客">
-<meta property="og:description" content="安装构建工具全局安装 hexo-cli 1$ cnpm install hexo-cli -g 检验版本信息version 1$ hexo version 显示版本信息。 初始化站点init 1$ hexo init [folder] 初始化站点。如果没有提供 folder，Hexo会在当前目录下创建站点。 新建文章页面new 123$ hexo new [layout] &amp;lt;title&amp;gt">
+<meta property="og:description" content="Mutation更改 Vuex 的 store 中的状态的唯一方法是提交 mutation在 Vuex 中，mutation 都是同步事务：store.commit(‘increment’)// 任何由 “increment” 导致的状态变更都应该在此刻完成。 ActionAction 类似于 mutation，不同在于：  Action 提交的是 mutation，而不是直接变更状态。 Acti">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-13T09:40:43.000Z">
+<meta property="og:updated_time" content="2019-04-30T03:15:18.719Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="博客管理工具Hexo">
-<meta name="twitter:description" content="安装构建工具全局安装 hexo-cli 1$ cnpm install hexo-cli -g 检验版本信息version 1$ hexo version 显示版本信息。 初始化站点init 1$ hexo init [folder] 初始化站点。如果没有提供 folder，Hexo会在当前目录下创建站点。 新建文章页面new 123$ hexo new [layout] &amp;lt;title&amp;gt">
+<meta name="twitter:title" content="Vuex">
+<meta name="twitter:description" content="Mutation更改 Vuex 的 store 中的状态的唯一方法是提交 mutation在 Vuex 中，mutation 都是同步事务：store.commit(‘increment’)// 任何由 “increment” 导致的状态变更都应该在此刻完成。 ActionAction 类似于 mutation，不同在于：  Action 提交的是 mutation，而不是直接变更状态。 Acti">
   
     <link rel="alternative" href="/atom.xml" title="DJM的博客" type="application/atom+xml">
   
@@ -167,109 +166,35 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hexo-a" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-vuex" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      博客管理工具Hexo
+      Vuex
     </h1>
   
 
         
-        <a href="/2017/05/30/hexo-a/" class="archive-article-date">
-  	<time datetime="2017-05-30T06:55:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-30</time>
+        <a href="/2018/06/20/vuex/" class="archive-article-date">
+  	<time datetime="2018-06-20T07:49:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="安装构建工具"><a href="#安装构建工具" class="headerlink" title="安装构建工具"></a>安装构建工具</h2><p>全局安装 hexo-cli</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install hexo-cli -g</span><br></pre></td></tr></table></figure>
-<h2 id="检验版本信息"><a href="#检验版本信息" class="headerlink" title="检验版本信息"></a>检验版本信息</h2><p><strong>version</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo version</span><br></pre></td></tr></table></figure>
-<p>显示版本信息。</p>
-<h2 id="初始化站点"><a href="#初始化站点" class="headerlink" title="初始化站点"></a>初始化站点</h2><p><strong>init</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init [folder]</span><br></pre></td></tr></table></figure>
-<p>初始化站点。如果没有提供 <code>folder</code>，Hexo会在当前目录下创建站点。</p>
-<h2 id="新建文章页面"><a href="#新建文章页面" class="headerlink" title="新建文章页面"></a>新建文章页面</h2><p><strong>new</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;</span><br><span class="line"></span><br><span class="line">$ hexo new 文件名</span><br></pre></td></tr></table></figure>
+        <h2 id="Mutation"><a href="#Mutation" class="headerlink" title="Mutation"></a>Mutation</h2><p>更改 Vuex 的 store 中的状态的唯一方法是提交 mutation<br>在 Vuex 中，mutation 都是同步事务：<br>store.commit(‘increment’)<br>// 任何由 “increment” 导致的状态变更都应该在此刻完成。</p>
+<h2 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h2><p>Action 类似于 mutation，不同在于：</p>
 <ul>
-<li>layout：可选的，指定创建文件的类型，类型包括：<code>post</code>（文章）、<code>page</code>（页面）、<code>draft</code>（草稿）。如果没有指定该参数，则使用 <code>_config.yml</code> 配置文件 <code>default</code> 指定的类型。</li>
-<li>title：必须的，指定文章的标题，如果标题中包含空格，则需要使用引号包裹标题。</li>
+<li>Action 提交的是 mutation，而不是直接变更状态。</li>
+<li>Action 可以包含任意异步操作。</li>
 </ul>
-<p>在新建文章时，hexo会去脚手架目录（scaffolds）查找是否有指定类型的脚手架文件，如果有则使用该文件作为模板创建新的文件。</p>
-<h2 id="发布文章草稿"><a href="#发布文章草稿" class="headerlink" title="发布文章草稿"></a>发布文章草稿</h2><p><strong>publish</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo publish [layout] &lt;filename&gt;</span><br></pre></td></tr></table></figure>
-<p>发布草稿。</p>
-<p>该命令会根据 <code>layout</code> 参数的不同，将 <code>_draft</code> 文件夹中的草稿发不成文章（移动到 <code>_posts</code> 文件夹中），或作为一个新建的页面生成。</p>
-<h2 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h2><p><strong>generate</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>生成静态文件。</p>
-<table>
-<thead>
-<tr>
-<th>选项</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>-d</code>，<code>--deploy</code></td>
-<td>生成静态文件之后部署</td>
-</tr>
-<tr>
-<td><code>-w</code>，<code>--watch</code></td>
-<td>监视文件的改变</td>
-</tr>
-<tr>
-<td><code>-b</code>，<code>--bail</code></td>
-<td>Raise an error if any unhandled exception is thrown during generation</td>
-</tr>
-<tr>
-<td><code>-f</code>， <code>--force</code></td>
-<td>强制生成</td>
-</tr>
-</tbody>
-</table>
-<h2 id="清除静态文件"><a href="#清除静态文件" class="headerlink" title="清除静态文件"></a>清除静态文件</h2><p><strong>clean</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure>
-<p>清除编译之后的结果，删除public目录</p>
-<h2 id="查看站点信息"><a href="#查看站点信息" class="headerlink" title="查看站点信息"></a>查看站点信息</h2><p><strong>list</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo list &lt;<span class="built_in">type</span>&gt;</span><br></pre></td></tr></table></figure>
-<p>列出指定类型的信息，可用的类型有：<code>page</code>，<code>post</code>，<code>route</code>，<code>tag</code>，<code>category</code>。</p>
-<h2 id="本地预览站点"><a href="#本地预览站点" class="headerlink" title="本地预览站点"></a>本地预览站点</h2><p><strong>server</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>开启一个本地服务器。默认情况下，是在：<code>http://localhost:4000/</code>。</p>
-<h2 id="安装部署工具"><a href="#安装部署工具" class="headerlink" title="安装部署工具"></a>安装部署工具</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<h2 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">  repo:</span> <span class="string">git@github.com:mthghclw/mthghclw.github.io.git</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span></span><br><span class="line"><span class="attr">  message:</span> <span class="string">更新站点</span></span><br></pre></td></tr></table></figure>
-<h2 id="生成认证密钥"><a href="#生成认证密钥" class="headerlink" title="生成认证密钥"></a>生成认证密钥</h2><p>1、打开 Git Bash。</p>
-<p>2、将下面的文本粘贴到 Git Bash 中，然后把邮箱修改成你的 Github Email 地址。</p>
-   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -b 4096 -C <span class="string">"your_email@example.com"</span></span><br></pre></td></tr></table></figure>
-<p>   这会创建一个新的 ssh key，使用邮箱作为标签。</p>
-   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Generating public/private rsa key pair.  </span><br><span class="line"><span class="comment"># 生成一对公钥和私钥</span></span><br></pre></td></tr></table></figure>
-<p>3、确认 key 放到哪，直接按回车（Enter），表示接受默认位置。</p>
-   <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Enter <span class="keyword">a</span> <span class="built_in">file</span> <span class="keyword">in</span> which <span class="built_in">to</span> save <span class="keyword">the</span> key (/c/Users/you/.ssh/id_rsa):[Press enter]</span><br></pre></td></tr></table></figure>
-<p>4、设置安全口令</p>
-   <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase): [<span class="keyword">Type</span> <span class="type">a </span>passphrase]</span><br><span class="line">Enter same passphrase again: [<span class="keyword">Type</span> <span class="type">passphrase </span>again]</span><br></pre></td></tr></table></figure>
-<h2 id="添加认证密钥"><a href="#添加认证密钥" class="headerlink" title="添加认证密钥"></a>添加认证密钥</h2><p>将生成的 SSH key 添加到你的 Github 账户</p>
-<p>1、将 SSH key 复制到粘贴板。</p>
-   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ clip &lt; ~/.ssh/id_rsa.pub</span><br><span class="line"><span class="comment"># 将 id_rsa.pub 文件的内容拷贝到粘贴板</span></span><br></pre></td></tr></table></figure>
-<p>2、打开 Github 的设置页面。</p>
-<p>3、点击侧边栏中的 SSH and GPG keys。</p>
-<p>4、点击 New SSH key。</p>
-<p>5、将 SSH key 粘贴到输入框中。</p>
-<p>6、点击 Add SSH key。</p>
-<p>7、输入 Github 账户密码确认前面的操作。</p>
-<h2 id="部署站点"><a href="#部署站点" class="headerlink" title="部署站点"></a>部署站点</h2><p><strong>deploy</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br><span class="line"><span class="comment"># hexo deploy -g/--generate 部署之前生成静态文件</span></span><br></pre></td></tr></table></figure>
-<p>部署你的站点。</p>
-<h2 id="本机电脑配置完好之后，更新完本地文件发布到博客三步走"><a href="#本机电脑配置完好之后，更新完本地文件发布到博客三步走" class="headerlink" title="本机电脑配置完好之后，更新完本地文件发布到博客三步走"></a>本机电脑配置完好之后，更新完本地文件发布到博客三步走</h2><p>1、清除编译之后的结果，删除public目录<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure></p>
-<p>2、生成静态文件<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure></p>
-<p>3、发布到博客<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure></p>
+<h2 id="辅助函数"><a href="#辅助函数" class="headerlink" title="辅助函数"></a>辅助函数</h2><p>mapState一般放在computed计算属性中，mapActions一般放在methods下</p>
+<h2 id="Vuex异步请求数据后-在组件中获取状态的方法"><a href="#Vuex异步请求数据后-在组件中获取状态的方法" class="headerlink" title="Vuex异步请求数据后,在组件中获取状态的方法"></a>Vuex异步请求数据后,在组件中获取状态的方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//即如下方法，页面正常更新：  </span></span><br><span class="line">computed: &#123;</span><br><span class="line">    userAva: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.$store.state.userAva;</span><br><span class="line">    &#125;,</span><br><span class="line">    userName: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.$store.state.userName;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//vue中提供$nextTick()异步加载方法</span></span><br><span class="line">mounted: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.$store.commit(<span class="string">'getLocalMes'</span>);</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.userName = <span class="keyword">this</span>.$store.state.userName;</span><br><span class="line">        <span class="keyword">this</span>.userAva = <span class="keyword">this</span>.$store.state.userAva;</span><br><span class="line">    &#125;,<span class="number">10</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Vuex异步请求数据通过computed计算属性值"><a href="#Vuex异步请求数据通过computed计算属性值" class="headerlink" title="Vuex异步请求数据通过computed计算属性值"></a>Vuex异步请求数据通过computed计算属性值</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">问题描述：</span><br><span class="line">使用Vuex管理数据时，在组件内使用$emit分发事件后，获取回来的数据要自动更新到该组件内，需要使用computed来计算更新。一开始尝试使用赋值给data的方法，后来发现重新发起ajax请求数据后无法更新新数据。</span><br><span class="line">因为data属性只是在组件实例化时赋值一次，依赖发生变化时不会更新，想要使用data来获取computed同样的效果可以对data的字段进行watch。</span><br><span class="line">而计算属性是基于它的依赖缓存的。计算属性在它的相关依赖发生改变时会重新取值，所以当ajax请求回来的数据发生变化时，计算属性的值会进行更新，相关的模板引用也会重新渲染。</span><br><span class="line">相比较而言使用computed更方便，如下是在实际应用中要不断更新的字段，<span class="keyword">this</span>.$store.state.templateStorage.recommendTpl 是由ajax重新获取的数据。</span><br><span class="line"></span><br><span class="line">computed: &#123;</span><br><span class="line">      recommendTpl () &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.$store.state.templateStorage.recommendTpl;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
 
       
 
@@ -299,29 +224,7 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/hexo//" class="article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
 
@@ -371,7 +274,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2017/05/30/hexo-a/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/06/20/vuex/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -385,15 +288,20 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/05/31/nginx/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/06/21/vuecli/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          nginx
+          Vue-CLI-Guide
         
       </div>
     </a>
   
+  
+    <a href="/2018/06/20/vuenote2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Vue 补充学习</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -411,19 +319,6 @@
         </div>
         
         
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装构建工具"><span class="toc-number">1.</span> <span class="toc-text">安装构建工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#检验版本信息"><span class="toc-number">2.</span> <span class="toc-text">检验版本信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#初始化站点"><span class="toc-number">3.</span> <span class="toc-text">初始化站点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#新建文章页面"><span class="toc-number">4.</span> <span class="toc-text">新建文章页面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#发布文章草稿"><span class="toc-number">5.</span> <span class="toc-text">发布文章草稿</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生成静态文件"><span class="toc-number">6.</span> <span class="toc-text">生成静态文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#清除静态文件"><span class="toc-number">7.</span> <span class="toc-text">清除静态文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看站点信息"><span class="toc-number">8.</span> <span class="toc-text">查看站点信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#本地预览站点"><span class="toc-number">9.</span> <span class="toc-text">本地预览站点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装部署工具"><span class="toc-number">10.</span> <span class="toc-text">安装部署工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改配置文件"><span class="toc-number">11.</span> <span class="toc-text">修改配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生成认证密钥"><span class="toc-number">12.</span> <span class="toc-text">生成认证密钥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加认证密钥"><span class="toc-number">13.</span> <span class="toc-text">添加认证密钥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#部署站点"><span class="toc-number">14.</span> <span class="toc-text">部署站点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#本机电脑配置完好之后，更新完本地文件发布到博客三步走"><span class="toc-number">15.</span> <span class="toc-text">本机电脑配置完好之后，更新完本地文件发布到博客三步走</span></a></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
     </div>
 </aside>
 
@@ -432,7 +327,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="hexo-a" data-title="博客管理工具Hexo" data-url="http://yoursite.com/2017/05/30/hexo-a/"></div>
+	<div class="ds-thread" data-thread-key="vuex" data-title="Vuex" data-url="http://yoursite.com/2018/06/20/vuex/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

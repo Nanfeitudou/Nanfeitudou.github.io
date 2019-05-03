@@ -164,6 +164,212 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-markdow" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/01/markdow/">Markdown的基本用法</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/01/markdow/" class="archive-article-date">
+  	<time datetime="2017-06-01T11:57:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://www.jianshu.com/p/b03a8d7b1719" target="_blank" rel="noopener">Markdown的基本用法</a></p>
+<h1 id="Markdown的基本用法"><a href="#Markdown的基本用法" class="headerlink" title="Markdown的基本用法"></a>Markdown的基本用法</h1><h2 id="标题-headers"><a href="#标题-headers" class="headerlink" title="标题 (headers)"></a>标题 (headers)</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># This is an &lt;h1&gt; tag</span></span><br><span class="line"><span class="section">## This is an &lt;h2&gt; tag</span></span><br><span class="line"><span class="section">###### this is an &lt;h6&gt; tag</span></span><br></pre></td></tr></table></figure>
+<h2 id="强调-Emphasis"><a href="#强调-Emphasis" class="headerlink" title="强调 (Emphasis)"></a>强调 (Emphasis)</h2><p><em>This text will be italic</em></p>
+<p><em>his will also be italic</em></p>
+<p><strong>This text will be bold</strong></p>
+<p><strong>This will also be bold</strong></p>
+<h2 id="引用-（Block-quotes）"><a href="#引用-（Block-quotes）" class="headerlink" title="引用 （Block quotes）"></a>引用 （Block quotes）</h2><p>As Grace Hopper said:</p>
+<blockquote>
+<p>I’ve always been more interested<br>in the future than in the past.</p>
+</blockquote>
+<h2 id="列表-（lists）"><a href="#列表-（lists）" class="headerlink" title="列表 （lists）"></a>列表 （lists）</h2><h3 id="无序列表-（默认第一种）"><a href="#无序列表-（默认第一种）" class="headerlink" title="无序列表 （默认第一种）"></a>无序列表 （默认第一种）</h3><ul>
+<li>Item 1 （*号）</li>
+<li>Item 2<ul>
+<li>Item 2.1</li>
+<li>Item 2.2</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Item 1</li>
+<li>Item 2 （-号）<ul>
+<li>Item 2.1</li>
+<li>Item 2.2</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Item 1</li>
+<li>Item 2 （+号）<ul>
+<li>Item 2.1</li>
+<li>Item 2.2</li>
+</ul>
+</li>
+</ul>
+<h3 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h3><ol>
+<li>Item 1</li>
+<li>Item 2</li>
+<li>Item 3<ul>
+<li>Item 3.1</li>
+<li>Item 3.2</li>
+<li>Item 3.3</li>
+</ul>
+</li>
+</ol>
+<h2 id="链接-（links）"><a href="#链接-（links）" class="headerlink" title="链接 （links）"></a>链接 （links）</h2><p><a href="https://nanfeitudou.github.io/" target="_blank" rel="noopener">个人博客</a></p>
+<p><a href="https://nanfeitudou.github.io/" target="_blank" rel="noopener">https://nanfeitudou.github.io/</a> - 个人博客</p>
+<h2 id="图片-（Images）"><a href="#图片-（Images）" class="headerlink" title="图片 （Images）"></a>图片 （Images）</h2><p><img src="https://octodex.github.com/images/yaktocat.png" alt="Image of Yaktocat"></p>
+<h2 id="代码块-（Code-block）"><a href="#代码块-（Code-block）" class="headerlink" title="代码块 （Code block）"></a>代码块 （Code block）</h2><h3 id="无颜色渲染的代码"><a href="#无颜色渲染的代码" class="headerlink" title="无颜色渲染的代码"></a>无颜色渲染的代码</h3><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title">sum</span> (x,y)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">x</span> + y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>function sum (x,y){
+    return x + y;
+}
+</code></pre><h3 id="高亮显示的代码"><a href="#高亮显示的代码" class="headerlink" title="高亮显示的代码"></a>高亮显示的代码</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span> (<span class="params">x,y</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="行内代码（Inline-code）"><a href="#行内代码（Inline-code）" class="headerlink" title="行内代码（Inline code）"></a>行内代码（Inline code）</h2><p>列出指定类型的信息，可用的类型有：<code>page</code>，<code>post</code>，<code>route</code>，<code>tag</code>，<code>category</code> ,<code>apple</code>。</p>
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><table>
+<thead>
+<tr>
+<th>First Header</th>
+<th>Second Header</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cell1</td>
+<td>Cell2  </td>
+</tr>
+<tr>
+<td>Colum1</td>
+<td>Colum2</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">First Header</th>
+<th style="text-align:center">Second Header</th>
+<th style="text-align:center">Third Header</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Cell1</td>
+<td style="text-align:center">Cell2</td>
+<td style="text-align:center">Cell3 </td>
+</tr>
+<tr>
+<td style="text-align:center">Colum1</td>
+<td style="text-align:center">Colum2</td>
+<td style="text-align:center">Colum3</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">First Header</th>
+<th style="text-align:right">Second Header</th>
+<th style="text-align:right">Third Header</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">Cell1</td>
+<td style="text-align:right">Cell2</td>
+<td style="text-align:right">Cell3 </td>
+</tr>
+<tr>
+<td style="text-align:right">Colum1</td>
+<td style="text-align:right">Colum2</td>
+<td style="text-align:right">Colum3</td>
+</tr>
+</tbody>
+</table>
+<h2 id="任务列表-（Task-lists）"><a href="#任务列表-（Task-lists）" class="headerlink" title="任务列表 （Task lists）"></a>任务列表 （Task lists）</h2><ul>
+<li style="list-style: none"><input type="checkbox"> 交电费</li>
+<li style="list-style: none"><input type="checkbox" checked> 还信用卡</li>
+<li style="list-style: none"><input type="checkbox"> 帮忙买菜</li>
+<li style="list-style: none"><input type="checkbox" checked> 下班打卡</li>
+</ul>
+<h2 id="表情-（Emoji）"><a href="#表情-（Emoji）" class="headerlink" title="表情 （Emoji）"></a>表情 （Emoji）</h2><p><a href="http://www.emoji-cheat-sheet.com/" target="_blank" rel="noopener">Emoji Cheat Sheet</a></p>
+<ul>
+<li>:+1:</li>
+<li><img class="github-emoji" title="smile" alt="smile" src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" height="20" width="20"></li>
+<li><img class="github-emoji" title="bowtie" alt="bowtie" src="https://github.githubassets.com/images/icons/emoji/bowtie.png?v8" height="20" width="20"></li>
+<li><img class="github-emoji" title="smile" alt="smile" src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" height="20" width="20"></li>
+<li>:simple_smile:</li>
+<li><img class="github-emoji" title="laughing" alt="laughing" src="https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8" height="20" width="20"></li>
+<li><img class="github-emoji" title="blush" alt="blush" src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png?v8" height="20" width="20"></li>
+<li><img class="github-emoji" title="smiley" alt="smiley" src="https://github.githubassets.com/images/icons/emoji/unicode/1f603.png?v8" height="20" width="20"></li>
+<li><img class="github-emoji" title="relaxed" alt="relaxed" src="https://github.githubassets.com/images/icons/emoji/unicode/263a.png?v8" height="20" width="20"></li>
+<li><img class="github-emoji" title="smirk" alt="smirk" src="https://github.githubassets.com/images/icons/emoji/unicode/1f60f.png?v8" height="20" width="20"><br><img class="github-emoji" title="kissing_heart" alt="kissing_heart" src="https://github.githubassets.com/images/icons/emoji/unicode/1f618.png?v8" height="20" width="20"><br><img class="github-emoji" title="grin" alt="grin" src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png?v8" height="20" width="20"><h2 id="转义-Escape"><a href="#转义-Escape" class="headerlink" title="转义 (Escape)"></a>转义 (Escape)</h2>*literal asterishs*<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">反斜杠可以转义的字符如下：</span><br><span class="line">` <span class="keyword">backtick</span></span><br><span class="line"><span class="keyword">* </span>asterisk</span><br><span class="line">_ underscore</span><br><span class="line">&#123;&#125; curly <span class="keyword">braces</span></span><br><span class="line"><span class="keyword">[] </span>square <span class="keyword">brackets</span></span><br><span class="line"><span class="keyword">() </span>parentheses</span><br><span class="line"># hash <span class="keyword">mark</span></span><br><span class="line"><span class="keyword">+ </span>plus sign</span><br><span class="line">- minus sign (hyphen)</span><br><span class="line">. dot</span><br><span class="line">! exclamation <span class="keyword">mark</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">markdown</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/01/markdow/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-tomcat" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -300,176 +506,9 @@
 
 
   
-    <article id="post-hexo-a" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/30/hexo-a/">博客管理工具Hexo</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/30/hexo-a/" class="archive-article-date">
-  	<time datetime="2017-05-30T06:55:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="安装构建工具"><a href="#安装构建工具" class="headerlink" title="安装构建工具"></a>安装构建工具</h2><p>全局安装 hexo-cli</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install hexo-cli -g</span><br></pre></td></tr></table></figure>
-<h2 id="检验版本信息"><a href="#检验版本信息" class="headerlink" title="检验版本信息"></a>检验版本信息</h2><p><strong>version</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo version</span><br></pre></td></tr></table></figure>
-<p>显示版本信息。</p>
-<h2 id="初始化站点"><a href="#初始化站点" class="headerlink" title="初始化站点"></a>初始化站点</h2><p><strong>init</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init [folder]</span><br></pre></td></tr></table></figure>
-<p>初始化站点。如果没有提供 <code>folder</code>，Hexo会在当前目录下创建站点。</p>
-<h2 id="新建文章页面"><a href="#新建文章页面" class="headerlink" title="新建文章页面"></a>新建文章页面</h2><p><strong>new</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;</span><br><span class="line"></span><br><span class="line">$ hexo new 文件名</span><br></pre></td></tr></table></figure>
-<ul>
-<li>layout：可选的，指定创建文件的类型，类型包括：<code>post</code>（文章）、<code>page</code>（页面）、<code>draft</code>（草稿）。如果没有指定该参数，则使用 <code>_config.yml</code> 配置文件 <code>default</code> 指定的类型。</li>
-<li>title：必须的，指定文章的标题，如果标题中包含空格，则需要使用引号包裹标题。</li>
-</ul>
-<p>在新建文章时，hexo会去脚手架目录（scaffolds）查找是否有指定类型的脚手架文件，如果有则使用该文件作为模板创建新的文件。</p>
-<h2 id="发布文章草稿"><a href="#发布文章草稿" class="headerlink" title="发布文章草稿"></a>发布文章草稿</h2><p><strong>publish</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo publish [layout] &lt;filename&gt;</span><br></pre></td></tr></table></figure>
-<p>发布草稿。</p>
-<p>该命令会根据 <code>layout</code> 参数的不同，将 <code>_draft</code> 文件夹中的草稿发不成文章（移动到 <code>_posts</code> 文件夹中），或作为一个新建的页面生成。</p>
-<h2 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h2><p><strong>generate</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>生成静态文件。</p>
-<table>
-<thead>
-<tr>
-<th>选项</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>-d</code>，<code>--deploy</code></td>
-<td>生成静态文件之后部署</td>
-</tr>
-<tr>
-<td><code>-w</code>，<code>--watch</code></td>
-<td>监视文件的改变</td>
-</tr>
-<tr>
-<td><code>-b</code>，<code>--bail</code></td>
-<td>Raise an error if any unhandled exception is thrown during generation</td>
-</tr>
-<tr>
-<td><code>-f</code>， <code>--force</code></td>
-<td>强制生成</td>
-</tr>
-</tbody>
-</table>
-<h2 id="清除静态文件"><a href="#清除静态文件" class="headerlink" title="清除静态文件"></a>清除静态文件</h2><p><strong>clean</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure>
-<p>清除编译之后的结果，删除public目录</p>
-<h2 id="查看站点信息"><a href="#查看站点信息" class="headerlink" title="查看站点信息"></a>查看站点信息</h2><p><strong>list</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo list &lt;<span class="built_in">type</span>&gt;</span><br></pre></td></tr></table></figure>
-<p>列出指定类型的信息，可用的类型有：<code>page</code>，<code>post</code>，<code>route</code>，<code>tag</code>，<code>category</code>。</p>
-<h2 id="本地预览站点"><a href="#本地预览站点" class="headerlink" title="本地预览站点"></a>本地预览站点</h2><p><strong>server</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>开启一个本地服务器。默认情况下，是在：<code>http://localhost:4000/</code>。</p>
-<h2 id="安装部署工具"><a href="#安装部署工具" class="headerlink" title="安装部署工具"></a>安装部署工具</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<h2 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">  repo:</span> <span class="string">git@github.com:mthghclw/mthghclw.github.io.git</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span></span><br><span class="line"><span class="attr">  message:</span> <span class="string">更新站点</span></span><br></pre></td></tr></table></figure>
-<h2 id="生成认证密钥"><a href="#生成认证密钥" class="headerlink" title="生成认证密钥"></a>生成认证密钥</h2><p>1、打开 Git Bash。</p>
-<p>2、将下面的文本粘贴到 Git Bash 中，然后把邮箱修改成你的 Github Email 地址。</p>
-   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -b 4096 -C <span class="string">"your_email@example.com"</span></span><br></pre></td></tr></table></figure>
-<p>   这会创建一个新的 ssh key，使用邮箱作为标签。</p>
-   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Generating public/private rsa key pair.  </span><br><span class="line"><span class="comment"># 生成一对公钥和私钥</span></span><br></pre></td></tr></table></figure>
-<p>3、确认 key 放到哪，直接按回车（Enter），表示接受默认位置。</p>
-   <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Enter <span class="keyword">a</span> <span class="built_in">file</span> <span class="keyword">in</span> which <span class="built_in">to</span> save <span class="keyword">the</span> key (/c/Users/you/.ssh/id_rsa):[Press enter]</span><br></pre></td></tr></table></figure>
-<p>4、设置安全口令</p>
-   <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase): [<span class="keyword">Type</span> <span class="type">a </span>passphrase]</span><br><span class="line">Enter same passphrase again: [<span class="keyword">Type</span> <span class="type">passphrase </span>again]</span><br></pre></td></tr></table></figure>
-<h2 id="添加认证密钥"><a href="#添加认证密钥" class="headerlink" title="添加认证密钥"></a>添加认证密钥</h2><p>将生成的 SSH key 添加到你的 Github 账户</p>
-<p>1、将 SSH key 复制到粘贴板。</p>
-   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ clip &lt; ~/.ssh/id_rsa.pub</span><br><span class="line"><span class="comment"># 将 id_rsa.pub 文件的内容拷贝到粘贴板</span></span><br></pre></td></tr></table></figure>
-<p>2、打开 Github 的设置页面。</p>
-<p>3、点击侧边栏中的 SSH and GPG keys。</p>
-<p>4、点击 New SSH key。</p>
-<p>5、将 SSH key 粘贴到输入框中。</p>
-<p>6、点击 Add SSH key。</p>
-<p>7、输入 Github 账户密码确认前面的操作。</p>
-<h2 id="部署站点"><a href="#部署站点" class="headerlink" title="部署站点"></a>部署站点</h2><p><strong>deploy</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br><span class="line"><span class="comment"># hexo deploy -g/--generate 部署之前生成静态文件</span></span><br></pre></td></tr></table></figure>
-<p>部署你的站点。</p>
-<h2 id="本机电脑配置完好之后，更新完本地文件发布到博客三步走"><a href="#本机电脑配置完好之后，更新完本地文件发布到博客三步走" class="headerlink" title="本机电脑配置完好之后，更新完本地文件发布到博客三步走"></a>本机电脑配置完好之后，更新完本地文件发布到博客三步走</h2><p>1、清除编译之后的结果，删除public目录<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure></p>
-<p>2、生成静态文件<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure></p>
-<p>3、发布到博客<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/hexo//" class="article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/30/hexo-a/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/14/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span>
+      <a class="extend prev" rel="prev" href="/page/14/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/16/">Next &raquo;</a>
     </nav>
   
 
@@ -608,11 +647,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color5">打包工具</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">打包工具</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
             
             <div class="clearfix"></div>

@@ -264,6 +264,81 @@
 
 
   
+    <article id="post-js_obj" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/23/js_obj/">JS对象</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/23/js_obj/" class="archive-article-date">
+  	<time datetime="2018-07-23T05:28:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="JavaScript-String-对象"><a href="#JavaScript-String-对象" class="headerlink" title="JavaScript String 对象"></a>JavaScript String 对象</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> tempArr = item.substr(<span class="number">1</span>).split(<span class="string">'='</span>);</span><br><span class="line"><span class="comment">// substr(start,length) 的参数指定的是子串的开始位置和长度，因此它可以替代 substring() 和 slice() 来使用。</span></span><br><span class="line"><span class="comment">// 如果省略了第二个参数，表示截取到最后。</span></span><br><span class="line"><span class="comment">// split(separator,limit) 方法用于把一个字符串分割成字符串数组。</span></span><br><span class="line"><span class="comment">//separator为分隔符，limit可选，为返回数组的长度。</span></span><br></pre></td></tr></table></figure>
+<h2 id="url传递对象解决方法"><a href="#url传递对象解决方法" class="headerlink" title="url传递对象解决方法"></a>url传递对象解决方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//A端页面  发送</span></span><br><span class="line"><span class="comment">//声明一个对象存入需要传递的数据</span></span><br><span class="line">    <span class="keyword">var</span> obj = &#123;</span><br><span class="line">        name:<span class="string">'huasheng'</span>，</span><br><span class="line">        age:<span class="number">30</span>,</span><br><span class="line">        hobby:<span class="string">'爬山'</span>,</span><br><span class="line">        sex:<span class="string">'1'</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">//通过url传递(需要将对象转换为JSON字符串)</span></span><br><span class="line">    <span class="built_in">window</span>.location = <span class="string">'http://www.xxx.com?objData='</span>+<span class="built_in">JSON</span>.stringify(obj);</span><br><span class="line"></span><br><span class="line"><span class="comment">// B端页面  获取</span></span><br><span class="line">    <span class="comment">// 方法一</span></span><br><span class="line">    <span class="comment">//获取url带过来的参数,如下代码是获取url问号后面的字符串</span></span><br><span class="line">    <span class="keyword">var</span> query = <span class="built_in">window</span>.location.search;</span><br><span class="line">    <span class="comment">//因为参数中包括有中文，会变成乱码，需转码</span></span><br><span class="line">    query = <span class="built_in">decodeURI</span>(query);</span><br><span class="line">    <span class="comment">//获取参数objData</span></span><br><span class="line">    <span class="keyword">var</span> objData = query.spilt(<span class="string">'='</span>)[<span class="number">1</span>];</span><br><span class="line">    <span class="comment">//将获取的objData打印出来你会发现，冒号全变成了%3A，这时用正则替换回来</span></span><br><span class="line">    objData = objData.replace(<span class="regexp">/%3A/g</span>,<span class="string">':'</span>);</span><br><span class="line">    <span class="comment">//再将JSON字符串转为js对象即可</span></span><br><span class="line">    objData = <span class="built_in">JSON</span>.parse(objData);</span><br><span class="line">    <span class="comment">//此时的objData就是我们传过来的，打印出来如下</span></span><br><span class="line">    objData = &#123;</span><br><span class="line">        name:<span class="string">'huasheng'</span>，</span><br><span class="line">        age:<span class="number">30</span>,</span><br><span class="line">        hobby:<span class="string">'爬山'</span>,</span><br><span class="line">        sex:<span class="string">'1'</span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 方法二</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">urlParse</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> url = <span class="built_in">window</span>.location.search ;</span><br><span class="line">        <span class="keyword">let</span> obj = &#123;&#125; ;</span><br><span class="line">        <span class="keyword">let</span> reg = <span class="regexp">/[?&amp;][^?&amp;]+=[^?&amp;]+/g</span> ;</span><br><span class="line">        <span class="keyword">let</span> arr = url.match(reg) ;</span><br><span class="line">        <span class="comment">// ['?id=12345','&amp;a=b']</span></span><br><span class="line">        <span class="keyword">if</span> (arr) &#123;</span><br><span class="line">        arr.forEach(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> tempArr = item.substr(<span class="number">1</span>).split(<span class="string">'='</span>);</span><br><span class="line">            <span class="keyword">let</span> key = <span class="built_in">decodeURIComponent</span>(tempArr[<span class="number">0</span>]);</span><br><span class="line">            <span class="keyword">let</span> val = <span class="built_in">decodeURIComponent</span>(tempArr[<span class="number">1</span>]);</span><br><span class="line">            obj[key] = val;</span><br><span class="line">        &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// id为url中约定的字段</span></span><br><span class="line">        <span class="keyword">return</span> obj.id</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> usera =urlParse();</span><br><span class="line"><span class="built_in">console</span>.log(usera);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.parse(usera));</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/23/js_obj/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-javascript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -322,98 +397,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/07/23/javascript/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-dom" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/23/dom/">Javascript第二部分—DOM操作-编码解码</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/23/dom/" class="archive-article-date">
-  	<time datetime="2018-07-23T03:18:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="2-1获取节点元素"><a href="#2-1获取节点元素" class="headerlink" title="2.1获取节点元素"></a>2.1获取节点元素</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">'id_value'</span>)   <span class="comment">//获取的是唯一元素</span></span><br><span class="line"><span class="built_in">document</span>.getElementsByTagName(<span class="string">'tag_name'</span>)  <span class="comment">//获取的是数组集合</span></span><br><span class="line"><span class="built_in">document</span>.getElementsByClassName(<span class="string">'class_name'</span>)  <span class="comment">//获取的是数组集合</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.getElementsByname(); <span class="comment">//通过属性</span></span><br><span class="line"><span class="built_in">document</span>.querySelector();</span><br><span class="line"><span class="built_in">document</span>.querySelectorAll();  <span class="comment">//HTML5中引入的新方法</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">HTMLCollection 与 NodeList 的区别</span><br><span class="line">HTMLCollection 是 HTML 元素的集合。</span><br><span class="line">NodeList 是一个文档节点的集合。</span><br><span class="line">NodeList 与 HTMLCollection 有很多类似的地方。</span><br><span class="line">NodeList 与 HTMLCollection 都与数组对象有点类似，可以使用索引 (<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, ...) 来获取元素。</span><br><span class="line">NodeList 与 HTMLCollection 都有 length 属性。</span><br><span class="line">HTMLCollection 元素可以通过 name，id 或索引来获取。</span><br><span class="line">NodeList 只能通过索引来获取。</span><br><span class="line">只有 NodeList 对象有包含属性节点和文本节点。</span><br><span class="line">节点列表不是一个数组！</span><br><span class="line">节点列表看起来可能是一个数组，但其实不是。</span><br><span class="line">你可以像数组一样，使用索引来获取元素。</span><br><span class="line">节点列表无法使用数组的方法： valueOf(), pop(), push(), 或 join() 。</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">DOM改变CSS样式</span><br><span class="line"><span class="built_in">document</span>.getElementById(id).style.property=新样式</span><br><span class="line">例子：onclick=<span class="string">"document.getElementById('id1').style.color='red'"</span></span><br><span class="line">onclick=<span class="string">"document.getElementById('p1').style.visibility='hidden/visible'"</span> 改变显示和隐藏</span><br><span class="line"></span><br><span class="line">DOM改变HTML</span><br><span class="line"><span class="built_in">document</span>.write() 可用于直接向 HTML 输出流写内容         改变 HTML 输出流</span><br><span class="line"><span class="built_in">document</span>.getElementById(id).innerHTML                 获取 HTML 内容</span><br><span class="line"><span class="built_in">document</span>.getElementById(id).innerHTML=新的HTML        改变 HTML 内容</span><br><span class="line"><span class="built_in">document</span>.getElementById(id).attribute=新属性值         改变 HTML 属性</span><br></pre></td></tr></table></figure>
-<h2 id="2-2操作元素"><a href="#2-2操作元素" class="headerlink" title="2.2操作元素"></a>2.2操作元素</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">新建节点</span><br><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</span><br><span class="line">追加到父元素内容后面</span><br><span class="line">parentElement.appendChild(newElement);</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">插入节点,在父元素内插入到targetElement元素前面</span><br><span class="line">parentElement.insertBefore(newElement,targetElement)</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">替换节点,targetElement将从文档移除</span><br><span class="line">parentElement.replaceChild(newElement,targetElement)</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">删除节点,从父元素内删除子元素</span><br><span class="line">parentElement.removeChild(childElement);</span><br></pre></td></tr></table></figure>
-<p>注意： 以上几个方法的操作都是某个节点的子节点，也就是说，要使用这个几个方法必须先取得父节点。另外并不是所有节点都有子节点，如果在没有子节点的节点上调用这些方法，将会出错。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">克隆节点,cloneNode()方法,只接受一个布尔值的参数，<span class="literal">true</span>深拷贝，<span class="literal">false</span>浅拷贝，默认为<span class="literal">false</span>。</span><br><span class="line"><span class="keyword">var</span> div3 = div2.cloneNode(<span class="literal">true</span>)</span><br><span class="line">div1.appendChild(div3);</span><br></pre></td></tr></table></figure></p>
-<p>注意：这个方法是所有节点都有的，如果不传递任何参数，默认拷贝当前元素节点，如果传递的参数为true,就会进行深度拷贝，也就是被拷贝元素内的所有后代元素都会被复制。</p>
-<h2 id="2-3-获取或设置属性"><a href="#2-3-获取或设置属性" class="headerlink" title="2.3 获取或设置属性"></a>2.3 获取或设置属性</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">element.setAttribute(<span class="string">'属性名'</span>,<span class="string">'属性值'</span>)</span><br><span class="line">element.getAttribute(<span class="string">'属性名'</span>)</span><br><span class="line">例：element.setAttribute(<span class="string">'style'</span>, <span class="string">'color: #00f'</span>);</span><br><span class="line">    element.setAttribute(<span class="string">'class'</span>, <span class="string">'wrap'</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="2-4-DOM元素的访问关系"><a href="#2-4-DOM元素的访问关系" class="headerlink" title="2.4 DOM元素的访问关系"></a>2.4 DOM元素的访问关系</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">+ 父节点</span><br><span class="line">div.parentNode</span><br><span class="line">+ 兄弟节点</span><br><span class="line">div.nextSibling  div后面的第一个兄弟</span><br><span class="line">dv.ElementSibling   div后面的所有兄弟</span><br><span class="line">div.previousSibling   div前面的第一个兄弟</span><br><span class="line">div.previousElementSibling  div前面的所有兄弟</span><br><span class="line">+ 子节点</span><br><span class="line">div.firstChild   第一个子节点（空白）</span><br><span class="line">div.firstElementChild 第一个子节点（元素）</span><br><span class="line">div.lastChild    最后一个子节点（空白）</span><br><span class="line">div.lastElementChild 最后一个子节点（元素）</span><br><span class="line">+ 所有子节点</span><br><span class="line">childNodes  所有子节点（空白、注释、子元素都是节点）</span><br><span class="line">children   所有子元素</span><br></pre></td></tr></table></figure>
-<h2 id="addEventListener-方法"><a href="#addEventListener-方法" class="headerlink" title="addEventListener() 方法"></a>addEventListener() 方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">addEventListener() 方法用于向指定元素添加事件句柄。</span><br><span class="line">addEventListener() 方法添加的事件句柄不会覆盖已存在的事件句柄。</span><br><span class="line">你可以向一个元素添加多个事件句柄。</span><br><span class="line">你可以向同个元素添加多个同类型的事件句柄，如：两个 <span class="string">"click"</span> 事件。</span><br><span class="line">你可以向任何 DOM 对象添加事件监听，不仅仅是 HTML 元素。如： <span class="built_in">window</span> 对象。</span><br><span class="line">addEventListener() 方法可以更简单的控制事件（冒泡与捕获）。</span><br><span class="line">当你使用 addEventListener() 方法时, JavaScript 从 HTML 标记中分离开来，可读性更强， 在没有控制HTML标记时也可以添加事件监听。</span><br><span class="line">你可以使用 removeEventListener() 方法来移除事件的监听。</span><br><span class="line">注意:不要使用 <span class="string">"on"</span> 前缀。 例如，使用 <span class="string">"click"</span> ,而不是使用 <span class="string">"onclick"</span>。</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">事件传递有两种方式：冒泡与捕获</span><br><span class="line">事件传递定义了元素事件触发的顺序。 如果你将 &lt;p&gt; 元素插入到 &lt;div&gt; 元素中，用户点击 &lt;p&gt; 元素, 哪个元素的 <span class="string">"click"</span> 事件先被触发呢？</span><br><span class="line">在 冒泡 中，内部元素的事件会先被触发，然后再触发外部元素，即： &lt;p&gt; 元素的点击事件先触发，然后会触发 &lt;div&gt; 元素的点击事件。</span><br><span class="line">在 捕获 中，外部元素的事件会先被触发，然后才会触发内部元素的事件，即： &lt;div&gt; 元素的点击事件先触发 ，然后再触发 &lt;p&gt; 元素的点击事件。</span><br><span class="line">addEventListener(event, <span class="function"><span class="keyword">function</span>, <span class="title">useCapture</span>);</span></span><br><span class="line"><span class="function"><span class="title">useCapture</span> 为<span class="title">false</span>或<span class="title">true</span>。默认值为 <span class="title">false</span>, 即冒泡传递，当值为 <span class="title">true</span> 时, 事件使用捕获传递。</span></span><br></pre></td></tr></table></figure>
-<h2 id="addEventListener-兼容性问题"><a href="#addEventListener-兼容性问题" class="headerlink" title="addEventListener() 兼容性问题"></a>addEventListener() 兼容性问题</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Internet Explorer <span class="number">8</span> 及更早IE版本不支持 addEventListener() 方法。</span><br><span class="line"><span class="keyword">if</span> (x.addEventListener) &#123;</span><br><span class="line">    x.addEventListener(<span class="string">"click"</span>, myFunction);</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (x.attachEvent) &#123;</span><br><span class="line">    x.attachEvent(<span class="string">"onclick"</span>, myFunction);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="string">"Hello World!"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>DOM监听事件和jQuery监听事件对比</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> screen1 = <span class="built_in">document</span>.querySelector(<span class="string">'.screen1'</span>);</span><br><span class="line"><span class="keyword">var</span> screen2 = <span class="built_in">document</span>.querySelector(<span class="string">'.screen2'</span>);</span><br><span class="line"><span class="keyword">var</span> circle = <span class="built_in">document</span>.querySelector(<span class="string">'.circle'</span>);</span><br><span class="line"><span class="keyword">var</span> app1 = <span class="built_in">document</span>.querySelector(<span class="string">'.app1'</span>);</span><br><span class="line"><span class="keyword">var</span> app2 = <span class="built_in">document</span>.querySelector(<span class="string">'.app2'</span>);</span><br><span class="line">circle.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    app1.style.animation = <span class="string">"myanimate1a 2s 0s both"</span>;</span><br><span class="line">    app2.style.animation = <span class="string">"myanimate2a 2s 0s both"</span>;</span><br><span class="line">    <span class="comment">//DOM监听事件</span></span><br><span class="line">    app1.addEventListener(<span class="string">'animationend'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        screen1.style.display = <span class="string">'none'</span>;</span><br><span class="line">        screen2.style.display = <span class="string">'block'</span>;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">-----------------------------------------</span><br><span class="line">$(<span class="string">'.circle'</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log($(<span class="string">'.app1'</span>).is(<span class="string">'animationend'</span>))</span><br><span class="line">    $(<span class="string">'.app1'</span>).css(<span class="string">'animation'</span>,<span class="string">"myanimate1a 2s 0s both"</span>);</span><br><span class="line">    $(<span class="string">'.app2'</span>).css(<span class="string">'animation'</span>,<span class="string">"myanimate2a 2s 0s both"</span>);</span><br><span class="line">    <span class="comment">//jQuery监听事件</span></span><br><span class="line">    $(<span class="string">'.app1'</span>).on(<span class="string">'animationend'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        $(<span class="string">'.screen1'</span>).css(&#123;<span class="string">'display'</span>:<span class="string">'none'</span>&#125;);</span><br><span class="line">        $(<span class="string">'.screen2'</span>).css(&#123;<span class="string">'display'</span>:<span class="string">'block'</span>&#125;);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h2 id="DOM-获取距离"><a href="#DOM-获取距离" class="headerlink" title="DOM 获取距离"></a>DOM 获取距离</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">element.clientHeight	在页面上返回内容的可视高度（不包括边框，边距或滚动条）</span><br><span class="line">element.clientWidth	在页面上返回内容的可视宽度（不包括边框，边距或滚动条）</span><br><span class="line"></span><br><span class="line">element.offsetHeight	返回，任何一个元素的高度包括边框和填充，但不是边距</span><br><span class="line">element.offsetWidth	    返回元素的宽度，包括边框和填充，但不是边距</span><br><span class="line">element.offsetLeft  	返回当前元素的相对水平偏移位置的偏移容器</span><br><span class="line">element.offsetParent	返回元素的偏移容器</span><br><span class="line">element.offsetTop	    返回当前元素的相对垂直偏移位置的偏移容器</span><br><span class="line"></span><br><span class="line">element.scrollHeight	返回整个元素的高度（包括带滚动条的隐蔽的地方）</span><br><span class="line">element.scrollLeft	    返回当前视图中的实际元素的左边缘和左边缘之间的距离</span><br><span class="line">element.scrollTop	    返回当前视图中的实际元素的顶部边缘和顶部边缘之间的距离</span><br><span class="line">element.scrollWidth     返回元素的整个宽度（包括带滚动条的隐蔽的地方）</span><br></pre></td></tr></table></figure>
-<h2 id="touch-事件获取坐标"><a href="#touch-事件获取坐标" class="headerlink" title="touch 事件获取坐标"></a>touch 事件获取坐标</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 原生DOM-touch 事件获取坐标</span></span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">"id"</span>).addEventListener(<span class="string">"touchstart"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> _x=e.touches[<span class="number">0</span>].pageX;</span><br><span class="line">    <span class="keyword">var</span> _y=e.touches[<span class="number">0</span>].pageY;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"start"</span>,_x);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">"id"</span>).addEventListener(<span class="string">"touchmove"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> _x=e.touches[<span class="number">0</span>].pageX;</span><br><span class="line">    <span class="keyword">var</span> _y=e.touches[<span class="number">0</span>].pageY;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"move"</span>,_x);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">"id"</span>).addEventListener(<span class="string">"touchend"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> _x=e.changedTouches[<span class="number">0</span>].pageX;</span><br><span class="line">    <span class="keyword">var</span> _y=e.changedTouches[<span class="number">0</span>].pageY;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"end"</span>,_x);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// jQuery-touch 事件获取坐标</span></span><br><span class="line">$(<span class="string">'#id'</span>).on(<span class="string">'touchstart'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">　　<span class="keyword">var</span> _touch = e.originalEvent.targetTouches[<span class="number">0</span>];</span><br><span class="line">　　<span class="keyword">var</span> _x= _touch.pageX;</span><br><span class="line">&#125;);</span><br><span class="line"> </span><br><span class="line">$(<span class="string">'#id'</span>).on(<span class="string">'touchmove'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">　　<span class="keyword">var</span> _touch = e.originalEvent.targetTouches[<span class="number">0</span>];</span><br><span class="line">　　<span class="keyword">var</span> _x= _touch.pageX;</span><br><span class="line">&#125;);</span><br><span class="line"> </span><br><span class="line">$(<span class="string">'#id'</span>).on(<span class="string">'touchend'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">　　<span class="keyword">var</span> _touch = e.originalEvent.changedTouches[<span class="number">0</span>];</span><br><span class="line">　　<span class="keyword">var</span> _x= _touch.pageX;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 相关解释:</span></span><br><span class="line">targetTouches 表示的是手指列表 </span><br><span class="line">changedTouches 表示的是手指事件 ，在 touchend 里就是手指离开</span><br></pre></td></tr></table></figure>
-<h2 id="Window-对象方法–编码方法"><a href="#Window-对象方法–编码方法" class="headerlink" title="Window 对象方法–编码方法"></a>Window 对象方法–编码方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">var</span> str = <span class="string">"RUNOOB"</span>;</span><br><span class="line">    <span class="keyword">var</span> enc = <span class="built_in">window</span>.btoa(str);   编码字符串</span><br><span class="line">    <span class="keyword">var</span> dec = <span class="built_in">window</span>.atob(enc);   解码字符串</span><br><span class="line">atob() 方法用于解码使用 base<span class="number">-64</span> 编码的字符串。</span><br><span class="line"><span class="comment">//window.atob(encodedStr)  encodedStr: 必需，是一个通过 btoa() 方法编码的字符串。</span></span><br><span class="line"></span><br><span class="line">btoa() 方法用于创建一个 base<span class="number">-64</span> 编码的字符串。</span><br><span class="line"><span class="comment">// window.btoa(str) 该方法使用 "A-Z", "a-z", "0-9", "+", "/" 和 "=" 字符来编码字符串。</span></span><br></pre></td></tr></table></figure>
-<h2 id="JavaScript-全局方法–编码方法"><a href="#JavaScript-全局方法–编码方法" class="headerlink" title="JavaScript 全局方法–编码方法"></a>JavaScript 全局方法–编码方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//针对URL 编码范围小</span></span><br><span class="line"><span class="built_in">decodeURI</span>() 函数可对 <span class="built_in">encodeURI</span>() 函数编码过的 URI 进行解码。</span><br><span class="line"><span class="built_in">encodeURI</span>() 函数可把字符串作为 URI 进行编码。</span><br><span class="line"><span class="comment">// 对以下在 URI 中具有特殊含义的 ASCII 标点符号，encodeURI() 函数是不会进行转义的： , / ? : @ &amp; = + $ # (可以使用 encodeURIComponent() 方法分别对特殊含义的 ASCII 标点符号进行编码。).</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//针对URL 编码范围大</span></span><br><span class="line"><span class="built_in">decodeURIComponent</span>() 函数可对 <span class="built_in">encodeURIComponent</span>() 函数编码的 URI 进行解码。</span><br><span class="line"><span class="built_in">encodeURIComponent</span>() 函数可把字符串作为 URI 组件进行编码。</span><br><span class="line"><span class="comment">// 该方法不会对 ASCII 字母和数字进行编码，也不会对这些 ASCII 标点符号进行编码： - _ . ! ~ * ' ( ) 。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//针对字符串</span></span><br><span class="line"><span class="built_in">unescape</span>() 函数可对通过 <span class="built_in">escape</span>() 编码的字符串进行解码。</span><br><span class="line"><span class="built_in">escape</span>() 函数可对字符串进行编码，这样就可以在所有的计算机上读取该字符串。</span><br><span class="line"><span class="comment">// 该方法不会对 ASCII 字母和数字进行编码，也不会对下面这些 ASCII 标点符号进行编码： * @ - _ + . / 。其他所有的字符都会被转义序列替换。</span></span><br><span class="line"></span><br><span class="line">总结：</span><br><span class="line"><span class="number">0</span>、 <span class="built_in">encodeURIComponent</span>比<span class="built_in">encodeURI</span>编码的范围更大。</span><br><span class="line"><span class="number">1</span>、如果只是编码字符串，不和URL有半毛钱关系，那么用<span class="built_in">escape</span>。</span><br><span class="line"><span class="number">2</span>、如果你需要编码整个URL，然后需要使用这个URL，那么用<span class="built_in">encodeURI</span>。</span><br><span class="line"><span class="number">3</span>、当你需要编码URL中的参数的时候，那么<span class="built_in">encodeURIComponent</span>是最好方法。</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/23/dom/">展开全文 >></a>
         </p>
       
 
@@ -556,18 +539,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vue.js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ajax</a>
               </li>
              
@@ -580,15 +551,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vue.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JSONP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">打包工具</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color5">打包工具</a>
               </li>
             
             <div class="clearfix"></div>

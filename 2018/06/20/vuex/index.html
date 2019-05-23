@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Vuex | DJM的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Mutation更改 Vuex 的 store 中的状态的唯一方法是提交 mutation在 Vuex 中，mutation 都是同步事务：store.commit(‘increment’)// 任何由 “increment” 导致的状态变更都应该在此刻完成。 ActionAction 类似于 mutation，不同在于：  Action 提交的是 mutation，而不是直接变更状态。 Acti">
+  <meta name="description" content="Vuex与data区别12345678Vuex 是为了保存组件之间共享数据而诞生的，如果组件之间有要共享的数据，可以直接挂载到vuex中。// 只有共享的数据，才有权利放到vuex中；// 组件内部私有的数据,只要放到组件data中即可；// props 和data 和 vuex 区别：// props 存放父子组件之间的数据// data 存放组件私有数据// vuex 存放共享数据// 结论：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vuex">
 <meta property="og:url" content="http://yoursite.com/2018/06/20/vuex/index.html">
 <meta property="og:site_name" content="DJM的博客">
-<meta property="og:description" content="Mutation更改 Vuex 的 store 中的状态的唯一方法是提交 mutation在 Vuex 中，mutation 都是同步事务：store.commit(‘increment’)// 任何由 “increment” 导致的状态变更都应该在此刻完成。 ActionAction 类似于 mutation，不同在于：  Action 提交的是 mutation，而不是直接变更状态。 Acti">
+<meta property="og:description" content="Vuex与data区别12345678Vuex 是为了保存组件之间共享数据而诞生的，如果组件之间有要共享的数据，可以直接挂载到vuex中。// 只有共享的数据，才有权利放到vuex中；// 组件内部私有的数据,只要放到组件data中即可；// props 和data 和 vuex 区别：// props 存放父子组件之间的数据// data 存放组件私有数据// vuex 存放共享数据// 结论：">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-30T03:15:18.719Z">
+<meta property="og:updated_time" content="2019-05-16T03:23:47.048Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vuex">
-<meta name="twitter:description" content="Mutation更改 Vuex 的 store 中的状态的唯一方法是提交 mutation在 Vuex 中，mutation 都是同步事务：store.commit(‘increment’)// 任何由 “increment” 导致的状态变更都应该在此刻完成。 ActionAction 类似于 mutation，不同在于：  Action 提交的是 mutation，而不是直接变更状态。 Acti">
+<meta name="twitter:description" content="Vuex与data区别12345678Vuex 是为了保存组件之间共享数据而诞生的，如果组件之间有要共享的数据，可以直接挂载到vuex中。// 只有共享的数据，才有权利放到vuex中；// 组件内部私有的数据,只要放到组件data中即可；// props 和data 和 vuex 区别：// props 存放父子组件之间的数据// data 存放组件私有数据// vuex 存放共享数据// 结论：">
   
     <link rel="alternative" href="/atom.xml" title="DJM的博客" type="application/atom+xml">
   
@@ -186,7 +186,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Mutation"><a href="#Mutation" class="headerlink" title="Mutation"></a>Mutation</h2><p>更改 Vuex 的 store 中的状态的唯一方法是提交 mutation<br>在 Vuex 中，mutation 都是同步事务：<br>store.commit(‘increment’)<br>// 任何由 “increment” 导致的状态变更都应该在此刻完成。</p>
+        <h2 id="Vuex与data区别"><a href="#Vuex与data区别" class="headerlink" title="Vuex与data区别"></a>Vuex与data区别</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Vuex 是为了保存组件之间共享数据而诞生的，如果组件之间有要共享的数据，可以直接挂载到vuex中。</span><br><span class="line"><span class="comment">// 只有共享的数据，才有权利放到vuex中；</span></span><br><span class="line"><span class="comment">// 组件内部私有的数据,只要放到组件data中即可；</span></span><br><span class="line"><span class="comment">// props 和data 和 vuex 区别：</span></span><br><span class="line"><span class="comment">// props 存放父子组件之间的数据</span></span><br><span class="line"><span class="comment">// data 存放组件私有数据</span></span><br><span class="line"><span class="comment">// vuex 存放共享数据</span></span><br><span class="line"><span class="comment">// 结论：vuex 是一个全局的共享数据存储区域，就相当于是一个数据的仓库</span></span><br></pre></td></tr></table></figure>
+<h2 id="Mutation"><a href="#Mutation" class="headerlink" title="Mutation"></a>Mutation</h2><p>更改 Vuex 的 store 中的状态的唯一方法是提交 mutation<br>在 Vuex 中，mutation 都是同步事务：<br>store.commit(‘increment’)<br>// 任何由 “increment” 导致的状态变更都应该在此刻完成。</p>
 <h2 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h2><p>Action 类似于 mutation，不同在于：</p>
 <ul>
 <li>Action 提交的是 mutation，而不是直接变更状态。</li>
@@ -288,11 +289,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/06/21/vuecli/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/06/21/vueRouter/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Vue-CLI-Guide
+          Vue-router
         
       </div>
     </a>
@@ -461,18 +462,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vue.js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ajax</a>
               </li>
              
@@ -485,15 +474,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vue.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JSONP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">打包工具</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color5">打包工具</a>
               </li>
             
             <div class="clearfix"></div>

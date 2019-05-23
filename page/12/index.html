@@ -164,6 +164,83 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-donghua" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/02/06/donghua/">CSS3动画、过渡、2D3D转换</a>
+    </h1>
+  
+
+        
+        <a href="/2018/02/06/donghua/" class="archive-article-date">
+  	<time datetime="2018-02-06T07:01:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、转换方法"><a href="#一、转换方法" class="headerlink" title="一、转换方法"></a>一、转换方法</h2><h4 id="平移—translate-方法"><a href="#平移—translate-方法" class="headerlink" title="平移—translate() 方法"></a>平移—translate() 方法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">transform: translateX(<span class="number">20</span>px) translateY(<span class="number">20</span>px);</span><br><span class="line">transform: translate(<span class="number">20</span>px, <span class="number">20</span>px);</span><br></pre></td></tr></table></figure>
+<h4 id="缩放—scale-方法"><a href="#缩放—scale-方法" class="headerlink" title="缩放—scale() 方法"></a>缩放—scale() 方法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">transform: scaleX(<span class="number">2</span>) scaleY(<span class="number">2</span>);</span><br><span class="line">transform: scale(<span class="number">1</span>, <span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="旋转—rotate-方法"><a href="#旋转—rotate-方法" class="headerlink" title="旋转—rotate() 方法"></a>旋转—rotate() 方法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">transform: rotateX(<span class="number">30</span>deg) rotateY(<span class="number">30</span>deg) rotateZ(<span class="number">30</span>deg);</span><br><span class="line">transform: rotate3D(<span class="number">30</span>deg);  <span class="comment">// 3D</span></span><br><span class="line">transform:rotate(<span class="number">30</span>deg);   <span class="comment">// 2D</span></span><br></pre></td></tr></table></figure>
+<h4 id="倾斜—skew-方法"><a href="#倾斜—skew-方法" class="headerlink" title="倾斜—skew() 方法"></a>倾斜—skew() 方法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">transform: skewX(<span class="number">20</span>deg) skewY(<span class="number">30</span>deg);</span><br><span class="line">transform: skew(<span class="number">20</span>deg, <span class="number">30</span>deg);</span><br></pre></td></tr></table></figure>
+<h4 id="矩阵—matrix-方法"><a href="#矩阵—matrix-方法" class="headerlink" title="矩阵—matrix() 方法"></a>矩阵—matrix() 方法</h4><p>matrix 方法有六个参数，包含旋转，缩放，移动（平移）和倾斜功能。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// transform:matrix(scaleX(),skewY(),skewX(),scaleY(),translateX(),translateY());</span></span><br><span class="line">transform: matrix(<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br></pre></td></tr></table></figure></p>
+<h2 id="转换属性"><a href="#转换属性" class="headerlink" title="转换属性"></a>转换属性</h2><p>Internet Explorer 10, Firefox, 和 Opera支持transform 属性.<br>Chrome 和 Safari 要求前缀 -webkit- 版本.<br>注意： Internet Explorer 9 要求前缀 -ms- 版本.</p>
+<h4 id="transform-origin-属性"><a href="#transform-origin-属性" class="headerlink" title="transform-origin 属性"></a>transform-origin 属性</h4><p>设置旋转元素的基点位置.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">transform-origin: x-axis y-axis z-axis;</span><br><span class="line">x-axis：left/center/right/length/%  <span class="comment">//定义视图被置于 X 轴的何处。可能的值</span></span><br><span class="line">y-axis：top/center/bottom/length/%  <span class="comment">//定义视图被置于 Y 轴的何处。可能的值</span></span><br><span class="line">z-axis：length                      <span class="comment">//定义视图被置于 Z 轴的何处。可能的值</span></span><br><span class="line"></span><br><span class="line">	transform-origin:<span class="number">20</span>% <span class="number">40</span>%;</span><br><span class="line">	-ms-transform-origin:<span class="number">20</span>% <span class="number">40</span>%; <span class="comment">/* IE 9 */</span></span><br><span class="line">	-webkit-transform-origin:<span class="number">20</span>% <span class="number">40</span>%; <span class="comment">/* Safari and Chrome */</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="Transform-属性"><a href="#Transform-属性" class="headerlink" title="Transform 属性"></a>Transform 属性</h4><p>应用于元素的2D或3D转换。这个属性允许你将元素旋转，缩放，移动，倾斜等.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">transform: rotate(<span class="number">45</span>deg);</span><br><span class="line">-ms-transform: rotate(<span class="number">45</span>deg); <span class="comment">/* IE 9 */</span></span><br><span class="line">-webkit-transform: rotate(<span class="number">45</span>deg); <span class="comment">/* Safari and Chrome */</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="perspective-属性"><a href="#perspective-属性" class="headerlink" title="perspective 属性"></a>perspective 属性</h4><p>设置从何处查看一个元素的角度<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">perspective: number|none;</span><br><span class="line">number	元素距离视图的距离，以像素计。</span><br><span class="line">none	默认值。与 <span class="number">0</span> 相同。不设置透视。</span><br></pre></td></tr></table></figure></p>
+<h4 id="perspective-origin-属性"><a href="#perspective-origin-属性" class="headerlink" title="perspective-origin 属性"></a>perspective-origin 属性</h4><p>注意：该属性必须要和perspective属性一起使用，并且只对3D变换的元素有效果<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">perspective-origin: x-axis y-axis;</span><br><span class="line">x-axis：left/center/right/length/%  <span class="comment">//可取值，定义该视图在 x 轴上的位置。默认值：50%。</span></span><br><span class="line">y-axis：top/center/bottom/length/%  <span class="comment">//可取值，定义该视图在 y 轴上的位置。默认值：50%。</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="transform-style-属性"><a href="#transform-style-属性" class="headerlink" title="transform-style 属性"></a>transform-style 属性</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">transform-style: flat|preserve<span class="number">-3</span>d;</span><br><span class="line">flat	    表示所有子元素在<span class="number">2</span>D平面呈现。</span><br><span class="line">preserve<span class="number">-3</span>d	表示所有子元素在<span class="number">3</span>D空间中呈现。</span><br></pre></td></tr></table></figure>
+<h4 id="backface-visibility-属性"><a href="#backface-visibility-属性" class="headerlink" title="backface-visibility 属性"></a>backface-visibility 属性</h4><p>backface-visibility 属性定义当元素不面向屏幕时是否可见。<br>如果在旋转元素不希望看到其背面时，该属性很有用。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">backface-visibility: visible|hidden;</span><br></pre></td></tr></table></figure></p>
+<h2 id="二、CSS3过渡"><a href="#二、CSS3过渡" class="headerlink" title="二、CSS3过渡"></a>二、CSS3过渡</h2><p>CSS3 过渡是元素从一种样式逐渐改变为另一种的效果。要实现这一点，必须规定两项内容：<br>指定要添加效果的CSS属性和效果的持续时间。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">transition	简写属性，用于在一个属性中设置四个过渡属性。</span><br><span class="line">transition-property	规定应用过渡的 CSS 属性的名称。</span><br><span class="line">transition-duration	定义过渡效果花费的时间。默认是 <span class="number">0</span>。</span><br><span class="line">transition-timing-<span class="function"><span class="keyword">function</span>	规定过渡效果的时间曲线。默认是 "<span class="title">ease</span>"。</span></span><br><span class="line"><span class="function">    //<span class="title">linear</span>	规定以相同速度开始至结束的过渡效果（等于 <span class="title">cubic</span>-<span class="title">bezier</span>(<span class="params"><span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span></span>)）。</span></span><br><span class="line"><span class="function">    //<span class="title">ease</span>	规定慢速开始，然后变快，然后慢速结束的过渡效果（<span class="title">cubic</span>-<span class="title">bezier</span>(<span class="params"><span class="number">0.25</span>,<span class="number">0.1</span>,<span class="number">0.25</span>,<span class="number">1</span></span>)）。</span></span><br><span class="line"><span class="function">    //<span class="title">ease</span>-<span class="title">in</span>	规定以慢速开始的过渡效果（等于 <span class="title">cubic</span>-<span class="title">bezier</span>(<span class="params"><span class="number">0.42</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span></span>)）。</span></span><br><span class="line"><span class="function">    //<span class="title">ease</span>-<span class="title">out</span>	规定以慢速结束的过渡效果（等于 <span class="title">cubic</span>-<span class="title">bezier</span>(<span class="params"><span class="number">0</span>,<span class="number">0</span>,<span class="number">0.58</span>,<span class="number">1</span></span>)）。</span></span><br><span class="line"><span class="function">    //<span class="title">ease</span>-<span class="title">in</span>-<span class="title">out</span>	规定以慢速开始和结束的过渡效果（等于 <span class="title">cubic</span>-<span class="title">bezier</span>(<span class="params"><span class="number">0.42</span>,<span class="number">0</span>,<span class="number">0.58</span>,<span class="number">1</span></span>)）。</span></span><br><span class="line"><span class="function">    //<span class="title">cubic</span>-<span class="title">bezier</span>(<span class="params">n,n,n,n</span>)	在 <span class="title">cubic</span>-<span class="title">bezier</span> 函数中定义自己的值。可能的值是 0 至 1 之间的数值。</span></span><br><span class="line"><span class="function"><span class="title">transition</span>-<span class="title">delay</span>	规定过渡效果何时开始。默认是 0。</span></span><br><span class="line"><span class="function">// 例子：</span></span><br><span class="line"><span class="function">		.<span class="title">box2</span> </span>&#123;</span><br><span class="line">			width: <span class="number">200</span>px;</span><br><span class="line">			height: <span class="number">200</span>px;</span><br><span class="line">			margin: <span class="number">100</span>px auto <span class="number">0</span>;</span><br><span class="line">			background-color: #f0f;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		.box2:hover &#123;</span><br><span class="line">			color: #f00;</span><br><span class="line">			background-color: #0ff;</span><br><span class="line">			width: <span class="number">400</span>px;</span><br><span class="line">			<span class="comment">/* transition-property: all;</span></span><br><span class="line"><span class="comment">			transition-duration: 3s;</span></span><br><span class="line"><span class="comment">			transition-delay: 0s;</span></span><br><span class="line"><span class="comment">			transition-timing-function: cubic-bezier(.07,1.02,1,.04); */</span></span><br><span class="line">			transition: all <span class="number">3</span>s <span class="number">0</span>s cubic-bezier(<span class="number">.07</span>,<span class="number">1.02</span>,<span class="number">1</span>,<span class="number">.04</span>);</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="CSS3-动画"><a href="#CSS3-动画" class="headerlink" title="CSS3 动画"></a>CSS3 动画</h2><p>CSS3 @keyframes 规则<br>注意：Firefox浏览器应该使用@-moz-keyframes属性，Safari和Chrome浏览器应该使用@-webkit-keyframes属性。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*定义动画*/</span></span><br><span class="line">@keyframes myanimate &#123;</span><br><span class="line">	<span class="comment">/* from &#123;</span></span><br><span class="line"><span class="comment">		width: 300px;</span></span><br><span class="line"><span class="comment">		height: 300px;</span></span><br><span class="line"><span class="comment">		transform: rotate(0deg);</span></span><br><span class="line"><span class="comment">		background-color: #f00;</span></span><br><span class="line"><span class="comment">	&#125;</span></span><br><span class="line"><span class="comment">	</span></span><br><span class="line"><span class="comment">	to &#123;</span></span><br><span class="line"><span class="comment">		width: 400px;</span></span><br><span class="line"><span class="comment">		height: 400px;</span></span><br><span class="line"><span class="comment">		transform: rotate(360deg);</span></span><br><span class="line"><span class="comment">		background-color: #00f;</span></span><br><span class="line"><span class="comment">	&#125; */</span></span><br><span class="line"></span><br><span class="line">	<span class="number">0</span>% &#123;</span><br><span class="line">		width: <span class="number">300</span>px;</span><br><span class="line">		height: <span class="number">300</span>px;</span><br><span class="line">		transform: rotate(<span class="number">0</span>deg);</span><br><span class="line">		background-color: #f00;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="number">50</span>% &#123;</span><br><span class="line">		width: <span class="number">350</span>px;</span><br><span class="line">		height: <span class="number">350</span>px;</span><br><span class="line">		transform: rotate(<span class="number">180</span>deg);</span><br><span class="line">		background-color: #0f0;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="number">100</span>% &#123;</span><br><span class="line">		width: <span class="number">400</span>px;</span><br><span class="line">		height: <span class="number">400</span>px;</span><br><span class="line">		transform: rotate(<span class="number">360</span>deg);</span><br><span class="line">		background-color: #00f;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.box2 &#123;</span><br><span class="line">	width: <span class="number">200</span>px;</span><br><span class="line">	height: <span class="number">200</span>px;</span><br><span class="line">	margin: <span class="number">100</span>px auto <span class="number">0</span>;</span><br><span class="line">	background-color: #f0f;</span><br><span class="line">	<span class="comment">/*使用预先定义好的动画*/</span></span><br><span class="line">	<span class="comment">/* animation-name: myanimate;   //属性用于定义要应用的动画名称</span></span><br><span class="line"><span class="comment">	animation-duration: 3s;   //用于定义整个动画效果完成所需要的时间。</span></span><br><span class="line"><span class="comment">	animation-delay: 0s;  //属性用于定义在执行动画效果之前延迟的时间,默认是 0。</span></span><br><span class="line"><span class="comment">	animation-timing-function: linear; </span></span><br><span class="line"><span class="comment">       //属性用于定义使用哪种方式执行动画效果。可以为ease（默认值）、Linear、Ease-out、Ease-in、Ease-in-out 、Cubic-bezier。</span></span><br><span class="line"><span class="comment">	animation-play-state: running;   //它有两个值：paused和running，分别表示暂停和运行。</span></span><br><span class="line"><span class="comment">	animation-iteration-count: infinite; //属性用于定义当前动画效果重复执行的次数。默认是 1,取值为整数，infinite为无限循环。</span></span><br><span class="line"><span class="comment">	animation-fill-mode: both;  //属性用于定义动画开始之前或者播放之后进行的操作。none/forwards/backwards /both </span></span><br><span class="line"><span class="comment">	animation-direction: normal; */</span>  <span class="comment">//属性用于定义当前动画效果播放的方向。</span></span><br><span class="line">	animation: myanimate <span class="number">3</span>s <span class="number">0</span>s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>下面创建一个淡入淡出的动画效果，代码如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@keyframes <span class="keyword">in</span> &#123;</span><br><span class="line"><span class="keyword">from</span>,to &#123;<span class="attr">opacity</span>: <span class="number">0</span>;&#125;</span><br><span class="line"><span class="number">20</span>%,<span class="number">80</span>% &#123;<span class="attr">opacity</span>: <span class="number">1</span>;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/02/06/donghua/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-media" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -327,95 +404,6 @@
 
 
   
-    <article id="post-require" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/05/require/">require.js</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/05/require/" class="archive-article-date">
-  	<time datetime="2017-12-05T07:15:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="一、为什么要用require-js？"><a href="#一、为什么要用require-js？" class="headerlink" title="一、为什么要用require.js？"></a>一、为什么要用require.js？</h2><p>require.js的诞生，就是为了解决这两个问题：<br>　　（1）实现js文件的异步加载，避免网页失去响应；<br>　　（2）管理模块之间的依赖性，便于代码的编写和维护。</p>
-<h2 id="二、require-js的加载"><a href="#二、require-js的加载" class="headerlink" title="二、require.js的加载"></a>二、require.js的加载</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"js/require.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-<p>有人可能会想到，加载这个文件，也可能造成网页失去响应。解决办法有两个，一个是把它放在网页底部加载，另一个是写成下面这样：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"js/require.js"</span> defer <span class="keyword">async</span>=<span class="string">"true"</span> &gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="comment">// async属性表明这个文件需要异步加载，避免网页失去响应。IE不支持这个属性，只支持defer，所以把defer也写上。</span></span><br></pre></td></tr></table></figure></p>
-<p>加载require.js以后，下一步就要加载我们自己的代码了。假定我们自己的代码文件是main.js，也放在js目录下面。那么，只需要写成下面这样就行了：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"js/require.js"</span> data-main=<span class="string">"js/main"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="comment">// data-main属性的作用是，指定网页程序的主模块。在上例中，就是js目录下面的main.js，这个文件会第一个被require.js加载。由于require.js默认的文件后缀名是js，所以可以把main.js简写成main。</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="三、主模块的写法"><a href="#三、主模块的写法" class="headerlink" title="三、主模块的写法"></a>三、主模块的写法</h2><p>main.js，我把它称为”主模块”，意思是整个网页的入口代码。它有点像C语言的main()函数，所有代码都从这儿开始运行。<br>主模块依赖于其他模块，这时就要使用AMD规范定义的的require()函数。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">　<span class="comment">// main.js</span></span><br><span class="line">　　<span class="built_in">require</span>([<span class="string">'moduleA'</span>, <span class="string">'moduleB'</span>, <span class="string">'moduleC'</span>], <span class="function"><span class="keyword">function</span> (<span class="params">moduleA, moduleB, moduleC</span>)</span>&#123;</span><br><span class="line">　　　　<span class="comment">// some code here</span></span><br><span class="line">　　&#125;);</span><br><span class="line"><span class="comment">// require()异步加载moduleA，moduleB和moduleC，浏览器不会失去响应；它指定的回调函数，只有前面的模块都加载成功后，才会运行，解决了依赖性的问题。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 下面，我们看一个实际的例子。</span></span><br><span class="line"><span class="comment">// 假定主模块依赖jquery、underscore和backbone这三个模块，main.js就可以这样写：</span></span><br><span class="line"><span class="built_in">require</span>([<span class="string">'jquery'</span>, <span class="string">'underscore'</span>, <span class="string">'backbone'</span>], <span class="function"><span class="keyword">function</span> (<span class="params">$, _, Backbone</span>)</span>&#123;</span><br><span class="line">　　　　<span class="comment">// some code here</span></span><br><span class="line">　　&#125;);</span><br></pre></td></tr></table></figure></p>
-<h2 id="四、模块的加载"><a href="#四、模块的加载" class="headerlink" title="四、模块的加载"></a>四、模块的加载</h2><p>使用require.config()方法，我们可以对模块的加载行为进行自定义。require.config()就写在主模块（main.js）的头部。参数就是一个对象，这个对象的paths属性指定各个模块的加载路径。require.js假定这三个模块与main.js在同一个目录.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">　　<span class="built_in">require</span>.config(&#123;</span><br><span class="line">　　　　paths: &#123;</span><br><span class="line">　　　　　　<span class="string">"jquery"</span>: <span class="string">"jquery.min"</span>,</span><br><span class="line">　　　　　　<span class="string">"underscore"</span>: <span class="string">"underscore.min"</span>,</span><br><span class="line">　　　　　　<span class="string">"backbone"</span>: <span class="string">"backbone.min"</span></span><br><span class="line">　　　　&#125;</span><br><span class="line">　　&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>上面的代码给出了三个模块的文件名，路径默认与main.js在同一个目录（js子目录）。如果这些模块在其他目录，比如js/lib目录，则有两种写法。一种是逐一指定路径。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">　　<span class="built_in">require</span>.config(&#123;</span><br><span class="line">　　　　paths: &#123;</span><br><span class="line">　　　　　　<span class="string">"jquery"</span>: <span class="string">"lib/jquery.min"</span>,</span><br><span class="line">　　　　　　<span class="string">"underscore"</span>: <span class="string">"lib/underscore.min"</span>,</span><br><span class="line">　　　　　　<span class="string">"backbone"</span>: <span class="string">"lib/backbone.min"</span></span><br><span class="line">　　　　&#125;</span><br><span class="line">　　&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>另一种则是直接改变基目录（baseUrl）。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">　　<span class="built_in">require</span>.config(&#123;</span><br><span class="line">　　　　baseUrl: <span class="string">"js/lib"</span>,</span><br><span class="line">　　　　paths: &#123;</span><br><span class="line">　　　　　　<span class="string">"jquery"</span>: <span class="string">"jquery.min"</span>,</span><br><span class="line">　　　　　　<span class="string">"underscore"</span>: <span class="string">"underscore.min"</span>,</span><br><span class="line">　　　　　　<span class="string">"backbone"</span>: <span class="string">"backbone.min"</span></span><br><span class="line">　　　　&#125;</span><br><span class="line">　　&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>如果某个模块在另一台主机上，也可以直接指定它的网址，比如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">　　<span class="built_in">require</span>.config(&#123;</span><br><span class="line">　　　　paths: &#123;</span><br><span class="line">　　　　　　<span class="string">"jquery"</span>: <span class="string">"https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min"</span></span><br><span class="line">　　　　&#125;</span><br><span class="line">　　&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>require.js要求，每个模块是一个单独的js文件。这样的话，如果加载多个模块，就会发出多次HTTP请求，会影响网页的加载速度。因此，require.js提供了一个优化工具，当模块部署完毕以后，可以用这个工具将多个模块合并在一个文件中，减少HTTP请求数。  </p>
-<h2 id="五、AMD模块的写法"><a href="#五、AMD模块的写法" class="headerlink" title="五、AMD模块的写法"></a>五、AMD模块的写法</h2><p>require.js加载的模块，采用AMD规范。也就是说，模块必须按照AMD的规定来写。<br>具体来说，就是模块必须采用特定的define()函数来定义。如果一个模块不依赖其他模块，那么可以直接定义在define()函数之中。<br>假定现在有一个math.js文件，它定义了一个math模块。那么，math.js就要这样写:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">　　<span class="comment">// math.js</span></span><br><span class="line">　　define(<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　<span class="keyword">var</span> add = <span class="function"><span class="keyword">function</span> (<span class="params">x,y</span>)</span>&#123;</span><br><span class="line">　　　　　　<span class="keyword">return</span> x+y;</span><br><span class="line">　　　　&#125;;</span><br><span class="line">　　　　<span class="keyword">return</span> &#123;</span><br><span class="line">　　　　　　add: add</span><br><span class="line">　　　　&#125;;</span><br><span class="line">　　&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>加载方法如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">　<span class="comment">// main.js</span></span><br><span class="line">　　<span class="built_in">require</span>([<span class="string">'math'</span>], <span class="function"><span class="keyword">function</span> (<span class="params">math</span>)</span>&#123;</span><br><span class="line">　　　　alert(math.add(<span class="number">1</span>,<span class="number">1</span>));</span><br><span class="line">　　&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>如果这个模块还依赖其他模块，那么define()函数的第一个参数，必须是一个数组，指明该模块的依赖性。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">　　define([<span class="string">'myLib'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">myLib</span>)</span>&#123;</span><br><span class="line">　　　　<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　　　myLib.doSomething();</span><br><span class="line">　　　　&#125;</span><br><span class="line">　　　　<span class="keyword">return</span> &#123;</span><br><span class="line">　　　　　　foo : foo</span><br><span class="line">　　　　&#125;;</span><br><span class="line">　　&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>当require()函数加载上面这个模块的时候，就会先加载myLib.js文件。</p>
-<h2 id="一、CommonJS"><a href="#一、CommonJS" class="headerlink" title="一、CommonJS"></a>一、CommonJS</h2><p> CommonJS就是为JS的表现来制定规范，因为js没有模块的功能所以CommonJS应运而生，它希望js可以在任何地方运行，不只是浏览器中。</p>
-<p> CommonJS能有一定的影响力，我觉得绝对离不开Node的人气，不过喔，Node，CommonJS，浏览器甚至是W3C之间有什么关系呢，我找到了个贴切的图：<br>   |—————浏览器——————-|     |————————–CommonJS———————————-|</p>
-<p>  |  BOM  |       | DOM |      | ECMAScript |     | FS |         | TCP |      | Stream |      | Buffer |      |……..|</p>
-<p>  |——-W3C———–|      |—————————————Node——————————————–|<br>CommonJS定义的模块分为:{模块引用(require)} {模块定义(exports)} {模块标识(module)}</p>
-<p>require()用来引入外部模块；exports对象用于导出当前模块的方法或变量，唯一的导出口；module对象就代表模块本身。</p>
-<h2 id="二、AMD"><a href="#二、AMD" class="headerlink" title="二、AMD"></a>二、AMD</h2><p>CommonJS是主要为了JS在后端的表现制定的，他是不适合前端的，为什么这么说呢？</p>
-<p>这需要分析一下浏览器端的js和服务器端js都主要做了哪些事，有什么不同了：<br>—————————————服务器端JS   |    浏览器端JS——————————————-</p>
-<pre><code>相同的代码需要多次执行  |    代码需要从一个服务器端分发到多个客户端执行
-
-  CPU和内存资源是瓶颈   |    带宽是瓶颈
-
-     加载时从磁盘中加载   |    加载时需要通过网络加载
-</code></pre><hr>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/05/require/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/11/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/13/">Next &raquo;</a>
@@ -529,18 +517,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vue.js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ajax</a>
               </li>
              
@@ -553,15 +529,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vue.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JSONP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">打包工具</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color5">打包工具</a>
               </li>
             
             <div class="clearfix"></div>

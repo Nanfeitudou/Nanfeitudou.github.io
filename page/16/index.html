@@ -164,6 +164,72 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-tomcat" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/31/tomcat/">tomcat</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/31/tomcat/" class="archive-article-date">
+  	<time datetime="2017-05-31T04:28:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Tomcat配置域名"><a href="#Tomcat配置域名" class="headerlink" title="Tomcat配置域名"></a>Tomcat配置域名</h2><h4 id="一、修改端口"><a href="#一、修改端口" class="headerlink" title="一、修改端口"></a>一、修改端口</h4><p>tomcat默认监听端口是8080，我们如果想不带端口的直接访问项目，就必须监听80 端口；</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">service.xml 以下代码段</span><br><span class="line">&lt;Connector port=<span class="string">"8080"</span> protocol=<span class="string">"HTTP/1.1"</span></span><br><span class="line">               connectionTimeout=<span class="string">"20000"</span></span><br><span class="line">               redirectPort=<span class="string">"8443"</span> /&gt;</span><br><span class="line"></span><br><span class="line">修改为</span><br><span class="line">&lt;Connector port=<span class="string">"80"</span> protocol=<span class="string">"HTTP/1.1"</span></span><br><span class="line">               connectionTimeout=<span class="string">"20000"</span></span><br><span class="line">               redirectPort=<span class="string">"8443"</span> /&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="二、配置"><a href="#二、配置" class="headerlink" title="二、配置"></a>二、配置<host></host></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">第一是  &lt;Engine defaultHost=<span class="string">"localhost"</span> name=<span class="string">"Catalina"</span>&gt;  把defaultHost的值修改成你的域名    &lt;Engine defaultHost=<span class="string">"www.qiangzigz.pw"</span> name=<span class="string">"Catalina"</span>&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">第二是   &lt;Host appBase=<span class="string">"webapps"</span> autoDeploy=<span class="string">"true"</span> name=<span class="string">"localhost"</span> unpackWARs=<span class="string">"true"</span> xmlNamespaceAware=<span class="string">"false"</span> xmlValidation=<span class="string">"false"</span>&gt;</span><br><span class="line"></span><br><span class="line"> 把name的值修改成你的域名  </span><br><span class="line"></span><br><span class="line">&lt;Host appBase=<span class="string">"webapps"</span> autoDeploy=<span class="string">"true"</span> name=<span class="string">"www.qiangzigz.pw"</span> unpackWARs=<span class="string">"true"</span> xmlNamespaceAware=<span class="string">"false"</span> xmlValidation=<span class="string">"false"</span>&gt;</span><br><span class="line"></span><br><span class="line">最后再加上具体的项目指向</span><br><span class="line"></span><br><span class="line"> 在Host下面加上 &lt;Context docBase=<span class="string">"testPath"</span> path=<span class="string">""</span> reloadable=<span class="string">"true"</span>/&gt;<span class="xml"><span class="tag">&lt;/<span class="name">Host</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">这个testPro就是tomcat中的项目名称</span><br><span class="line">保存service.xml文件，重新启动服务，如果你的域名和ip绑定好的话就可以直接用域名访问了  </span><br><span class="line">重启服务器之后确实可以域名访问项目了，但是当去掉前面www.的时候，却无法访问。</span><br><span class="line"></span><br><span class="line">既然访问不到意思就是没有配置这个域名，就又加了一个<span class="string">`&lt;host/&gt;`</span>标签，其他的都没变，只把有域名的地方去掉前面的www. 然后重启服务器，这样按照理论来说是成功的，可是结果却是出乎所料。</span><br><span class="line"></span><br><span class="line">访问不了，看日志下面既然还报了内存溢出，这就没办法理解了。</span><br><span class="line">后来翻墙查资料，终于解决了。原来<span class="string">`&lt;host/&gt;`</span>下还有一个别名标签<span class="string">`&lt;Alias&gt;&lt;/Alias&gt;`</span></span><br></pre></td></tr></table></figure>
+<p>重启服务器。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">关闭tomcat</span><br><span class="line">./shutdown.sh</span><br><span class="line">开启tomcat</span><br><span class="line">./startup.sh</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/31/tomcat/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-nginx" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -506,7 +572,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -514,7 +580,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">-ES6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">自动化工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -530,23 +604,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">-ES6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">自动化工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JSONP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">打包工具</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color5">打包工具</a>
               </li>
             
             <div class="clearfix"></div>

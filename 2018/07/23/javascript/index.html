@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="DJM的博客">
 <meta property="og:description" content="概述 javascript是一种专为与网页交互而设计的脚本语言,由下列三个不同的部分组成:ECMAScript,由ECMA-262定义,提供核心语言功能;文档对象模型(DOM),提供访问和操作网页内容的方法和接口;浏览器对象模型(BOM),提供与浏览器交互的方法和接口;  javascript 的这三个组成部分,在当前五个主要浏览器(IE,Firefox,Chrome,Safari和Opera)中">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-14T15:04:19.000Z">
+<meta property="og:updated_time" content="2019-05-27T07:19:29.093Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Javascript第一部分—核心(ECMAScript)">
 <meta name="twitter:description" content="概述 javascript是一种专为与网页交互而设计的脚本语言,由下列三个不同的部分组成:ECMAScript,由ECMA-262定义,提供核心语言功能;文档对象模型(DOM),提供访问和操作网页内容的方法和接口;浏览器对象模型(BOM),提供与浏览器交互的方法和接口;  javascript 的这三个组成部分,在当前五个主要浏览器(IE,Firefox,Chrome,Safari和Opera)中">
@@ -201,7 +201,7 @@
 <h2 id="debugger-语句"><a href="#debugger-语句" class="headerlink" title="debugger 语句"></a>debugger 语句</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">debugger</span> 语句用于停止执行 JavaScript，并调用 (如果可用) 调试函数。</span><br><span class="line">使用 <span class="keyword">debugger</span> 语句类似于在代码中设置断点。</span><br></pre></td></tr></table></figure>
 <h2 id="JavaScript-switch-语句"><a href="#JavaScript-switch-语句" class="headerlink" title="JavaScript switch 语句"></a>JavaScript switch 语句</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// switch 语句通常与 break 或 default 关键字一起使用。两者都是可选的:</span></span><br><span class="line"> <span class="keyword">switch</span>(expression) &#123;</span><br><span class="line">    <span class="keyword">case</span> n:</span><br><span class="line">        代码块</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> n:</span><br><span class="line">        <span class="comment">// break 关键字用于跳出switch代码块。</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        <span class="comment">// 默认代码块 default 关键字 来规定匹配不存在时做的事情</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="throw-语句-抛出异常"><a href="#throw-语句-抛出异常" class="headerlink" title="throw 语句 抛出异常"></a>throw 语句 抛出异常</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 本例检测输入变量的值。如果值是错误的，会抛出一个异常（err）</span></span><br><span class="line"><span class="comment">// 异常 (err) 通过 catch 语句捕获并自定义输出错误信息：</span></span><br><span class="line"><span class="comment">// 如果把 throw 与 try 和 catch 一起使用，那么您能够控制程序流，并生成自定义的错误消息。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// &lt;p&gt;请输入 5 和 10 之间的一个数:&lt;/p&gt;</span></span><br><span class="line"><span class="comment">// &lt;input id="demo" type="text"&gt;</span></span><br><span class="line"><span class="comment">// &lt;button type="button" onclick="myFunction()"&gt;检测输入&lt;/button&gt;</span></span><br><span class="line"><span class="comment">// &lt;p id="message"&gt;&lt;/p&gt;</span></span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> message, x;</span><br><span class="line">    message = <span class="built_in">document</span>.getElementById(<span class="string">"message"</span>);</span><br><span class="line">    message.innerHTML = <span class="string">""</span>;</span><br><span class="line">    x = <span class="built_in">document</span>.getElementById(<span class="string">"demo"</span>).value;</span><br><span class="line">    <span class="keyword">try</span> &#123; </span><br><span class="line">        <span class="keyword">if</span>(x == <span class="string">""</span>)  <span class="keyword">throw</span> <span class="string">"为空"</span>;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">isNaN</span>(x)) <span class="keyword">throw</span> <span class="string">"不是一个数字"</span>;</span><br><span class="line">        <span class="keyword">if</span>(x &gt; <span class="number">10</span>)   <span class="keyword">throw</span> <span class="string">"太大了"</span>;</span><br><span class="line">        <span class="keyword">if</span>(x &lt; <span class="number">5</span>)    <span class="keyword">throw</span> <span class="string">"太小了"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span>(err) &#123;</span><br><span class="line">        message.innerHTML = <span class="string">"输入的值 "</span> + err;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="try-catch-语句"><a href="#try-catch-语句" class="headerlink" title="try catch 语句"></a>try catch 语句</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// tryCode - 尝试执行代码块</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">catch</span>(err) &#123;</span><br><span class="line">    <span class="comment">// catchCode - 捕获错误的代码块</span></span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">finally</span> &#123;</span><br><span class="line">    <span class="comment">// finallyCode - 无论 try / catch 结果如何都会执行的代码块</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// try/catch/finally 语句用于处理代码中可能出现的错误信息。</span></span><br><span class="line"><span class="comment">// 错误可能是语法错误，通常是程序员造成的编码错误或错别字。也 可能是拼写错误或语言中缺少的功能（可能由于浏览器差异）。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// try语句允许我们定义在执行时进行错误测试的代码块。</span></span><br><span class="line"><span class="comment">// catch 语句允许我们定义当 try 代码块发生错误时，所执行的代码块。</span></span><br><span class="line"><span class="comment">// finally 语句在 try 和 catch 之后无论有无异常都会执行。</span></span><br><span class="line"><span class="comment">// 注意： catch 和 finally 语句都是可选的，但你在使用 try 语句时必须至少使用一个。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 提示： 当错误发生时， JavaScript 会停止执行，并生成一个错误信息。使用 throw 语句 来创建自定义消息(抛出异常)。如果你将 throw 和 try 、 catch一起使用，就可以控制程序输出的错误信息。</span></span><br></pre></td></tr></table></figure>
+<h2 id="try-catch-语句"><a href="#try-catch-语句" class="headerlink" title="try catch 语句"></a>try catch 语句</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// tryCode - 尝试执行代码块</span></span><br><span class="line">    <span class="comment">//异常的抛出</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">catch</span>(err) &#123;</span><br><span class="line">    <span class="comment">// catchCode - 捕获错误的代码块</span></span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">finally</span> &#123;</span><br><span class="line">    <span class="comment">// finallyCode - 无论 try / catch 结果如何都会执行的代码块</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// try/catch/finally 语句用于处理代码中可能出现的错误信息。</span></span><br><span class="line"><span class="comment">// 错误可能是语法错误，通常是程序员造成的编码错误或错别字。也 可能是拼写错误或语言中缺少的功能（可能由于浏览器差异）。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// try语句允许我们定义在执行时进行错误测试的代码块。</span></span><br><span class="line"><span class="comment">// catch 语句允许我们定义当 try 代码块发生错误时，所执行的代码块。</span></span><br><span class="line"><span class="comment">// finally 语句在 try 和 catch 之后无论有无异常都会执行。</span></span><br><span class="line"><span class="comment">// 注意： catch 和 finally 语句都是可选的，但你在使用 try 语句时必须至少使用一个。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 提示： 当错误发生时， JavaScript 会停止执行，并生成一个错误信息。使用 throw 语句 来创建自定义消息(抛出异常)。如果你将 throw 和 try 、 catch一起使用，就可以控制程序输出的错误信息。</span></span><br></pre></td></tr></table></figure>
       
 
       
@@ -470,7 +470,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -478,7 +478,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">-ES6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">自动化工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -494,23 +502,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">-ES6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">自动化工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JSONP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">打包工具</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color5">打包工具</a>
               </li>
             
             <div class="clearfix"></div>

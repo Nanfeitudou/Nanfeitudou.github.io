@@ -164,6 +164,69 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-canvas" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/02/06/canvas/">Canvas画布</a>
+    </h1>
+  
+
+        
+        <a href="/2018/02/06/canvas/" class="archive-article-date">
+  	<time datetime="2018-02-06T15:51:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Canvas画布"><a href="#Canvas画布" class="headerlink" title="Canvas画布"></a>Canvas画布</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line">    &lt;canvas id=<span class="string">"tutorial"</span> width=<span class="string">"300"</span> height=<span class="string">"300"</span>&gt;你的浏览器不支持 canvas，请升级你的浏览器。&lt;<span class="regexp">/canvas&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ &lt;script&gt;</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ &lt;canvas&gt; 只有两个可选的属性 width、heigth 属性​如果不给 &lt;canvas&gt; 设置 widht、height 属性时，则默认 width为300、height 为 150，单位都是 px。也可以使用 css 属性来设置宽高，但是如宽高属性和初始比例不一致，他会出现扭曲。</span></span><br><span class="line"><span class="regexp">    </span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ ## 绘制路径</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ beginPath()</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 新建一条路径，路径一旦创建成功，图形绘制命令被指向到路径上生成路径</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ moveTo(x, y)</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 把画笔移动到指定的坐标(x, y) 。相当于设置路径的起始点坐标。</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ closePath()</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 闭合路径之后，图形绘制命令又重新指向到上下文中</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ stroke()</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 通过线条来绘制图形轮廓，描边stroke不会自动closePath()</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ fill()</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 通过填充路径的内容区域生成实心的图形，如果path没有闭合，则fill()会自动闭合路径。</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ ## 绘制矩形</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 1、fillRect(x, y, width, height)：绘制一个填充的矩形。</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 2、strokeRect(x, y, width, height)：绘制一个矩形的边框。</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 3、clearRect(x, y, widh, height)：清除指定的矩形区域，然后这块区域会变的完全透明。</span></span><br><span class="line"><span class="regexp">    </span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ ## 绘制圆弧，有两个方法可以绘制圆弧：</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ arc(x, y, r, 起点所在的弧度, 结束点所在的弧度, 控制顺时针还是逆时针)</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ arc(490, 245, 200, startRad, endRad, true);</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ arcTo(x1, y1, x2, y2, radius): 根据给定的控制点和半径画一段圆弧，最后再以直线连接两个控制点。</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 参数x1、y1：控制点1坐标   参数x2、y2：控制点2坐标  参数：radius圆弧半径</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 这个方法可以这样理解。绘制的弧形是由两条切线所决定。</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 第 1 条切线：起始点和控制点1决定的直线。</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 第 2 条切线：控制点1和控制点2决定的直线。</span></span><br><span class="line"><span class="regexp">    </span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ ## 五、添加样式和颜色</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ fillStyle = color 设置图形的填充颜色</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ strokeStyle = color 设置图形轮廓的颜色</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 1. color 可以是表示 css 颜色值的字符串、渐变对象或者图案对象。</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 2. 默认情况下，线条和填充颜色都是黑色。</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 3. 一旦您设置了 strokeStyle 或者 fillStyle 的值，那么这个新值就会成为新绘制的图形的默认值。如果你要给每个图形上不同的颜色，你需要重新设置 fillStyle 或 strokeStyle 的值。</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 代码模板</span></span><br><span class="line"><span class="regexp">    function draw()&#123;</span></span><br><span class="line"><span class="regexp">        var canvas = document.getElementById('tutorial');</span></span><br><span class="line"><span class="regexp">        if(!canvas.getContext) return;</span></span><br><span class="line"><span class="regexp">        var mcontext = canvas.getContext("2d");</span></span><br><span class="line"><span class="regexp">        /</span><span class="regexp">/开始代码</span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/ 开始一条新的路径</span></span><br><span class="line"><span class="regexp">        mcontext.beginPath();  </span></span><br><span class="line"><span class="regexp">        /</span><span class="regexp">/ 设置画笔的属性</span></span><br><span class="line"><span class="regexp">        mcontext.strokeStyle = '#f00';  /</span><span class="regexp">/ 画笔颜色</span></span><br><span class="line"><span class="regexp">        mcontext.lineWidth = 10;  /</span><span class="regexp">/ 画笔粗细</span></span><br><span class="line"><span class="regexp">        /</span><span class="regexp">/ 设置填充色</span></span><br><span class="line"><span class="regexp">        mcontext.fillStyle = '#0f0';</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">    draw();</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 1. 获取canvas元素</span></span><br><span class="line"><span class="regexp">    var mcanvas = document.querySelector('#mycanvas');</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 2. 获取上下文对象（或者说是画笔）</span></span><br><span class="line"><span class="regexp">    var mcontext = mcanvas.getContext('2d');</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 画三角形</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 3. 开始一条路径</span></span><br><span class="line"><span class="regexp">    mcontext.beginPath();</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 4. 设置起点（将画笔移动到画布的指定位置）</span></span><br><span class="line"><span class="regexp">    mcontext.moveTo(40, 40);</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 5. 绘制直线</span></span><br><span class="line"><span class="regexp">    mcontext.lineTo(200, 40);</span></span><br><span class="line"><span class="regexp">    mcontext.lineTo(200, 200);</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 6. 闭合起点和结束点</span></span><br><span class="line"><span class="regexp">    mcontext.closePath();</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 7. 描边（画线）</span></span><br><span class="line"><span class="regexp">    mcontext.stroke();</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 画正方形</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 1. 开始一条新的路径</span></span><br><span class="line"><span class="regexp">    mcontext.beginPath();</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 2.设置画笔的属性</span></span><br><span class="line"><span class="regexp">    mcontext.strokeStyle = '#f00';  /</span><span class="regexp">/ 画笔颜色</span></span><br><span class="line"><span class="regexp">    mcontext.lineWidth = 10;  /</span><span class="regexp">/ 画笔粗细</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 3. 设置起点</span></span><br><span class="line"><span class="regexp">    mcontext.moveTo(400, 40);</span></span><br><span class="line"><span class="regexp">    mcontext.lineTo(400, 240);</span></span><br><span class="line"><span class="regexp">    mcontext.lineTo(600, 240);</span></span><br><span class="line"><span class="regexp">    mcontext.lineTo(600, 40);</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 4. 闭合路径</span></span><br><span class="line"><span class="regexp">    mcontext.closePath();</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 5. 设置填充色</span></span><br><span class="line"><span class="regexp">    mcontext.fillStyle = '#0f0';</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 6. 填充图形</span></span><br><span class="line"><span class="regexp">    mcontext.fill();</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ 7. 描边</span></span><br><span class="line"><span class="regexp">    mcontext.stroke();</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ &lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/02/06/canvas/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-donghua" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -339,71 +402,6 @@
 
 
   
-    <article id="post-knowledge" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/02/knowledge/">IT 小知识</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/02/knowledge/" class="archive-article-date">
-  	<time datetime="2018-01-02T02:27:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="正当方式进入别人电脑的步骤"><a href="#正当方式进入别人电脑的步骤" class="headerlink" title="正当方式进入别人电脑的步骤"></a>正当方式进入别人电脑的步骤</h2><p>一、同一局域网内<br>　　1、需要对方把远程登录打开，具体操作步骤如下：在桌面右键“我的电脑”，点击“属性”，然后在弹出的窗口中点击“远程设置”，把允许远程协助勾上，单击确定就好了。并且还要把电脑设置一个开机密码。<br>　　2、按“win+R”组合键，调出运行窗口，输入“mstsc”，敲回车键。<br>　　3、在弹出的窗口中，输入对方的ip地址，敲回车。然后在输入对方的用户名和密码就可以了。</p>
-<p>二、公网内<br>　　1、需要双方的电脑都能联网，事先下载并安装好远程登录软件。<br>　　2、以TeamViewer为例，需要输入对方的ID和密码，然后就可以进入对方的的电脑了。</p>
-<h2 id="解除保护的EXCEL"><a href="#解除保护的EXCEL" class="headerlink" title="解除保护的EXCEL"></a>解除保护的EXCEL</h2><p>使用方法：<br>打开要解除保护的EXCEL ALT+F11—-插入模块—-复制粘贴代码—-F5<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br></pre></td><td class="code"><pre><span class="line">============================代码===================================</span><br><span class="line">Public Sub AllInternalPasswords()</span><br><span class="line">' Breaks worksheet and workbook structure passwords. Bob McCormick</span><br><span class="line">' probably originator of base code algorithm modified for coverage</span><br><span class="line">' of workbook structure / windows passwords and for multiple passwords</span><br><span class="line">'</span><br><span class="line">' Norman Harker and JE McGimpsey 27-Dec-2002 (Version 1.1)</span><br><span class="line">' Modified 2003-Apr-04 by JEM: All msgs to constants, and</span><br><span class="line">' eliminate one Exit Sub (Version 1.1.1)</span><br><span class="line">' Reveals hashed passwords NOT original passwords</span><br><span class="line">Const DBLSPACE As String = vbNewLine &amp; vbNewLine</span><br><span class="line">Const AUTHORS As String = DBLSPACE &amp; vbNewLine &amp; _</span><br><span class="line">"Adapted from Bob McCormick base code by" &amp; _</span><br><span class="line">"Norman Harker and JE McGimpsey"</span><br><span class="line">Const HEADER As String = "AllInternalPasswords User Message"</span><br><span class="line">Const VERSION As String = DBLSPACE &amp; "Version 1.1.1 2003-Apr-04"</span><br><span class="line">Const REPBACK As String = DBLSPACE &amp; "Please report failure " &amp; _</span><br><span class="line">"to the microsoft.public.excel.programming newsgroup."</span><br><span class="line">Const ALLCLEAR As String = DBLSPACE &amp; "The workbook should " &amp; _</span><br><span class="line">"now be free of all password protection, so make sure you:" &amp; _</span><br><span class="line">DBLSPACE &amp; "SAVE IT NOW!" &amp; DBLSPACE &amp; "and also" &amp; _</span><br><span class="line">DBLSPACE &amp; "BACKUP!, BACKUP!!, BACKUP!!!" &amp; _</span><br><span class="line">DBLSPACE &amp; "Also, remember that the password was " &amp; _</span><br><span class="line">"put there for a reason. Don't stuff up crucial formulas " &amp; _</span><br><span class="line">"or data." &amp; DBLSPACE &amp; "Access and use of some data " &amp; _</span><br><span class="line">"may be an offense. If in doubt, don't."</span><br><span class="line">Const MSGNOPWORDS1 As String = "There were no passwords on " &amp; _</span><br><span class="line">"sheets, or workbook structure or windows." &amp; AUTHORS &amp; VERSION</span><br><span class="line">Const MSGNOPWORDS2 As String = "There was no protection to " &amp; _</span><br><span class="line">"workbook structure or windows." &amp; DBLSPACE &amp; _</span><br><span class="line">"Proceeding to unprotect sheets." &amp; AUTHORS &amp; VERSION</span><br><span class="line">Const MSGTAKETIME As String = "After pressing OK button this " &amp; _</span><br><span class="line">"will take some time." &amp; DBLSPACE &amp; "Amount of time " &amp; _</span><br><span class="line">"depends on how many different passwords, the " &amp; _</span><br><span class="line">"passwords, and your computer's specification." &amp; DBLSPACE &amp; _</span><br><span class="line">"Just be patient! Make me a coffee!" &amp; AUTHORS &amp; VERSION</span><br><span class="line">Const MSGPWORDFOUND1 As String = "You had a Worksheet " &amp; _</span><br><span class="line">"Structure or Windows Password set." &amp; DBLSPACE &amp; _</span><br><span class="line">"The password found was: " &amp; DBLSPACE &amp; "$$" &amp; DBLSPACE &amp; _</span><br><span class="line">"Note it down for potential future use in other workbooks by " &amp; _</span><br><span class="line">"the same person who set this password." &amp; DBLSPACE &amp; _</span><br><span class="line">"Now to check and clear other passwords." &amp; AUTHORS &amp; VERSION</span><br><span class="line">Const MSGPWORDFOUND2 As String = "You had a Worksheet " &amp; _</span><br><span class="line">"password set." &amp; DBLSPACE &amp; "The password found was: " &amp; _</span><br><span class="line">DBLSPACE &amp; "$$" &amp; DBLSPACE &amp; "Note it down for potential " &amp; _</span><br><span class="line">"future use in other workbooks by same person who " &amp; _</span><br><span class="line">"set this password." &amp; DBLSPACE &amp; "Now to check and clear " &amp; _</span><br><span class="line">"other passwords." &amp; AUTHORS &amp; VERSION</span><br><span class="line">Const MSGONLYONE As String = "Only structure / windows " &amp; _</span><br><span class="line">"protected with the password that was just found." &amp; _</span><br><span class="line">ALLCLEAR &amp; AUTHORS &amp; VERSION &amp; REPBACK</span><br><span class="line">Dim w1 As Worksheet, w2 As Worksheet</span><br><span class="line">Dim i As Integer, j As Integer, k As Integer, l As Integer</span><br><span class="line">Dim m As Integer, n As Integer, i1 As Integer, i2 As Integer</span><br><span class="line">Dim i3 As Integer, i4 As Integer, i5 As Integer, i6 As Integer</span><br><span class="line">Dim PWord1 As String</span><br><span class="line">Dim ShTag As Boolean, WinTag As Boolean</span><br><span class="line">Application.ScreenUpdating = False</span><br><span class="line">With ActiveWorkbook</span><br><span class="line">WinTag = .ProtectStructure Or .ProtectWindows</span><br><span class="line">End With</span><br><span class="line">ShTag = False</span><br><span class="line">For Each w1 In Worksheets</span><br><span class="line">ShTag = ShTag Or w1.ProtectContents</span><br><span class="line">Next w1</span><br><span class="line">If Not ShTag And Not WinTag Then</span><br><span class="line">MsgBox MSGNOPWORDS1, vbInformation, HEADER</span><br><span class="line">Exit Sub</span><br><span class="line">End If</span><br><span class="line">MsgBox MSGTAKETIME, vbInformation, HEADER</span><br><span class="line">If Not WinTag Then</span><br><span class="line">MsgBox MSGNOPWORDS2, vbInformation, HEADER</span><br><span class="line">Else</span><br><span class="line">On Error Resume Next</span><br><span class="line">Do 'dummy do loop</span><br><span class="line">For i = 65 To 66: For j = 65 To 66: For k = 65 To 66</span><br><span class="line">For l = 65 To 66: For m = 65 To 66: For i1 = 65 To 66</span><br><span class="line">For i2 = 65 To 66: For i3 = 65 To 66: For i4 = 65 To 66</span><br><span class="line">For i5 = 65 To 66: For i6 = 65 To 66: For n = 32 To 126</span><br><span class="line">With ActiveWorkbook</span><br><span class="line">.Unprotect Chr(i) &amp; Chr(j) &amp; Chr(k) &amp; _</span><br><span class="line">Chr(l) &amp; Chr(m) &amp; Chr(i1) &amp; Chr(i2) &amp; _</span><br><span class="line">Chr(i3) &amp; Chr(i4) &amp; Chr(i5) &amp; Chr(i6) &amp; Chr(n)</span><br><span class="line">If .ProtectStructure = False And _</span><br><span class="line">.ProtectWindows = False Then</span><br><span class="line">PWord1 = Chr(i) &amp; Chr(j) &amp; Chr(k) &amp; Chr(l) &amp; _</span><br><span class="line">Chr(m) &amp; Chr(i1) &amp; Chr(i2) &amp; Chr(i3) &amp; _</span><br><span class="line">Chr(i4) &amp; Chr(i5) &amp; Chr(i6) &amp; Chr(n)</span><br><span class="line">MsgBox Application.Substitute(MSGPWORDFOUND1, _</span><br><span class="line">"$$", PWord1), vbInformation, HEADER</span><br><span class="line">Exit Do 'Bypass all for...nexts</span><br><span class="line">End If</span><br><span class="line">End With</span><br><span class="line">Next: Next: Next: Next: Next: Next</span><br><span class="line">Next: Next: Next: Next: Next: Next</span><br><span class="line">Loop Until True</span><br><span class="line">On Error GoTo 0</span><br><span class="line">End If</span><br><span class="line">If WinTag And Not ShTag Then</span><br><span class="line">MsgBox MSGONLYONE, vbInformation, HEADER</span><br><span class="line">Exit Sub</span><br><span class="line">End If</span><br><span class="line">On Error Resume Next</span><br><span class="line">For Each w1 In Worksheets</span><br><span class="line">'Attempt clearance with PWord1</span><br><span class="line">w1.Unprotect PWord1</span><br><span class="line">Next w1</span><br><span class="line">On Error GoTo 0</span><br><span class="line">ShTag = False</span><br><span class="line">For Each w1 In Worksheets</span><br><span class="line">'Checks for all clear ShTag triggered to 1 if not.</span><br><span class="line">ShTag = ShTag Or w1.ProtectContents</span><br><span class="line">Next w1</span><br><span class="line">If ShTag Then</span><br><span class="line">For Each w1 In Worksheets</span><br><span class="line">With w1</span><br><span class="line">If .ProtectContents Then</span><br><span class="line">On Error Resume Next</span><br><span class="line">Do 'Dummy do loop</span><br><span class="line">For i = 65 To 66: For j = 65 To 66: For k = 65 To 66</span><br><span class="line">For l = 65 To 66: For m = 65 To 66: For i1 = 65 To 66</span><br><span class="line">For i2 = 65 To 66: For i3 = 65 To 66: For i4 = 65 To 66</span><br><span class="line">For i5 = 65 To 66: For i6 = 65 To 66: For n = 32 To 126</span><br><span class="line">.Unprotect Chr(i) &amp; Chr(j) &amp; Chr(k) &amp; _</span><br><span class="line">Chr(l) &amp; Chr(m) &amp; Chr(i1) &amp; Chr(i2) &amp; Chr(i3) &amp; _</span><br><span class="line">Chr(i4) &amp; Chr(i5) &amp; Chr(i6) &amp; Chr(n)</span><br><span class="line">If Not .ProtectContents Then</span><br><span class="line">PWord1 = Chr(i) &amp; Chr(j) &amp; Chr(k) &amp; Chr(l) &amp; _</span><br><span class="line">Chr(m) &amp; Chr(i1) &amp; Chr(i2) &amp; Chr(i3) &amp; _</span><br><span class="line">Chr(i4) &amp; Chr(i5) &amp; Chr(i6) &amp; Chr(n)</span><br><span class="line">MsgBox Application.Substitute(MSGPWORDFOUND2, _</span><br><span class="line">"$$", PWord1), vbInformation, HEADER</span><br><span class="line">'leverage finding Pword by trying on other sheets</span><br><span class="line">For Each w2 In Worksheets</span><br><span class="line">w2.Unprotect PWord1</span><br><span class="line">Next w2</span><br><span class="line">Exit Do 'Bypass all for...nexts</span><br><span class="line">End If</span><br><span class="line">Next: Next: Next: Next: Next: Next</span><br><span class="line">Next: Next: Next: Next: Next: Next</span><br><span class="line">Loop Until True</span><br><span class="line">On Error GoTo 0</span><br><span class="line">End If</span><br><span class="line">End With</span><br><span class="line">Next w1</span><br><span class="line">End If</span><br><span class="line">MsgBox ALLCLEAR &amp; AUTHORS &amp; VERSION &amp; REPBACK, vbInformation, HEADER</span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/02/knowledge/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/11/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/13/">Next &raquo;</a>
@@ -509,7 +507,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -517,7 +515,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">-ES6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">自动化工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -533,23 +539,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">-ES6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">自动化工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JSONP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">打包工具</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color5">打包工具</a>
               </li>
             
             <div class="clearfix"></div>

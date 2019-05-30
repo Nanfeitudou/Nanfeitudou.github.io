@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="DJM的博客">
 <meta property="og:description" content="注意： axios中使用this的问题1234567891011121314151617181920212223242526272829303132333435.then(function(res)&amp;#123;        console.log(res)    &amp;#125;).catch(function(err)&amp;#123;        console.log(err)    &amp;#125;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-11T03:52:50.381Z">
+<meta property="og:updated_time" content="2019-05-30T03:40:43.957Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue 补充学习">
 <meta name="twitter:description" content="注意： axios中使用this的问题1234567891011121314151617181920212223242526272829303132333435.then(function(res)&amp;#123;        console.log(res)    &amp;#125;).catch(function(err)&amp;#123;        console.log(err)    &amp;#125;">
@@ -212,6 +212,7 @@
 <h2 id="vue中引入全局的自定义js"><a href="#vue中引入全局的自定义js" class="headerlink" title="vue中引入全局的自定义js"></a>vue中引入全局的自定义js</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">方法一</span><br><span class="line"><span class="number">1</span>、首先在main.js中引入：</span><br><span class="line"><span class="keyword">import</span> Comjs <span class="keyword">from</span> <span class="string">'./js/common.js'</span>     <span class="comment">//引入公用js</span></span><br><span class="line">Vue.prototype.$comjs = Comjs;         <span class="comment">//添加到vue属性中</span></span><br><span class="line"><span class="number">2</span>、自定义js 中写：</span><br><span class="line"><span class="keyword">const</span> comjs = &#123; &#125;</span><br><span class="line">comjs.title = <span class="function"><span class="keyword">function</span> (<span class="params">title</span>) </span>&#123;</span><br><span class="line">  alert(title)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> comjs;</span><br><span class="line"><span class="number">3</span>、页面中使用：</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">        data()&#123;</span><br><span class="line">            <span class="keyword">return</span>&#123;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        methods:&#123;</span><br><span class="line">            clickme()&#123;</span><br><span class="line">                <span class="keyword">this</span>.$comjs.title(<span class="string">'你点我了'</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">方法二 （此方法不需要在main.js中引入）</span></span><br><span class="line"><span class="regexp">1、自定义js 中写：</span></span><br><span class="line"><span class="regexp">function title(t)&#123;</span></span><br><span class="line"><span class="regexp">    alert(t);</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">export &#123;</span></span><br><span class="line"><span class="regexp">    title     /</span><span class="regexp">/多个方法在此处json中export出去</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">2、页面中使用：</span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">    import &#123;title&#125; from './</span>js/common.js<span class="string">'   //可以选择需要的方法引入</span></span><br><span class="line"><span class="string">    export default &#123;</span></span><br><span class="line"><span class="string">        data()&#123;</span></span><br><span class="line"><span class="string">            return&#123;</span></span><br><span class="line"><span class="string">            &#125;</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        methods:&#123;</span></span><br><span class="line"><span class="string">            clickme()&#123;</span></span><br><span class="line"><span class="string">                title('</span>你点我了<span class="string">');</span></span><br><span class="line"><span class="string">            &#125;</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
 <h2 id="动态绑定class"><a href="#动态绑定class" class="headerlink" title="动态绑定class"></a>动态绑定class</h2><p>点击选中当前元素添加active类，兄弟元素删除active<br>:class=”{active : currentIndex === index}”<br>@click=”switchDate(index)”</p>
 <h2 id="实时监听某个div宽度的变化，然后执行相应的事件"><a href="#实时监听某个div宽度的变化，然后执行相应的事件" class="headerlink" title="实时监听某个div宽度的变化，然后执行相应的事件"></a>实时监听某个div宽度的变化，然后执行相应的事件</h2><p><a href="https://blog.csdn.net/csl125/article/details/89245267" target="_blank" rel="noopener">https://blog.csdn.net/csl125/article/details/89245267</a><br>背景：vue项目中用到echarts图表，页面上有侧边栏，侧边栏收缩图表不能自适应，想通过监听内容部分的宽度让图表resize，<br>试过window带的resize，只能监听浏览器窗口大小变化，为了监听某元素区域的变化而使echarts的尺寸重置。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">本次解决采用 element-resize-detector 可以完美的解决</span><br><span class="line">第一步：在项目中安装 element-resize-detector</span><br><span class="line">npm install element-resize-detector</span><br><span class="line">第二步：在项目中使用</span><br><span class="line">main.js中引入</span><br><span class="line"><span class="keyword">import</span> erd <span class="keyword">from</span> <span class="string">'element-resize-detector'</span></span><br><span class="line">Vue.prototype.$erd = erd();</span><br><span class="line">第三部 组件中使用（传入id和echarts对象）</span><br><span class="line"><span class="keyword">this</span>.$erd.listenTo(<span class="built_in">document</span>.getElementById(<span class="string">"zmj_support_resistance_average_chart"</span>), ()=&gt; &#123;</span><br><span class="line">    <span class="keyword">var</span> that = <span class="keyword">this</span>;</span><br><span class="line">    that.$nextTick(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.zmjSupportResistanceAverageChart.chart.resize();</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure></p>
+<h2 id="vue新建项目打包后空白页"><a href="#vue新建项目打包后空白页" class="headerlink" title="vue新建项目打包后空白页"></a>vue新建项目打包后空白页</h2><p>新建项目命令： vue init webpack 项目名<br>出现问题： npm run build 打包后打开index.html出现白页<br>解决办法： 文件位置：config文件夹/index.js文件<br>        更改build里面的assetsPublicPath属性：<br>        assetsPublicPath:’/‘//false<br>        assetsPublicPath:’./‘//true<br>        assetsPublicPath属性作用是指定编译发布的根目录，’/‘指的是项目的根目录 ，’./‘指的是当前目录。</p>
 
       
 
@@ -470,23 +471,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">-ES6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">自动化工具</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -502,15 +491,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">-ES6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">自动化工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JSONP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color5">打包工具</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">打包工具</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
             
             <div class="clearfix"></div>

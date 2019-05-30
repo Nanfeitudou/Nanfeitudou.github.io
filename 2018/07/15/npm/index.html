@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="DJM的博客">
 <meta property="og:description" content="123456789101112131415161718192021222324252627282930313233343536371.得到原本的镜像地址npm get registry &amp;gt; https://registry.npmjs.org/设成淘宝的npm config set registry http://registry.npm.taobao.org/ 2.换成原来的npm con">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-24T08:38:48.449Z">
+<meta property="og:updated_time" content="2019-05-30T06:06:00.504Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="npm 用法">
 <meta name="twitter:description" content="123456789101112131415161718192021222324252627282930313233343536371.得到原本的镜像地址npm get registry &amp;gt; https://registry.npmjs.org/设成淘宝的npm config set registry http://registry.npm.taobao.org/ 2.换成原来的npm con">
@@ -237,7 +237,41 @@
 <li>查看当前已经安装的模块<br>npm list<br>//当然我们也可以限制输入的模块层级，例如<br>npm list –depth=0</li>
 <li>清除未被使用到的模块<br>//有时在我们使用npm list的时候，可能会碰到一些问题，就是有些模块并没有被项目引用使用，我们还是安装了这些模块，那么我们可以一键清除这些没有使用到的模块<br>npm prune</li>
 </ul>
-
+<h2 id="发布npm包并使用"><a href="#发布npm包并使用" class="headerlink" title="发布npm包并使用"></a>发布npm包并使用</h2><p> 1、npm官网注册账号<br> <a href="https://www.npmjs.com/" target="_blank" rel="noopener">https://www.npmjs.com/</a></p>
+<p> 2、新建文件nodeE，使用npm login命令登录。输入账号密码邮箱。</p>
+<p> 3、新建一个目录(准备上传的包)，执行命令npm init</p>
+<p> 4、新建index.js等文件。</p>
+<p> 5、利用npm publish 发布包，先在npm搜索有没有同名，不同名再发布。<br> npm对包名的限制：不能有大写字母/空格/下滑线!</p>
+<p> 6、下载包，新建项目。npm i ‘你的包名’<br>    let test= require(‘zmj110120’);<br>    安装完成后直接引入，在node环境中可以运行。<br>    采用require引用的commomjs形式。浏览器端不识别requrie，nodejs环境可以识别。<br>    browserify和webpack都可以把require去掉，把所有的文件打包为一个文件。</p>
+<p>7、如果想删除自己的包，执行命令npm unpublish 包名<br>    再执行npm unpublish 包名 –force ，就会删除你的包：</p>
+<p>8、npm的版本控制<br>    具体体现为：<br>    对于”version”:”x.y.z”<br>    1.修复bug,小改动，增加z<br>    2.增加了新特性，但仍能向后兼容，增加y<br>    3.有很大的改动，无法向后兼容,增加x<br>        在shell中改动项目版本<br>        npm version patch v0.1.1<br>        npm version minor v0.2.0<br>        npm version major v1.0.0<br>        查看package.json</p>
+<h2 id="NPM组件私有化"><a href="#NPM组件私有化" class="headerlink" title="NPM组件私有化"></a>NPM组件私有化</h2><p>npm run build 编译之后<br>npm pack 打包 plugin-1.0.0.tgz</p>
+<p>在新项目中，将打包的 plugin-1.0.0.tgz文件放入目录中，当前路径下<br>执行 npm install  plugin-1.0.0.tgz  -S<br>在新项目中引入即可使用</p>
+<h2 id="发布npm时遇到的两个小问题"><a href="#发布npm时遇到的两个小问题" class="headerlink" title="发布npm时遇到的两个小问题"></a>发布npm时遇到的两个小问题</h2><p>1、npm源应该为npm config set registry <a href="http://registry.npmjs.org/，否则npm" target="_blank" rel="noopener">http://registry.npmjs.org/，否则npm</a> login登录不上。<br>2、发布前先查询包名是否存在，重名会报错。<a href="https://www.npmjs.com/" target="_blank" rel="noopener">https://www.npmjs.com/</a></p>
+<h2 id="npm发布的vue组件库和使用方法"><a href="#npm发布的vue组件库和使用方法" class="headerlink" title="npm发布的vue组件库和使用方法"></a>npm发布的vue组件库和使用方法</h2><p>1.首先通过vue init webpack 项目名<br>2.在componetns文件下新建vue组件，放功能源码，添加index.js，实现封装后的组件的出入口<br>3.index.js添加内容如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> radioBox <span class="keyword">from</span> <span class="string">'@/components/radioBox'</span></span><br><span class="line"><span class="keyword">import</span> dayWeekMonth <span class="keyword">from</span> <span class="string">'@/components/dayWeekMonth'</span></span><br><span class="line"><span class="keyword">const</span> components = &#123; <span class="comment">//通过install来安装组件</span></span><br><span class="line">    install(Vue)&#123;</span><br><span class="line">      Vue.component(<span class="string">'radioBox'</span>,radioBox);</span><br><span class="line">      Vue.component(<span class="string">'dayWeekMonth'</span>,dayWeekMonth);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="comment">// 这里的判断很重要</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">window</span> !== <span class="string">'undefined'</span> &amp;&amp; <span class="built_in">window</span>.Vue) &#123;</span><br><span class="line">    <span class="built_in">window</span>.Vue.use(components);</span><br><span class="line">  &#125;</span><br><span class="line">   </span><br><span class="line">  <span class="keyword">export</span>  <span class="keyword">default</span> components;  <span class="comment">//导出组件库，暴露给调用者</span></span><br></pre></td></tr></table></figure></p>
+<p>4.修改webpack.base.conf.js和webpack.prod.conf.js<br>webpack.base.conf.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  context: path.resolve(__dirname, <span class="string">'../'</span>),</span><br><span class="line">  entry: &#123;</span><br><span class="line">    app: process.env.NODE_ENV === <span class="string">'production'</span></span><br><span class="line">    ?<span class="string">'./src/components/index.js'</span>  </span><br><span class="line">    :<span class="string">'./src/main.js'</span>    <span class="comment">// &lt;--------</span></span><br><span class="line">  &#125;,</span><br><span class="line">  output: &#123;</span><br><span class="line">      ......</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>webpack.prod.conf.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 修改生产环境的出口</span></span><br><span class="line">devtool: config.build.productionSourceMap ? config.build.devtool : <span class="literal">false</span>,</span><br><span class="line">output: &#123;</span><br><span class="line">    path: config.build.assetsRoot,</span><br><span class="line">    publicPath: config.build.assetsPublicPath,</span><br><span class="line">    filename: <span class="string">'zmj-components.min.js'</span>,   <span class="comment">// &lt;--------</span></span><br><span class="line">    library:<span class="string">'zmj-components'</span>,   <span class="comment">// &lt;--------</span></span><br><span class="line">    libraryTarget:<span class="string">'umd'</span>,   <span class="comment">// &lt;--------</span></span><br><span class="line">    umdNamedDefine:<span class="literal">true</span>   <span class="comment">// &lt;--------</span></span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改生产环境的样式文件，打包后所有的样式都会在这个文件下</span></span><br><span class="line"><span class="keyword">new</span> ExtractTextPlugin(&#123;</span><br><span class="line">    <span class="comment">// filename: utils.assetsPath('css/[name].[contenthash].css'),</span></span><br><span class="line">    filename: <span class="string">'zmj-components.min.css'</span>,  <span class="comment">// &lt;--------</span></span><br><span class="line">&#125;),</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这个可以注释也可以不注释，全部注释的话打包后不会产生index.html文件</span></span><br><span class="line"><span class="comment">// new HtmlWebpackPlugin(&#123;</span></span><br><span class="line">    <span class="comment">// filename: config.build.index,</span></span><br><span class="line">    <span class="comment">// template: 'index.html',</span></span><br><span class="line">    <span class="comment">// inject: true,</span></span><br><span class="line">    <span class="comment">// minify: &#123;</span></span><br><span class="line">    <span class="comment">//   removeComments: true,</span></span><br><span class="line">    <span class="comment">//   collapseWhitespace: true,</span></span><br><span class="line">    <span class="comment">//   removeAttributeQuotes: true</span></span><br><span class="line">    <span class="comment">//   // more options:</span></span><br><span class="line">    <span class="comment">//   // https://github.com/kangax/html-minifier#options-quick-reference</span></span><br><span class="line">    <span class="comment">// &#125;,</span></span><br><span class="line">    <span class="comment">// // necessary to consistently work with multiple chunks via CommonsChunkPlugin</span></span><br><span class="line">    <span class="comment">// chunksSortMode: 'dependency'</span></span><br><span class="line"><span class="comment">// &#125;),</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 把下面的这两个注释掉，不然npm run build 打包时会失败</span></span><br><span class="line"><span class="comment">// new webpack.optimize.CommonsChunkPlugin(&#123;</span></span><br><span class="line"><span class="comment">//   name: 'vendor',</span></span><br><span class="line"><span class="comment">//   minChunks (module) &#123;</span></span><br><span class="line"><span class="comment">//     // any required modules inside node_modules are extracted to vendor</span></span><br><span class="line"><span class="comment">//     return (</span></span><br><span class="line"><span class="comment">//       module.resource &amp;&amp;</span></span><br><span class="line"><span class="comment">//       /\.js$/.test(module.resource) &amp;&amp;</span></span><br><span class="line"><span class="comment">//       module.resource.indexOf(</span></span><br><span class="line"><span class="comment">//         path.join(__dirname, '../node_modules')</span></span><br><span class="line"><span class="comment">//       ) === 0</span></span><br><span class="line"><span class="comment">//     )</span></span><br><span class="line"><span class="comment">//   &#125;</span></span><br><span class="line"><span class="comment">// &#125;),</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// extract webpack runtime and module manifest to its own file in order to</span></span><br><span class="line"><span class="comment">// prevent vendor hash from being updated whenever app bundle is updated</span></span><br><span class="line"><span class="comment">// new webpack.optimize.CommonsChunkPlugin(&#123;</span></span><br><span class="line"><span class="comment">//   name: 'manifest',</span></span><br><span class="line"><span class="comment">//   minChunks: Infinity</span></span><br><span class="line"><span class="comment">// &#125;),</span></span><br></pre></td></tr></table></figure></p>
+<p>5.修改package.json文件，添加项目源码地址，demo测试地址，以及一些配置：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"name"</span>: <span class="string">"zmj-components"</span>,  <span class="comment">//组件库名称</span></span><br><span class="line">  <span class="string">"version"</span>: <span class="string">"1.0.1"</span>,  <span class="comment">//版本号</span></span><br><span class="line">  <span class="string">"description"</span>: <span class="string">"zmj Vue components project"</span>,</span><br><span class="line">  <span class="string">"author"</span>: <span class="string">"nanfeitudou"</span>,</span><br><span class="line">  <span class="string">"private"</span>: <span class="literal">false</span>,  <span class="comment">//组件包是公用的，所以改为false</span></span><br><span class="line">  <span class="string">"keywords"</span>: [    <span class="comment">// 指定关键字</span></span><br><span class="line">    <span class="string">"zmj"</span>,</span><br><span class="line">    <span class="string">"components"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="string">"files"</span>: [  <span class="comment">// 指定打包后发布到npm的文件名，没指定则不传，package.json是默认上传的</span></span><br><span class="line">    <span class="string">"dist"</span>,</span><br><span class="line">    <span class="string">"src/components"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"dev"</span>: <span class="string">"webpack-dev-server --inline --progress --config build/webpack.dev.conf.js"</span>,</span><br><span class="line">    <span class="string">"start"</span>: <span class="string">"npm run dev"</span>,</span><br><span class="line">    <span class="string">"lint"</span>: <span class="string">"eslint --ext .js,.vue src"</span>,</span><br><span class="line">    <span class="string">"build"</span>: <span class="string">"node build/build.js"</span>,</span><br><span class="line">    <span class="string">"build-bundle"</span>:<span class="string">"vue-cli-service build --target lib --name zmjComponents ./src/components/index.js"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 配置main结点，如果不配置，我们在其他项目中就不用import XX from '包名'来引用了，只能以包名作为起点来指定相对的路径</span></span><br><span class="line">  <span class="string">"main"</span>: <span class="string">"dist/zmj-components.min.js"</span>,</span><br><span class="line">  <span class="string">"dependencies"</span>: &#123;</span><br><span class="line">    <span class="string">"vue"</span>: <span class="string">"^2.5.2"</span>,</span><br><span class="line">    <span class="string">"vue-router"</span>: <span class="string">"^3.0.1"</span></span><br><span class="line">  &#125;,</span><br><span class="line"><span class="comment">//.............................</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>6.打包通过npm run build 命令，打包完成后产生dist文件。</p>
+<p>7.现在本地找一个项目测试是否可用</p>
+<ul>
+<li>先执行命令 npm pack ，会产生一个压缩包tgz文件</li>
+<li>在测试项目中，通过npm install 路径\文件全名</li>
+</ul>
+<p>8.安装后直接在测试项目的入口文件mian.js内引入，和引入elementUI一样</p>
+<ul>
+<li>import 名称 from ‘组件库名’</li>
+<li>Vue.use(名称)；</li>
+<li>在项目的任意组件中引用就行了，如果引入成功，说明打包成功。</li>
+</ul>
+<p>9.发布到npm上</p>
+<ul>
+<li>npm login 登录</li>
+<li>npm version patch  版本更新命令，或者直接在package.json中修改版本号，只要与npm上的版本不同就行。</li>
+<li>npm publish  提交到npm上</li>
+</ul>
+<p>参考链接： <a href="https://blog.csdn.net/cscscssjsp/article/details/82501745" target="_blank" rel="noopener">https://blog.csdn.net/cscscssjsp/article/details/82501745</a></p>
+<h2 id="npm发布的单个组件和使用"><a href="#npm发布的单个组件和使用" class="headerlink" title="npm发布的单个组件和使用"></a>npm发布的单个组件和使用</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1、准备要发布的组件</span></span><br><span class="line">--radio.vue</span><br><span class="line">--package.json</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"name"</span>: <span class="string">"radio998"</span>,  <span class="comment">//上传的npm包名</span></span><br><span class="line">  <span class="string">"version"</span>: <span class="string">"0.0.0"</span>,  <span class="comment">//版本号</span></span><br><span class="line">  <span class="string">"description"</span>: <span class="string">""</span>, <span class="comment">//包描述</span></span><br><span class="line">  <span class="string">"main"</span>:<span class="string">"radio.vue"</span> <span class="comment">//入口文件</span></span><br><span class="line">  <span class="string">"author"</span>: <span class="string">"nanfeitudou"</span>,</span><br><span class="line">  <span class="string">"private"</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"dev"</span>: <span class="string">"webpack-dev-server --hot --open --inline --progress --config build/webpack.dev.conf.js"</span>,</span><br><span class="line">    <span class="string">"start"</span>: <span class="string">"npm run dev"</span>,</span><br><span class="line">    <span class="string">"build"</span>: <span class="string">"node build/build.js"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"dependencies"</span>: &#123;</span><br><span class="line">    <span class="string">"vue"</span>: <span class="string">"^2.5.2"</span>,</span><br><span class="line">    <span class="string">"vue-router"</span>: <span class="string">"^3.0.1"</span>, </span><br><span class="line">    <span class="comment">//组件依赖包</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//2、发布包命令</span></span><br><span class="line">npm publish</span><br><span class="line"></span><br><span class="line"><span class="comment">//3、使用</span></span><br><span class="line"><span class="number">1</span>、npm i 包名 -S</span><br><span class="line"><span class="number">2</span>、需要的组件中引入 </span><br><span class="line">    &lt;radio&gt;<span class="xml"><span class="tag">&lt;/<span class="name">radio</span>&gt;</span></span></span><br><span class="line">    <span class="keyword">import</span> radio <span class="keyword">from</span> <span class="string">'radio998'</span>;</span><br><span class="line">    components:&#123;</span><br><span class="line">        radio</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -330,18 +364,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/07/15/image/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/07/15/time/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          前端|加载的图片太多或者太大怎么办
+          时间、日期、边距、高宽问题
         
       </div>
     </a>
   
   
-    <a href="/2018/07/15/time/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">时间、日期、边距、高宽问题</div>
+    <a href="/2018/07/14/scrollbar/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">滚动条</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -495,23 +529,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">-ES6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">自动化工具</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -527,15 +549,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">-ES6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">自动化工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JSONP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color5">打包工具</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">打包工具</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
             
             <div class="clearfix"></div>

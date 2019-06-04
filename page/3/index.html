@@ -164,6 +164,93 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-javascript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/23/javascript/">Javascript第一部分—核心(ECMAScript)</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/23/javascript/" class="archive-article-date">
+  	<time datetime="2018-07-23T04:28:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><blockquote>
+<p>javascript是一种专为与网页交互而设计的脚本语言,由下列三个不同的部分组成:<br>ECMAScript,由ECMA-262定义,提供核心语言功能;<br>文档对象模型(DOM),提供访问和操作网页内容的方法和接口;<br>浏览器对象模型(BOM),提供与浏览器交互的方法和接口;</p>
+</blockquote>
+<p>javascript 的这三个组成部分,在当前五个主要浏览器(IE,Firefox,Chrome,Safari和Opera)中都得到了不同程度的支持.其中,所有浏览器对ECMAScript第三版的支持大体上都还不错,而对ECMAScript 5 的支持程度越来越高,但对DOM的支持则彼此相差比较多.对已经正式纳入HTML5标准的BOM来说,尽管个浏览器都实现了某些众所周知的共同特性,但其他特性还是会因浏览器而异.</p>
+<h2 id="js监听浏览器窗口变化"><a href="#js监听浏览器窗口变化" class="headerlink" title="js监听浏览器窗口变化"></a>js监听浏览器窗口变化</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方法一</span></span><br><span class="line"><span class="built_in">window</span>.onresize = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法二</span></span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'resize'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="jQuery监听浏览器变化"><a href="#jQuery监听浏览器变化" class="headerlink" title="jQuery监听浏览器变化"></a>jQuery监听浏览器变化</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">window</span>).resize(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="js传入参数问题"><a href="#js传入参数问题" class="headerlink" title="js传入参数问题"></a>js传入参数问题</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">app</span>(<span class="params">x,y</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(x)</span><br><span class="line">    <span class="built_in">console</span>.log(y)</span><br><span class="line">    <span class="built_in">console</span>.log(x+y)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>)</span><br><span class="line">&#125;</span><br><span class="line">app(<span class="number">1</span>)         <span class="comment">//1 undefined NaN  Arguments(1);</span></span><br><span class="line">app(<span class="number">1</span>,<span class="number">2</span>)       <span class="comment">//1 2         3    Arguments(2); </span></span><br><span class="line">app(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)     <span class="comment">//1 2         3    Arguments(3); </span></span><br><span class="line">app(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>)   <span class="comment">//1 2         3    Arguments(4);</span></span><br></pre></td></tr></table></figure>
+<p>ECMAScript函数的参数与大多数其他语言中的函数的参数有所不同。ECMAScript函数不介意传递进来多少个参数，也不在乎穿进来参数是什么数据类型。也就是是说，即便你定义的函数值接受两个参数，在调用这个函数时也未必一定要是两个参数。可以传递一个、三个甚至不传递参数，而解析器永远不会有什么怨言。之所以会这样，原因是ECMAScript中的参数在内部是用一个数组来运行的。函数接受到的永远是这个数组，而不关心数组中包含哪些参数(如果有参数的话)。如果这个数组中不包含任何元素，无所谓；如果包含多个元素，也没问题。实际上，在函数体内可以通过arguments对象来访问这个参数数组，从而获取传递给含糊的每一个参数。</p>
+<h2 id="JavaScript-函数"><a href="#JavaScript-函数" class="headerlink" title="JavaScript 函数"></a>JavaScript 函数</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JavaScript 对大小写敏感。关键词 function 必须是小写的，并且必须以与函数名称相同的大小写来调用函数。</span></span><br></pre></td></tr></table></figure>
+<h2 id="JavaScript-变量"><a href="#JavaScript-变量" class="headerlink" title="JavaScript 变量"></a>JavaScript 变量</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在 JavaScript 中, 对象和函数同样也是变量。</span></span><br><span class="line"></span><br><span class="line">JavaScript 局部作用域</span><br><span class="line"><span class="comment">// 变量在函数内声明，变量为局部作用域。</span></span><br><span class="line"><span class="comment">// 局部变量：只能在函数内部访问。</span></span><br><span class="line"></span><br><span class="line">JavaScript 全局变量</span><br><span class="line"><span class="comment">// 变量在函数外定义，即为全局变量。</span></span><br><span class="line"><span class="comment">// 全局变量有 全局作用域: 网页中所有脚本和函数均可使用。</span></span><br><span class="line"><span class="comment">// 如果变量在函数内没有声明（没有使用 var 关键字），该变量为全局变量。**</span></span><br><span class="line"><span class="comment">// 非严格模式下给未声明变量赋值创建的全局变量，是全局对象的可配置属性，可以删除。</span></span><br><span class="line"><span class="keyword">var</span> var1 = <span class="number">1</span>; <span class="comment">// 不可配置全局属性</span></span><br><span class="line">var2 = <span class="number">2</span>; <span class="comment">// 没有使用 var 声明，可配置全局属性</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>.var1); <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.var1); <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> var1; <span class="comment">// false 无法删除</span></span><br><span class="line"><span class="built_in">console</span>.log(var1); <span class="comment">//1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> var2; </span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">delete</span> var2); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(var2); <span class="comment">// 已经删除 报错变量未定义</span></span><br><span class="line"></span><br><span class="line">JavaScript 变量生命周期</span><br><span class="line"><span class="comment">// JavaScript 变量生命周期在它声明时初始化。</span></span><br><span class="line"><span class="comment">// 局部变量在函数执行完毕后销毁。</span></span><br><span class="line"><span class="comment">// 全局变量在页面关闭后销毁。</span></span><br><span class="line"></span><br><span class="line">函数参数</span><br><span class="line"><span class="comment">// 函数参数只在函数内起作用，是局部变量。</span></span><br><span class="line"></span><br><span class="line">HTML 中的全局变量</span><br><span class="line"><span class="comment">// 在 HTML 中, 全局变量是 window 对象: 所有数据变量都属于 window 对象。</span></span><br><span class="line"></span><br><span class="line">你知道吗?</span><br><span class="line"><span class="comment">// 你的全局变量，或者函数，可以覆盖 window 对象的变量或者函数。</span></span><br><span class="line"><span class="comment">// 局部变量，包括 window 对象可以覆盖全局变量和函数。</span></span><br></pre></td></tr></table></figure>
+<h2 id="js循环语句"><a href="#js循环语句" class="headerlink" title="js循环语句"></a>js循环语句</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> - 循环代码块一定的次数</span><br><span class="line"><span class="keyword">for</span>/<span class="keyword">in</span> - 循环遍历对象的属性</span><br><span class="line"><span class="keyword">while</span> - 当指定的条件为 <span class="literal">true</span> 时循环指定的代码块</span><br><span class="line"><span class="keyword">do</span>/<span class="keyword">while</span> - 同样当指定的条件为 <span class="literal">true</span> 时循环指定的代码块</span><br><span class="line"> 使用 <span class="keyword">break</span> 语句来跳出循环，使用 <span class="keyword">continue</span> 语句来跳过点前的迭代，并执行下一个迭代。</span><br></pre></td></tr></table></figure>
+<h2 id="debugger-语句"><a href="#debugger-语句" class="headerlink" title="debugger 语句"></a>debugger 语句</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">debugger</span> 语句用于停止执行 JavaScript，并调用 (如果可用) 调试函数。</span><br><span class="line">使用 <span class="keyword">debugger</span> 语句类似于在代码中设置断点。</span><br></pre></td></tr></table></figure>
+<h2 id="JavaScript-switch-语句"><a href="#JavaScript-switch-语句" class="headerlink" title="JavaScript switch 语句"></a>JavaScript switch 语句</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// switch 语句通常与 break 或 default 关键字一起使用。两者都是可选的:</span></span><br><span class="line"> <span class="keyword">switch</span>(expression) &#123;</span><br><span class="line">    <span class="keyword">case</span> n:</span><br><span class="line">        代码块</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> n:</span><br><span class="line">        <span class="comment">// break 关键字用于跳出switch代码块。</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        <span class="comment">// 默认代码块 default 关键字 来规定匹配不存在时做的事情</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="throw-语句-抛出异常"><a href="#throw-语句-抛出异常" class="headerlink" title="throw 语句 抛出异常"></a>throw 语句 抛出异常</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 本例检测输入变量的值。如果值是错误的，会抛出一个异常（err）</span></span><br><span class="line"><span class="comment">// 异常 (err) 通过 catch 语句捕获并自定义输出错误信息：</span></span><br><span class="line"><span class="comment">// 如果把 throw 与 try 和 catch 一起使用，那么您能够控制程序流，并生成自定义的错误消息。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// &lt;p&gt;请输入 5 和 10 之间的一个数:&lt;/p&gt;</span></span><br><span class="line"><span class="comment">// &lt;input id="demo" type="text"&gt;</span></span><br><span class="line"><span class="comment">// &lt;button type="button" onclick="myFunction()"&gt;检测输入&lt;/button&gt;</span></span><br><span class="line"><span class="comment">// &lt;p id="message"&gt;&lt;/p&gt;</span></span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> message, x;</span><br><span class="line">    message = <span class="built_in">document</span>.getElementById(<span class="string">"message"</span>);</span><br><span class="line">    message.innerHTML = <span class="string">""</span>;</span><br><span class="line">    x = <span class="built_in">document</span>.getElementById(<span class="string">"demo"</span>).value;</span><br><span class="line">    <span class="keyword">try</span> &#123; </span><br><span class="line">        <span class="keyword">if</span>(x == <span class="string">""</span>)  <span class="keyword">throw</span> <span class="string">"为空"</span>;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">isNaN</span>(x)) <span class="keyword">throw</span> <span class="string">"不是一个数字"</span>;</span><br><span class="line">        <span class="keyword">if</span>(x &gt; <span class="number">10</span>)   <span class="keyword">throw</span> <span class="string">"太大了"</span>;</span><br><span class="line">        <span class="keyword">if</span>(x &lt; <span class="number">5</span>)    <span class="keyword">throw</span> <span class="string">"太小了"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span>(err) &#123;</span><br><span class="line">        message.innerHTML = <span class="string">"输入的值 "</span> + err;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="try-catch-语句"><a href="#try-catch-语句" class="headerlink" title="try catch 语句"></a>try catch 语句</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// tryCode - 尝试执行代码块</span></span><br><span class="line">    <span class="comment">//异常的抛出</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">catch</span>(err) &#123;</span><br><span class="line">    <span class="comment">// catchCode - 捕获错误的代码块</span></span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">finally</span> &#123;</span><br><span class="line">    <span class="comment">// finallyCode - 无论 try / catch 结果如何都会执行的代码块</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// try/catch/finally 语句用于处理代码中可能出现的错误信息。</span></span><br><span class="line"><span class="comment">// 错误可能是语法错误，通常是程序员造成的编码错误或错别字。也 可能是拼写错误或语言中缺少的功能（可能由于浏览器差异）。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// try语句允许我们定义在执行时进行错误测试的代码块。</span></span><br><span class="line"><span class="comment">// catch 语句允许我们定义当 try 代码块发生错误时，所执行的代码块。</span></span><br><span class="line"><span class="comment">// finally 语句在 try 和 catch 之后无论有无异常都会执行。</span></span><br><span class="line"><span class="comment">// 注意： catch 和 finally 语句都是可选的，但你在使用 try 语句时必须至少使用一个。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 提示： 当错误发生时， JavaScript 会停止执行，并生成一个错误信息。使用 throw 语句 来创建自定义消息(抛出异常)。如果你将 throw 和 try 、 catch一起使用，就可以控制程序输出的错误信息。</span></span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/23/javascript/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-js_dom" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -356,86 +443,9 @@
 
 
   
-    <article id="post-image" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/15/image/">前端|加载的图片太多或者太大怎么办</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/15/image/" class="archive-article-date">
-  	<time datetime="2018-07-15T15:01:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>####一.当图片太多时<br><strong>方案一:将图片服务和应用服务分离(从架构师的角度思考)</strong></p>
-<p>对于这个方案对于经验尚浅的我来说是考虑不多的,通过跟leader沟通,了解到这一点,此方案是架构师在架构过程中必须要考虑到的.<br>对于服务器来说,图片始终是最消耗系统资源的,如果将图片服务和应用服务放在同一服务器的话,应用服务器很容易会因为图片的高I/O负载而崩溃,所以当网站存在大量的图片读写操作时,建议使用图片服务器.<br>(注:图片服务器是专门为图片读写操作优化的独立服务器,运行网站的服务器称为应用服务器)</p>
-<p>另外浏览器在同一时间对同一域名下的资源的并发请求数目是有限制的,一般在2-6之间,超过限制数目的请求就会被阻塞.一些主流浏览器对 HTTP1.1 和 HTTP 1.0 的最大并发连接数目，可以参考网上资料<br><img src="http://upload-images.jianshu.io/upload_images/6522842-55b914552b2d7808?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图1"></p>
-<p>把图片服务器与应用服务器分开,图片服务器采用独立域名 ,css、js和图片就可以并发请求了</p>
-<p><strong>方案二:简单粗暴的压缩方案</strong></p>
-<p>我们可以借助一些第三方软件来进行压缩,比如<a href="https://tinypng.com/,压缩后分辨率不变,肉眼看不失真" target="_blank" rel="noopener">https://tinypng.com/,压缩后分辨率不变,肉眼看不失真</a></p>
-<p><strong>方案三:图片懒加载</strong></p>
-<p>像淘宝或者京东这样的APP页面上有很多图片,当我们滑到下一屏时下一屏的图片才会加载,这就采用了图片懒加载的方式.<br>图片懒加载,简单来说就是在页面渲染过程中,图片不会一次性全部加载,会在需要的时候加载,比如当滚动条滚动到某一个位置时触发事件加载图片,如下代码:<br>通过js将img标签的data-src属性赋值给src属性</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 缓存图片，并将图片渲染</span></span><br><span class="line"><span class="keyword">var</span> renderCvs = <span class="function"><span class="keyword">function</span>(<span class="params">parent,max</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//将img标签的class设置为lazyload，其父节点是a标签</span></span><br><span class="line">    <span class="keyword">var</span> lazyloadImage = $(<span class="string">'.lazyload'</span>,parent);</span><br><span class="line">    <span class="keyword">if</span>(lazyloadImage.length&lt;<span class="number">1</span>)&#123;</span><br><span class="line">       <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> max = max||lazyloadImage.length;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;max;i++)&#123;</span><br><span class="line">        <span class="keyword">var</span> imgId = lazyloadImage[i].id;</span><br><span class="line">       <span class="comment">//再次打开网页，读取缓存，如果有，就从缓存中展示</span></span><br><span class="line">        <span class="keyword">var</span> imageCache = localStorage.getItem(imgId);</span><br><span class="line">        <span class="keyword">if</span>(imageCache)&#123;</span><br><span class="line">            lazyloadImage[i].src = imageCache;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> img = <span class="keyword">new</span> Image();</span><br><span class="line">        img.index = i;</span><br><span class="line">        img.id = imgId;</span><br><span class="line">        img.crossorigin=<span class="string">"anonymous"</span>;</span><br><span class="line">        img.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> _this = <span class="keyword">this</span>;</span><br><span class="line">        <span class="keyword">var</span> zCvs = $(<span class="string">'#'</span>+<span class="keyword">this</span>.id);</span><br><span class="line">        <span class="keyword">var</span> domCvs = zCvs[<span class="number">0</span>];</span><br><span class="line">        domCvs.src = <span class="keyword">this</span>.src;</span><br><span class="line">        zCvs.removeClass(<span class="string">'lazyload'</span>);</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> cvs = <span class="built_in">document</span>.createElement(<span class="string">'canvas'</span>);</span><br><span class="line">            cvs.style.display = <span class="string">'none'</span>;</span><br><span class="line">            <span class="built_in">document</span>.body.appendChild(cvs);</span><br><span class="line">            <span class="keyword">var</span> rcvs = cvs.getContext(<span class="string">'2d'</span>);</span><br><span class="line">            cvs.width = <span class="number">140</span>;</span><br><span class="line">            cvs.height = <span class="number">108</span>;</span><br><span class="line">            rcvs.drawImage(<span class="keyword">this</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">140</span>,<span class="number">108</span>);</span><br><span class="line">                            </span><br><span class="line">              <span class="comment">//这里进行缓存 ，toDataURL()方法将url转成base64字符串</span></span><br><span class="line">            setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">              <span class="keyword">var</span> data = cvs.toDataURL();</span><br><span class="line">             <span class="comment">//将字符串保存到localStorage中</span></span><br><span class="line">              localStorage.setItem(_this.id,data);</span><br><span class="line">              <span class="built_in">document</span>.body.removeChild(cvs);</span><br><span class="line">            &#125;,<span class="number">200</span>);</span><br><span class="line">        &#125;<span class="keyword">catch</span>(ex)&#123;</span><br><span class="line">        </span><br><span class="line">        &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        img.src = lazyloadImage[i].getAttribute(<span class="string">'data-src'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>方案四:css Sprites</strong></p>
-<p>当网站或者APP有大量小icon,如果上传到图片服务器比如CDN, 要加载所有这些小icon将增加大量请求,而CDN是按流量收费的,这无疑将增加很多成本.<br>CSS Sprites 技术早已不新鲜,就是将这些小icon合并成一张图片,只需要加载一次,每次通过background-position来控制显示icon,这样就可以节约大量请求,节约成本.<br>此方案是将网站上的一些小logo拼合成一个大图，不过这也有一定的缺点:在长期开发多人合作的项目中,会不好维护这些sprites,每次对icon做修改,都得相应的改动css里background-position的值,相当繁琐.</p>
-<p>方案五:将图片压缩成base64格式来节约请求</p>
-<p>将图片压缩成base64,随html或者css一起下载到浏览器,不需要额外的请求,这样就节约了请求.</p>
-<p>我们知道图片在传输过程中是流传输,如果将图片转换成base64,实际上是变大了,并且浏览器在decode  base64编码的图片时需要耗费很多时间的,所以如果我们选择此种方案的话,最好选择一些小图片,不然得不偿失,在webpack中可以设置最大多少byte的图片压缩成base64<br><img src="http://upload-images.jianshu.io/upload_images/6522842-224aabf795968006?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图2"></p>
-<p>针对decode base64编码的图片比较慢的问题,我们可以选择使用canvas来加速.当向canvas发出绘画命令时,浏览器直接将指令发到图形加速器而不需要开发者更多的干预,硬件图形加速器则以难以执行的运算速度实时绘画和渲染图形.因此,我们可以使用canvas来渲染base64编码后的图片</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/15/image/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 
@@ -574,11 +584,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">打包工具</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color5">打包工具</a>
               </li>
             
             <div class="clearfix"></div>

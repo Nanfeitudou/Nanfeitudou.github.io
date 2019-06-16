@@ -268,6 +268,7 @@
 <li>Action 可以包含任意异步操作。</li>
 </ul>
 <h2 id="辅助函数"><a href="#辅助函数" class="headerlink" title="辅助函数"></a>辅助函数</h2><p>mapState一般放在computed计算属性中，mapActions一般放在methods下</p>
+<h2 id="commit-和-dispatch-区别"><a href="#commit-和-dispatch-区别" class="headerlink" title="commit 和 dispatch 区别"></a>commit 和 dispatch 区别</h2><p>dispatch：含有异步操作，例如向后台提交数据，写法： this.$store.dispatch(‘mutations方法名’,值)<br>commit：同步操作，写法：this.$store.commit(‘mutations方法名’,值)</p>
 <h2 id="Vuex异步请求数据后-在组件中获取状态的方法"><a href="#Vuex异步请求数据后-在组件中获取状态的方法" class="headerlink" title="Vuex异步请求数据后,在组件中获取状态的方法"></a>Vuex异步请求数据后,在组件中获取状态的方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//即如下方法，页面正常更新：  </span></span><br><span class="line">computed: &#123;</span><br><span class="line">    userAva: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.$store.state.userAva;</span><br><span class="line">    &#125;,</span><br><span class="line">    userName: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.$store.state.userName;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//vue中提供$nextTick()异步加载方法</span></span><br><span class="line">mounted: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.$store.commit(<span class="string">'getLocalMes'</span>);</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.userName = <span class="keyword">this</span>.$store.state.userName;</span><br><span class="line">        <span class="keyword">this</span>.userAva = <span class="keyword">this</span>.$store.state.userAva;</span><br><span class="line">    &#125;,<span class="number">10</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Vuex异步请求数据通过computed计算属性值"><a href="#Vuex异步请求数据通过computed计算属性值" class="headerlink" title="Vuex异步请求数据通过computed计算属性值"></a>Vuex异步请求数据通过computed计算属性值</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">问题描述：</span><br><span class="line">使用Vuex管理数据时，在组件内使用$emit分发事件后，获取回来的数据要自动更新到该组件内，需要使用computed来计算更新。一开始尝试使用赋值给data的方法，后来发现重新发起ajax请求数据后无法更新新数据。</span><br><span class="line">因为data属性只是在组件实例化时赋值一次，依赖发生变化时不会更新，想要使用data来获取computed同样的效果可以对data的字段进行watch。</span><br><span class="line">而计算属性是基于它的依赖缓存的。计算属性在它的相关依赖发生改变时会重新取值，所以当ajax请求回来的数据发生变化时，计算属性的值会进行更新，相关的模板引用也会重新渲染。</span><br><span class="line">相比较而言使用computed更方便，如下是在实际应用中要不断更新的字段，<span class="keyword">this</span>.$store.state.templateStorage.recommendTpl 是由ajax重新获取的数据。</span><br><span class="line"></span><br><span class="line">computed: &#123;</span><br><span class="line">      recommendTpl () &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.$store.state.templateStorage.recommendTpl;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
 
@@ -506,15 +507,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color1">excel</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -527,6 +528,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">vue.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
               </li>
              
               <li class="article-tag-list-item">

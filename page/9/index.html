@@ -164,6 +164,93 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-echarts2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/12/echarts2/">echarts-管理数据(dataset)-数据到图形的映射（encode）</a>
+    </h1>
+  
+
+        
+        <a href="/2018/05/12/echarts2/" class="archive-article-date">
+  	<time datetime="2018-05-12T14:36:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="tooltip提示框格式化便捷加入自带的小圆点标识"><a href="#tooltip提示框格式化便捷加入自带的小圆点标识" class="headerlink" title="tooltip提示框格式化便捷加入自带的小圆点标识"></a>tooltip提示框格式化便捷加入自带的小圆点标识</h2><p>formatter: function(params) {<br>    var result = ‘’;<br>    params.forEach(function (item) {<br>        result += item.marker + “ “ + item.seriesName + “ : “ + item.value +”<br>“;<br>    });<br>    return result;<br>}</p>
+<h2 id="柱图item"><a href="#柱图item" class="headerlink" title="柱图item"></a>柱图item</h2><p>柱图 itemStyle-normal-color 如果设置了渐变色，tooltip中就获取不到正确的颜色<br>解决方法：legend–&gt;selected, 通过波尔值控制tooltip显示的图例<br>selected:{<br>    ‘计划’:true,<br>    ‘实际’:true,<br>    ‘line’:false,<br>    ‘dotted’:false,<br>},<br>缺点：’line’ 和’dotted’ 被隐藏<br>背景效果、柱图渐变色、tooltip提示，三者有1个不能正常显示</p>
+<h2 id="tooltip的3种显示方式"><a href="#tooltip的3种显示方式" class="headerlink" title="tooltip的3种显示方式"></a>tooltip的3种显示方式</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">tooltip: &#123;</span><br><span class="line">    trigger: <span class="string">'axis'</span>,</span><br><span class="line">    axisPointer: &#123;</span><br><span class="line">        type: <span class="string">'shadow'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 方式一</span></span><br><span class="line">    <span class="comment">// 默认值配合legend--selected选项</span></span><br><span class="line">    <span class="comment">// 方式二</span></span><br><span class="line">    formatter: <span class="string">'&#123;b0&#125;&lt;br/&gt;&#123;a0&#125;: &#123;c0&#125;&lt;br/&gt;&#123;a1&#125;: &#123;c1&#125;'</span>,</span><br><span class="line">    <span class="comment">// 方式三</span></span><br><span class="line">    formatter: <span class="function"><span class="keyword">function</span> (<span class="params">params</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> result = params[<span class="number">0</span>].name + <span class="string">'&lt;/br&gt;'</span>;</span><br><span class="line">        params.length = <span class="number">2</span>;</span><br><span class="line">        params.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</span><br><span class="line">            result += item.marker + <span class="string">" "</span> + item.seriesName + <span class="string">" : "</span> + item.value + <span class="string">"&lt;/br&gt;"</span>;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">// 方式一</span></span><br><span class="line">legend: &#123;</span><br><span class="line">    data: [<span class="string">'计划'</span>, <span class="string">'实际'</span>],</span><br><span class="line">    selected:&#123;</span><br><span class="line">        <span class="string">'计划'</span>:<span class="literal">true</span>,</span><br><span class="line">        <span class="string">'实际'</span>:<span class="literal">true</span>,</span><br><span class="line">        <span class="string">'line'</span>:<span class="literal">false</span>,</span><br><span class="line">        <span class="string">'dotted'</span>:<span class="literal">false</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    textStyle: &#123;</span><br><span class="line">        color: <span class="string">'#ccc'</span></span><br><span class="line">    &#125;,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h2 id="多条柱颜色设置方式"><a href="#多条柱颜色设置方式" class="headerlink" title="多条柱颜色设置方式"></a>多条柱颜色设置方式</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 随机显示</span></span><br><span class="line"><span class="comment">//color:function(d)&#123;return "#"+Math.floor(Math.random()*(256*256*256-1)).toString(16);&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定制显示（按顺序）</span></span><br><span class="line">color: <span class="function"><span class="keyword">function</span>(<span class="params">params</span>) </span>&#123; </span><br><span class="line">    <span class="keyword">var</span> colorList = [<span class="string">'#C33531'</span>,<span class="string">'#EFE42A'</span>,<span class="string">'#64BD3D'</span>,<span class="string">'#EE9201'</span>,<span class="string">'#29AAE3'</span>, <span class="string">'#B74AE5'</span>,<span class="string">'#0AAF9F'</span>,<span class="string">'#E89589'</span>,<span class="string">'#16A085'</span>,<span class="string">'#4A235A'</span>,<span class="string">'#C39BD3 '</span>,<span class="string">'#F9E79F'</span>,<span class="string">'#BA4A00'</span>,<span class="string">'#ECF0F1'</span>,<span class="string">'#616A6B'</span>,<span class="string">'#EAF2F8'</span>,<span class="string">'#4A235A'</span>,<span class="string">'#3498DB'</span> ]; </span><br><span class="line">    <span class="keyword">return</span> colorList[params.dataIndex] </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//柱状图上显示数据</span></span><br><span class="line">label: &#123;</span><br><span class="line">    show: <span class="string">"true"</span>,</span><br><span class="line">    position: <span class="string">"top"</span>,</span><br><span class="line">    color: <span class="string">"#FFF"</span>,</span><br><span class="line">    fontWeight: <span class="string">"bolder"</span>,</span><br><span class="line">    backgroundColor: <span class="string">"auto"</span>,</span><br><span class="line">    fontSize: <span class="string">"20"</span></span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">//平均值</span></span><br><span class="line">markLine: &#123;</span><br><span class="line">    data: [&#123; <span class="attr">type</span>: <span class="string">"average"</span>, <span class="attr">name</span>: <span class="string">"平均值"</span> &#125;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="图表标题设置"><a href="#图表标题设置" class="headerlink" title="图表标题设置"></a>图表标题设置</h2><p>注意，如果不定义 rich 属性，则不能指定 width 和 height。<br>1, 字符串模板<br>模板变量有 {a}, {b}，{c}，{d}，{e}，分别表示系列名，数据名，数据值等。 在 trigger 为 ‘axis’ 的时候，会有多个系列的数据，此时可以通过 {a0}, {a1}, {a2} 这种后面加索引的方式表示系列的索引。 不同图表类型下的 {a}，{b}，{c}，{d} 含义不一样。 其中变量{a}, {b}, {c}, {d}在不同图表类型下代表数据含义为：<br>折线（区域）图、柱状（条形）图、K线图 : {a}（系列名称），{b}（类目值），{c}（数值）, {d}（无）<br>散点图（气泡）图 : {a}（系列名称），{b}（数据名称），{c}（数值数组）, {d}（无）<br>地图 : {a}（系列名称），{b}（区域名称），{c}（合并数值）, {d}（无）<br>饼图、仪表盘、漏斗图: {a}（系列名称），{b}（数据项名称），{c}（数值）, {d}（百分比）<br>1、URL 为图片链接例如：<br>‘image://<a href="http://xxx.xxx.xxx/a/b.png&#39;" target="_blank" rel="noopener">http://xxx.xxx.xxx/a/b.png&#39;</a><br>2、URL 为 dataURI 例如：<br>‘image://data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7’<br>3、可以通过 ‘path://‘ 将图标设置为任意的矢量路径。<br>‘path://M30.9,53.2C16.8,53.2,5.3,41.7,5.3,27.6S16.8,2,30.9,2C45,2,56.4,13.5,56.4,27.6S45,53.2,30.9,53.2z M30.9,3.5C17.6,3.5,6.8,14.4,6.8,27.6c0,13.3,10.8,24.1,24.101,24.1C44.2,51.7,55,40.9,55,27.6C54.9,14.4,44.1,3.5,30.9,3.5z M36.9,35.8c0,0.601-0.4,1-0.9,1h-1.3c-0.5,0-0.9-0.399-0.9-1V19.5c0-0.6,0.4-1,0.9-1H36c0.5,0,0.9,0.4,0.9,1V35.8z M27.8,35.8 c0,0.601-0.4,1-0.9,1h-1.3c-0.5,0-0.9-0.399-0.9-1V19.5c0-0.6,0.4-1,0.9-1H27c0.5,0,0.9,0.4,0.9,1L27.8,35.8L27.8,35.8z’</p>
+<h2 id="echarts-图表"><a href="#echarts-图表" class="headerlink" title="echarts 图表"></a>echarts 图表</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">color处理函数里面的颜色如果使用rgb格式，带opacity会出现itemStyle块闪动</span><br><span class="line">color: <span class="function"><span class="keyword">function</span>(<span class="params">params</span>) </span>&#123; </span><br><span class="line">    <span class="keyword">var</span> colorList = [<span class="string">'#C33531'</span>,<span class="string">'#EFE42A'</span>,<span class="string">'#64BD3D'</span>,<span class="string">'#EE9201'</span>,<span class="string">'#29AAE3'</span>, <span class="string">'#B74AE5'</span>,<span class="string">'#0AAF9F'</span>,<span class="string">'#E89589'</span>,<span class="string">'#16A085'</span>,<span class="string">'#4A235A'</span>,<span class="string">'#C39BD3 '</span>,<span class="string">'#F9E79F'</span>,<span class="string">'#BA4A00'</span>,<span class="string">'#ECF0F1'</span>,<span class="string">'#616A6B'</span>,<span class="string">'#EAF2F8'</span>,<span class="string">'#4A235A'</span>,<span class="string">'#3498DB'</span> ]; </span><br><span class="line">    <span class="keyword">return</span> colorList[params.dataIndex] </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="提示框属性"><a href="#提示框属性" class="headerlink" title="提示框属性"></a>提示框属性</h2><p>tooltip–confine   [ default: false ] 是否将 tooltip 框限制在图表的区域内。<br>当图表外层的 dom 被设置为 ‘overflow: hidden’，或者移动端窄屏，导致 tooltip 超出外界被截断时，此配置比较有用。<br><!-- 将提示框固定在顶部 --><br>position:function (point, params, dom, rect, size) {<br>                // 固定在顶部<br>                return [point[0], ‘10%’];<br>            },<br>参数：<br>point: 鼠标位置，如 [20, 40]。<br>params: 同 formatter 的参数相同。<br>dom: tooltip 的 dom 对象。<br>rect: 只有鼠标在图形上时有效，是一个用x, y, width, height四个属性表达的图形包围盒。<br>size: 包括 dom 的尺寸和 echarts 容器的当前尺寸，例如：{contentSize: [width, height], viewSize: [width, height]}。</p>
+<h2 id="echarts-制作map图表"><a href="#echarts-制作map图表" class="headerlink" title="echarts 制作map图表"></a>echarts 制作map图表</h2><p>注意：<br>传入省份json数据，不带‘省’字<br>this.$echarts.registerMap(‘山东’, res.data);   正确<br>传入市级json数据，带‘市’字<br>this.$echarts.registerMap(‘枣庄市’, res.data);  正确</p>
+<h2 id="使用-dataset-管理数据"><a href="#使用-dataset-管理数据" class="headerlink" title="使用 dataset 管理数据"></a>使用 dataset 管理数据</h2><p>ECharts 4 开始支持了 dataset 组件用于单独的数据集声明，从而数据可以单独管理，被多个组件复用，并且可以基于数据指定数据到视觉的映射。</p>
+<h2 id="数据到图形的映射"><a href="#数据到图形的映射" class="headerlink" title="数据到图形的映射"></a>数据到图形的映射</h2><p>指定 dataset 的列（column）还是行（row）映射为图形系列（series）。这件事可以使用 series.seriesLayoutBy 属性来配置。默认是按照列（column）来映射。<br>指定维度映射的规则：如何从 dataset 的维度（一个“维度”的意思是一行/列）映射到坐标轴（如 X、Y 轴）、提示框（tooltip）、标签（label）、图形元素大小颜色等（visualMap）。这件事可以使用 series.encode 属性，以及 visualMap 组件（如果有需要映射颜色大小等视觉维度的话）来配置。 </p>
+<h2 id="按行还是按列做映射"><a href="#按行还是按列做映射" class="headerlink" title="按行还是按列做映射"></a>按行还是按列做映射</h2><p>有了数据表之后，使用者可以灵活得配置：数据如何对应到轴和图形系列。<br>用户可以使用 seriesLayoutBy 配置项，改变图表对于行列的理解。seriesLayoutBy 可取值：<br>‘column’: 默认值。系列被安放到 dataset 的列上面。<br>‘row’: 系列被安放到 dataset 的行上面。</p>
+<h2 id="维度（dimension）"><a href="#维度（dimension）" class="headerlink" title="维度（dimension）"></a>维度（dimension）</h2><p>常用图表所描述的数据大部分是“二维表”结构，上述的例子中，我们都使用二维数组来容纳二维表。现在，当我们把系列（series）对应到“列”的时候，那么每一列就称为一个“维度（dimension）”，而每一行称为数据项（item）。反之，如果我们把系列（series）对应到表行，那么每一行就是“维度（dimension）”，每一列就是数据项（item）。</p>
+<p>维度可以有单独的名字，便于在图表中显示。维度名（dimension name）可以在定义在 dataset 的第一行（或者第一列）。例如上面的例子中，’score’、’amount’、’product’ 就是维度名。从第二行开始，才是正式的数据。dataset.source 中第一行（列）到底包含不包含维度名，ECharts 默认会自动探测。</p>
+<p>当然也可以设置 dataset.sourceHeader: true 显示声明第一行（列）就是维度，或者 dataset.sourceHeader: false 表明第一行（列）开始就直接是数据。大多数情况下，我们并不需要去设置维度类型，因为会自动判断。但是如果因为数据为空之类原因导致判断不足够准确时，可以手动设置维度类型。</p>
+<p>维度的定义，也可以使用单独的 dataset.dimensions 或者 series.dimensions 来定义，这样可以同时指定维度名，和维度的类型（dimension type）：</p>
+<p>维度类型（dimension type）可以取这些值：<br>‘number’: 默认，表示普通数据。<br>‘ordinal’: 对于类目、文本这些 string 类型的数据，如果需要能在数轴上使用，须是 ‘ordinal’ 类型。ECharts 默认会自动判断这个类型。但是自动判断也是不可能很完备的，所以使用者也可以手动强制指定。<br>‘time’: 表示时间数据。设置成 ‘time’ 则能支持自动解析数据成时间戳（timestamp），比如该维度的数据是 ‘2017-05-10’，会自动被解析。如果这个维度被用在时间数轴（axis.type 为 ‘time’）上，那么会被自动设置为 ‘time’ 类型。时间类型的支持参见 data。<br>‘float’: 如果设置成 ‘float’，在存储时候会使用 TypedArray，对性能优化有好处。<br>‘int’: 如果设置成 ‘int’，在存储时候会使用 TypedArray，对性能优化有好处。</p>
+<h2 id="数据到图形的映射（encode）"><a href="#数据到图形的映射（encode）" class="headerlink" title="数据到图形的映射（encode）"></a>数据到图形的映射（encode）</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">series: [</span><br><span class="line">    &#123;</span><br><span class="line">        type: <span class="string">'bar'</span>,</span><br><span class="line">        encode: &#123;</span><br><span class="line">            <span class="comment">// 将 "amount" 列映射到 X 轴。</span></span><br><span class="line">            x: <span class="string">'amount'</span>,</span><br><span class="line">            <span class="comment">// 将 "product" 列映射到 Y 轴。</span></span><br><span class="line">            y: <span class="string">'product'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br><span class="line">encode 声明的基本结构如下，其中冒号左边是坐标系、标签等特定名称，如 <span class="string">'x'</span>, <span class="string">'y'</span>, <span class="string">'tooltip'</span> 等，冒号右边是数据中的维度名（string 格式）或者维度的序号（number 格式，从 <span class="number">0</span> 开始计数），可以指定一个或多个维度（使用数组）。通常情况下，下面各种信息不需要所有的都写，按需写即可。</span><br><span class="line"></span><br><span class="line">下面是 encode 支持的属性：</span><br><span class="line"><span class="comment">// 在任何坐标系和系列中，都支持：</span></span><br><span class="line">encode: &#123;</span><br><span class="line">    <span class="comment">// 使用 “名为 product 的维度” 和 “名为 score 的维度” 的值在 tooltip 中显示</span></span><br><span class="line">    tooltip: [<span class="string">'product'</span>, <span class="string">'score'</span>]</span><br><span class="line">    <span class="comment">// 使用 “维度 1” 和 “维度 3” 的维度名连起来作为系列名。（有时候名字比较长，这可以避免在 series.name 重复输入这些名字）</span></span><br><span class="line">    seriesName: [<span class="number">1</span>, <span class="number">3</span>],</span><br><span class="line">    <span class="comment">// 表示使用 “维度2” 中的值作为 id。这在使用 setOption 动态更新数据时有用处，可以使新老数据用 id 对应起来，从而能够产生合适的数据更新动画。</span></span><br><span class="line">    itemId: <span class="number">2</span>,</span><br><span class="line">    <span class="comment">// 指定数据项的名称使用 “维度3” 在饼图等图表中有用，可以使这个名字显示在图例（legend）中。</span></span><br><span class="line">    itemName: <span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 直角坐标系（grid/cartesian）特有的属性：</span></span><br><span class="line">encode: &#123;</span><br><span class="line">    <span class="comment">// 把 “维度1”、“维度5”、“名为 score 的维度” 映射到 X 轴：</span></span><br><span class="line">    x: [<span class="number">1</span>, <span class="number">5</span>, <span class="string">'score'</span>],</span><br><span class="line">    <span class="comment">// 把“维度0”映射到 Y 轴。</span></span><br><span class="line">    y: <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 极坐标系（polar）特有的属性：</span></span><br><span class="line">encode: &#123;</span><br><span class="line">    radius: <span class="number">3</span>,</span><br><span class="line">    angle: <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 地理坐标系（geo）特有的属性：</span></span><br><span class="line">encode: &#123;</span><br><span class="line">    lng: <span class="number">3</span>,</span><br><span class="line">    lat: <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 对于一些没有坐标系的图表，例如饼图、漏斗图等，可以是：</span></span><br><span class="line">encode: &#123;</span><br><span class="line">    value: <span class="number">3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="视觉通道（颜色、尺寸等）的映射"><a href="#视觉通道（颜色、尺寸等）的映射" class="headerlink" title="视觉通道（颜色、尺寸等）的映射"></a>视觉通道（颜色、尺寸等）的映射</h2><h2 id="几个常见的映射设置方式"><a href="#几个常见的映射设置方式" class="headerlink" title="几个常见的映射设置方式"></a>几个常见的映射设置方式</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">问：如何把第三列设置为 X 轴，第五列设置为 Y 轴？</span><br><span class="line">答：</span><br><span class="line">series: &#123;</span><br><span class="line">    <span class="comment">// 注意维度序号（dimensionIndex）从 0 开始计数，第三列是 dimensions[2]。</span></span><br><span class="line">    encode: &#123;<span class="attr">x</span>: <span class="number">2</span>, <span class="attr">y</span>: <span class="number">4</span>&#125;,</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">问：如何把第三行设置为 X 轴，第五行设置为 Y 轴？</span><br><span class="line">答：</span><br><span class="line">series: &#123;</span><br><span class="line">    encode: &#123;<span class="attr">x</span>: <span class="number">2</span>, <span class="attr">y</span>: <span class="number">4</span>&#125;,</span><br><span class="line">    seriesLayoutBy: <span class="string">'row'</span>,</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">问：如何把第二列设置为标签？</span><br><span class="line">答： 关于标签的显示 label.formatter，现在支持引用特定维度的值，例如：</span><br><span class="line">series: &#123;</span><br><span class="line">    label: &#123;</span><br><span class="line">        <span class="comment">// `'&#123;@score&#125;'` 表示 “名为 score” 的维度里的值。</span></span><br><span class="line">        <span class="comment">// `'&#123;@[4]&#125;'` 表示引用序号为 4 的维度里的值。</span></span><br><span class="line">        formatter: <span class="string">'aaa&#123;@product&#125;bbb&#123;@score&#125;ccc&#123;@[4]&#125;ddd'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">问：如何让第 <span class="number">2</span> 列和第 <span class="number">3</span> 列显示在提示框（tooltip）中？</span><br><span class="line">答：</span><br><span class="line">series: &#123;</span><br><span class="line">    encode: &#123;</span><br><span class="line">        tooltip: [<span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line">        ...</span><br><span class="line">    &#125;,</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">问：数据里没有维度名，那么怎么给出维度名？</span><br><span class="line">答：</span><br><span class="line">dataset: &#123;</span><br><span class="line">    dimensions: [<span class="string">'score'</span>, <span class="string">'amount'</span>],</span><br><span class="line">    source: [</span><br><span class="line">        [<span class="number">89.3</span>, <span class="number">3371</span>],</span><br><span class="line">        [<span class="number">92.1</span>, <span class="number">8123</span>],</span><br><span class="line">        [<span class="number">94.4</span>, <span class="number">1954</span>],</span><br><span class="line">        [<span class="number">85.4</span>, <span class="number">829</span>]</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">问：如何把第三列映射为气泡图的点的大小？</span><br><span class="line">答：</span><br><span class="line"><span class="keyword">var</span> option = &#123;</span><br><span class="line">    dataset: &#123;</span><br><span class="line">        source: [</span><br><span class="line">            [<span class="number">12</span>, <span class="number">323</span>, <span class="number">11.2</span>],</span><br><span class="line">            [<span class="number">23</span>, <span class="number">167</span>, <span class="number">8.3</span>],</span><br><span class="line">            [<span class="number">81</span>, <span class="number">284</span>, <span class="number">12</span>],</span><br><span class="line">            [<span class="number">91</span>, <span class="number">413</span>, <span class="number">4.1</span>],</span><br><span class="line">            [<span class="number">13</span>, <span class="number">287</span>, <span class="number">13.5</span>]</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    visualMap: &#123;</span><br><span class="line">        show: <span class="literal">false</span>,</span><br><span class="line">        dimension: <span class="number">2</span>, <span class="comment">// 指向第三列（列序号从 0 开始记，所以设置为 2）。</span></span><br><span class="line">        min: <span class="number">2</span>, <span class="comment">// 需要给出数值范围，最小数值。</span></span><br><span class="line">        max: <span class="number">15</span>, <span class="comment">// 需要给出数值范围，最大数值。</span></span><br><span class="line">        inRange: &#123;</span><br><span class="line">            <span class="comment">// 气泡尺寸：5 像素到 60 像素。</span></span><br><span class="line">            symbolSize: [<span class="number">5</span>, <span class="number">60</span>]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    xAxis: &#123;&#125;,</span><br><span class="line">    yAxis: &#123;&#125;,</span><br><span class="line">    series: &#123;</span><br><span class="line">        type: <span class="string">'scatter'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">问：encode 里指定了映射，但是不管用？</span><br><span class="line">答：可以查查有没有拼错，比如，维度名是：<span class="string">'Life Expectancy'</span>，encode 中拼成了 <span class="string">'Life Expectency'</span>。</span><br></pre></td></tr></table></figure>
+<h2 id="多个-dataset-和他们的引用"><a href="#多个-dataset-和他们的引用" class="headerlink" title="多个 dataset 和他们的引用"></a>多个 dataset 和他们的引用</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 可以同时定义多个 dataset。系列可以通过 series.datasetIndex 来指定引用哪个 dataset。例如：</span></span><br><span class="line"><span class="keyword">var</span> option = &#123;</span><br><span class="line">    dataset: [&#123;</span><br><span class="line">        <span class="comment">// 序号为 0 的 dataset。</span></span><br><span class="line">        source: [...],</span><br><span class="line">    &#125;, &#123;</span><br><span class="line">        <span class="comment">// 序号为 1 的 dataset。</span></span><br><span class="line">        source: [...]</span><br><span class="line">    &#125;, &#123;</span><br><span class="line">        <span class="comment">// 序号为 2 的 dataset。</span></span><br><span class="line">        source: [...]</span><br><span class="line">    &#125;],</span><br><span class="line">    series: [&#123;</span><br><span class="line">        <span class="comment">// 使用序号为 2 的 dataset。</span></span><br><span class="line">        datasetIndex: <span class="number">2</span></span><br><span class="line">    &#125;, &#123;</span><br><span class="line">        <span class="comment">// 使用序号为 1 的 dataset。</span></span><br><span class="line">        datasetIndex: <span class="number">1</span></span><br><span class="line">    &#125;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="ECharts-3-的数据设置方式（series-data）仍正常使用"><a href="#ECharts-3-的数据设置方式（series-data）仍正常使用" class="headerlink" title="ECharts 3 的数据设置方式（series.data）仍正常使用"></a>ECharts 3 的数据设置方式（series.data）仍正常使用</h2><p>ECharts 4 之前一直以来的数据声明方式仍然被正常支持，如果系列已经声明了 series.data， 那么就会使用 series.data 而非 dataset。</p>
+<p>其实，series.data 也是种会一直存在的重要设置方式。一些特殊的非 table 格式的图表，如 treemap、graph、lines 等，现在仍不支持在 dataset 中设置，仍然需要使用 series.data。另外，对于巨大数据量的渲染（如百万以上的数据量），需要使用 appendData 进行增量加载，这种情况不支持使用 dataset。</p>
+<h2 id="tooltip-提示框组件"><a href="#tooltip-提示框组件" class="headerlink" title="tooltip 提示框组件"></a>tooltip 提示框组件</h2><p>提示框组件的通用介绍：<br>提示框组件可以设置在多种地方：<br>可以设置在全局，即 tooltip<br>可以设置在坐标系中，即 grid.tooltip、polar.tooltip、single.tooltip<br>可以设置在系列中，即 series.tooltip<br>可以设置在系列的每个数据项中，即 series.data.tooltip</p>
+<h2 id="visualMap-是视觉映射组件，用于进行『视觉编码』，也就是将数据映射到视觉元素（视觉通道）。"><a href="#visualMap-是视觉映射组件，用于进行『视觉编码』，也就是将数据映射到视觉元素（视觉通道）。" class="headerlink" title="visualMap 是视觉映射组件，用于进行『视觉编码』，也就是将数据映射到视觉元素（视觉通道）。"></a>visualMap 是视觉映射组件，用于进行『视觉编码』，也就是将数据映射到视觉元素（视觉通道）。</h2><p>视觉元素可以是：</p>
+<p>symbol: 图元的图形类别。<br>symbolSize: 图元的大小。<br>color: 图元的颜色。<br>colorAlpha: 图元的颜色的透明度。<br>opacity: 图元以及其附属物（如文字标签）的透明度。<br>colorLightness: 颜色的明暗度，参见 HSL。<br>colorSaturation: 颜色的饱和度，参见 HSL。<br>colorHue: 颜色的色调，参见 HSL。<br>visualMap 组件可以定义多个，从而可以同时对数据中的多个维度进行视觉映射。</p>
+<p>visualMap 组件可以定义为 分段型（visualMapPiecewise） 或 连续型（visualMapContinuous），通过 type 来区分。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/12/echarts2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-echarts" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -263,150 +350,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/05/11/swiper/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-zhengze" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/26/zhengze/">正则表达式</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/26/zhengze/" class="archive-article-date">
-  	<time datetime="2018-04-26T08:28:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="正则表达式修饰符"><a href="#正则表达式修饰符" class="headerlink" title="正则表达式修饰符"></a>正则表达式修饰符</h2><p>i    执行对大小写不敏感的匹配。<br>g    执行全局匹配（查找所有匹配而非在找到第一个匹配后停止）。<br>m    执行多行匹配。</p>
-<h2 id="正则表达式模式"><a href="#正则表达式模式" class="headerlink" title="正则表达式模式"></a>正则表达式模式</h2><p>[abc]    查找方括号之间的任何字符。<br>[^abc]    查找任何不在方括号之间的字符。<br>[0-9]    查找任何从 0 至 9 的数字。<br>[a-z]    查找任何从小写 a 到小写 z 的字符。<br>[A-Z]    查找任何从大写 A 到大写 Z 的字符。<br>[A-z]    查找任何从大写 A 到小写 z 的字符。<br>[adgk]    查找给定集合内的任何字符。<br>[^adgk]    查找给定集合外的任何字符。<br>(red|blue|green)    查找任何指定的选项。</p>
-<h2 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h2><p>\反斜杠本身用\表示<br>. 查找单个字符，除了换行和行结束符。\t.h 查找t和h中间的单个字符<br>\w 查找单词字符  单词字符包括：a-z、A-Z、0-9，以及下划线, 包含 _ (下划线) 字符。<br>\W 查找非单词字符<br>\d 查找数字<br>\D 查找非数字字符<br>\s 查找空白字符<br>\S 查找非空白字符<br>\b 匹配单词边界  \bapp匹配单词开头带app的’app’,app\b匹配单词结尾带app的’app’<br>\B 匹配非单词边界<br>\0 查找NULL字符<br>\n 查找换行符   返回换行符被找到的位置。如果未找到匹配，则返回 -1。<br>\f 查找换页符<br>\r 查找回车符<br>\t 查找制表符<br>\v 查找垂直制表符<br>\XXX 查找以八进制数xxx规定的字符<br>\xdd 查找以十六进制数dd规定的字符<br>\uxxxx 查找以十六进制数xxxx规定的Unicode字符</p>
-<h2 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h2><p>n+ 至少一个n<br>n* 0个或多个n<br>n? 0个或1个n<br>n{x} 匹配x个n的序列字符串<br>n{x,} 匹配至少x个n的序列字符串<br>n{x,y} 匹配连续出现少x个，至多y个的序列字符串<br>n$ 匹配任何结尾为n的字符串<br>^n 匹配任何开头为n的字符串<br>?=n 匹配任何其后紧跟字符串n的字符串<br>?!n 匹配任何其后没有紧接指定字符串n的字符串</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">^[a-zA-Z0-9_]&#123;1,&#125;$      // 所有包含一个以上的字母、数字或下划线的字符串 </span><br><span class="line">^[1-9][0-9]&#123;0,&#125;$        // 所有的正整数 </span><br><span class="line">^\-&#123;0,1&#125;[0-9]&#123;1,&#125;$      // 所有的整数 </span><br><span class="line">^[-]?[0-9]+\.?[0-9]+$   // 所有的浮点数</span><br><span class="line">最后一个例子不太好理解，是吗？这么看吧：以一个可选的负号 ([-]?) 开头 (^)、跟着1个或更多的数字([0-9]+)、和一个小数点(\.)再跟上1个或多个数字([0-9]+)，并且后面没有其他任何东西($)。下面你将知道能够使用的更为简单的方法。</span><br><span class="line"></span><br><span class="line">特殊字符 ? 与 &#123;0,1&#125; 是相等的，它们都代表着： 0个或1个前面的内容 或 前面的内容是可选的 。所以刚才的例子可以简化为：</span><br><span class="line">^\-?[0-9]&#123;1,&#125;\.?[0-9]&#123;1,&#125;$</span><br><span class="line"></span><br><span class="line">特殊字符 * 与 &#123;0,&#125; 是相等的，它们都代表着 0 个或多个前面的内容 。最后，字符 + 与 &#123;1,&#125; 是相等的，表示 1 个或多个前面的内容 ，所以上面的4个例子可以写成：</span><br><span class="line">^[a-zA-Z0-9_]+$      // 所有包含一个以上的字母、数字或下划线的字符串 </span><br><span class="line">^[1-9][0-9]*$        // 所有的正整数 </span><br><span class="line">^\-?[0-9]+$          // 所有的整数 </span><br><span class="line">^\-?[0-9]+\.?[0-9]*$ // 所有的浮点数</span><br></pre></td></tr></table></figure>
-<h2 id="正则表达式-运算符优先级"><a href="#正则表达式-运算符优先级" class="headerlink" title="正则表达式 - 运算符优先级"></a>正则表达式 - 运算符优先级</h2><ul>
-<li>\                            转义符</li>
-<li>(), (?:), (?=), []        圆括号和方括号</li>
-<li>*, +, ?, {n}, {n,}, {n,m}    限定符</li>
-<li>^, $, \任何元字符、任何字符    定位点和序列（即：位置和顺序）</li>
-<li>|                            替换，”或”操作,字符具有高于替换运算符的优先级，使得”m|food”匹配”m”或”food”。若要匹配”mood”或”food”，请使用括号创建子表达式，从而产生”(m|f)ood”。</li>
-</ul>
-<h2 id="正则表达式对象使用的方法"><a href="#正则表达式对象使用的方法" class="headerlink" title="正则表达式对象使用的方法"></a>正则表达式对象使用的方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// i是ignorecase的缩写</span></span><br><span class="line">	<span class="keyword">var</span> exp1 = <span class="regexp">/hell/i</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// test()方法是检索字符串中指定的值，返回值为true或false</span></span><br><span class="line">	<span class="built_in">console</span>.log(exp1.test(<span class="string">'Hello world'</span>));</span><br><span class="line">	<span class="comment">// exec()方法检索字符串中指定的值，返回找到的值，并确定其位置。</span></span><br><span class="line">	<span class="keyword">var</span> app = exp1.exec(<span class="string">'Hello world'</span>)</span><br><span class="line">	<span class="built_in">console</span>.log(app);</span><br></pre></td></tr></table></figure>
-<h2 id="字符串对象中使用正则的方法"><a href="#字符串对象中使用正则的方法" class="headerlink" title="字符串对象中使用正则的方法"></a>字符串对象中使用正则的方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">'HellO world'</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// split()</span></span><br><span class="line">	<span class="built_in">console</span>.log(str.split(<span class="string">'o'</span>));</span><br><span class="line">	<span class="built_in">console</span>.log(str.split(<span class="regexp">/o/i</span>));</span><br><span class="line"></span><br><span class="line">	<span class="comment">// match()</span></span><br><span class="line">	<span class="built_in">console</span>.log(str.match(<span class="string">'ll'</span>));</span><br><span class="line">	<span class="built_in">console</span>.log(str.match(<span class="regexp">/o/ig</span>));</span><br><span class="line"></span><br><span class="line">	<span class="comment">// search()</span></span><br><span class="line">	<span class="comment">// 该方法会忽略标志 g</span></span><br><span class="line"></span><br><span class="line">	<span class="built_in">console</span>.log(str.search(<span class="string">'l'</span>)); <span class="comment">// 2</span></span><br><span class="line">	<span class="built_in">console</span>.log(str.search(<span class="regexp">/l/g</span>)); <span class="comment">// 2 </span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// replace()</span></span><br><span class="line">	<span class="comment">// 替换字符串中指定的字串</span></span><br><span class="line">	<span class="built_in">console</span>.log(str.replace(<span class="string">'l'</span>, <span class="string">'i'</span>));</span><br><span class="line">	<span class="built_in">console</span>.log(str.replace(<span class="regexp">/l/g</span>, <span class="string">'H'</span>));</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// console.log(str);</span></span><br></pre></td></tr></table></figure>
-<h2 id="一、校验数字的表达式"><a href="#一、校验数字的表达式" class="headerlink" title="一、校验数字的表达式"></a>一、校验数字的表达式</h2><ul>
-<li>数字：^[0-9]*$</li>
-<li>n位的数字：^\d{n}$</li>
-<li>至少n位的数字：^\d{n,}$</li>
-<li>m-n位的数字：^\d{m,n}$</li>
-<li>零和非零开头的数字：^(0|[1-9][0-9]*)$</li>
-<li>非零开头的最多带两位小数的数字：^([1-9][0-9]*)+(.[0-9]{1,2})?$</li>
-<li>带1-2位小数的正数或负数：^(-)?\d+(.\d{1,2})$</li>
-<li>正数、负数、和小数：^(-|+)?\d+(.\d+)?$</li>
-<li>有两位小数的正实数：^[0-9]+(.[0-9]{2})?$</li>
-<li>有1~3位小数的正实数：^[0-9]+(.[0-9]{1,3})?$</li>
-<li>非零的正整数：^[1-9]\d<em>$ 或 ^([1-9][0-9]</em>){1,3}$ 或 ^+?[1-9][0-9]*$</li>
-<li>非零的负整数：^-[1-9][]0-9”<em>$ 或 ^-[1-9]\d</em>$</li>
-<li>非负整数：^\d+$ 或 ^[1-9]\d*|0$</li>
-<li>非正整数：^-[1-9]\d*|0$ 或 ^((-\d+)|(0+))$</li>
-<li>非负浮点数：^\d+(.\d+)?$ 或 ^[1-9]\d<em>.\d</em>|0.\d<em>[1-9]\d</em>|0?.0+|0$</li>
-<li>非正浮点数：^((-\d+(.\d+)?)|(0+(.0+)?))$ 或 ^(-([1-9]\d<em>.\d</em>|0.\d<em>[1-9]\d</em>))|0?.0+|0$</li>
-<li>正浮点数：^[1-9]\d<em>.\d</em>|0.\d<em>[1-9]\d</em>$ 或 ^(([0-9]+.[0-9]<em>[1-9][0-9]</em>)|([0-9]<em>[1-9][0-9]</em>.[0-9]+)|([0-9]<em>[1-9][0-9]</em>))$</li>
-<li>负浮点数：^-([1-9]\d<em>.\d</em>|0.\d<em>[1-9]\d</em>)$ 或 ^(-(([0-9]+.[0-9]<em>[1-9][0-9]</em>)|([0-9]<em>[1-9][0-9]</em>.[0-9]+)|([0-9]<em>[1-9][0-9]</em>)))$</li>
-<li>浮点数：^(-?\d+)(.\d+)?$ 或 ^-?([1-9]\d<em>.\d</em>|0.\d<em>[1-9]\d</em>|0?.0+|0)$<h2 id="二、校验字符的表达式"><a href="#二、校验字符的表达式" class="headerlink" title="二、校验字符的表达式"></a>二、校验字符的表达式</h2></li>
-<li>汉字：^[\u4e00-\u9fa5]{0,}$</li>
-<li>英文和数字：^[A-Za-z0-9]+$ 或 ^[A-Za-z0-9]{4,40}$</li>
-<li>长度为3-20的所有字符：^.{3,20}$</li>
-<li>由26个英文字母组成的字符串：^[A-Za-z]+$</li>
-<li>由26个大写英文字母组成的字符串：^[A-Z]+$</li>
-<li>由26个小写英文字母组成的字符串：^[a-z]+$</li>
-<li>由数字和26个英文字母组成的字符串：^[A-Za-z0-9]+$</li>
-<li>由数字、26个英文字母或者下划线组成的字符串：^\w+$ 或 ^\w{3,20}$</li>
-<li>中文、英文、数字包括下划线：^[\u4E00-\u9FA5A-Za-z0-9_]+$</li>
-<li>中文、英文、数字但不包括下划线等符号：^[\u4E00-\u9FA5A-Za-z0-9]+$ 或 ^[\u4E00-\u9FA5A-Za-z0-9]{2,20}$</li>
-<li>可以输入含有^%&amp;’,;=?$\”等字符：[^%&amp;’,;=?$\x22]+</li>
-<li>禁止输入含有~的字符：[^~\x22]+<h2 id="三、特殊需求表达式"><a href="#三、特殊需求表达式" class="headerlink" title="三、特殊需求表达式"></a>三、特殊需求表达式</h2></li>
-<li>Email地址：^\w+([-+.]\w+)<em>@\w+([-.]\w+)</em>.\w+([-.]\w+)*$</li>
-<li>域名：[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(/.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+/.?</li>
-<li>InternetURL：[a-zA-z]+://[^\s]<em> 或 ^http://([\w-]+.)+[\w-]+(/[\w-./?%&amp;=]</em>)?$</li>
-<li>手机号码：^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$</li>
-<li>电话号码(“XXX-XXXXXXX”、”XXXX-XXXXXXXX”、”XXX-XXXXXXX”、”XXX-XXXXXXXX”、”XXXXXXX”和”XXXXXXXX)：^((\d{3,4}-)|\d{3.4}-)?\d{7,8}$</li>
-<li>国内电话号码(0511-4405222、021-87888822)：\d{3}-\d{8}|\d{4}-\d{7}</li>
-<li>电话号码正则表达式（支持手机号码，3-4位区号，7-8位直播号码，1－4位分机号）: ((\d{11})|^((\d{7,8})|(\d{4}|\d{3})-(\d{7,8})|(\d{4}|\d{3})-(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1})|(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1}))$)</li>
-<li>身份证号(15位、18位数字)，最后一位是校验位，可能为数字或字符X：(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)</li>
-<li>帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)：^[a-zA-Z][a-zA-Z0-9_]{4,15}$</li>
-<li>密码(以字母开头，长度在6~18之间，只能包含字母、数字和下划线)：^[a-zA-Z]\w{5,17}$</li>
-<li>强密码(必须包含大小写字母和数字的组合，不能使用特殊字符，长度在 8-10 之间)：^(?=.<em>\d)(?=.</em>[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,10}$</li>
-<li>强密码(必须包含大小写字母和数字的组合，可以使用特殊字符，长度在8-10之间)：^(?=.<em>\d)(?=.</em>[a-z])(?=.*[A-Z]).{8,10}$</li>
-<li>日期格式：^\d{4}-\d{1,2}-\d{1,2}</li>
-<li>一年的12个月(01～09和1～12)：^(0?[1-9]|1[0-2])$</li>
-<li>一个月的31天(01～09和1～31)：^((0?[1-9])|((1|2)[0-9])|30|31)$</li>
-<li>钱的输入格式：<ul>
-<li>有四种钱的表示形式我们可以接受:”10000.00” 和 “10,000.00”, 和没有 “分” 的 “10000” 和 “10,000”：^[1-9][0-9]*$</li>
-<li>这表示任意一个不以0开头的数字,但是,这也意味着一个字符”0”不通过,所以我们采用下面的形式：^(0|[1-9][0-9]*)$</li>
-<li>一个0或者一个不以0开头的数字.我们还可以允许开头有一个负号：^(0|-?[1-9][0-9]*)$</li>
-<li>这表示一个0或者一个可能为负的开头不为0的数字.让用户以0开头好了.把负号的也去掉,因为钱总不能是负的吧。下面我们要加的是说明可能的小数部分：^[0-9]+(.[0-9]+)?$</li>
-<li>必须说明的是,小数点后面至少应该有1位数,所以”10.”是不通过的,但是 “10” 和 “10.2” 是通过的：^[0-9]+(.[0-9]{2})?$</li>
-<li>这样我们规定小数点后面必须有两位,如果你认为太苛刻了,可以这样：^[0-9]+(.[0-9]{1,2})?$</li>
-<li>这样就允许用户只写一位小数.下面我们该考虑数字中的逗号了,我们可以这样：^[0-9]{1,3}(,[0-9]{3})*(.[0-9]{1,2})?$</li>
-<li>1到3个数字,后面跟着任意个 逗号+3个数字,逗号成为可选,而不是必须：^([0-9]+|[0-9]{1,3}(,[0-9]{3})*)(.[0-9]{1,2})?$</li>
-<li>备注：这就是最终结果了,别忘了”+”可以用”*”替代如果你觉得空字符串也可以接受的话(奇怪,为什么?)最后,别忘了在用函数时去掉去掉那个反斜杠,一般的错误都在这里</li>
-</ul>
-</li>
-<li>xml文件：^([a-zA-Z]+-?)+[a-zA-Z0-9]+\.[x|X][m|M][l|L]$</li>
-<li>中文字符的正则表达式：[\u4e00-\u9fa5]</li>
-<li>双字节字符：[^\x00-\xff] (包括汉字在内，可以用来计算字符串的长度(一个双字节字符长度计2，ASCII字符计1))</li>
-<li>空白行的正则表达式：\n\s*\r (可以用来删除空白行)</li>
-<li>HTML标记的正则表达式：&lt;(\S<em>?)[^&gt;]</em>&gt;.<em>?|&lt;.</em>? /&gt; ( 首尾空白字符的正则表达式：^\s<em>|\s</em>$或(^\s<em>)|(\s</em>$) (可以用来删除行首行尾的空白字符(包括空格、制表符、换页符等等)，非常有用的表达式)</li>
-<li>腾讯QQ号：[1-9][0-9]{4,} (腾讯QQ号从10000开始)</li>
-<li>中国邮政编码：[1-9]\d{5}(?!\d) (中国邮政编码为6位数字)</li>
-<li>IP地址：((?:(?:25[0-5]|2[0-4]\d|[01]?\d?\d)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d?\d))</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/26/zhengze/">展开全文 >></a>
         </p>
       
 
@@ -545,11 +488,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -164,6 +164,76 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-nginx" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/31/nginx/">nginx</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/31/nginx/" class="archive-article-date">
+  	<time datetime="2017-05-31T04:28:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Nginx-常用命令"><a href="#Nginx-常用命令" class="headerlink" title="Nginx 常用命令"></a>Nginx 常用命令</h2><h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> 启动代码格式：nginx安装目录地址 -c nginx配置文件地址</span><br><span class="line">例如：</span><br><span class="line">[root@LinuxServer sbin]# /usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf</span><br></pre></td></tr></table></figure>
+<h4 id="停止操作"><a href="#停止操作" class="headerlink" title="停止操作"></a>停止操作</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">步骤<span class="number">1</span>：查询nginx主进程号</span><br><span class="line">ps -ef | grep nginx</span><br><span class="line">步骤<span class="number">2</span>：发送信号</span><br><span class="line">从容停止Nginx：</span><br><span class="line">kill -QUIT 主进程号</span><br><span class="line">快速停止Nginx：</span><br><span class="line">kill -TERM 主进程号</span><br><span class="line">强制停止Nginx： </span><br><span class="line">pkill <span class="number">-9</span> nginx</span><br><span class="line">另外， 若在nginx.conf配置了pid文件存放路径则该文件存放的就是Nginx主进程号，如果没指定则放在nginx的logs目录下。有了pid文 件，我们就不用先查询Nginx的主进程号，而直接向Nginx发送信号了，命令如下：</span><br><span class="line">kill -信号类型 <span class="string">'/usr/nginx/logs/nginx.pid'</span> （推荐）</span><br><span class="line"></span><br><span class="line">平滑重启</span><br><span class="line">如果更改了配置就要重启Nginx，要先关闭Nginx再打开？不是的，可以向Nginx 发送信号，平滑重启。</span><br><span class="line">平滑重启命令：</span><br><span class="line">kill -HUP 主进称号或进程号文件路径</span><br><span class="line">或者使用 nginx -s reload（推荐） </span><br><span class="line">或/usr/nginx/sbin/nginx -s reload</span><br><span class="line"></span><br><span class="line">注意，修改了配置文件后最好先检查一下修改过的配置文件是否正确，以免重启后Nginx出现错误影响服务器稳定运行。判断Nginx配置是否正确命令如下：</span><br><span class="line">nginx -t -c /usr/nginx/conf/nginx.conf</span><br><span class="line">或者</span><br><span class="line">nginx -t （推荐）</span><br><span class="line">或</span><br><span class="line">/usr/nginx/sbin/nginx -t</span><br></pre></td></tr></table></figure>
+<h4 id="重启"><a href="#重启" class="headerlink" title="重启"></a>重启</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、验证nginx配置文件是否正确</span><br><span class="line">方法一：进入nginx安装目录sbin下，输入命令./nginx -t</span><br><span class="line">显示nginx.conf syntax is ok</span><br><span class="line">nginx.conf test is successful说明配置文件正确！</span><br><span class="line">方法二：在启动命令-c前加-t</span><br><span class="line">/usr/local/nginx/sbin/nginx -t -c /usr/local/nginx/conf/nginx.conf</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>、重启Nginx服务</span><br><span class="line">方法一：进入nginx可执行目录sbin下，输入命令./nginx -s reload 即可</span><br><span class="line">方法二：目录sbin下输入： ps -ef | grep nginx 查找当前nginx进程号，然后输入命令：kill -HUP 进程号，再实现重启nginx服务</span><br></pre></td></tr></table></figure>
+<h4 id="nginx的解压安装"><a href="#nginx的解压安装" class="headerlink" title="nginx的解压安装"></a>nginx的解压安装</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">　　#tar xzvf nginx-1.6.0.tar.gz</span><br><span class="line">　　#cd nginx-1.6.0</span><br><span class="line">　　#./configure    --prefix=/home/weixin/local/nginx   //指定nginx的安装目录</span><br><span class="line">                --<span class="keyword">with</span>-http_stub_status_module    <span class="comment">//使ngx_stub_status_modul  模块可用</span></span><br><span class="line">                --<span class="keyword">with</span>-http_ssl_module    <span class="comment">//使用https协议模块</span></span><br><span class="line">                --<span class="keyword">with</span>-openssl=<span class="regexp">/home/</span>weixin/local/openssl<span class="number">-1.0</span><span class="number">.1</span>h        <span class="comment">//读取openssl库的源码路径</span></span><br><span class="line">                --<span class="keyword">with</span>-pcre=<span class="regexp">/home/</span>weixin/local/pcre<span class="number">-8.34</span>    <span class="comment">//读取pcre库的源码路径</span></span><br><span class="line">                --user=weixin    <span class="comment">//设置nginx工作进程的用户</span></span><br><span class="line">                --group=wx     <span class="comment">//设置nginx的工作进程的用户组</span></span><br><span class="line"> #make</span><br><span class="line">#make install</span><br></pre></td></tr></table></figure>
+<h2 id="Nginx设置404页面"><a href="#Nginx设置404页面" class="headerlink" title="Nginx设置404页面"></a>Nginx设置404页面</h2><p>Nginx访问一个静态的html 页面，当这个页面没有的时候，Nginx抛出404，那么如何返回给客户端404呢？<br>看下面的配置，这种情况下不需要修改任何参数，就能实现这个功能。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen      <span class="number">80</span>;</span><br><span class="line">    server_name  www.test.com;</span><br><span class="line">    root   /<span class="keyword">var</span>/www/test;</span><br><span class="line">    index  index.html index.htm;</span><br><span class="line">    location / &#123;</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    # 定义错误页面码，如果出现相应的错误页面码，转发到那里。</span><br><span class="line">    error_page  <span class="number">404</span> <span class="number">403</span> <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span>  /<span class="number">404.</span>html;</span><br><span class="line">    # 承接上面的location。</span><br><span class="line">    location = <span class="regexp">/404.html &#123;</span></span><br><span class="line"><span class="regexp">    # 放错误页面的目录路径。</span></span><br><span class="line"><span class="regexp">    root   /u</span>sr/share/nginx/html;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Nginx设置301永久重定向"><a href="#Nginx设置301永久重定向" class="headerlink" title="Nginx设置301永久重定向"></a>Nginx设置301永久重定向</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       <span class="number">80</span>;</span><br><span class="line">    server_name  baiguinfo.com www.baiguinfo.com;</span><br><span class="line">    <span class="keyword">if</span> ($host != <span class="string">'baiguinfo.com'</span> ) &#123;</span><br><span class="line">    rewrite ^<span class="regexp">/(.*)$ http:/</span><span class="regexp">/baiguinfo.com/</span>$<span class="number">1</span> permanent;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>tomcat 与 nginx，apache 的区别是什么<br><a href="https://www.zhihu.com/question/32212996/answer/87524617" target="_blank" rel="noopener">https://www.zhihu.com/question/32212996/answer/87524617</a></p>
+<p>Linux下Nginx+Tomcat整合的安装与配置<br><a href="https://www.aliyun.com/jiaocheng/529315.html" target="_blank" rel="noopener">https://www.aliyun.com/jiaocheng/529315.html</a><br>Linux中Nginx安装与配置详解<br><a href="https://www.aliyun.com/jiaocheng/135333.html" target="_blank" rel="noopener">https://www.aliyun.com/jiaocheng/135333.html</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/31/nginx/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-hexo-a" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -521,11 +591,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">

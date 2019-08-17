@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018/11 | DJM的博客</title>
+  <title>js常用小技巧 | DJM的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="DJM的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2018/11/index.html">
+  <meta name="description" content="生成随机UID1234567891011const genUid = () =&amp;gt; &amp;#123;  var length = 20  var soupLength = genUid.soup_.length  var id = []  for (var i = 0; i &amp;lt; length; i++) &amp;#123;    id[i] = genUid.soup_.charAt(Math.r">
+<meta name="keywords" content="js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js常用小技巧">
+<meta property="og:url" content="http://yoursite.com/2018/07/23/js_obj3/index.html">
 <meta property="og:site_name" content="DJM的博客">
+<meta property="og:description" content="生成随机UID1234567891011const genUid = () =&amp;gt; &amp;#123;  var length = 20  var soupLength = genUid.soup_.length  var id = []  for (var i = 0; i &amp;lt; length; i++) &amp;#123;    id[i] = genUid.soup_.charAt(Math.r">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-17T02:27:46.956Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DJM的博客">
+<meta name="twitter:title" content="js常用小技巧">
+<meta name="twitter:description" content="生成随机UID1234567891011const genUid = () =&amp;gt; &amp;#123;  var length = 20  var soupLength = genUid.soup_.length  var id = []  for (var i = 0; i &amp;lt; length; i++) &amp;#123;    id[i] = genUid.soup_.charAt(Math.r">
   
     <link rel="alternative" href="/atom.xml" title="DJM的博客" type="application/atom+xml">
   
@@ -162,49 +167,204 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-js_obj3" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/25/website/" class="archive-article-date">
-  	<time datetime="2018-11-25T07:23:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-25</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/25/website/">前端常用网站</a>
+    <h1 class="article-title" itemprop="name">
+      js常用小技巧
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
+        
+        <a href="/2018/07/23/js_obj3/" class="archive-article-date">
+  	<time datetime="2018-07-23T05:39:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="生成随机UID"><a href="#生成随机UID" class="headerlink" title="生成随机UID"></a>生成随机UID</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> genUid = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">var</span> length = <span class="number">20</span></span><br><span class="line">  <span class="keyword">var</span> soupLength = genUid.soup_.length</span><br><span class="line">  <span class="keyword">var</span> id = []</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">    id[i] = genUid.soup_.charAt(<span class="built_in">Math</span>.random() * soupLength)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> id.join(<span class="string">''</span>)</span><br><span class="line">&#125;</span><br><span class="line">genUid.soup_ = <span class="string">'!#$%()*+,-./:;=?@[]^_`&#123;|&#125;~ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'</span></span><br><span class="line">genUid() <span class="comment">// ;l`yCPc9A8IuK&#125;?N6,%&#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="无loop生成指定长度的数组"><a href="#无loop生成指定长度的数组" class="headerlink" title="无loop生成指定长度的数组"></a>无loop生成指定长度的数组</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> List = <span class="function"><span class="params">len</span> =&gt;</span> [...new <span class="built_in">Array</span>(len).keys()]</span><br><span class="line"><span class="keyword">const</span> list = List(<span class="number">10</span>) <span class="comment">// [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span></span><br></pre></td></tr></table></figure>
+<h2 id="一行代码去重数组"><a href="#一行代码去重数组" class="headerlink" title="一行代码去重数组"></a>一行代码去重数组</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> list = [<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">45</span>, <span class="number">8</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">5</span>]</span><br><span class="line"><span class="keyword">const</span> uniqueList = [...new <span class="built_in">Set</span>(list)] <span class="comment">// [1, 2, 3, 6, 45, 8, 5, 4]</span></span><br></pre></td></tr></table></figure>
+<h2 id="RGB色值生成16进制色值"><a href="#RGB色值生成16进制色值" class="headerlink" title="RGB色值生成16进制色值"></a>RGB色值生成16进制色值</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> rgb2Hex = <span class="function">(<span class="params">r, g, b</span>) =&gt;</span> &#123;</span><br><span class="line">    r = <span class="built_in">Math</span>.max(<span class="built_in">Math</span>.min(<span class="built_in">Number</span>(r), <span class="number">100</span>), <span class="number">0</span>) * <span class="number">2.55</span></span><br><span class="line">    g = <span class="built_in">Math</span>.max(<span class="built_in">Math</span>.min(<span class="built_in">Number</span>(g), <span class="number">100</span>), <span class="number">0</span>) * <span class="number">2.55</span></span><br><span class="line">    b = <span class="built_in">Math</span>.max(<span class="built_in">Math</span>.min(<span class="built_in">Number</span>(b), <span class="number">100</span>), <span class="number">0</span>) * <span class="number">2.55</span></span><br><span class="line">    r = (<span class="string">'0'</span> + (<span class="built_in">Math</span>.round(r) || <span class="number">0</span>).toString(<span class="number">16</span>)).slice(<span class="number">-2</span>)</span><br><span class="line">    g = (<span class="string">'0'</span> + (<span class="built_in">Math</span>.round(g) || <span class="number">0</span>).toString(<span class="number">16</span>)).slice(<span class="number">-2</span>)</span><br><span class="line">    b = (<span class="string">'0'</span> + (<span class="built_in">Math</span>.round(b) || <span class="number">0</span>).toString(<span class="number">16</span>)).slice(<span class="number">-2</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'#'</span> + r + g + b</span><br><span class="line">&#125;</span><br><span class="line">rgb2Hex(<span class="number">100</span>, <span class="number">50</span>, <span class="number">0</span>) <span class="comment">// "#ff7f00"</span></span><br></pre></td></tr></table></figure>
+<h2 id="颜色混合"><a href="#颜色混合" class="headerlink" title="颜色混合"></a>颜色混合</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> colourBlend = <span class="function">(<span class="params">c1, c2, ratio</span>) =&gt;</span> &#123;</span><br><span class="line">    ratio = <span class="built_in">Math</span>.max(<span class="built_in">Math</span>.min(<span class="built_in">Number</span>(ratio), <span class="number">1</span>), <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">let</span> r1 = <span class="built_in">parseInt</span>(c1.substring(<span class="number">1</span>, <span class="number">3</span>), <span class="number">16</span>)</span><br><span class="line">    <span class="keyword">let</span> g1 = <span class="built_in">parseInt</span>(c1.substring(<span class="number">3</span>, <span class="number">5</span>), <span class="number">16</span>)</span><br><span class="line">    <span class="keyword">let</span> b1 = <span class="built_in">parseInt</span>(c1.substring(<span class="number">5</span>, <span class="number">7</span>), <span class="number">16</span>)</span><br><span class="line">    <span class="keyword">let</span> r2 = <span class="built_in">parseInt</span>(c2.substring(<span class="number">1</span>, <span class="number">3</span>), <span class="number">16</span>)</span><br><span class="line">    <span class="keyword">let</span> g2 = <span class="built_in">parseInt</span>(c2.substring(<span class="number">3</span>, <span class="number">5</span>), <span class="number">16</span>)</span><br><span class="line">    <span class="keyword">let</span> b2 = <span class="built_in">parseInt</span>(c2.substring(<span class="number">5</span>, <span class="number">7</span>), <span class="number">16</span>)</span><br><span class="line">    <span class="keyword">let</span> r = <span class="built_in">Math</span>.round(r1 * (<span class="number">1</span> - ratio) + r2 * ratio)</span><br><span class="line">    <span class="keyword">let</span> g = <span class="built_in">Math</span>.round(g1 * (<span class="number">1</span> - ratio) + g2 * ratio)</span><br><span class="line">    <span class="keyword">let</span> b = <span class="built_in">Math</span>.round(b1 * (<span class="number">1</span> - ratio) + b2 * ratio)</span><br><span class="line">    r = (<span class="string">'0'</span> + (r || <span class="number">0</span>).toString(<span class="number">16</span>)).slice(<span class="number">-2</span>)</span><br><span class="line">    g = (<span class="string">'0'</span> + (g || <span class="number">0</span>).toString(<span class="number">16</span>)).slice(<span class="number">-2</span>)</span><br><span class="line">    b = (<span class="string">'0'</span> + (b || <span class="number">0</span>).toString(<span class="number">16</span>)).slice(<span class="number">-2</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'#'</span> + r + g + b</span><br><span class="line">&#125;</span><br><span class="line">colourBlend(<span class="string">'#ff0000'</span>, <span class="string">'#3333ff'</span>, <span class="number">0.5</span>) <span class="comment">// "#991a80"</span></span><br></pre></td></tr></table></figure>
+<h2 id="判断是否为质数"><a href="#判断是否为质数" class="headerlink" title="判断是否为质数"></a>判断是否为质数</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mathIsPrime = <span class="function"><span class="params">n</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (n === <span class="number">2</span> || n === <span class="number">3</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">isNaN</span>(n) || n &lt;= <span class="number">1</span> || n % <span class="number">1</span> != <span class="number">0</span> || n % <span class="number">2</span> == <span class="number">0</span> || n % <span class="number">3</span> == <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> x = <span class="number">6</span>; x &lt;= <span class="built_in">Math</span>.sqrt(n) + <span class="number">1</span>; x += <span class="number">6</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (n % (x - <span class="number">1</span>) == <span class="number">0</span> || n % (x + <span class="number">1</span>) == <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line">mathIsPrime(<span class="number">0</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h2 id="遍历类数组对象"><a href="#遍历类数组对象" class="headerlink" title="遍历类数组对象"></a>遍历类数组对象</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> elements = <span class="built_in">document</span>.querySelectorAll(selector);</span><br><span class="line">[].prototype.forEach.call(elements, (el, idx, list) =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(el) <span class="comment">// 元素节点</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="判断对象类型"><a href="#判断对象类型" class="headerlink" title="判断对象类型"></a>判断对象类型</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> type = <span class="function"><span class="params">data</span> =&gt;</span> <span class="built_in">Object</span>.prototype.toString.call(data).replace(<span class="regexp">/^\[object (.+)\]$/</span>, <span class="string">'$1'</span>).toLowerCase()</span><br><span class="line">type(&#123;&#125;) <span class="comment">// object</span></span><br></pre></td></tr></table></figure>
+<h2 id="优化多层判断条件"><a href="#优化多层判断条件" class="headerlink" title="优化多层判断条件"></a>优化多层判断条件</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getScore = <span class="function"><span class="params">score</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> scoreData = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">101</span>).fill(<span class="number">0</span>)</span><br><span class="line">    .map(<span class="function">(<span class="params">data, idx</span>) =&gt;</span> ([idx, () =&gt; (idx &lt; <span class="number">60</span> ? <span class="string">'不及格'</span> : <span class="string">'及格'</span>)]))</span><br><span class="line">    <span class="keyword">const</span> scoreMap = <span class="keyword">new</span> <span class="built_in">Map</span>(scoreData)</span><br><span class="line">    <span class="keyword">return</span> (scoreMap.get(score) </span><br><span class="line">          ? scoreMap.get(score)() </span><br><span class="line">          : <span class="string">'未知分数'</span>)</span><br><span class="line">&#125;</span><br><span class="line">getScore(<span class="number">30</span>) <span class="comment">// 不及格</span></span><br></pre></td></tr></table></figure>
+<h2 id="时间格式化"><a href="#时间格式化" class="headerlink" title="时间格式化"></a>时间格式化</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> dateFormatter = <span class="function">(<span class="params">formatter, date</span>) =&gt;</span> &#123;</span><br><span class="line">    date = (date ? <span class="keyword">new</span> <span class="built_in">Date</span>(date) : <span class="keyword">new</span> <span class="built_in">Date</span>)</span><br><span class="line">    <span class="keyword">const</span> Y = date.getFullYear() + <span class="string">''</span>,</span><br><span class="line">          M = date.getMonth() + <span class="number">1</span>,</span><br><span class="line">          D = date.getDate(),</span><br><span class="line">          H = date.getHours(),</span><br><span class="line">          m = date.getMinutes(),</span><br><span class="line">          s = date.getSeconds()</span><br><span class="line">    <span class="keyword">return</span> formatter.replace(<span class="regexp">/YYYY|yyyy/g</span>, Y)</span><br><span class="line">                    .replace(<span class="regexp">/YY|yy/g</span>, Y.substr(<span class="number">2</span>, <span class="number">2</span>))</span><br><span class="line">                    .replace(<span class="regexp">/MM/g</span>, (M &lt; <span class="number">10</span> ? <span class="string">'0'</span> : <span class="string">''</span>) + M)</span><br><span class="line">                    .replace(<span class="regexp">/DD/g</span>, (D &lt; <span class="number">10</span> ? <span class="string">'0'</span> : <span class="string">''</span>) + D)</span><br><span class="line">                    .replace(<span class="regexp">/HH|hh/g</span>, (H &lt; <span class="number">10</span> ? <span class="string">'0'</span> : <span class="string">''</span>) + H)</span><br><span class="line">                    .replace(<span class="regexp">/mm/g</span>, (m &lt; <span class="number">10</span> ? <span class="string">'0'</span> : <span class="string">''</span>) + m)</span><br><span class="line">                    .replace(<span class="regexp">/ss/g</span>, (s &lt; <span class="number">10</span> ? <span class="string">'0'</span> : <span class="string">''</span>) + s)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dateFormatter(<span class="string">'YYYY-MM-DD HH:mm'</span>, <span class="string">'1995/02/15 13:55'</span>) <span class="comment">// 1995-02-15 13:55</span></span><br></pre></td></tr></table></figure>
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>Thank you!<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/23/js_obj3/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/07/23/jQuery/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          jQuery
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2018/07/23/js_obj2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">导出报表、url传参</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="js_obj3" data-title="js常用小技巧" data-url="http://yoursite.com/2018/07/23/js_obj3/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -227,8 +387,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

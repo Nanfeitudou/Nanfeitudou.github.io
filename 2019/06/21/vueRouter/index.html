@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: -ES6 | DJM的博客</title>
+  <title>vue 优化 | DJM的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="DJM的博客">
-<meta property="og:url" content="http://yoursite.com/tags/ES6/index.html">
+  <meta name="description" content="router123456789101112131415161718192021// 在当前页面刷新页面，切换菜单。监听不到路由改变？// 监听,当路由发生变化的时候执行watch: &amp;#123;  $route: &amp;#123;    handler: function(val, oldVal)&amp;#123;      console.log(val);    &amp;#125;,    // 深度观察监听">
+<meta name="keywords" content="vue.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue 优化">
+<meta property="og:url" content="http://yoursite.com/2019/06/21/vueRouter/index.html">
 <meta property="og:site_name" content="DJM的博客">
+<meta property="og:description" content="router123456789101112131415161718192021// 在当前页面刷新页面，切换菜单。监听不到路由改变？// 监听,当路由发生变化的时候执行watch: &amp;#123;  $route: &amp;#123;    handler: function(val, oldVal)&amp;#123;      console.log(val);    &amp;#125;,    // 深度观察监听">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-12-12T16:13:44.076Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DJM的博客">
+<meta name="twitter:title" content="vue 优化">
+<meta name="twitter:description" content="router123456789101112131415161718192021// 在当前页面刷新页面，切换菜单。监听不到路由改变？// 监听,当路由发生变化的时候执行watch: &amp;#123;  $route: &amp;#123;    handler: function(val, oldVal)&amp;#123;      console.log(val);    &amp;#125;,    // 深度观察监听">
   
     <link rel="alternative" href="/atom.xml" title="DJM的博客" type="application/atom+xml">
   
@@ -162,60 +167,211 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-vueRouter" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/08/es6-a/" class="archive-article-date">
-  	<time datetime="2018-02-08T07:51:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-08</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/08/es6-a/">ES6</a>
+    <h1 class="article-title" itemprop="name">
+      vue 优化
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/06/21/vueRouter/" class="archive-article-date">
+  	<time datetime="2019-06-21T13:21:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="router"><a href="#router" class="headerlink" title="router"></a>router</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在当前页面刷新页面，切换菜单。监听不到路由改变？</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 监听,当路由发生变化的时候执行</span></span><br><span class="line">watch: &#123;</span><br><span class="line">  $route: &#123;</span><br><span class="line">    handler: <span class="function"><span class="keyword">function</span>(<span class="params">val, oldVal</span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(val);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 深度观察监听</span></span><br><span class="line">    deep: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">// 监听,当路由发生变化的时候执行</span></span><br><span class="line">watch: &#123;</span><br><span class="line">  <span class="string">'$route'</span>:<span class="string">'getPath'</span></span><br><span class="line">&#125;,</span><br><span class="line">methods: &#123;</span><br><span class="line">  getPath()&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.$route.path);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="点击事件带跳转路由"><a href="#点击事件带跳转路由" class="headerlink" title="点击事件带跳转路由"></a>点击事件带跳转路由</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">场景：点击事件带跳转路由，在另一个组件监听路由变化。</span><br><span class="line">执行顺序：</span><br><span class="line">先执行点击事件中的方法，再执行监听路由变化的事件。</span><br></pre></td></tr></table></figure>
+<h2 id="vue-router-的钩子函数"><a href="#vue-router-的钩子函数" class="headerlink" title="vue-router 的钩子函数"></a>vue-router 的钩子函数</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">通过 vue-router 的钩子函数 beforeRouteEnter  beforeRouteUpdate  beforeRouteLeave</span><br><span class="line"></span><br><span class="line"><span class="comment">// 监听,当路由发生变化的时候执行</span></span><br><span class="line">    watch:&#123;</span><br><span class="line">      $route(to,<span class="keyword">from</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(to.path == <span class="string">'/'</span> || to.path == <span class="string">'/Prisoner'</span> || to.path == <span class="string">'/Goods'</span> || to.path == <span class="string">'/Time'</span> || to.path == <span class="string">'/Mine'</span>)&#123;</span><br><span class="line">          <span class="comment">/**</span></span><br><span class="line"><span class="comment">           * $store来自Store对象</span></span><br><span class="line"><span class="comment">           * dispatch 向 actions 发起请求</span></span><br><span class="line"><span class="comment">           */</span></span><br><span class="line">          <span class="keyword">this</span>.$store.dispatch(<span class="string">'showTabBar'</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">          <span class="keyword">this</span>.$store.dispatch(<span class="string">'hideTabBar'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    beforeRouteEnter (to, <span class="keyword">from</span>, next) &#123;</span><br><span class="line">      <span class="comment">// 在渲染该组件的对应路由被 confirm 前调用</span></span><br><span class="line">      <span class="comment">// 不！能！获取组件实例 `this`</span></span><br><span class="line">      <span class="comment">// 因为当钩子执行前，组件实例还没被创建</span></span><br><span class="line">    &#125;,</span><br><span class="line">    beforeRouteUpdate (to, <span class="keyword">from</span>, next) &#123;</span><br><span class="line">      <span class="comment">// 在当前路由改变，但是该组件被复用时调用</span></span><br><span class="line">      <span class="comment">// 举例来说，对于一个带有动态参数的路径 /foo/:id，在 /foo/1 和 /foo/2 之间跳转的时候，</span></span><br><span class="line">      <span class="comment">// 由于会渲染同样的 Foo 组件，因此组件实例会被复用。而这个钩子就会在这个情况下被调用。</span></span><br><span class="line">      <span class="comment">// 可以访问组件实例 `this`</span></span><br><span class="line">    &#125;,</span><br><span class="line">    beforeRouteLeave (to, <span class="keyword">from</span>, next) &#123;</span><br><span class="line">      <span class="comment">// 导航离开该组件的对应路由时调用</span></span><br><span class="line">      <span class="comment">// 可以访问组件实例 `this`</span></span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>Thank you!<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">-ES6</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">vue.js</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/06/21/vueRouter/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/06/22/vuenote2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Vue 知识点
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2018/11/25/website/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">前端常用网站</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#router"><span class="toc-number">1.</span> <span class="toc-text">router</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#点击事件带跳转路由"><span class="toc-number">2.</span> <span class="toc-text">点击事件带跳转路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vue-router-的钩子函数"><span class="toc-number">3.</span> <span class="toc-text">vue-router 的钩子函数</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="vueRouter" data-title="vue 优化" data-url="http://yoursite.com/2019/06/21/vueRouter/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -238,9 +394,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,

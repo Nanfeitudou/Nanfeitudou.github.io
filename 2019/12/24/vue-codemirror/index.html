@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018/5 | DJM的博客</title>
+  <title>Vue-codemirror使用 | DJM的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="DJM的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2018/05/index.html">
+  <meta name="description" content="地址[官网] (https://github.surmon.me/vue-codemirror) [github地址] (https://github.com/surmon-china/vue-codemirror) 1、安装 Vue-codemirror1npm install vue-codemirror --save 2、main.js引入123import VueCodeMirror fr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue-codemirror使用">
+<meta property="og:url" content="http://yoursite.com/2019/12/24/vue-codemirror/index.html">
 <meta property="og:site_name" content="DJM的博客">
+<meta property="og:description" content="地址[官网] (https://github.surmon.me/vue-codemirror) [github地址] (https://github.com/surmon-china/vue-codemirror) 1、安装 Vue-codemirror1npm install vue-codemirror --save 2、main.js引入123import VueCodeMirror fr">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-12-24T15:31:39.561Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DJM的博客">
+<meta name="twitter:title" content="Vue-codemirror使用">
+<meta name="twitter:description" content="地址[官网] (https://github.surmon.me/vue-codemirror) [github地址] (https://github.com/surmon-china/vue-codemirror) 1、安装 Vue-codemirror1npm install vue-codemirror --save 2、main.js引入123import VueCodeMirror fr">
   
     <link rel="alternative" href="/atom.xml" title="DJM的博客" type="application/atom+xml">
   
@@ -162,130 +166,181 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-vue-codemirror" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Vue-codemirror使用
+    </h1>
+  
+
+        
+        <a href="/2019/12/24/vue-codemirror/" class="archive-article-date">
+  	<time datetime="2019-12-24T07:46:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-24</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="地址"><a href="#地址" class="headerlink" title="地址"></a>地址</h2><p>[官网] (<a href="https://github.surmon.me/vue-codemirror" target="_blank" rel="noopener">https://github.surmon.me/vue-codemirror</a>)</p>
+<p>[github地址] (<a href="https://github.com/surmon-china/vue-codemirror" target="_blank" rel="noopener">https://github.com/surmon-china/vue-codemirror</a>)</p>
+<h2 id="1、安装-Vue-codemirror"><a href="#1、安装-Vue-codemirror" class="headerlink" title="1、安装 Vue-codemirror"></a>1、安装 Vue-codemirror</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vue-codemirror --save</span><br></pre></td></tr></table></figure>
+<h2 id="2、main-js引入"><a href="#2、main-js引入" class="headerlink" title="2、main.js引入"></a>2、main.js引入</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> VueCodeMirror <span class="keyword">from</span> <span class="string">'vue-codemirror'</span>  <span class="comment">//引入组件</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'codemirror/lib/codemirror.css'</span>  <span class="comment">//引入基础样式</span></span><br><span class="line">Vue.use(VueCodeMirror)</span><br></pre></td></tr></table></figure>
+<h2 id="3、组件里使用"><a href="#3、组件里使用" class="headerlink" title="3、组件里使用"></a>3、组件里使用</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"zmj-full-percent"</span>&gt;</span><br><span class="line">    &lt;codemirror</span><br><span class="line">      ref=<span class="string">"mycode"</span></span><br><span class="line">      v-model=<span class="string">"curCode"</span></span><br><span class="line">      :options=<span class="string">"cmOptions"</span></span><br><span class="line">      @ready=<span class="string">"onCmReady"</span></span><br><span class="line">      @focus=<span class="string">"onCmFocus"</span></span><br><span class="line">      @input=<span class="string">"onCmCodeChange"</span></span><br><span class="line">      <span class="class"><span class="keyword">class</span></span>=<span class="string">"code"</span>&gt;</span><br><span class="line">    &lt;<span class="regexp">/codemirror&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>div&gt;</span><br><span class="line">&lt;<span class="regexp">/template&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ &lt;script&gt;</span></span><br><span class="line"><span class="regexp">  import "codemirror/</span>theme/ambiance.css<span class="string">";  // 这里引入的是主题样式，根据设置的theme的主题引入，一定要引入！！</span></span><br><span class="line"><span class="string">  import 'codemirror/theme/base16-dark.css'</span></span><br><span class="line"><span class="string">  import 'codemirror/theme/dracula.css'</span></span><br><span class="line"><span class="string">  import "</span>codemirror/mode/javascript/javascript<span class="string">"; // 这里引入的模式的js，根据设置的mode引入，一定要引入！！</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  // require active-line.js</span></span><br><span class="line"><span class="string">  import 'codemirror/addon/selection/active-line.js'</span></span><br><span class="line"><span class="string">  // styleSelectedText</span></span><br><span class="line"><span class="string">  import 'codemirror/addon/selection/mark-selection.js'</span></span><br><span class="line"><span class="string">  import 'codemirror/addon/search/searchcursor.js'</span></span><br><span class="line"><span class="string">  // hint</span></span><br><span class="line"><span class="string">  import 'codemirror/addon/hint/show-hint.js'</span></span><br><span class="line"><span class="string">  import 'codemirror/addon/hint/show-hint.css'</span></span><br><span class="line"><span class="string">  import 'codemirror/addon/hint/javascript-hint.js'</span></span><br><span class="line"><span class="string">  import 'codemirror/addon/selection/active-line.js'</span></span><br><span class="line"><span class="string">  // highlightSelectionMatches</span></span><br><span class="line"><span class="string">  import 'codemirror/addon/scroll/annotatescrollbar.js'</span></span><br><span class="line"><span class="string">  import 'codemirror/addon/search/matchesonscrollbar.js'</span></span><br><span class="line"><span class="string">  import 'codemirror/addon/search/searchcursor.js'</span></span><br><span class="line"><span class="string">  import 'codemirror/addon/search/match-highlighter.js'</span></span><br><span class="line"><span class="string">  // keyMap</span></span><br><span class="line"><span class="string">  import 'codemirror/mode/clike/clike.js'</span></span><br><span class="line"><span class="string">  import 'codemirror/addon/edit/matchbrackets.js'</span></span><br><span class="line"><span class="string">  import 'codemirror/addon/comment/comment.js'</span></span><br><span class="line"><span class="string">  import 'codemirror/addon/dialog/dialog.js'</span></span><br><span class="line"><span class="string">  import 'codemirror/addon/dialog/dialog.css'</span></span><br><span class="line"><span class="string">  import 'codemirror/addon/search/searchcursor.js'</span></span><br><span class="line"><span class="string">  import 'codemirror/addon/search/search.js'</span></span><br><span class="line"><span class="string">  import 'codemirror/keymap/sublime.js'</span></span><br><span class="line"><span class="string">  // foldGutter</span></span><br><span class="line"><span class="string">  import 'codemirror/addon/fold/foldgutter.css'</span></span><br><span class="line"><span class="string">  import 'codemirror/addon/fold/brace-fold.js'</span></span><br><span class="line"><span class="string">  import 'codemirror/addon/fold/comment-fold.js'</span></span><br><span class="line"><span class="string">  import 'codemirror/addon/fold/foldcode.js'</span></span><br><span class="line"><span class="string">  import 'codemirror/addon/fold/foldgutter.js'</span></span><br><span class="line"><span class="string">  import 'codemirror/addon/fold/indent-fold.js'</span></span><br><span class="line"><span class="string">  import 'codemirror/addon/fold/markdown-fold.js'</span></span><br><span class="line"><span class="string">  import 'codemirror/addon/fold/xml-fold.js'</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">     export default &#123;</span></span><br><span class="line"><span class="string">      name: "</span>ModulesManagement<span class="string">",</span></span><br><span class="line"><span class="string">      data()&#123;</span></span><br><span class="line"><span class="string">          return &#123;</span></span><br><span class="line"><span class="string">            cmOptions:&#123;</span></span><br><span class="line"><span class="string">              value:'',</span></span><br><span class="line"><span class="string">              mode:"</span>text/javascript<span class="string">",  //实现js高亮</span></span><br><span class="line"><span class="string">              mode: 'application/json', // json数据高亮</span></span><br><span class="line"><span class="string">              theme: "</span>dracula<span class="string">",  //主题 dracula,foo bar,ambiance,base16-dark</span></span><br><span class="line"><span class="string">              lineNumbers: true,  //是否显示行号</span></span><br><span class="line"><span class="string">              firstLineNumber: 1, //第一行的行号</span></span><br><span class="line"><span class="string">              lineWrapping: true, //代码折叠</span></span><br><span class="line"><span class="string">              foldGutter: true,</span></span><br><span class="line"><span class="string">              gutters: ["</span>CodeMirror-linenumbers<span class="string">", "</span>CodeMirror-foldgutter<span class="string">"],</span></span><br><span class="line"><span class="string">              matchBrackets: true, // 括号匹配</span></span><br><span class="line"><span class="string">              smartIndent: true, // 智能缩进</span></span><br><span class="line"><span class="string">              indentUnit: 4, //缩进单位</span></span><br><span class="line"><span class="string">              // tabSize:2, //tab字符的宽度，默认为4 。</span></span><br><span class="line"><span class="string">              // smartIndent:true, //自动缩进，设置是否根据上下文自动缩进（和上一行相同的缩进量）。默认为true。</span></span><br><span class="line"><span class="string">              // readOnly:true,</span></span><br><span class="line"><span class="string">              keyMap: "</span>sublime<span class="string">",</span></span><br><span class="line"><span class="string">              showCursorWhenSelecting: true,</span></span><br><span class="line"><span class="string">              extraKeys: &#123; "</span>Ctrl<span class="string">": "</span>autocomplete<span class="string">" &#125;</span></span><br><span class="line"><span class="string">            &#125;,</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">          &#125;</span></span><br><span class="line"><span class="string">      &#125;,</span></span><br><span class="line"><span class="string">      mounted()&#123;</span></span><br><span class="line"><span class="string">        //设置容器大小  this.$refs.mycode.codemirror 就是对象</span></span><br><span class="line"><span class="string">        // this.$refs.mycode.codemirror.setSize("</span><span class="number">600</span>px<span class="string">","</span><span class="number">600</span>px<span class="string">");</span></span><br><span class="line"><span class="string">      &#125;,</span></span><br><span class="line"><span class="string">      methods: &#123;</span></span><br><span class="line"><span class="string">        //组件初始化触发</span></span><br><span class="line"><span class="string">        onCmReady(cm) &#123;</span></span><br><span class="line"><span class="string">          console.log('the editor is readied!', cm);</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        //获取脚垫触发</span></span><br><span class="line"><span class="string">        onCmFocus(cm) &#123;</span></span><br><span class="line"><span class="string">          console.log('the editor is focus!', cm);</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        //代码改变触发</span></span><br><span class="line"><span class="string">        onCmCodeChange(newCode) &#123;</span></span><br><span class="line"><span class="string">          console.log('this is new code', newCode);</span></span><br><span class="line"><span class="string">          this.code = newCode</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">      &#125;,</span></span><br><span class="line"><span class="string">      watch:&#123;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">      &#125;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">// &lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="2、main-js引入-1"><a href="#2、main-js引入-1" class="headerlink" title="2、main.js引入"></a>2、main.js引入</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="2、main-js引入-2"><a href="#2、main-js引入-2" class="headerlink" title="2、main.js引入"></a>2、main.js引入</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>Thank you!<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/12/echarts2/" class="archive-article-date">
-  	<time datetime="2018-05-12T14:36:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/12/echarts2/">echarts-管理数据(dataset)-数据到图形的映射（encode）</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/24/vue-codemirror/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/12/highChart/" class="archive-article-date">
-  	<time datetime="2018-05-12T14:35:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-12</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/06/22/vuenote2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Vue 知识点</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/12/highChart/">Highcharts 用法</a>
-    </h1>
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="vue-codemirror" data-title="Vue-codemirror使用" data-url="http://yoursite.com/2019/12/24/vue-codemirror/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/12/echarts/" class="archive-article-date">
-  	<time datetime="2018-05-12T14:35:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/12/echarts/">echarts</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/11/swiper/" class="archive-article-date">
-  	<time datetime="2018-05-11T14:35:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/11/swiper/">swiper基础学习</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -308,8 +363,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

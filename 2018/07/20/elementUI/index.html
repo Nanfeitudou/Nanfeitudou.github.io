@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018/5 | DJM的博客</title>
+  <title>element学习笔记 | DJM的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="DJM的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2018/05/index.html">
+  <meta name="description" content="表单验证规则是否必须： required:true|| fasle根据正则表达式验证： pattern:最大长度和最小长度： min和max数据转换：transform（value）{return}自定义校验功能：validador:fn(rule, value, callback);自带验证类型： type:string：必须是类型string。This is the default  type">
+<meta property="og:type" content="article">
+<meta property="og:title" content="element学习笔记">
+<meta property="og:url" content="http://yoursite.com/2018/07/20/elementUI/index.html">
 <meta property="og:site_name" content="DJM的博客">
+<meta property="og:description" content="表单验证规则是否必须： required:true|| fasle根据正则表达式验证： pattern:最大长度和最小长度： min和max数据转换：transform（value）{return}自定义校验功能：validador:fn(rule, value, callback);自带验证类型： type:string：必须是类型string。This is the default  type">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-12-18T15:16:26.940Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DJM的博客">
+<meta name="twitter:title" content="element学习笔记">
+<meta name="twitter:description" content="表单验证规则是否必须： required:true|| fasle根据正则表达式验证： pattern:最大长度和最小长度： min和max数据转换：transform（value）{return}自定义校验功能：validador:fn(rule, value, callback);自带验证类型： type:string：必须是类型string。This is the default  type">
   
     <link rel="alternative" href="/atom.xml" title="DJM的博客" type="application/atom+xml">
   
@@ -162,130 +166,187 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-elementUI" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      element学习笔记
+    </h1>
+  
+
+        
+        <a href="/2018/07/20/elementUI/" class="archive-article-date">
+  	<time datetime="2018-07-20T07:46:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-20</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="表单验证规则"><a href="#表单验证规则" class="headerlink" title="表单验证规则"></a>表单验证规则</h2><p>是否必须： required:true|| fasle<br>根据正则表达式验证： pattern:<br>最大长度和最小长度： min和max<br>数据转换：transform（value）{return}<br>自定义校验功能：validador:fn(rule, value, callback);<br>自带验证类型： type:<br>string：必须是类型string。This is the default <em> type.<br>number：必须是类型number。<br>boolean：必须是类型boolean。<br>method：必须是类型function。<br>regexp：必须是RegExp创建新项时不生成异常的实例 或</em> 字符串RegExp。<br>integer：必须是类型number和整数。<br>float：必须是类型number和浮点数。<br>array：必须是由…确定的数组Array.isArray。<br>object：必须是类型object而不是Array.isArray。<br>enum：价值必须存在于enum。<br>date：值必须有效，由确定 Date<br>url：必须是类型url。<br>hex：必须是类型hex。<br>email：必须是类型email。</p>
+<h2 id="tree树懒加载"><a href="#tree树懒加载" class="headerlink" title="tree树懒加载"></a>tree树懒加载</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="comment">//清空节点，添加子节点数据data</span></span><br><span class="line">_node.childNodes = [];</span><br><span class="line">_node.doCreateChildren(data);</span><br></pre></td></tr></table></figure>
+<h2 id="回显tree树状态-默认选中并高亮显示"><a href="#回显tree树状态-默认选中并高亮显示" class="headerlink" title="回显tree树状态 默认选中并高亮显示"></a>回显tree树状态 默认选中并高亮显示</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="number">1</span>，设置高亮显示的属性</span><br><span class="line"></span><br><span class="line">  :highlight-current=<span class="string">"true"</span></span><br><span class="line"></span><br><span class="line"><span class="number">2</span>，设置tree的“ref”属性，可以进行操作对象</span><br><span class="line"></span><br><span class="line">  ref=<span class="string">"treeBox"</span></span><br><span class="line"></span><br><span class="line"><span class="number">3</span>，设置node-key，标识树节点的属性</span><br><span class="line"></span><br><span class="line">  node-key=<span class="string">"departmentId"</span></span><br><span class="line"></span><br><span class="line"><span class="number">4</span>，通过typescript来设置高亮显示的节点</span><br><span class="line">  <span class="keyword">this</span>.$nextTick(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">       <span class="comment">// treeBox 元素的ref   value 绑定的node-key</span></span><br><span class="line">      <span class="keyword">this</span>.$refs.treeBox.setCurrentKey(treeList[<span class="number">0</span>].departmentId); </span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>Thank you!<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/12/echarts2/" class="archive-article-date">
-  	<time datetime="2018-05-12T14:36:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/12/echarts2/">echarts-管理数据(dataset)-数据到图形的映射（encode）</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/20/elementUI/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/12/highChart/" class="archive-article-date">
-  	<time datetime="2018-05-12T14:35:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-12</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2018/07/23/js_bom/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          JS第三部分—浏览器对象(Window、Navigator、Screen、History、Location)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/07/15/image/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">前端|加载的图片太多或者太大怎么办</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/12/highChart/">Highcharts 用法</a>
-    </h1>
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="elementUI" data-title="element学习笔记" data-url="http://yoursite.com/2018/07/20/elementUI/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/12/echarts/" class="archive-article-date">
-  	<time datetime="2018-05-12T14:35:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/12/echarts/">echarts</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/11/swiper/" class="archive-article-date">
-  	<time datetime="2018-05-11T14:35:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/11/swiper/">swiper基础学习</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -308,8 +369,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

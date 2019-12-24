@@ -164,6 +164,175 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-require" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/05/require/">require.js</a>
+    </h1>
+  
+
+        
+        <a href="/2017/12/05/require/" class="archive-article-date">
+  	<time datetime="2017-12-05T07:15:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、为什么要用require-js？"><a href="#一、为什么要用require-js？" class="headerlink" title="一、为什么要用require.js？"></a>一、为什么要用require.js？</h2><p>require.js的诞生，就是为了解决这两个问题：<br>　　（1）实现js文件的异步加载，避免网页失去响应；<br>　　（2）管理模块之间的依赖性，便于代码的编写和维护。</p>
+<h2 id="二、require-js的加载"><a href="#二、require-js的加载" class="headerlink" title="二、require.js的加载"></a>二、require.js的加载</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"js/require.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>有人可能会想到，加载这个文件，也可能造成网页失去响应。解决办法有两个，一个是把它放在网页底部加载，另一个是写成下面这样：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"js/require.js"</span> defer <span class="keyword">async</span>=<span class="string">"true"</span> &gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="comment">// async属性表明这个文件需要异步加载，避免网页失去响应。IE不支持这个属性，只支持defer，所以把defer也写上。</span></span><br></pre></td></tr></table></figure></p>
+<p>加载require.js以后，下一步就要加载我们自己的代码了。假定我们自己的代码文件是main.js，也放在js目录下面。那么，只需要写成下面这样就行了：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"js/require.js"</span> data-main=<span class="string">"js/main"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="comment">// data-main属性的作用是，指定网页程序的主模块。在上例中，就是js目录下面的main.js，这个文件会第一个被require.js加载。由于require.js默认的文件后缀名是js，所以可以把main.js简写成main。</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="三、主模块的写法"><a href="#三、主模块的写法" class="headerlink" title="三、主模块的写法"></a>三、主模块的写法</h2><p>main.js，我把它称为”主模块”，意思是整个网页的入口代码。它有点像C语言的main()函数，所有代码都从这儿开始运行。<br>主模块依赖于其他模块，这时就要使用AMD规范定义的的require()函数。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">　<span class="comment">// main.js</span></span><br><span class="line">　　<span class="built_in">require</span>([<span class="string">'moduleA'</span>, <span class="string">'moduleB'</span>, <span class="string">'moduleC'</span>], <span class="function"><span class="keyword">function</span> (<span class="params">moduleA, moduleB, moduleC</span>)</span>&#123;</span><br><span class="line">　　　　<span class="comment">// some code here</span></span><br><span class="line">　　&#125;);</span><br><span class="line"><span class="comment">// require()异步加载moduleA，moduleB和moduleC，浏览器不会失去响应；它指定的回调函数，只有前面的模块都加载成功后，才会运行，解决了依赖性的问题。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 下面，我们看一个实际的例子。</span></span><br><span class="line"><span class="comment">// 假定主模块依赖jquery、underscore和backbone这三个模块，main.js就可以这样写：</span></span><br><span class="line"><span class="built_in">require</span>([<span class="string">'jquery'</span>, <span class="string">'underscore'</span>, <span class="string">'backbone'</span>], <span class="function"><span class="keyword">function</span> (<span class="params">$, _, Backbone</span>)</span>&#123;</span><br><span class="line">　　　　<span class="comment">// some code here</span></span><br><span class="line">　　&#125;);</span><br></pre></td></tr></table></figure></p>
+<h2 id="四、模块的加载"><a href="#四、模块的加载" class="headerlink" title="四、模块的加载"></a>四、模块的加载</h2><p>使用require.config()方法，我们可以对模块的加载行为进行自定义。require.config()就写在主模块（main.js）的头部。参数就是一个对象，这个对象的paths属性指定各个模块的加载路径。require.js假定这三个模块与main.js在同一个目录.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">　　<span class="built_in">require</span>.config(&#123;</span><br><span class="line">　　　　paths: &#123;</span><br><span class="line">　　　　　　<span class="string">"jquery"</span>: <span class="string">"jquery.min"</span>,</span><br><span class="line">　　　　　　<span class="string">"underscore"</span>: <span class="string">"underscore.min"</span>,</span><br><span class="line">　　　　　　<span class="string">"backbone"</span>: <span class="string">"backbone.min"</span></span><br><span class="line">　　　　&#125;</span><br><span class="line">　　&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>上面的代码给出了三个模块的文件名，路径默认与main.js在同一个目录（js子目录）。如果这些模块在其他目录，比如js/lib目录，则有两种写法。一种是逐一指定路径。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">　　<span class="built_in">require</span>.config(&#123;</span><br><span class="line">　　　　paths: &#123;</span><br><span class="line">　　　　　　<span class="string">"jquery"</span>: <span class="string">"lib/jquery.min"</span>,</span><br><span class="line">　　　　　　<span class="string">"underscore"</span>: <span class="string">"lib/underscore.min"</span>,</span><br><span class="line">　　　　　　<span class="string">"backbone"</span>: <span class="string">"lib/backbone.min"</span></span><br><span class="line">　　　　&#125;</span><br><span class="line">　　&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>另一种则是直接改变基目录（baseUrl）。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">　　<span class="built_in">require</span>.config(&#123;</span><br><span class="line">　　　　baseUrl: <span class="string">"js/lib"</span>,</span><br><span class="line">　　　　paths: &#123;</span><br><span class="line">　　　　　　<span class="string">"jquery"</span>: <span class="string">"jquery.min"</span>,</span><br><span class="line">　　　　　　<span class="string">"underscore"</span>: <span class="string">"underscore.min"</span>,</span><br><span class="line">　　　　　　<span class="string">"backbone"</span>: <span class="string">"backbone.min"</span></span><br><span class="line">　　　　&#125;</span><br><span class="line">　　&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>如果某个模块在另一台主机上，也可以直接指定它的网址，比如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">　　<span class="built_in">require</span>.config(&#123;</span><br><span class="line">　　　　paths: &#123;</span><br><span class="line">　　　　　　<span class="string">"jquery"</span>: <span class="string">"https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min"</span></span><br><span class="line">　　　　&#125;</span><br><span class="line">　　&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>require.js要求，每个模块是一个单独的js文件。这样的话，如果加载多个模块，就会发出多次HTTP请求，会影响网页的加载速度。因此，require.js提供了一个优化工具，当模块部署完毕以后，可以用这个工具将多个模块合并在一个文件中，减少HTTP请求数。  </p>
+<h2 id="五、AMD模块的写法"><a href="#五、AMD模块的写法" class="headerlink" title="五、AMD模块的写法"></a>五、AMD模块的写法</h2><p>require.js加载的模块，采用AMD规范。也就是说，模块必须按照AMD的规定来写。<br>具体来说，就是模块必须采用特定的define()函数来定义。如果一个模块不依赖其他模块，那么可以直接定义在define()函数之中。<br>假定现在有一个math.js文件，它定义了一个math模块。那么，math.js就要这样写:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">　　<span class="comment">// math.js</span></span><br><span class="line">　　define(<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　<span class="keyword">var</span> add = <span class="function"><span class="keyword">function</span> (<span class="params">x,y</span>)</span>&#123;</span><br><span class="line">　　　　　　<span class="keyword">return</span> x+y;</span><br><span class="line">　　　　&#125;;</span><br><span class="line">　　　　<span class="keyword">return</span> &#123;</span><br><span class="line">　　　　　　add: add</span><br><span class="line">　　　　&#125;;</span><br><span class="line">　　&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>加载方法如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">　<span class="comment">// main.js</span></span><br><span class="line">　　<span class="built_in">require</span>([<span class="string">'math'</span>], <span class="function"><span class="keyword">function</span> (<span class="params">math</span>)</span>&#123;</span><br><span class="line">　　　　alert(math.add(<span class="number">1</span>,<span class="number">1</span>));</span><br><span class="line">　　&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>如果这个模块还依赖其他模块，那么define()函数的第一个参数，必须是一个数组，指明该模块的依赖性。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">　　define([<span class="string">'myLib'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">myLib</span>)</span>&#123;</span><br><span class="line">　　　　<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　　　myLib.doSomething();</span><br><span class="line">　　　　&#125;</span><br><span class="line">　　　　<span class="keyword">return</span> &#123;</span><br><span class="line">　　　　　　foo : foo</span><br><span class="line">　　　　&#125;;</span><br><span class="line">　　&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>当require()函数加载上面这个模块的时候，就会先加载myLib.js文件。</p>
+<h2 id="一、CommonJS"><a href="#一、CommonJS" class="headerlink" title="一、CommonJS"></a>一、CommonJS</h2><p> CommonJS就是为JS的表现来制定规范，因为js没有模块的功能所以CommonJS应运而生，它希望js可以在任何地方运行，不只是浏览器中。</p>
+<p> CommonJS能有一定的影响力，我觉得绝对离不开Node的人气，不过喔，Node，CommonJS，浏览器甚至是W3C之间有什么关系呢，我找到了个贴切的图：<br>   |—————浏览器——————-|     |————————–CommonJS———————————-|</p>
+<p>  |  BOM  |       | DOM |      | ECMAScript |     | FS |         | TCP |      | Stream |      | Buffer |      |……..|</p>
+<p>  |——-W3C———–|      |—————————————Node——————————————–|<br>CommonJS定义的模块分为:{模块引用(require)} {模块定义(exports)} {模块标识(module)}</p>
+<p>require()用来引入外部模块；exports对象用于导出当前模块的方法或变量，唯一的导出口；module对象就代表模块本身。</p>
+<h2 id="二、AMD"><a href="#二、AMD" class="headerlink" title="二、AMD"></a>二、AMD</h2><p>CommonJS是主要为了JS在后端的表现制定的，他是不适合前端的，为什么这么说呢？</p>
+<p>这需要分析一下浏览器端的js和服务器端js都主要做了哪些事，有什么不同了：<br>—————————————服务器端JS   |    浏览器端JS——————————————-</p>
+<pre><code>相同的代码需要多次执行  |    代码需要从一个服务器端分发到多个客户端执行
+
+  CPU和内存资源是瓶颈   |    带宽是瓶颈
+
+     加载时从磁盘中加载   |    加载时需要通过网络加载
+</code></pre><hr>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/12/05/require/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-module" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/04/module/">webpack模块</a>
+    </h1>
+  
+
+        
+        <a href="/2017/12/04/module/" class="archive-article-date">
+  	<time datetime="2017-12-04T12:01:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1、Nodejs的模块化规范-CommomJS"><a href="#1、Nodejs的模块化规范-CommomJS" class="headerlink" title="1、Nodejs的模块化规范 CommomJS "></a>1、Nodejs的模块化规范 CommomJS <img class="github-emoji" title="bowtie" alt="bowtie" src="https://github.githubassets.com/images/icons/emoji/bowtie.png?v8" height="20" width="20"></h2><p>该规范规定，每个JS文件都是模块，模块中的内容对模块外部来说都是私有的，只有模块导出的内容，模块外部才能访问。<br>module.exports 用于指定一个模块所导出的内容，即可以通过 require() 访问的内容。<br>怎样导出模块中的内容？</p>
+<h3 id="1-1-module-exports和exports"><a href="#1-1-module-exports和exports" class="headerlink" title="1.1 module.exports和exports"></a>1.1 module.exports和exports</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">导出方式一</span><br><span class="line"><span class="built_in">module</span>.exports.name = <span class="string">'李四'</span>;</span><br><span class="line"><span class="built_in">module</span>.exports.age = <span class="number">20</span>;</span><br><span class="line"><span class="built_in">module</span>.exports.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 上面的导出导出方式可以简写成如下的形式</span></span><br><span class="line">exports.name = <span class="string">'李四'</span>;</span><br><span class="line">exports.age = <span class="number">20</span>;</span><br><span class="line">exports.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 以上两种写法打印结果相同</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">module</span>.exports) <span class="comment">//&#123; name: '李四', age: 20, sayName: [Function: sayName] &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(exports) <span class="comment">//&#123; name: '李四', age: 20, sayName: [Function: sayName] &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(exports === <span class="built_in">module</span>.exports)    <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">导出方式二</span><br><span class="line"><span class="comment">// 默认情况下：exports =  module.exports = &#123;&#125;;</span></span><br><span class="line"><span class="built_in">module</span>.exports = exports =  &#123;</span><br><span class="line">	name: <span class="string">'李四'</span>,</span><br><span class="line">	age: <span class="number">20</span>,</span><br><span class="line">	sayName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 打印结果 </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">module</span>.exports)  <span class="comment">//&#123; name: '李四', age: 20, sayName: [Function: sayName] &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(exports) <span class="comment">//&#123; name: '李四', age: 20, sayName: [Function: sayName] &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(exports === <span class="built_in">module</span>.exports)    <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 改变 module.exports 或者 exports</span></span><br><span class="line"><span class="comment">// 给module.exports赋值</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">	name: <span class="string">'李四'</span>,</span><br><span class="line">	age: <span class="number">20</span>,</span><br><span class="line">	sayName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">module</span>.exports) <span class="comment">//&#123; name: '李四', age: 20, sayName: [Function: sayName] &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(exports) <span class="comment">// &#123;&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(exports === <span class="built_in">module</span>.exports) <span class="comment">// false</span></span><br><span class="line"><span class="comment">// 给exports赋值</span></span><br><span class="line">exports =  &#123;</span><br><span class="line">	name: <span class="string">'李四'</span>,</span><br><span class="line">	age: <span class="number">20</span>,</span><br><span class="line">	sayName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">module</span>.exports) <span class="comment">//&#123;&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(exports) <span class="comment">// &#123; name: '李四', age: 20, sayName: [Function: sayName] &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(exports === <span class="built_in">module</span>.exports) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-2-webpack模块的引入方式"><a href="#1-2-webpack模块的引入方式" class="headerlink" title="1.2 webpack模块的引入方式"></a>1.2 webpack模块的引入方式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1、引入本地模块（自己写的模块）</span></span><br><span class="line"><span class="keyword">const</span> common = <span class="built_in">require</span>(<span class="string">'./common.js'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">///2、引入node 内置的模块</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">///3、引入第三方模块，首先需要通过 npm 下载第三方模块：cnpn install --save-dev webpack</span></span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webapck'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="2、ESMAScript标准-》js导入导出"><a href="#2、ESMAScript标准-》js导入导出" class="headerlink" title="2、ESMAScript标准  》js导入导出"></a>2、ESMAScript标准  》js导入导出</h2><p>ESMAScript 是欧洲计算机协会定制的一套JS的实行标准，这套规范有各大浏览器开发公司实行，ES6 这套规范是 2015 提出的，因此也被称为 ESMAScript 2015。<br>ES6 规范中也定义了一种 JS 模块化规范，下面我们就来看一下怎样进行模块化开发。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 导出module3.js模块内部的内容</span></span><br><span class="line">    <span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">square</span> (<span class="params">x</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x*x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">cube</span> (<span class="params">y</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> y*y*y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> PI = <span class="number">3.1415926</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">circleArea</span> (<span class="params">r</span>) </span>&#123;</span><br><span class="line">    	<span class="keyword">return</span> PI * r * r;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">default</span> circleArea;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 导入module4.js方法</span></span><br><span class="line">写法一</span><br><span class="line"><span class="keyword">import</span> &#123;cube&#125; <span class="keyword">from</span> <span class="string">'./module3.mjs'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'5 的 3 次方'</span> + cube(<span class="number">5</span>)) <span class="comment">//125</span></span><br><span class="line">写法二</span><br><span class="line"><span class="keyword">import</span> circleArea, &#123;cube, square&#125; <span class="keyword">from</span> <span class="string">'./module3.mjs'</span>;</span><br><span class="line">写法三</span><br><span class="line"><span class="keyword">import</span> circleArea, &#123;cube, square&#125; <span class="keyword">from</span> <span class="string">'./module3.mjs'</span>; </span><br><span class="line"><span class="comment">// circleArea在导出文件中被设置为default，可以省略中括号</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'5 的 3 次方'</span> + cube(<span class="number">5</span>))  <span class="comment">// </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'5 的 2 次方'</span> + square(<span class="number">5</span>))  <span class="comment">// </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'圆面积'</span> + ca(<span class="number">5</span>))  <span class="comment">//</span></span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">webpack</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/12/04/module/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-webpack" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -343,218 +512,6 @@
 
 
   
-    <article id="post-gulp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/02/gulp/">gulp</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/02/gulp/" class="archive-article-date">
-  	<time datetime="2017-12-02T09:21:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>gulp中文网 <a href="https://www.gulpjs.com.cn/docs/getting-started/" target="_blank" rel="noopener">https://www.gulpjs.com.cn/docs/getting-started/</a><br>gulp插件 <a href="https://gulpjs.com/plugins/" target="_blank" rel="noopener">https://gulpjs.com/plugins/</a><br>参考学习 <a href="https://www.jianshu.com/p/31cdbecc488d" target="_blank" rel="noopener">https://www.jianshu.com/p/31cdbecc488d</a></p>
-<p>1、使用—save-dev（也可以缩写成-D）输出的会出现在devDependencies，代表着是开发调试时的依赖，等到项目真正发布的时候不会真正出现在项目中。<br>2、使用—save（也可以缩写成-S）输出的会出现在dependencies，代表着是发布后的依赖，等到项目真正发布的时候会真正出现在项目中，缺少它们项目会运行不了。<br>3、使用gulp需要全局安装 npm i -g gulp,项目也需要安装 npm i -D gulp;</p>
-<blockquote>
-<p>使用require引入所有需要的模块，Gulp.js是基于Node.js构建的<br>因为Node.js遵循CommondJS规范<br>CommondJS其中有一个Modules规范，使其可以以同步的模式加载模块</p>
-</blockquote>
-<h2 id="用到的gulp插件"><a href="#用到的gulp插件" class="headerlink" title="用到的gulp插件"></a>用到的gulp插件</h2><table>
-<thead>
-<tr>
-<th>插件名称</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>gulp-sass</td>
-<td>编译scss</td>
-</tr>
-<tr>
-<td>gulp-cssnano</td>
-<td>压缩css</td>
-</tr>
-<tr>
-<td>postcss-sprites</td>
-<td>生成精灵图片</td>
-</tr>
-<tr>
-<td>gulp-postcss</td>
-<td>编译post-css</td>
-</tr>
-<tr>
-<td>gulp-babel</td>
-<td>编译es6</td>
-</tr>
-<tr>
-<td>gulp-uglyfly</td>
-<td>压缩js</td>
-</tr>
-<tr>
-<td>gulp-server-livereload</td>
-<td>静态资源代码和页面自动刷新</td>
-</tr>
-<tr>
-<td>gulp-mem</td>
-<td>将前端资源编译到内存中，而非硬盘上</td>
-</tr>
-<tr>
-<td>gulp-sequence</td>
-<td>gulp任务序列</td>
-</tr>
-<tr>
-<td>gulp-watch</td>
-<td>gulp监听文件改变执行相应任务</td>
-</tr>
-<tr>
-<td>gulp-clean</td>
-<td>删除文件、文件夹</td>
-</tr>
-<tr>
-<td>gulp-rev</td>
-<td>生成js、css对应的manifest.json</td>
-</tr>
-<tr>
-<td>gulp-rev-collector</td>
-<td>根据manifest.json在html页面中生成对应的js、css HASH名后缀</td>
-</tr>
-<tr>
-<td>gulp-shell</td>
-<td>执行shell命令</td>
-</tr>
-<tr>
-<td>gulp-file-include</td>
-<td>将导航、页头、页脚等公用的部分分离出去，然后引入页面中。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="gulp-babel用法"><a href="#gulp-babel用法" class="headerlink" title="gulp-babel用法"></a>gulp-babel用法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 安装</span></span><br><span class="line"># Babel 7</span><br><span class="line">$ npm install --save-dev gulp-babel @babel/core @babel/preset-env</span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line"># Babel 6</span><br><span class="line">$ npm install --save-dev gulp-babel@<span class="number">7</span> babel-core babel-preset-env</span><br><span class="line"></span><br><span class="line"><span class="comment">//@babel/preset-env 比 babel-preset-es2015好</span></span><br><span class="line"><span class="comment">// 任务中配置了presets: ['@babel/env']，就无需再新建.babelrc文件。pipe里面的内容和.babelrc重复了，只需要一个就可以。</span></span><br></pre></td></tr></table></figure>
-<h2 id="gulpfile-js文件-构建任务1"><a href="#gulpfile-js文件-构建任务1" class="headerlink" title="gulpfile.js文件 构建任务1"></a>gulpfile.js文件 构建任务1</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用严格模式。保证js的严谨，养成一个好习惯。</span></span><br><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"><span class="comment">// 引入下载的gulp包</span></span><br><span class="line"><span class="keyword">let</span> gulp= <span class="built_in">require</span>(<span class="string">'gulp'</span>);</span><br><span class="line"><span class="comment">// 压缩html文件</span></span><br><span class="line"><span class="keyword">let</span> htmlmin = <span class="built_in">require</span>(<span class="string">'gulp-htmlmin'</span>);</span><br><span class="line"><span class="comment">// 压缩css文件</span></span><br><span class="line"><span class="keyword">let</span> cssmin = <span class="built_in">require</span>(<span class="string">'gulp-csso'</span>);</span><br><span class="line"><span class="comment">// less预处理器</span></span><br><span class="line"><span class="keyword">let</span> less = <span class="built_in">require</span>(<span class="string">'gulp-less'</span>)</span><br><span class="line"><span class="comment">// css样式自动补齐前缀</span></span><br><span class="line"><span class="keyword">let</span> atuoprefixer = <span class="built_in">require</span>(<span class="string">'gulp-autoprefixer'</span>);</span><br><span class="line"><span class="comment">// 压缩js文件</span></span><br><span class="line"><span class="keyword">let</span> uglyfly = <span class="built_in">require</span>(<span class="string">'gulp-uglyfly'</span>);</span><br><span class="line"><span class="comment">// 浏览器自动同步</span></span><br><span class="line"><span class="keyword">let</span> browserSync = <span class="built_in">require</span>(<span class="string">'browser-sync'</span>).create();</span><br><span class="line"><span class="comment">//处理公共代码</span></span><br><span class="line"><span class="keyword">var</span> fileinclude  = <span class="built_in">require</span>(<span class="string">'gulp-file-include'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 处理html文档的任务--&gt;pipe通道生成dist文件夹</span></span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'htmls'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">'src/*.html'</span>)</span><br><span class="line">    .pipe(htmlmin(&#123;<span class="attr">collapseWhitespace</span>:<span class="literal">true</span>&#125;))</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'dist'</span>))</span><br><span class="line">    .pipe(browserSync.reload(&#123;<span class="attr">stream</span>:<span class="literal">true</span>&#125;))</span><br><span class="line">&#125;);</span><br><span class="line">gulp.task(<span class="string">'htmlson'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">'src/html/*.html'</span>)</span><br><span class="line">    .pipe(htmlmin(&#123;<span class="attr">collapseWhitespace</span>:<span class="literal">true</span>&#125;))</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'dist/html/'</span>))</span><br><span class="line">    .pipe(browserSync.reload(&#123;<span class="attr">stream</span>:<span class="literal">true</span>&#125;))</span><br><span class="line">&#125;);</span><br><span class="line">gulp.task(<span class="string">'less'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">'src/less/*.less'</span>)</span><br><span class="line">    .pipe(less(&#123;&#125;))</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'src/css/'</span>))</span><br><span class="line">    .pipe(browserSync.stream())</span><br><span class="line">&#125;);</span><br><span class="line">gulp.task(<span class="string">'css'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">'src/css/*.css'</span>)</span><br><span class="line">    .pipe(atuoprefixer(&#123;<span class="attr">browsers</span>:[<span class="string">'cover 99.5%'</span>]&#125;))</span><br><span class="line">    .pipe(cssmin())</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'dist/css/'</span>))</span><br><span class="line">    .pipe(browserSync.stream())</span><br><span class="line">&#125;);</span><br><span class="line">gulp.task(<span class="string">'img'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> gulp.src(<span class="string">'src/images/*.*'</span>)</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'dist/images/'</span>))</span><br><span class="line">    .pipe(browserSync.stream())</span><br><span class="line">&#125;);</span><br><span class="line">gulp.task(<span class="string">'lib'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> gulp.src(<span class="string">'src/lib/*'</span>)</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'dist/lib/'</span>))</span><br><span class="line">    .pipe(browserSync.stream())</span><br><span class="line">&#125;);</span><br><span class="line">gulp.task(<span class="string">'js'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">'src/javascripts/*.js'</span>)</span><br><span class="line">    .pipe(uglyfly())</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'dist/javascripts/'</span>))</span><br><span class="line">    .pipe(browserSync.stream())</span><br><span class="line">&#125;);</span><br><span class="line">gulp.task(<span class="string">'fileinclude'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    gulp.src(<span class="string">'src/**.html'</span>)</span><br><span class="line">        .pipe(fileinclude(&#123;</span><br><span class="line">          prefix: <span class="string">'@@'</span>,</span><br><span class="line">          basepath: <span class="string">'@file'</span></span><br><span class="line">        &#125;))</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'dist'</span>));</span><br><span class="line">&#125;);</span><br><span class="line">gulp.task(<span class="string">'default'</span>,[<span class="string">'less'</span>,<span class="string">'htmls'</span>,<span class="string">'htmlson'</span>,<span class="string">'css'</span>,<span class="string">'img'</span>,<span class="string">'lib'</span>,<span class="string">'js'</span>,<span class="string">'fileinclude'</span>],<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    browserSync.init(&#123;</span><br><span class="line">        server:<span class="string">'./dist'</span></span><br><span class="line">    &#125;);</span><br><span class="line">    gulp.watch(<span class="string">'src/less/*.less'</span>,[<span class="string">'less'</span>]);</span><br><span class="line">    gulp.watch(<span class="string">'src/*.html'</span>,[<span class="string">'htmls'</span>]);</span><br><span class="line">    gulp.watch(<span class="string">'src/html/*.html'</span>,[<span class="string">'htmlson'</span>]);</span><br><span class="line">    gulp.watch(<span class="string">'src/css/*.css'</span>,[<span class="string">'css'</span>]);</span><br><span class="line">    gulp.watch(<span class="string">'src/images/*.*'</span>,[<span class="string">'img'</span>]);</span><br><span class="line">    gulp.watch(<span class="string">'src/javascripts/*.js'</span>,[<span class="string">'js'</span>]);</span><br><span class="line">    gulp.watch(<span class="string">'src/**.html'</span>,[<span class="string">'fileinclude'</span>]);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h2 id="gulpfile-js文件-构建任务2"><a href="#gulpfile-js文件-构建任务2" class="headerlink" title="gulpfile.js文件 构建任务2"></a>gulpfile.js文件 构建任务2</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用严格模式。保证js的严谨，养成一个好习惯。</span></span><br><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>),</span><br><span class="line">  <span class="comment">//编译ES6语法编译成ES5</span></span><br><span class="line">  babel = <span class="built_in">require</span>(<span class="string">'gulp-babel'</span>),</span><br><span class="line">  <span class="comment">//压缩js</span></span><br><span class="line">  uglify = <span class="built_in">require</span>(<span class="string">'gulp-uglify'</span>),</span><br><span class="line">  <span class="comment">//编译Less</span></span><br><span class="line">  less = <span class="built_in">require</span>(<span class="string">'gulp-less'</span>),</span><br><span class="line">  <span class="comment">//压缩css</span></span><br><span class="line">  minifyCss = <span class="built_in">require</span>(<span class="string">'gulp-minify-css'</span>),</span><br><span class="line">  <span class="comment">//自动前缀补全</span></span><br><span class="line">  autoprefixer = <span class="built_in">require</span>(<span class="string">'gulp-autoprefixer'</span>),</span><br><span class="line">  <span class="comment">//压缩HTML</span></span><br><span class="line">  minifyHtml = <span class="built_in">require</span>(<span class="string">'gulp-minify-html'</span>),</span><br><span class="line">  <span class="comment">//压缩图片</span></span><br><span class="line">  imagemin = <span class="built_in">require</span>(<span class="string">'gulp-imagemin'</span>),</span><br><span class="line">  <span class="comment">//管合并，可以合并同一目录下的所有文件，好处是可以减少网络请求</span></span><br><span class="line">  concat = <span class="built_in">require</span>(<span class="string">'gulp-concat-dir'</span>),</span><br><span class="line">  <span class="comment">//错误处理提示插件</span></span><br><span class="line">  plumber = <span class="built_in">require</span>(<span class="string">'gulp-plumber'</span>),</span><br><span class="line">  <span class="comment">//压缩文件</span></span><br><span class="line">  zip = <span class="built_in">require</span>(<span class="string">'gulp-zip'</span>),</span><br><span class="line">  <span class="comment">//控制task中的串行和并行。（gulp默认是并行）</span></span><br><span class="line">  <span class="comment">//串行是指多个任务时，各个任务按顺序执行，完成一个之后才能进行下一个。</span></span><br><span class="line">  <span class="comment">//并行指的是多个任务可以同时执行。</span></span><br><span class="line">  runSequence = <span class="built_in">require</span>(<span class="string">'gulp-run-sequence'</span>),</span><br><span class="line">  <span class="comment">//用来删除文件</span></span><br><span class="line">  clean = <span class="built_in">require</span>(<span class="string">'gulp-clean'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建一个名为js的任务</span></span><br><span class="line">gulp.task(<span class="string">'js'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">// 首先取得app/static/scripts下的所有为.js的文件（**/的意思是包含所有子文件夹)</span></span><br><span class="line">  <span class="keyword">return</span> gulp.src(<span class="string">'app/static/scripts/**/*.js'</span>)</span><br><span class="line">    <span class="comment">//错误管理模块（有错误时会自动输出提示到终端上）</span></span><br><span class="line">    .pipe(plumber())</span><br><span class="line">    <span class="comment">//编译ES6语法编译成ES5</span></span><br><span class="line">    .pipe(babel(&#123;<span class="attr">presets</span>: [<span class="string">'@babel/env'</span>]&#125;))</span><br><span class="line">    <span class="comment">//合并同一目录下的所有文件,并将合并的目录名作为合并后的文件名</span></span><br><span class="line">    .pipe(concat(&#123;<span class="attr">ext</span>: <span class="string">'.js'</span>&#125;))</span><br><span class="line">    <span class="comment">//js压缩</span></span><br><span class="line">    .pipe(uglify())</span><br><span class="line">    <span class="comment">//将合并压缩后的文件输出到dist/static/scripts下（假如没有dist目录则自动生成dist目录）</span></span><br><span class="line">    .pipe(gulp.dest(<span class="string">'dist/static/scripts'</span>))</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建一个名为less的任务</span></span><br><span class="line">gulp.task(<span class="string">'less'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">// 首先取得app/static/less下的所有为.less的文件（**/的意思是包含所有子文件夹)</span></span><br><span class="line">  <span class="keyword">return</span> gulp.src(<span class="string">'app/static/less/**/*.less'</span>)</span><br><span class="line">    <span class="comment">//错误管理模块（有错误时会自动输出提示到终端上）</span></span><br><span class="line">    .pipe(plumber())</span><br><span class="line">    <span class="comment">//编译less文件使其转换为css文件</span></span><br><span class="line">    .pipe(less())</span><br><span class="line">    <span class="comment">//前缀自动补全插件</span></span><br><span class="line">    .pipe(autoprefixer())</span><br><span class="line">    <span class="comment">//合并同一目录下的所有文件,并将合并的目录名作为合并后的文件名</span></span><br><span class="line">    .pipe(concat(&#123;<span class="attr">ext</span>: <span class="string">'.css'</span>&#125;))</span><br><span class="line">    <span class="comment">//css压缩</span></span><br><span class="line">    .pipe(minifyCss())</span><br><span class="line">    <span class="comment">//将合并压缩后的文件输出到dist/static/css下（假如没有dist目录则自动生成dist目录）</span></span><br><span class="line">    .pipe(gulp.dest(<span class="string">'dist/static/css'</span>))</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建一个名为html的任务</span></span><br><span class="line">gulp.task(<span class="string">'html'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">// 首先取得app/views下的所有为.html的文件（**/的意思是包含所有子文件夹)</span></span><br><span class="line">  <span class="keyword">return</span> gulp.src(<span class="string">'app/views/**/*.html'</span>)</span><br><span class="line">    <span class="comment">//错误管理模块（有错误时会自动输出提示到终端上）</span></span><br><span class="line">    .pipe(plumber())</span><br><span class="line">    <span class="comment">//html压缩</span></span><br><span class="line">    .pipe(minifyHtml())</span><br><span class="line">    <span class="comment">//将压缩后的文件输出到dist/views下（假如没有dist目录则自动生成dist目录）</span></span><br><span class="line">    .pipe(gulp.dest(<span class="string">'dist/views'</span>))</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建一个名为images的任务</span></span><br><span class="line">gulp.task(<span class="string">'images'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">// 首先取得app/static/images下的所有为.&#123;png,jpg,jpeg,ico,gif,svg&#125;后缀的图片文件（**/的意思是包含所有子文件夹)</span></span><br><span class="line">  <span class="keyword">return</span> gulp.src(<span class="string">'app/static/images/**/*.&#123;png,jpg,jpeg,ico,gif,svg&#125;'</span>)</span><br><span class="line">    <span class="comment">//错误管理模块（有错误时会自动输出提示到终端上）</span></span><br><span class="line">    .pipe(plumber())</span><br><span class="line">    .pipe(imagemin(&#123;</span><br><span class="line">      optimizationLevel: <span class="number">5</span>, <span class="comment">//类型：Number  默认：3  取值范围：0-7（优化等级）</span></span><br><span class="line">      progressive: <span class="literal">true</span>, <span class="comment">//类型：Boolean 默认：false 无损压缩jpg图片</span></span><br><span class="line">      interlaced: <span class="literal">true</span>, <span class="comment">//类型：Boolean 默认：false 隔行扫描gif进行渲染</span></span><br><span class="line">      multipass: <span class="literal">true</span> <span class="comment">//类型：Boolean 默认：false 多次优化svg直到完全优化</span></span><br><span class="line">    &#125;))</span><br><span class="line">    <span class="comment">//将压缩后的图片输出到dist/static/images下（假如没有dist目录则自动生成dist目录）</span></span><br><span class="line">    .pipe(gulp.dest(<span class="string">'dist/static/images'</span>))</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建一个名为clean的任务</span></span><br><span class="line">gulp.task(<span class="string">'clean'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">// 首先取得dist/*下的所有文件</span></span><br><span class="line">  <span class="keyword">return</span> gulp.src(<span class="string">'dist/*'</span>, &#123;<span class="attr">read</span>: <span class="literal">false</span>&#125;)</span><br><span class="line">    <span class="comment">//删除dist/*下的所有文件</span></span><br><span class="line">    .pipe(clean())</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建一个名为public的任务</span></span><br><span class="line">gulp.task(<span class="string">'public'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">// 首先取得dist/*下的所有文件</span></span><br><span class="line">  <span class="keyword">return</span> gulp.src(<span class="string">'dist/*'</span>)</span><br><span class="line">    <span class="comment">//错误管理模块（有错误时会自动输出提示到终端上）</span></span><br><span class="line">    .pipe(plumber())</span><br><span class="line">    <span class="comment">//将dist/*下的所有文件进行压缩打包生成为public.zip文件</span></span><br><span class="line">    .pipe(zip(<span class="string">'public.zip'</span>))</span><br><span class="line">    <span class="comment">//将生成的public.zip文件输出到release下（假如没有release目录则自动生成release目录）</span></span><br><span class="line">    .pipe(gulp.dest(<span class="string">'release'</span>))</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建一个名为watch的任务</span></span><br><span class="line">gulp.task(<span class="string">'watch'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">//监听各个目录的文件，如果有变动则执行相应的任务操作文件</span></span><br><span class="line">  gulp.watch(<span class="string">'app/static/scripts/**/*.js'</span>,[<span class="string">'js'</span>]);</span><br><span class="line">  gulp.watch(<span class="string">'app/static/less/**/*.less'</span>,[<span class="string">'less'</span>]);</span><br><span class="line">  gulp.watch(<span class="string">'app/views/**/*.html'</span>,[<span class="string">'html'</span>]);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建一个名为redist的任务</span></span><br><span class="line">gulp.task(<span class="string">'redist'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">//先运行clean，然后并行运行html,js,less,images,watch</span></span><br><span class="line">  <span class="comment">//如果不使用gulp-run-sequence插件的话，由于gulp是并行执行的</span></span><br><span class="line">  <span class="comment">//有可能会出现一种情况（其他文件处理速度快的已经处理完了，然后clean最后才执行，会把前面处理完的文件删掉，所以要用到runSequence）</span></span><br><span class="line">  runSequence(<span class="string">'clean'</span>, [<span class="string">'html'</span>, <span class="string">'less'</span>, <span class="string">'js'</span>, <span class="string">'images'</span>, <span class="string">'watch'</span>])</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建一个名为default的任务（上面的任务都可以没有，但是这个任务必须有，不然在终端执行gulp命令会报错）</span></span><br><span class="line"><span class="comment">//在终端上输入gulp命令，会默认执行default任务，并执行redist任务</span></span><br><span class="line">gulp.task(<span class="string">'default'</span>, [<span class="string">'redist'</span>]);</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">自动化工具</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/02/gulp/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-git" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/01/git/">git</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/01/git/" class="archive-article-date">
-  	<time datetime="2017-12-01T09:22:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/01/git/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/14/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/16/">Next &raquo;</a>
@@ -660,11 +617,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">excel</a>
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+                <a href="javascript:void(0)" class="js-tag color1">excel</a>
               </li>
              
               <li class="article-tag-list-item">

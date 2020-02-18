@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>swiper基础学习 | DJM的博客</title>
+  <title>vue源码解析 | DJM的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="swiper  动态添加数据，轮播不会自己更新1234567observer:true,//修改swiper自己或子元素时，自动初始化swiperobserveParents:false,//修改swiper的父元素时，自动初始化swiperonSlideChangeEnd: function(swiper)&amp;#123;　　　swiper.update();　　　mySwiper.startAut">
+  <meta name="description" content="说明1、 分析 vue 作为一个 MVVM 框架的基本实现原理  数据代理 模板解析 数据绑定  准备知识1234567891011121314151617181920211. [].slice.call(lis): 将伪数组转换为真数组2. node.nodeType: 得到节点类型3. Object.defineProperty(obj, propertyName, &amp;#123;    val">
+<meta name="keywords" content="vue.js">
 <meta property="og:type" content="article">
-<meta property="og:title" content="swiper基础学习">
-<meta property="og:url" content="http://yoursite.com/2018/05/11/swiper/index.html">
+<meta property="og:title" content="vue源码解析">
+<meta property="og:url" content="http://yoursite.com/2019/06/21/vue_source_code/index.html">
 <meta property="og:site_name" content="DJM的博客">
-<meta property="og:description" content="swiper  动态添加数据，轮播不会自己更新1234567observer:true,//修改swiper自己或子元素时，自动初始化swiperobserveParents:false,//修改swiper的父元素时，自动初始化swiperonSlideChangeEnd: function(swiper)&amp;#123;　　　swiper.update();　　　mySwiper.startAut">
+<meta property="og:description" content="说明1、 分析 vue 作为一个 MVVM 框架的基本实现原理  数据代理 模板解析 数据绑定  准备知识1234567891011121314151617181920211. [].slice.call(lis): 将伪数组转换为真数组2. node.nodeType: 得到节点类型3. Object.defineProperty(obj, propertyName, &amp;#123;    val">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-30T01:44:07.615Z">
+<meta property="og:updated_time" content="2020-02-15T18:11:37.267Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="swiper基础学习">
-<meta name="twitter:description" content="swiper  动态添加数据，轮播不会自己更新1234567observer:true,//修改swiper自己或子元素时，自动初始化swiperobserveParents:false,//修改swiper的父元素时，自动初始化swiperonSlideChangeEnd: function(swiper)&amp;#123;　　　swiper.update();　　　mySwiper.startAut">
+<meta name="twitter:title" content="vue源码解析">
+<meta name="twitter:description" content="说明1、 分析 vue 作为一个 MVVM 框架的基本实现原理  数据代理 模板解析 数据绑定  准备知识1234567891011121314151617181920211. [].slice.call(lis): 将伪数组转换为真数组2. node.nodeType: 得到节点类型3. Object.defineProperty(obj, propertyName, &amp;#123;    val">
   
     <link rel="alternative" href="/atom.xml" title="DJM的博客" type="application/atom+xml">
   
@@ -166,27 +167,33 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-swiper" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-vue_source_code" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      swiper基础学习
+      vue源码解析
     </h1>
   
 
         
-        <a href="/2018/05/11/swiper/" class="archive-article-date">
-  	<time datetime="2018-05-11T14:35:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-11</time>
+        <a href="/2019/06/21/vue_source_code/" class="archive-article-date">
+  	<time datetime="2019-06-21T13:28:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-21</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="swiper-动态添加数据，轮播不会自己更新"><a href="#swiper-动态添加数据，轮播不会自己更新" class="headerlink" title="swiper  动态添加数据，轮播不会自己更新"></a>swiper  动态添加数据，轮播不会自己更新</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">observer:<span class="literal">true</span>,<span class="comment">//修改swiper自己或子元素时，自动初始化swiper</span></span><br><span class="line">observeParents:<span class="literal">false</span>,<span class="comment">//修改swiper的父元素时，自动初始化swiper</span></span><br><span class="line">onSlideChangeEnd: <span class="function"><span class="keyword">function</span>(<span class="params">swiper</span>)</span>&#123;</span><br><span class="line">　　　swiper.update();</span><br><span class="line">　　　mySwiper.startAutoplay();</span><br><span class="line">　　  mySwiper.reLoop();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>1、 分析 vue 作为一个 MVVM 框架的基本实现原理</p>
+<ul>
+<li>数据代理</li>
+<li>模板解析</li>
+<li>数据绑定</li>
+</ul>
+<h2 id="准备知识"><a href="#准备知识" class="headerlink" title="准备知识"></a>准备知识</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> [].slice.call(lis): 将伪数组转换为真数组</span><br><span class="line"><span class="number">2.</span> node.nodeType: 得到节点类型</span><br><span class="line"><span class="number">3.</span> <span class="built_in">Object</span>.defineProperty(obj, propertyName, &#123;</span><br><span class="line">    value:<span class="string">''</span>,   <span class="comment">//指定初始值 </span></span><br><span class="line">    writable:<span class="literal">true</span>,  <span class="comment">//value是否可以修改 </span></span><br><span class="line">    configurable: <span class="literal">false</span>, <span class="comment">// 不能再重新定义</span></span><br><span class="line">    enumerable: <span class="literal">true</span>, <span class="comment">// 可以枚举</span></span><br><span class="line">    <span class="comment">// 当通过vm.name读取属性值时自动调用</span></span><br><span class="line">    <span class="keyword">get</span>: function proxyGetter() &#123;</span><br><span class="line">    <span class="comment">// 读取data中对应属性值返回(实现代理读操作)</span></span><br><span class="line">    <span class="keyword">return</span> me._data[key];</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 当通过vm.name = 'xxx'时自动调用  </span></span><br><span class="line">    <span class="keyword">set</span>: function proxySetter(newVal) &#123;</span><br><span class="line">    <span class="comment">// 将最新的值保存到data中对应的属性上(实现代理写操作)</span></span><br><span class="line">        me._data[key] = newVal;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;): 给对象添加属性(指定描述符)</span><br><span class="line"><span class="number">4.</span> <span class="built_in">Object</span>.keys(obj): 得到对象自身可枚举属性组成的数组</span><br><span class="line"><span class="number">5.</span> obj.hasOwnProperty(prop): 判断prop是否是obj自身的属性</span><br><span class="line"><span class="number">6.</span> DocumentFragment: 文档碎片(高效批量更新多个节点)</span><br></pre></td></tr></table></figure>
       
 
       
@@ -215,6 +222,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">vue.js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -265,7 +283,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/05/11/swiper/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/06/21/vue_source_code/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -279,18 +297,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/05/12/highChart/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/06/22/vuenote2/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Highcharts 用法
+          Vue 知识点
         
       </div>
     </a>
   
   
-    <a href="/2018/04/26/zhengze/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">正则表达式</div>
+    <a href="/2019/06/21/vueRouter/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vue监听及路由传递数据</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -310,6 +328,19 @@
         </div>
         
         
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#说明"><span class="toc-number">1.</span> <span class="toc-text">说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备知识"><span class="toc-number">2.</span> <span class="toc-text">准备知识</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
     </div>
 </aside>
 
@@ -318,7 +349,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="swiper" data-title="swiper基础学习" data-url="http://yoursite.com/2018/05/11/swiper/"></div>
+	<div class="ds-thread" data-thread-key="vue_source_code" data-title="vue源码解析" data-url="http://yoursite.com/2019/06/21/vue_source_code/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

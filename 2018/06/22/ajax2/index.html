@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>for循环，call apply bind的用法 | DJM的博客</title>
+  <title>工作常见问题：Ajax中POST和GET的区别 | DJM的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1、for 循环遍历数组123456789101112131415161718192021222324for(var i=0;i&amp;lt;5;i++)&amp;#123;	setTimeout(function()&amp;#123;			console.log(i);	&amp;#125;,100*i);&amp;#125;// 结果：5 5 5 5 5 ,不是我们想要的第一种方法，把 var 改成 letfor(let i=0">
+  <meta name="description" content="Ajax中POST和GET的区别Get和Post都是向服务器发送的一种请求，只是发送机制不同。  GET请求会将参数跟在URL后进行传递，而POST请求则是作为HTTP消息的实体内容发送给WEB服务器。当然在Ajax请求中，这种区别对用户是不可见的。  首先是”GET方式提交的数据最多只能是1024字节”，因为GET是通过URL提交数据，那么GET可提交的数据量就跟URL的长度有直接关系了。而实际">
+<meta name="keywords" content="ajax">
 <meta property="og:type" content="article">
-<meta property="og:title" content="for循环，call apply bind的用法">
-<meta property="og:url" content="http://yoursite.com/2018/07/13/for/index.html">
+<meta property="og:title" content="工作常见问题：Ajax中POST和GET的区别">
+<meta property="og:url" content="http://yoursite.com/2018/06/22/ajax2/index.html">
 <meta property="og:site_name" content="DJM的博客">
-<meta property="og:description" content="1、for 循环遍历数组123456789101112131415161718192021222324for(var i=0;i&amp;lt;5;i++)&amp;#123;	setTimeout(function()&amp;#123;			console.log(i);	&amp;#125;,100*i);&amp;#125;// 结果：5 5 5 5 5 ,不是我们想要的第一种方法，把 var 改成 letfor(let i=0">
+<meta property="og:description" content="Ajax中POST和GET的区别Get和Post都是向服务器发送的一种请求，只是发送机制不同。  GET请求会将参数跟在URL后进行传递，而POST请求则是作为HTTP消息的实体内容发送给WEB服务器。当然在Ajax请求中，这种区别对用户是不可见的。  首先是”GET方式提交的数据最多只能是1024字节”，因为GET是通过URL提交数据，那么GET可提交的数据量就跟URL的长度有直接关系了。而实际">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-01T12:52:42.000Z">
+<meta property="og:updated_time" content="2020-03-13T21:54:13.405Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="for循环，call apply bind的用法">
-<meta name="twitter:description" content="1、for 循环遍历数组123456789101112131415161718192021222324for(var i=0;i&amp;lt;5;i++)&amp;#123;	setTimeout(function()&amp;#123;			console.log(i);	&amp;#125;,100*i);&amp;#125;// 结果：5 5 5 5 5 ,不是我们想要的第一种方法，把 var 改成 letfor(let i=0">
+<meta name="twitter:title" content="工作常见问题：Ajax中POST和GET的区别">
+<meta name="twitter:description" content="Ajax中POST和GET的区别Get和Post都是向服务器发送的一种请求，只是发送机制不同。  GET请求会将参数跟在URL后进行传递，而POST请求则是作为HTTP消息的实体内容发送给WEB服务器。当然在Ajax请求中，这种区别对用户是不可见的。  首先是”GET方式提交的数据最多只能是1024字节”，因为GET是通过URL提交数据，那么GET可提交的数据量就跟URL的长度有直接关系了。而实际">
   
     <link rel="alternative" href="/atom.xml" title="DJM的博客" type="application/atom+xml">
   
@@ -166,39 +167,54 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-for" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-ajax2" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      for循环，call apply bind的用法
+      工作常见问题：Ajax中POST和GET的区别
     </h1>
   
 
         
-        <a href="/2018/07/13/for/" class="archive-article-date">
-  	<time datetime="2018-07-13T11:37:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-13</time>
+        <a href="/2018/06/22/ajax2/" class="archive-article-date">
+  	<time datetime="2018-06-22T08:48:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1、for-循环遍历数组"><a href="#1、for-循环遍历数组" class="headerlink" title="1、for 循环遍历数组"></a>1、for 循环遍历数组</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)&#123;</span><br><span class="line">	setTimeout(function()&#123;</span><br><span class="line">			console.log(i);</span><br><span class="line">	&#125;,<span class="number">100</span>*i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 结果：5 5 5 5 5 ,不是我们想要的</span></span><br><span class="line"></span><br><span class="line">第一种方法，把 <span class="keyword">var</span> 改成 let</span><br><span class="line"><span class="keyword">for</span>(let i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)&#123;</span><br><span class="line">	setTimeout(function()&#123;</span><br><span class="line">			console.log(i);</span><br><span class="line">	&#125;,<span class="number">100</span>*i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 结果：0 1 2 3 4 </span></span><br><span class="line"></span><br><span class="line">第二种方法 加一个自执行函数，形参闭包</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)&#123;</span><br><span class="line">	(function(e)&#123;</span><br><span class="line">		setTimeout(function()&#123;</span><br><span class="line">				console.log(e);</span><br><span class="line">		&#125;,<span class="number">100</span>*i);</span><br><span class="line">	&#125;)(i)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 结果：0 1 2 3 4</span></span><br></pre></td></tr></table></figure>
-<h2 id="遍历数组并归类"><a href="#遍历数组并归类" class="headerlink" title="遍历数组并归类"></a>遍历数组并归类</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str1 = <span class="string">'A1,B1,C1,C2,B2,A2,D1,D2,D3'</span>;</span><br><span class="line"><span class="keyword">var</span> str2 = <span class="string">'E1,E2,E3,F1,F2,F3'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">app</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">26</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> letter = <span class="built_in">String</span>.fromCharCode((<span class="number">65</span> + i));</span><br><span class="line">        <span class="keyword">var</span> re= <span class="keyword">new</span> <span class="built_in">RegExp</span>(letter+<span class="string">"[0-9]&#123;1&#125;"</span>,<span class="string">"gi"</span>)</span><br><span class="line">        <span class="keyword">var</span> result = str.match(re)</span><br><span class="line">        <span class="keyword">if</span>(result)&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(letter+<span class="string">'--&gt;&#123;'</span>+result.join()+<span class="string">'&#125;'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">app(str1);</span><br><span class="line">        <span class="comment">// A--&gt;&#123;A1,A2&#125;</span></span><br><span class="line">        <span class="comment">// B--&gt;&#123;B1,B2&#125;</span></span><br><span class="line">        <span class="comment">// C--&gt;&#123;C1,C2&#125;</span></span><br><span class="line">        <span class="comment">// D--&gt;&#123;D1,D2,D3&#125;</span></span><br><span class="line">app(str2);</span><br><span class="line">        <span class="comment">// E--&gt;&#123;E1,E2,E3&#125;</span></span><br><span class="line">        <span class="comment">// F--&gt;&#123;F1,F2,F3&#125;</span></span><br></pre></td></tr></table></figure>
-<h3 id="2、call-thisArgs-args…-的用法-改变this指向"><a href="#2、call-thisArgs-args…-的用法-改变this指向" class="headerlink" title="2、call(thisArgs [,args…])的用法,改变this指向"></a>2、call(thisArgs [,args…])的用法,改变this指向</h3><p>该方法可以传递一个thisArgs参数和一个参数列表，thisArgs 指定了函数在运行期的调用者，也就是函数中的 this 对象，而参数列表会被传入调用函数中。thisArgs 的取值有以下四种情况：<br>+不传，或者传null,undefined， 函数中的 this 指向 window 对象<br>+传递另一个函数的函数名，函数中的 this 指向这个函数的引用<br>+传递字符串、数值或布尔类型等基础类型，函数中的 this 指向其对应的包装对象，如 String、Number、Boolean<br>+传递一个对象，函数中的 this 指向这个对象<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">    name:<span class="string">'李雷'</span>, </span><br><span class="line">    say:function()&#123; </span><br><span class="line">        console.log(<span class="string">"我是3号 XXX!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="function">function <span class="title">b</span><span class="params">(name)</span></span>&#123;</span><br><span class="line">    console.log(<span class="string">"我是1号 "</span>+ name);</span><br><span class="line">    console.log(<span class="string">"我是2号 "</span>+ <span class="keyword">this</span>.name);</span><br><span class="line">    <span class="keyword">this</span>.say();</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">b.call(a,<span class="string">'韩梅梅'</span>);</span><br></pre></td></tr></table></figure></p>
-<h3 id="3、apply-thisArgs-args"><a href="#3、apply-thisArgs-args" class="headerlink" title="3、apply(thisArgs [,args[]])"></a>3、apply(thisArgs [,args[]])</h3><p>apply 和 call 的唯一区别是第二个参数的传递方式不同，apply 的第二个参数必须是一个数组，而 call 允许传递一个参数列表。值得你注意的是，虽然 apply 接收的是一个参数数组，但在传递给调用函数时，却是以参数列表的形式传递，我们看个简单的例子：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">function <span class="title">b</span><span class="params">(x,y,z)</span></span>&#123;</span><br><span class="line">    console.log(x,y,z);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">b.apply(<span class="keyword">null</span>,[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]); <span class="comment">// 1 2 3</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="4、bind-thisArgs-args…"><a href="#4、bind-thisArgs-args…" class="headerlink" title="4、bind(thisArgs [,args…])"></a>4、bind(thisArgs [,args…])</h3><p>bind是ES5 新增的一个方法，它的传参和call类似，但又和 call/apply 有着显著的不同，即调用 call 或 apply 都会自动执行对应的函数，而 bind 不会执行对应的函数，只是返回了对函数的引用。粗略一看，bind 似乎比call/apply 要落后一些，那ES5为什么还要引入bind 呢？</p>
-<p>其实，ES5引入 bind 的真正目的是为了弥补 call/apply 的不足，由于 call/apply 会对目标函数自动执行，从而导致它无法在事件绑定函数中使用，因为事件绑定函数不需要我们手动执行，它是在事件被触发时由JS 内部自动执行的。而 bind 在实现改变函数 this 的同时又不会自动执行目标函数.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;name:<span class="string">'onepixel'</span>&#125;;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 给document添加click事件监听，并绑定onClick函数</span></span><br><span class="line"><span class="comment"> * 通过bind方法设置onClick的this为obj，并传递参数p1,p2</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">document.addEventListener(<span class="string">'click'</span>,onClick.bind(obj,<span class="string">'p1'</span>,<span class="string">'p2'</span>),<span class="keyword">false</span>);</span><br><span class="line"><span class="comment">//当点击网页时触发并执行</span></span><br><span class="line"><span class="function">function <span class="title">onClick</span><span class="params">(a,b)</span></span>&#123;</span><br><span class="line">    console.log(</span><br><span class="line">            <span class="keyword">this</span>.name, <span class="comment">//onepixel</span></span><br><span class="line">            a, <span class="comment">//p1</span></span><br><span class="line">            b  <span class="comment">//p2</span></span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="应用场景一：继承"><a href="#应用场景一：继承" class="headerlink" title="应用场景一：继承"></a>应用场景一：继承</h3><p>大家知道，JavaScript中没有诸如Java、C# 等高级语言中的extend 关键字，因此JS 中没有继承的概念，如果一定要继承的话，call 和 apply 可以实现这个功能：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">function <span class="title">Animal</span><span class="params">(name,weight)</span></span>&#123;</span><br><span class="line">   <span class="keyword">this</span>.name = name;</span><br><span class="line">   <span class="keyword">this</span>.weight = weight;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function">function <span class="title">Cat</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Animal.call(<span class="keyword">this</span>,<span class="string">'cat'</span>,<span class="string">'50'</span>);</span><br><span class="line">  <span class="comment">//Animal.apply(this,['cat','50']);</span></span><br><span class="line"> </span><br><span class="line">   <span class="keyword">this</span>.say = function()&#123;</span><br><span class="line">      console.log(<span class="string">"I am "</span> + <span class="keyword">this</span>.name+<span class="string">",my weight is "</span> + <span class="keyword">this</span>.weight);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> cat = <span class="keyword">new</span> Cat();</span><br><span class="line">cat.say();<span class="comment">//I am cat,my weight is 50</span></span><br></pre></td></tr></table></figure></p>
-<p>当通过new 运算符产生了cat 时，Cat中的 this 就指向了cat对象(关于new运算符的讲解，请参考JS构造函数和new运算符，而继承的关键是在于Cat中执行了Animal.call(this,’cat’,’50’) 这句话，在call中将this作为thisArgs参数传递，于是Animal 方法中的 this 就指向了Cat中的 this，而 cat 中的 this 指向的是 cat 对象，所以Animal 中的 this 指向的就是 cat 对象，在 Animal 中定义了name 和 weight 属性，就相当于在 cat 中定义了这些属性，因此 cat 对象便拥有了Animal 中定义的属性，从而达到了继承的目的。</p>
-<h3 id="应用场景二：移花接木"><a href="#应用场景二：移花接木" class="headerlink" title="应用场景二：移花接木"></a>应用场景二：移花接木</h3><p>在讲下面的内容之前，我们首先来认识一下JavaScript 中的一个非标准专业术语：ArrayLike (类数组/伪数组)</p>
-<p>ArrayLike 对象即拥有数组的一部分行为，在DOM 中早已表现出来，而jQuery 的崛起让ArrayLike 在JavaScript 中大放异彩。ArrayLike 对象的精妙在于它和JS 原生的 Array 类似，但是它是自由构建的，它来自开发者对JavaScript 对象的扩展，也就是说：对于它的原型(prototype)我们可以自由定义，而不会污染到JS原生的Array。 </p>
-<p>ArrayLike 对象在JS中被广泛使用，比如DOM 中的NodeList, 函数中的arguments 都是类数组对象，这些对象像数组一样存储着每一个元素，但它没有操作数组的方法，而我们可以通过call 将数组的某些方法<code>移接</code>到ArrayLike 对象，从而达到操作其元素的目的。比如我们可以这样遍历函数中的arguments:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">function <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// 检测arguments是否为Array的实例</span></span><br><span class="line">    console.log(</span><br><span class="line">            arguments <span class="keyword">instanceof</span> Array, <span class="comment">//false</span></span><br><span class="line">            Array.isArray(arguments)  <span class="comment">//false</span></span><br><span class="line">    );</span><br><span class="line">    <span class="comment">// 判断arguments是否有forEach方法</span></span><br><span class="line">    console.log(arguments.forEach); <span class="comment">//undefined</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 将数组中的forEach应用到arguments上</span></span><br><span class="line">    Array.prototype.forEach.call(arguments,function(item)&#123;</span><br><span class="line">        console.log(item); <span class="comment">// 1 2 3 4</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">test(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>);</span><br></pre></td></tr></table></figure></p>
-<p>除此之外，对于apply 而言，我们上面提到了它独有的一个特性，即apply 接收的是数组，在传递给调用函数的时候是以参数列表传递的。 这个特性让apply 看起来比call 略胜一筹，比如有这样一个场景：给定一个数组[1,3,4,7]，然后求数组中的最大元素，而我们知道，数组中并没有获取最大值的方法，一般情况下，你需要通过编写代码来实现。而我们知道，Math 对象中有一个获取最大值的方法，即Math.max()， max方法需要传递一个参数列表，然后返回这些参数中的最大值。而apply 不仅可以将Math 对象的max 方法应用到其他对象上，还可以将一个数组转化为参数列表传递给max,看代码就能一目了然：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">4</span>];</span><br><span class="line">Math.max.apply(<span class="keyword">null</span>,arr); <span class="comment">// 5</span></span><br></pre></td></tr></table></figure></p>
-<p>以上学习来源于：一像素<br><a href="https://www.cnblogs.com/onepixel/p/7021506.html" target="_blank" rel="noopener">https://www.cnblogs.com/onepixel/p/7021506.html</a></p>
+        <h2 id="Ajax中POST和GET的区别"><a href="#Ajax中POST和GET的区别" class="headerlink" title="Ajax中POST和GET的区别"></a>Ajax中POST和GET的区别</h2><p>Get和Post都是向服务器发送的一种请求，只是发送机制不同。</p>
+<ol>
+<li><p>GET请求会将参数跟在URL后进行传递，而POST请求则是作为HTTP消息的实体内容发送给WEB服务器。当然在Ajax请求中，这种区别对用户是不可见的。</p>
+</li>
+<li><p>首先是”GET方式提交的数据最多只能是1024字节”，因为GET是通过URL提交数据，那么GET可提交的数据量就跟URL的长度有直接关系了。而实际上，URL不存在参数上限的问题，HTTP协议规范没有对URL长度进行限制。这个限制是特定的浏览器及服务器对它的限制。IE对URL长度的限制是2083字节(2K+35)。对于其他浏览器，如Netscape、FireFox等，理论上没有长度限制，其限制取决于操作系统的支持。注意这是限制是整个URL长度，而不仅仅是你的参数值数据长度。</p>
+</li>
+<li><p>GET方式请求的数据会被浏览器缓存起来，因此其他人就可以从浏览器的历史记录中读取到这些数据，例如账号和密码等。在某种情况下，GET方式会带来严重的安全问题。而POST方式相对来说就可以避免这些问题。</p>
+</li>
+</ol>
+<h2 id="get请求和post请求在服务器端的区别"><a href="#get请求和post请求在服务器端的区别" class="headerlink" title="get请求和post请求在服务器端的区别:"></a>get请求和post请求在服务器端的区别:</h2><ol start="4">
+<li>在客户端使用get请求时,服务器端使用Request.QueryString来获取参数,而客户端使用post请求时,服务器端使用Request.Form来获取参数.</li>
+</ol>
+<p>HTTP标准包含这两种方法是为了达到不同的目的。POST用于创建资源，资源的内容会被编入HTTP请示的内容中。例如，处理订货表单、在数据库中加入新数据行等。</p>
+<p>当请求无副作用时（如进行搜索），便可使用GET方法；当请求有副作用时（如添加数据行），则用POST方法。一个比较实际的问题是：GET方法可能会产生很长的URL，或许会超过某些浏览器与服务器对URL长度的限制。</p>
+<p>若符合下列任一情况，则用POST方法：</p>
+<ul>
+<li>请求的结果有持续性的副作用，例如，数据库内添加新的数据行。</li>
+<li>若使用GET方法，则表单上收集的数据可能让URL过长。</li>
+<li>要传送的数据不是采用7位的ASCII编码。</li>
+</ul>
+<p>若符合下列任一情况，则用GET方法：</p>
+<ul>
+<li>请求是为了查找资源，HTML表单数据仅用来帮助搜索。</li>
+<li>请求结果无持续性的副作用。</li>
+<li>收集的数据及HTML表单内的输入字段名称的总长不超过1024个字符。</li>
+</ul>
+<h2 id="跨域原因"><a href="#跨域原因" class="headerlink" title="跨域原因"></a>跨域原因</h2><p>ajax 请求遵循同源策略（协议、域名、端口必须一致），若突破该限制，会产生跨域行为，设置Access-Control-Allow-Origin: *，可允许客户端跨域访问。<br>除上述情况外，还有一种请求叫做Preflighted Request（带预检的跨域请求）。</p>
+<p>Preflighted Request在发送真正的请求前，会先发送一个方法为OPTIONS的预请求(Preflighted Request)，用于试探服务端是否能接受真正的请求。如果options获得的回应时拒绝性质的，如404、403、500等状态，就会停止post、get请求的发出。</p>
 
       
 
@@ -228,6 +244,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">ajax</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -278,7 +305,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/13/for/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/06/22/ajax2/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -292,18 +319,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/07/14/clipboard/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/06/22/ajax/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          clipboard-复印内容的方式
+          原生AJAX 和 jQuery封装的$.ajax()
         
       </div>
     </a>
   
   
-    <a href="/2018/06/23/words/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">IT常用词汇学习</div>
+    <a href="/2018/06/20/vuex/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Vuex</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -331,7 +358,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="for" data-title="for循环，call apply bind的用法" data-url="http://yoursite.com/2018/07/13/for/"></div>
+	<div class="ds-thread" data-thread-key="ajax2" data-title="工作常见问题：Ajax中POST和GET的区别" data-url="http://yoursite.com/2018/06/22/ajax2/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

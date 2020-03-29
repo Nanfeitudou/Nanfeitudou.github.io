@@ -164,6 +164,85 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-clipboard" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/14/clipboard/">clipboard-复印内容的方式</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/14/clipboard/" class="archive-article-date">
+  	<time datetime="2018-07-14T12:50:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>官网：<a href="https://clipboardjs.com/" target="_blank" rel="noopener">https://clipboardjs.com/</a><br>Github:<a href="https://github.com/zenorocha/clipboard.js" target="_blank" rel="noopener">https://github.com/zenorocha/clipboard.js</a></p>
+<p>clipboard复印内容的方式有 </p>
+<ul>
+<li>从target复印目标内容 </li>
+<li>通过function 要复印的内容 </li>
+<li>通过属性返回复印的内容</li>
+</ul>
+<h2 id="从target复印目标内容"><a href="#从target复印目标内容" class="headerlink" title="从target复印目标内容"></a>从target复印目标内容</h2><p>可以从input、textare、div中通过copy/cut获取内容目标内容，其HTML的代码如下</p>
+<p><strong>input</strong><br>data-clipboard-target指向复印节点，这里指input的目标id<br>data-clipboard-action这里使用copy，同时也可以使用cut，则点击按钮后，内容里的值被剪切。<br>如果没有指定，则默认值是copy。cut只能在input和textare中起作用<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;input id=<span class="string">"foo"</span> type=<span class="string">"text"</span> value=<span class="string">"hello"</span>&gt;</span><br><span class="line">&lt;button <span class="class"><span class="keyword">class</span></span>=<span class="string">"btn"</span> data-clipboard-action=<span class="string">"copy"</span> data-clipboard-target=<span class="string">"#foo"</span>&gt;Copy&lt;<span class="regexp">/button&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>textare</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;textarea id=<span class="string">"bar"</span>&gt;hello&lt;<span class="regexp">/textarea&gt; </span></span><br><span class="line"><span class="regexp">&lt;button class="btn" data-clipboard-action="cut" data-clipboard-target="#bar"&gt;Cut&lt;/</span>button&gt;</span><br></pre></td></tr></table></figure></p>
+<p><strong>div</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;hello_div&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;button class="btn" data-clipboard-action="copy" data-clipboard-target="div"&gt;Copy&lt;/</span>button&gt;</span><br></pre></td></tr></table></figure></p>
+<p><strong>以上的插件的初始化JS代码都是相同：</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实例化，按钮绑定</span></span><br><span class="line"><span class="keyword">var</span> clipboard = <span class="keyword">new</span> ClipboardJS(<span class="string">'.btn'</span>);</span><br><span class="line"></span><br><span class="line">clipboard.on(<span class="string">'success'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.info(<span class="string">'Action:'</span>, e.action);</span><br><span class="line">    <span class="built_in">console</span>.info(<span class="string">'Text:'</span>, e.text);</span><br><span class="line">    <span class="built_in">console</span>.info(<span class="string">'Trigger:'</span>, e.trigger);</span><br><span class="line">    e.clearSelection();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">clipboard.on(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.error(<span class="string">'Action:'</span>, e.action);</span><br><span class="line">    <span class="built_in">console</span>.error(<span class="string">'Trigger:'</span>, e.trigger);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h2 id="通过function-要复印的内容"><a href="#通过function-要复印的内容" class="headerlink" title="通过function 要复印的内容"></a>通过function 要复印的内容</h2><p>通过target的function复印内容<br>通过target指定要复印的节点，这里返回舒值是‘hello’<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;button <span class="class"><span class="keyword">class</span></span>=<span class="string">"btn"</span>&gt;Copy_target&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">&lt;div&gt;hello&lt;/</span>div&gt;</span><br><span class="line"><span class="comment">//下面是js</span></span><br><span class="line"><span class="keyword">var</span> clipboard = <span class="keyword">new</span> ClipboardJS(<span class="string">'.btn'</span>, &#123;</span><br><span class="line"><span class="comment">// 通过target指定要复印的节点</span></span><br><span class="line">    target: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">               <span class="keyword">return</span> <span class="built_in">document</span>.querySelector(<span class="string">'div'</span>);</span><br><span class="line">          &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">clipboard.on(<span class="string">'success'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">clipboard.on(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>通过text的function复印内容<br>text的function指定的复印内容，这里返回‘to be or not to be’<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;button <span class="class"><span class="keyword">class</span></span>=<span class="string">"btn"</span>&gt;Copy&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/下面是js</span></span><br><span class="line"><span class="regexp">   var clipboard = new ClipboardJS('.btn', &#123;</span></span><br><span class="line"><span class="regexp">   /</span><span class="regexp">/ 点击copy按钮，直接通过text直接返回复印的内容</span></span><br><span class="line"><span class="regexp">       text: function() &#123;</span></span><br><span class="line"><span class="regexp">           return 'to be or not to be';</span></span><br><span class="line"><span class="regexp">       &#125;</span></span><br><span class="line"><span class="regexp">   &#125;);</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">   clipboard.on('success', function(e) &#123;</span></span><br><span class="line"><span class="regexp">       console.log(e);</span></span><br><span class="line"><span class="regexp">   &#125;);</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">   clipboard.on('error', function(e) &#123;</span></span><br><span class="line"><span class="regexp">       console.log(e);</span></span><br><span class="line"><span class="regexp">   &#125;);</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="通过属性返回复印的内容"><a href="#通过属性返回复印的内容" class="headerlink" title="通过属性返回复印的内容"></a>通过属性返回复印的内容</h2><p>通过data-clipboard-text属性返回复印的内容<br>单节点<br>通过id指定节点对象，并做为参数传送给Clipboard。这里的返回值的内容是data-clipboard-text的内容<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通过id获取复制data-clipboard-text的内容 </span></span><br><span class="line">    &lt;div id=<span class="string">"btn"</span> data-clipboard-text=<span class="string">"1"</span>&gt;</span><br><span class="line">        &lt;span&gt;Copy&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line"><span class="comment">//下面是js</span></span><br><span class="line">    <span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">'btn'</span>);</span><br><span class="line">    <span class="keyword">var</span> clipboard = <span class="keyword">new</span> ClipboardJS(btn);</span><br><span class="line"></span><br><span class="line">    clipboard.on(<span class="string">'success'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(e);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    clipboard.on(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(e);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure></p>
+<p>多节点<br>通过button返回所有button按钮，并做为参数传送给Clipboard。每个按钮被点击时，返回值的内容是其对应的data-clipboard-text的内容，分别是1，2，3<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  多节点获取button的data-clipboard-text值</span></span><br><span class="line">    &lt;button data-clipboard-text=<span class="string">"1"</span>&gt;Copy&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">    &lt;button data-clipboard-text="2"&gt;Copy&lt;/</span>button&gt;</span><br><span class="line">    &lt;button data-clipboard-text=<span class="string">"3"</span>&gt;Copy&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/下面是js</span></span><br><span class="line"><span class="regexp">    var btns = document.querySelectorAll('button');</span></span><br><span class="line"><span class="regexp">    var clipboard = new ClipboardJS(btns);</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    clipboard.on('success', function(e) &#123;</span></span><br><span class="line"><span class="regexp">        console.log(e);</span></span><br><span class="line"><span class="regexp">    &#125;);</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    clipboard.on('error', function(e) &#123;</span></span><br><span class="line"><span class="regexp">        console.log(e);</span></span><br><span class="line"><span class="regexp">    &#125;);</span></span><br></pre></td></tr></table></figure></p>
+<p>多节点<br>通过class获取所有button按钮，并做为参数传送给Clipboard。每个按钮被点击时，返回值的内容是其对应的data-clipboard-text的内容，分别是1，2，3<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//   通过class注册多个button，获取data-clipboard-text的值</span></span><br><span class="line">    &lt;button <span class="class"><span class="keyword">class</span></span>=<span class="string">"btn"</span> data-clipboard-text=<span class="string">"1"</span>&gt;Copy&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">    &lt;button class="btn" data-clipboard-text="2"&gt;Copy&lt;/</span>button&gt;</span><br><span class="line">    &lt;button <span class="class"><span class="keyword">class</span></span>=<span class="string">"btn"</span> data-clipboard-text=<span class="string">"3"</span>&gt;Copy&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/下面是js</span></span><br><span class="line"><span class="regexp">    var clipboard = new ClipboardJS('.btn');</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    clipboard.on('success', function(e) &#123;</span></span><br><span class="line"><span class="regexp">        console.log(e);</span></span><br><span class="line"><span class="regexp">    &#125;);</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    clipboard.on('error', function(e) &#123;</span></span><br><span class="line"><span class="regexp">        console.log(e);</span></span><br><span class="line"><span class="regexp">    &#125;);</span></span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/14/clipboard/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-for" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -358,134 +437,9 @@
 
 
   
-    <article id="post-jsonp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/22/jsonp/">jsonp跨域请求讲解</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/22/jsonp/" class="archive-article-date">
-  	<time datetime="2018-06-22T11:27:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="JSONP的实现原理"><a href="#JSONP的实现原理" class="headerlink" title="JSONP的实现原理"></a>JSONP的实现原理</h2><ul>
-<li>由于浏览器的安全性限制，不允许AJAX访问协议不同、域名不同、端口号不同的数据接口，浏览器认为这种访问不安全。</li>
-<li>可以通过动态创建script标签的形式，把script标签的src属性，指向数据接口的地址，因为script标签不存在跨域限制，这种数据获取方式，称作JSONP（注意：JSONP的实现原理，知晓JSONP只支持GET请求）。</li>
-<li>具体实现过程：<ul>
-<li>先在客户端定义一个回调方法，预定义对数据的操作；</li>
-<li>再把这个回调方法的名称，通过URL传参的形式，提交到服务器的数据接口；</li>
-<li>服务器数据接口组织好要发送给客户端的数据，再拿着客户端传递过来的回调方法名称，拼接出一个调用这个方法的字符串，发送给客户端去解析执行。</li>
-<li>客户端拿到服务器返回的字符串之后，当作Script脚本去解析执行，这样就能够拿到JSONP的数据了。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 客户端页面 --&gt;</span><br><span class="line">   &lt;script&gt;</span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'OK'</span>)</span><br><span class="line">            <span class="built_in">console</span>.log(data)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">showInfo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'99999'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">    &lt;script src="http:/</span><span class="regexp">/127.0.0.1:3000/g</span>etscript?callback=show<span class="string">"&gt;&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- server.js文件,运行node server开启服务器 --&gt;</span><br><span class="line"><span class="comment">// 导入http内置模块</span></span><br><span class="line"><span class="keyword">const</span> lhttp = <span class="built_in">require</span>(<span class="string">'http'</span>)</span><br><span class="line"><span class="comment">// 这个核心模块，能够帮我们解析URL地址，从而拿到pathname query</span></span><br><span class="line"><span class="keyword">const</span> urlModule = <span class="built_in">require</span>(<span class="string">'url'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个http服务器</span></span><br><span class="line"><span class="keyword">const</span> server = lhttp.createServer();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 监听http服务器的request的请求</span></span><br><span class="line">server.on(<span class="string">'request'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// const url = req.url</span></span><br><span class="line">    <span class="keyword">const</span> &#123;<span class="attr">pathname</span>:url,query&#125; = urlModule.parse(req.url,<span class="literal">true</span>)</span><br><span class="line">    <span class="keyword">if</span>( url === <span class="string">'/getscript'</span>)&#123;</span><br><span class="line">        <span class="keyword">var</span> data = &#123;</span><br><span class="line">            name:<span class="string">'夏天'</span>,</span><br><span class="line">            age: <span class="number">20</span>,</span><br><span class="line">            gender:<span class="string">'man'</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// data转换成字符串，相当于'show(123)'</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 拼接一个合法的JS脚本，这里拼接的是一个方法调用</span></span><br><span class="line">        <span class="comment">// var scriptStr = 'show()'</span></span><br><span class="line">        <span class="keyword">var</span> scriptStr = <span class="string">`<span class="subst">$&#123;query.callback&#125;</span>(<span class="subst">$&#123;<span class="built_in">JSON</span>.stringify(data)&#125;</span>)`</span></span><br><span class="line">        <span class="comment">// 通过res.end发送给客户端，客户端去把这个字符串，当作</span></span><br><span class="line">        res.end(scriptStr)</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        res.end(<span class="string">'404'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 指定端口号并启动服务器监听</span></span><br><span class="line">server.listen(<span class="number">3000</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'server listen at http://127.0.0.1:3000'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JSONP(JSON with Padding)是JSON的一种“使用模式”，可用于解决主流浏览器的跨域数据访问的问题。由于同源策略，一般来说位于 server1.example.com 的网页无法与不是 server1.example.com的服务器沟通，而 HTML 的&lt;script&gt; 元素是一个例外。利用 &lt;script&gt; 元素的这个开放策略，网页可以得到从其他来源动态产生的 JSON 资料，而这种使用模式就是所谓的 JSONP。用 JSONP 抓到的资料并不是 JSON，而是任意的JavaScript，用 JavaScript 直译器执行而不是用 JSON 解析器解析。</span><br></pre></td></tr></table></figure>
-<p>以下不管哪种方法都需要后台服务器配合才能，跨域请求数据。</p>
-<p>第一种<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"http://192.168.0.130:3000/studlist"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
-<p>第二种  不推荐<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"./jquery-3.3.1.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;script&gt;</span><br><span class="line"> $.<span class="keyword">get</span>('http://192.168.0.130:3000/studlist',function(data,status,xhr)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(data)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">callback</span>(<span class="params">stud</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"天黑了"</span>)</span><br><span class="line">        <span class="built_in">console</span>.log(stud)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">'&lt;script src="http://192.168.0.130:3000/studlist"&gt;&lt;\/script&gt;'</span>)</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>第三种  不推荐<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"./jquery-3.3.1.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;script&gt;</span><br><span class="line"> $.<span class="keyword">get</span>('http://192.168.0.130:3000/studlist',function(data,status,xhr)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(data)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">callback</span>(<span class="params">stud</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"天黑了"</span>)</span><br><span class="line">        <span class="built_in">console</span>.log(stud)  </span><br><span class="line">    &#125;</span><br><span class="line">     <span class="comment">//后台服务器设置动态方法来接收不同的方法名</span></span><br><span class="line">     <span class="built_in">document</span>.write(<span class="string">'&lt;script src="http://192.168.0.130:3000/studlist?callback=bbb"&gt;&lt;\/script&gt;'</span>)</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>第四种  其他方法底层封装的还是 $.ajax<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"./jquery-3.3.1.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        url:<span class="string">'http://192.168.0.130:3000/studlist'</span>,</span><br><span class="line">        method:<span class="string">'GET'</span>,</span><br><span class="line">        dataType: <span class="string">'jsonp'</span>,    <span class="comment">//设置数据类型</span></span><br><span class="line">        success:<span class="function"><span class="keyword">function</span>(<span class="params">data,status,xhr</span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(data)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="1-jQuery-ajax"><a href="#1-jQuery-ajax" class="headerlink" title="1.jQuery ajax"></a>1.jQuery ajax</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">   type: <span class="string">'POST'</span>,</span><br><span class="line">   url: url,</span><br><span class="line">   data: data,</span><br><span class="line">   dataType: dataType,</span><br><span class="line">   success: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;,</span><br><span class="line">   error: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">&#125;);</span><br><span class="line">优缺点：</span><br><span class="line">本身是针对MVC的编程,不符合现在前端MVVM的浪潮</span><br><span class="line">基于原生的XHR开发，XHR本身的架构不清晰，已经有了fetch的替代方案</span><br><span class="line">JQuery整个项目太大，单纯使用ajax却要引入整个JQuery非常的不合理（采取个性化打包的方案又不能享受CDN服务）</span><br></pre></td></tr></table></figure>
-<h2 id="2-axios"><a href="#2-axios" class="headerlink" title="2.axios"></a>2.axios</h2><p><a href="https://www.kancloud.cn/yunye/axios/234845" target="_blank" rel="noopener">https://www.kancloud.cn/yunye/axios/234845</a><br>为什么要用axios?<br>axios 是一个基于Promise 用于浏览器和 nodejs 的 HTTP 客户端，它本身具有以下特征：<br>从浏览器中创建 XMLHttpRequest<br>从 node.js 发出 http 请求<br>支持 Promise API<br>拦截请求和响应<br>转换请求和响应数据<br>取消请求<br>自动转换JSON数据<br>客户端支持防止CSRF/XSRF<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">axios(&#123;</span><br><span class="line">    method: <span class="string">'post'</span>,</span><br><span class="line">    url: <span class="string">'/user/12345'</span>,</span><br><span class="line">    data: &#123;</span><br><span class="line">        firstName: <span class="string">'Fred'</span>,</span><br><span class="line">        lastName: <span class="string">'Flintstone'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">.then(<span class="function"><span class="keyword">function</span> (<span class="params">response</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(response);</span><br><span class="line">&#125;)</span><br><span class="line">.catch(<span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(error);</span><br><span class="line">&#125;);</span><br><span class="line">优缺点：</span><br><span class="line">从 node.js 创建 http 请求</span><br><span class="line">支持 <span class="built_in">Promise</span> API</span><br><span class="line">客户端支持防止CSRF</span><br><span class="line">提供了一些并发请求的接口（重要，方便了很多的操作</span><br></pre></td></tr></table></figure></p>
-<h2 id="3-fetch"><a href="#3-fetch" class="headerlink" title="3.fetch"></a>3.fetch</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> response = <span class="keyword">await</span> fetch(url);</span><br><span class="line">  <span class="keyword">let</span> data = response.json();</span><br><span class="line">  <span class="built_in">console</span>.log(data);</span><br><span class="line">&#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"Oops, error"</span>, e);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">优缺点：</span><br><span class="line">符合关注分离，没有将输入、输出和用事件来跟踪的状态混杂在一个对象里</span><br><span class="line">更好更方便的写法</span><br><span class="line">更加底层，提供的API丰富（request, response）</span><br><span class="line">脱离了XHR，是ES规范里新的实现方式</span><br><span class="line"><span class="number">1</span>）fetchtch只对网络请求报错，对<span class="number">400</span>，<span class="number">500</span>都当做成功的请求，需要封装去处理</span><br><span class="line"><span class="number">2</span>）fetch默认不会带cookie，需要添加配置项</span><br><span class="line"><span class="number">3</span>）fetch不支持abort，不支持超时控制，使用setTimeout及<span class="built_in">Promise</span>.reject的实现的超时控制并不能阻止请求过程继续在后台运行，造成了量的浪费</span><br><span class="line"><span class="number">4</span>）fetch没有办法原生监测请求的进度，而XHR可以</span><br></pre></td></tr></table></figure>
-<p>另一种常用的 AJAX 调用是提交表单数据 —— 示例代码如下:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fetch(<span class="string">'/submit'</span>, &#123;</span><br><span class="line">    method: <span class="string">'post'</span>,</span><br><span class="line">    body: <span class="keyword">new</span> FormData(<span class="built_in">document</span>.getElementById(<span class="string">'comment-form'</span>))</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>提交 JSON 的示例如下:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fetch(<span class="string">'/submit-json'</span>, &#123;</span><br><span class="line">    method: <span class="string">'post'</span>,</span><br><span class="line">    body: <span class="built_in">JSON</span>.stringify(&#123;</span><br><span class="line">        email: <span class="string">'huang@163.com'</span></span><br><span class="line">        name: <span class="string">'jim'</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<h2 id="Response-简介"><a href="#Response-简介" class="headerlink" title="Response 简介"></a>Response 简介</h2><p>Response 代表响应, fetch 的 then 方法接收一个 Response 实例, 当然你也可以手动创建 Response 对象 —— 比如在 service workers 中可能会用到. Response 可以配置的参数包括:</p>
-<ul>
-<li>type - 类型,支持: basic, cors</li>
-<li>url - 响应的 URL</li>
-<li>useFinalURL - Boolean 值, 说明这是否是响应的最终 URL</li>
-<li>status - 状态码 (例如: 200, 404, 等等)</li>
-<li>ok - Boolean值,代表响应是否成功(status 值在 200-299 之间)</li>
-<li>statusText - 与状态码相对应的状态值(例如: OK为200)</li>
-<li>headers - 与响应相关联的 Headers 对象.</li>
-<li>redirected - 指示响应是否是重定向的结果。也就是说，它的 URL 列表有多条目录。</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在 service worker 测试中手动创建 response</span></span><br><span class="line"><span class="comment">// new Response(BODY, OPTIONS)</span></span><br><span class="line"><span class="keyword">var</span> response = <span class="keyword">new</span> Response(<span class="string">'.....'</span>, &#123;</span><br><span class="line">    ok: <span class="literal">false</span>,</span><br><span class="line">    status: <span class="number">404</span>,</span><br><span class="line">    url: <span class="string">'/'</span></span><br><span class="line">&#125;);</span><br><span class="line"> </span><br><span class="line"><span class="comment">// fetch 的 `then` 会传入一个 Response 对象</span></span><br><span class="line">fetch(<span class="string">'/'</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params">responseObj</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'status: '</span>, responseObj.status);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>Response 提供的方法如下:</p>
-<ul>
-<li>clone() - 创建一个 Response 对象的克隆.</li>
-<li>error() - 返回一个与网络错误相关的新 Response 对象.</li>
-<li>redirect() - 重定向,使用新的 URL 创建新的 response 对象..</li>
-<li>arrayBuffer() - 返回一个 resolve 是 ArrayBuffer 的 promise 对象。</li>
-<li>blob() - 返回一个 resolve 是 Blob 的 promise 对象。</li>
-<li>formData() - 返回一个 resolve 是 FormData  的 promise 对象。</li>
-<li>json() - 返回一个 resolve 是 JSON 的 promise 对象。</li>
-<li>text() - 返回一个 resolve 是文本的 promise 对象。</li>
-</ul>
-<h3 id="处理-JSON响应"><a href="#处理-JSON响应" class="headerlink" title="处理 JSON响应"></a>处理 JSON响应</h3><p>假设需要请求 JSON —— 回调结果对象 response 中有一个json()方法,用来将原始数据转换成 json 对象:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fetch(<span class="string">'https://davidwalsh.name/demo/arsenal.json'</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123; </span><br><span class="line">    <span class="comment">// 转换为 JSON</span></span><br><span class="line">    <span class="keyword">return</span> response.json();</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">j</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 现在, `j` 是一个 json 对象</span></span><br><span class="line">    <span class="built_in">console</span>.log(j); </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">ajax</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JSONP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/22/jsonp/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/9/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/9/">Next &raquo;</a>
     </nav>
   
 
@@ -628,11 +582,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">打包工具</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color5">打包工具</a>
               </li>
             
             <div class="clearfix"></div>

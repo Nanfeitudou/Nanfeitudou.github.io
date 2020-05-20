@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>tomcat | DJM的博客</title>
+  <title>SVN 的使用 | DJM的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Tomcat配置域名一、修改端口tomcat默认监听端口是8080，我们如果想不带端口的直接访问项目，就必须监听80 端口； 123456789service.xml 以下代码段&amp;lt;Connector port=&quot;8080&quot; protocol=&quot;HTTP/1.1&quot;               connectionTimeout=&quot;20000&quot;               redirectPor">
+  <meta name="description" content="合并branches到trunk 1、先将trunk文件夹拉到本地 2、右击文件夹，选择合并–弹框。 下一步：选择合并源（选择branches分支） 下一步：合并深度  选择全递归，然后点击测试合并。 确认无冲突，下一步。   3、本地运行测试项目，确认无误再将代码提交到trunk。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="tomcat">
-<meta property="og:url" content="http://yoursite.com/2017/05/31/tomcat/index.html">
+<meta property="og:title" content="SVN 的使用">
+<meta property="og:url" content="http://yoursite.com/2018/06/13/svn/index.html">
 <meta property="og:site_name" content="DJM的博客">
-<meta property="og:description" content="Tomcat配置域名一、修改端口tomcat默认监听端口是8080，我们如果想不带端口的直接访问项目，就必须监听80 端口； 123456789service.xml 以下代码段&amp;lt;Connector port=&quot;8080&quot; protocol=&quot;HTTP/1.1&quot;               connectionTimeout=&quot;20000&quot;               redirectPor">
+<meta property="og:description" content="合并branches到trunk 1、先将trunk文件夹拉到本地 2、右击文件夹，选择合并–弹框。 下一步：选择合并源（选择branches分支） 下一步：合并深度  选择全递归，然后点击测试合并。 确认无冲突，下一步。   3、本地运行测试项目，确认无误再将代码提交到trunk。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-30T13:56:07.000Z">
+<meta property="og:updated_time" content="2020-05-20T02:28:39.106Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tomcat">
-<meta name="twitter:description" content="Tomcat配置域名一、修改端口tomcat默认监听端口是8080，我们如果想不带端口的直接访问项目，就必须监听80 端口； 123456789service.xml 以下代码段&amp;lt;Connector port=&quot;8080&quot; protocol=&quot;HTTP/1.1&quot;               connectionTimeout=&quot;20000&quot;               redirectPor">
+<meta name="twitter:title" content="SVN 的使用">
+<meta name="twitter:description" content="合并branches到trunk 1、先将trunk文件夹拉到本地 2、右击文件夹，选择合并–弹框。 下一步：选择合并源（选择branches分支） 下一步：合并深度  选择全递归，然后点击测试合并。 确认无冲突，下一步。   3、本地运行测试项目，确认无误再将代码提交到trunk。">
   
     <link rel="alternative" href="/atom.xml" title="DJM的博客" type="application/atom+xml">
   
@@ -166,31 +166,37 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-tomcat" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-svn" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      tomcat
+      SVN 的使用
     </h1>
   
 
         
-        <a href="/2017/05/31/tomcat/" class="archive-article-date">
-  	<time datetime="2017-05-31T04:28:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-31</time>
+        <a href="/2018/06/13/svn/" class="archive-article-date">
+  	<time datetime="2018-06-13T08:07:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Tomcat配置域名"><a href="#Tomcat配置域名" class="headerlink" title="Tomcat配置域名"></a>Tomcat配置域名</h2><h4 id="一、修改端口"><a href="#一、修改端口" class="headerlink" title="一、修改端口"></a>一、修改端口</h4><p>tomcat默认监听端口是8080，我们如果想不带端口的直接访问项目，就必须监听80 端口；</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">service.xml 以下代码段</span><br><span class="line">&lt;Connector port=<span class="string">"8080"</span> protocol=<span class="string">"HTTP/1.1"</span></span><br><span class="line">               connectionTimeout=<span class="string">"20000"</span></span><br><span class="line">               redirectPort=<span class="string">"8443"</span> /&gt;</span><br><span class="line"></span><br><span class="line">修改为</span><br><span class="line">&lt;Connector port=<span class="string">"80"</span> protocol=<span class="string">"HTTP/1.1"</span></span><br><span class="line">               connectionTimeout=<span class="string">"20000"</span></span><br><span class="line">               redirectPort=<span class="string">"8443"</span> /&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="二、配置"><a href="#二、配置" class="headerlink" title="二、配置"></a>二、配置<host></host></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">第一是  &lt;Engine defaultHost=<span class="string">"localhost"</span> name=<span class="string">"Catalina"</span>&gt;  把defaultHost的值修改成你的域名    &lt;Engine defaultHost=<span class="string">"www.qiangzigz.pw"</span> name=<span class="string">"Catalina"</span>&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">第二是   &lt;Host appBase=<span class="string">"webapps"</span> autoDeploy=<span class="string">"true"</span> name=<span class="string">"localhost"</span> unpackWARs=<span class="string">"true"</span> xmlNamespaceAware=<span class="string">"false"</span> xmlValidation=<span class="string">"false"</span>&gt;</span><br><span class="line"></span><br><span class="line"> 把name的值修改成你的域名  </span><br><span class="line"></span><br><span class="line">&lt;Host appBase=<span class="string">"webapps"</span> autoDeploy=<span class="string">"true"</span> name=<span class="string">"www.qiangzigz.pw"</span> unpackWARs=<span class="string">"true"</span> xmlNamespaceAware=<span class="string">"false"</span> xmlValidation=<span class="string">"false"</span>&gt;</span><br><span class="line"></span><br><span class="line">最后再加上具体的项目指向</span><br><span class="line"></span><br><span class="line"> 在Host下面加上 &lt;Context docBase=<span class="string">"testPath"</span> path=<span class="string">""</span> reloadable=<span class="string">"true"</span>/&gt;<span class="xml"><span class="tag">&lt;/<span class="name">Host</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">这个testPro就是tomcat中的项目名称</span><br><span class="line">保存service.xml文件，重新启动服务，如果你的域名和ip绑定好的话就可以直接用域名访问了  </span><br><span class="line">重启服务器之后确实可以域名访问项目了，但是当去掉前面www.的时候，却无法访问。</span><br><span class="line"></span><br><span class="line">既然访问不到意思就是没有配置这个域名，就又加了一个<span class="string">`&lt;host/&gt;`</span>标签，其他的都没变，只把有域名的地方去掉前面的www. 然后重启服务器，这样按照理论来说是成功的，可是结果却是出乎所料。</span><br><span class="line"></span><br><span class="line">访问不了，看日志下面既然还报了内存溢出，这就没办法理解了。</span><br><span class="line">后来翻墙查资料，终于解决了。原来<span class="string">`&lt;host/&gt;`</span>下还有一个别名标签<span class="string">`&lt;Alias&gt;&lt;/Alias&gt;`</span></span><br></pre></td></tr></table></figure>
-<p>重启服务器。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">关闭tomcat</span><br><span class="line">./shutdown.sh</span><br><span class="line">开启tomcat</span><br><span class="line">./startup.sh</span><br></pre></td></tr></table></figure>
+        <h2 id="合并branches到trunk"><a href="#合并branches到trunk" class="headerlink" title="合并branches到trunk"></a>合并branches到trunk</h2><ul>
+<li>1、先将trunk文件夹拉到本地</li>
+<li>2、右击文件夹，选择合并–弹框。<ul>
+<li>下一步：选择合并源（选择branches分支）</li>
+<li>下一步：合并深度  选择全递归，然后点击测试合并。</li>
+<li>确认无冲突，下一步。</li>
+</ul>
+</li>
+<li>3、本地运行测试项目，确认无误再将代码提交到trunk。</li>
+</ul>
+
       
 
       
@@ -269,7 +275,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2017/05/31/tomcat/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/06/13/svn/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -283,18 +289,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/06/01/markdow/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/06/13/seo/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Markdown的基本用法
+          前端SEO的常用知识点
         
       </div>
     </a>
   
   
-    <a href="/2017/05/31/nginx/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">nginx</div>
+    <a href="/2018/05/12/echarts2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">echarts-BUG-管理数据(dataset)-映射（encode）</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -322,7 +328,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="tomcat" data-title="tomcat" data-url="http://yoursite.com/2017/05/31/tomcat/"></div>
+	<div class="ds-thread" data-thread-key="svn" data-title="SVN 的使用" data-url="http://yoursite.com/2018/06/13/svn/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

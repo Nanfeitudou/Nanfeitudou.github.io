@@ -246,80 +246,6 @@
 
 
   
-    <article id="post-js_obj2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/23/js_obj2/">JS循环</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/23/js_obj2/" class="archive-article-date">
-  	<time datetime="2018-07-23T05:38:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 一：break:用来终止循环，让循环不再往下继续：</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;=<span class="number">10</span>;i++)&#123;</span><br><span class="line">   <span class="built_in">document</span>.write(i);<span class="comment">//输出012345</span></span><br><span class="line">   <span class="keyword">if</span>(i==<span class="number">5</span>)&#123;<span class="keyword">break</span>;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 二：continue  用来跳过循环，继续往下循环：</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;=<span class="number">10</span>;i++)&#123;</span><br><span class="line">   <span class="keyword">if</span>(i==<span class="number">5</span>)&#123;<span class="keyword">continue</span>;&#125;</span><br><span class="line">   <span class="built_in">document</span>.write(i);<span class="comment">//输出01234678910</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 三：return  </span></span><br><span class="line"><span class="comment">// return只能出现在函数里，如果出现在上面实例里的for循环里就会报错，return出现在函数里的作用就是即使下面还有内容也不再继续往下执行了，最常见的就是在函数里判断参数是否符合要求， 如果不符合要求就不再继续往下执行：</span></span><br><span class="line"><span class="keyword">let</span> username = <span class="string">''</span></span><br><span class="line"> <span class="function"><span class="keyword">function</span>  <span class="title">abc</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (username==<span class="string">""</span>)&#123;</span><br><span class="line">    alert(<span class="string">"请输入用户名"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;<span class="comment">//因为username不符合我们的要求，所以在这里用return来终于函数往下继续执行</span></span><br><span class="line">  &#125;</span><br><span class="line">  alert(<span class="string">"欢迎你"</span>+username);</span><br><span class="line"> &#125;</span><br><span class="line"> abc()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//  foreach中不能使用 break/continue</span></span><br><span class="line"><span class="comment">// 可以使用替代方案：</span></span><br><span class="line"><span class="comment">// 使用 return; 或者 return true; 来代替 continue 语句；</span></span><br><span class="line"><span class="comment">// 使用 return false; 来代替 break 语句；</span></span><br></pre></td></tr></table></figure></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/23/js_obj2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-export_fun" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -367,6 +293,80 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/07/23/export_fun/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-js_obj2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/23/js_obj2/">JS循环</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/23/js_obj2/" class="archive-article-date">
+  	<time datetime="2018-07-23T05:38:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 一：break:用来终止循环，让循环不再往下继续：</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;=<span class="number">10</span>;i++)&#123;</span><br><span class="line">   <span class="built_in">document</span>.write(i);<span class="comment">//输出012345</span></span><br><span class="line">   <span class="keyword">if</span>(i==<span class="number">5</span>)&#123;<span class="keyword">break</span>;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 二：continue  用来跳过循环，继续往下循环：</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;=<span class="number">10</span>;i++)&#123;</span><br><span class="line">   <span class="keyword">if</span>(i==<span class="number">5</span>)&#123;<span class="keyword">continue</span>;&#125;</span><br><span class="line">   <span class="built_in">document</span>.write(i);<span class="comment">//输出01234678910</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 三：return  </span></span><br><span class="line"><span class="comment">// return只能出现在函数里，如果出现在上面实例里的for循环里就会报错，return出现在函数里的作用就是即使下面还有内容也不再继续往下执行了，最常见的就是在函数里判断参数是否符合要求， 如果不符合要求就不再继续往下执行：</span></span><br><span class="line"><span class="keyword">let</span> username = <span class="string">''</span></span><br><span class="line"> <span class="function"><span class="keyword">function</span>  <span class="title">abc</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (username==<span class="string">""</span>)&#123;</span><br><span class="line">    alert(<span class="string">"请输入用户名"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;<span class="comment">//因为username不符合我们的要求，所以在这里用return来终于函数往下继续执行</span></span><br><span class="line">  &#125;</span><br><span class="line">  alert(<span class="string">"欢迎你"</span>+username);</span><br><span class="line"> &#125;</span><br><span class="line"> abc()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//  foreach中不能使用 break/continue</span></span><br><span class="line"><span class="comment">// 可以使用替代方案：</span></span><br><span class="line"><span class="comment">// 使用 return; 或者 return true; 来代替 continue 语句；</span></span><br><span class="line"><span class="comment">// 使用 return false; 来代替 break 语句；</span></span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/23/js_obj2/">展开全文 >></a>
         </p>
       
 
@@ -501,10 +501,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">excel</a>
               </li>
              
@@ -529,7 +525,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">-ES6</a>
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -537,15 +533,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">-ES6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JSONP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color5">打包工具</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">打包工具</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
             
             <div class="clearfix"></div>

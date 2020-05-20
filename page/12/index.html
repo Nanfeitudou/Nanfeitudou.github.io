@@ -164,6 +164,70 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-highChart" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/12/highChart/">Highcharts 用法</a>
+    </h1>
+  
+
+        
+        <a href="/2018/05/12/highChart/" class="archive-article-date">
+  	<time datetime="2018-05-12T14:35:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>文档教程 <a href="https://www.highcharts.com.cn/docs/basic-chart/" target="_blank" rel="noopener">https://www.highcharts.com.cn/docs/basic-chart/</a><br>API  <a href="https://api.highcharts.com.cn/highstock" target="_blank" rel="noopener">https://api.highcharts.com.cn/highstock</a> </p>
+<h2 id="更新更新series的5种方法"><a href="#更新更新series的5种方法" class="headerlink" title="更新更新series的5种方法"></a>更新更新series的5种方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 更新其中某一个series时，可以直接调用其update方法。</span></span><br><span class="line">    chart.series[<span class="number">0</span>].update(&#123;</span><br><span class="line">    	data: [<span class="number">216.4</span>, <span class="number">194.1</span>, <span class="number">95.6</span>, <span class="number">54.4</span>, <span class="number">29.9</span>, <span class="number">71.5</span>, <span class="number">106.4</span>, <span class="number">129.2</span>, <span class="number">144.0</span>, <span class="number">176.0</span>, <span class="number">135.6</span>, <span class="number">148.5</span>]</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 一次性更新多个series，使用chart.update。要注意的是，chart.update只允许更新原来的series，不允许新增series。</span></span><br><span class="line">    chart.update(&#123;</span><br><span class="line">        series: [&#123;</span><br><span class="line">        type: <span class="string">'column'</span>,</span><br><span class="line">        name: <span class="string">'s1'</span>,</span><br><span class="line">        data: [<span class="number">129.9</span>, <span class="number">171.5</span>, <span class="number">306.4</span>, <span class="number">429.2</span>, <span class="number">144.0</span>, <span class="number">176.0</span>, <span class="number">135.6</span>, <span class="number">248.5</span>, <span class="number">216.4</span>, <span class="number">194.1</span>, <span class="number">95.6</span>, <span class="number">54.4</span>]</span><br><span class="line">    	&#125;,&#123;</span><br><span class="line">        type: <span class="string">'column'</span>,</span><br><span class="line">        name: <span class="string">'s2'</span>,</span><br><span class="line">        data: [<span class="number">69.9</span>, <span class="number">51.5</span>, <span class="number">176.4</span>, <span class="number">121.2</span>, <span class="number">124.0</span>, <span class="number">476.0</span>, <span class="number">935.6</span>, <span class="number">248.5</span>, <span class="number">266.4</span>, <span class="number">191.1</span>, <span class="number">99.6</span>, <span class="number">53.4</span>]</span><br><span class="line">    	&#125;]</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 新增series，就得使用chart.addSeries了。一次只能加一个series。注意这个方法有性能问题，当series的长度很长， 且一次性加好多series的时候，图表的反应会很慢。</span></span><br><span class="line">    chart.addSeries(&#123;</span><br><span class="line">        type: <span class="string">'column'</span>,</span><br><span class="line">        name: <span class="string">'s3'</span>,</span><br><span class="line">        data: [<span class="number">129.9</span>, <span class="number">171.5</span>, <span class="number">1106.4</span>, <span class="number">1129.2</span>, <span class="number">144.0</span>, <span class="number">176.0</span>, <span class="number">135.6</span>, <span class="number">1148.5</span>, <span class="number">216.4</span>, <span class="number">194.1</span>, <span class="number">95.6</span>, <span class="number">54.4</span>]</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 替换原来的series，而不仅仅是在上面做更新和新增的时候，可以采用series.remove和chart.addSeries结合的方法。也就是说，要先去掉所有原来的series，再逐个加入新的。同样，这个方法有性能问题</span></span><br><span class="line"></span><br><span class="line">    seriesData = [&#123;</span><br><span class="line">        type: <span class="string">'column'</span>,</span><br><span class="line">        name: <span class="string">'s1 new'</span>,</span><br><span class="line">        data: [<span class="number">234.9</span>, <span class="number">171.5</span>, <span class="number">1106.4</span>, <span class="number">1129.2</span>, <span class="number">144.0</span>, <span class="number">176.0</span>, <span class="number">135.6</span>, <span class="number">1148.5</span>, <span class="number">216.4</span>, <span class="number">194.1</span>, <span class="number">195.6</span>, <span class="number">454.4</span>]</span><br><span class="line">    	&#125;];</span><br><span class="line">    <span class="keyword">while</span> (chart.series.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      chart.series[<span class="number">0</span>].remove(<span class="literal">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; seriesData.length; i++) &#123;    </span><br><span class="line">      chart.addSeries(seriesData[i]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// series.remove/chart.addSeries &amp; chart.update   比较原来series的数目和新的series的数目，当两个数目不同时，通过series.remove或者chart.addSeries使其相等，再统一调用一次chart.update实现图表的更新</span></span><br><span class="line">    seriesData = [&#123;</span><br><span class="line">        type: <span class="string">'column'</span>,</span><br><span class="line">        name: <span class="string">'s1 new'</span>,</span><br><span class="line">        data: [<span class="number">234.9</span>, <span class="number">171.5</span>, <span class="number">106.4</span>, <span class="number">129.2</span>, <span class="number">144.0</span>, <span class="number">176.0</span>, <span class="number">135.6</span>, <span class="number">148.5</span>, <span class="number">216.4</span>, <span class="number">194.1</span>, <span class="number">195.6</span>, <span class="number">454.4</span>]</span><br><span class="line">    	&#125;,&#123;</span><br><span class="line">        type: <span class="string">'column'</span>,</span><br><span class="line">        name: <span class="string">'s2 new'</span>,</span><br><span class="line">        data: [<span class="number">234.9</span>, <span class="number">171.5</span>, <span class="number">106.4</span>, <span class="number">129.2</span>, <span class="number">144.0</span>, <span class="number">176.0</span>, <span class="number">135.6</span>, <span class="number">148.5</span>, <span class="number">216.4</span>, <span class="number">194.1</span>, <span class="number">195.6</span>, <span class="number">454.4</span>]</span><br><span class="line">    	&#125;,&#123;</span><br><span class="line">        type: <span class="string">'column'</span>,</span><br><span class="line">        name: <span class="string">'s3 new'</span>,</span><br><span class="line">        data: [<span class="number">234.9</span>, <span class="number">171.5</span>, <span class="number">106.4</span>, <span class="number">129.2</span>, <span class="number">144.0</span>, <span class="number">176.0</span>, <span class="number">135.6</span>, <span class="number">148.5</span>, <span class="number">216.4</span>, <span class="number">194.1</span>, <span class="number">195.6</span>, <span class="number">454.4</span>]</span><br><span class="line">    	&#125;];</span><br><span class="line">      </span><br><span class="line">    <span class="keyword">var</span> diff = chart.series.length - seriesData.length;</span><br><span class="line">    <span class="keyword">if</span>(diff &gt; <span class="number">0</span>)&#123;</span><br><span class="line">    	<span class="keyword">for</span> (<span class="keyword">var</span> i = chart.series.length; i &gt; diff; i--)&#123;</span><br><span class="line">      	chart.series[i<span class="number">-1</span>].remove(<span class="literal">true</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (diff &lt; <span class="number">0</span>)&#123;</span><br><span class="line">    	<span class="keyword">for</span> (<span class="keyword">var</span> i = chart.series.length; i &lt; seriesData.length; i ++)&#123;</span><br><span class="line">      	chart.addSeries(&#123;&#125;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">            </span><br><span class="line">    chart.update(&#123;</span><br><span class="line">    	series:seriesData</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="图例"><a href="#图例" class="headerlink" title="图例"></a>图例</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1、如何不显示某个数据列的图例  设置 showInLegend</span></span><br><span class="line">series: [&#123;</span><br><span class="line">    data: [],</span><br><span class="line">    name: <span class="string">""</span>,</span><br><span class="line">    showInLegend: <span class="literal">false</span> <span class="comment">// 设置为 false 即为不显示在图例中</span></span><br><span class="line">&#125;, &#123;</span><br><span class="line">    data: [],</span><br><span class="line">    name: <span class="string">""</span>,</span><br><span class="line">    showInLegend: <span class="literal">true</span> <span class="comment">// 默认值</span></span><br><span class="line">&#125;]</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/12/highChart/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-swiper" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -370,75 +434,6 @@
 
 
   
-    <article id="post-boostrap" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/07/boostrap/">boostrap</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/07/boostrap/" class="archive-article-date">
-  	<time datetime="2018-03-07T07:32:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="语句参数"><a href="#语句参数" class="headerlink" title="语句参数"></a>语句参数</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tabindex=<span class="number">-1</span>代表此元素禁止使用键盘上的tab键对其导航，就是按tab键的时候，会跳过这个div</span><br><span class="line">role=“dialog”代表这是一个对话框</span><br><span class="line">aria-labelledby：是残障人士使用屏幕阅读器时，会读取的内容</span><br><span class="line">aria-hidden:是使用屏幕阅读器时，忽略该元素值</span><br></pre></td></tr></table></figure>
-<h2 id="轮播参数用法"><a href="#轮播参数用法" class="headerlink" title="轮播参数用法"></a>轮播参数用法</h2><p>使用多个轮播需要在最外层给每一个轮播设置一个id，通过id来更改相关配置<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">传递对象参数，对象属性如下：</span><br><span class="line">interval：轮播等待的时间。</span><br><span class="line">pause：鼠标在图片上时停止播放，当鼠标移开后开始播放。</span><br><span class="line">wrap：是否持续轮播。</span><br><span class="line"></span><br><span class="line">$(<span class="string">"#carouselcontainter"</span>).carousel(&#123;</span><br><span class="line">    wrap:<span class="literal">false</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$().carousel(string)</span><br><span class="line"></span><br><span class="line">字符串参数，可以传递以下字符串：</span><br><span class="line">carousel（<span class="string">"cycle"</span>）：从左向右循环播放。</span><br><span class="line">carousel（<span class="string">"pause"</span>）：停止循环播放。</span><br><span class="line">carousel（<span class="string">"number"</span>）：播放指定索引的帧图片。</span><br><span class="line">carousel（<span class="string">"prev"</span>）：播放上一帧。</span><br><span class="line">carousel（<span class="string">"next"</span>）：播放下一帧。</span><br><span class="line">carousel（<span class="string">"keyboard"</span>）：是否对键盘事件作出响应。</span><br><span class="line"></span><br><span class="line">$(<span class="string">"#carouselcontainter a.left"</span>).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="string">"#carouselcontainter"</span>).carousel(<span class="string">"prev"</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">$(<span class="string">"#carouselcontainter a.right"</span>).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="string">"#carouselcontainter"</span>).carousel(<span class="string">"next"</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">轮播图效果插件只提供了两个事件，具体如下：</span><br><span class="line"></span><br><span class="line">slide.bs.carousel：作用于轮播方法调用之前。</span><br><span class="line">slid.bs.carousel：作用于轮播方法调用之后。</span><br><span class="line"></span><br><span class="line">$(<span class="string">'#carouselcontainter'</span>).on(<span class="string">'slide.bs.carousel'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="string">'slide.bs.carousel'</span>);</span><br><span class="line">&#125;).on(<span class="string">'slid.bs.carousel'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="string">'slid.bs.carousel'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h2 id="不显示模态框背景的2种方法"><a href="#不显示模态框背景的2种方法" class="headerlink" title="不显示模态框背景的2种方法"></a>不显示模态框背景的2种方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 给button添加属性 data-backdrop="false"</span></span><br><span class="line">&lt;button <span class="class"><span class="keyword">class</span></span>=<span class="string">"btn btn-primary btn-lg"</span> data-toggle=<span class="string">"modal"</span> data-target=<span class="string">"#myModal"</span> data-backdrop=<span class="string">"false"</span>&gt;&lt;/button&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果是js调用: </span></span><br><span class="line">$(<span class="string">'#div'</span>).modal(&#123;<span class="attr">backdrop</span>: <span class="literal">false</span>&#125;)</span><br></pre></td></tr></table></figure>
-<h2 id="打开模态modal窗口引起页面抖动解决办法"><a href="#打开模态modal窗口引起页面抖动解决办法" class="headerlink" title="打开模态modal窗口引起页面抖动解决办法"></a>打开模态modal窗口引起页面抖动解决办法</h2><pre><code>在使用bootstrap的modal模态窗口组件时，触发后会发现页面有抖动现象。这是因为它隐藏了浏览器滚动条，页面就相当于变宽了，关闭模态窗口后，页面又出现滚动条，页面又变窄了，这一伸一缩就会使页面产生抖动现象。我的解决方法很简单，就是干掉隐藏滚动条的代码。
-</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方法一：modal不带滚动条</span></span><br><span class="line"><span class="comment">// 数值设定为body的padding-right</span></span><br><span class="line">.modal-open&#123;</span><br><span class="line">    padding-right: 数值px !important;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//方法二 </span></span><br><span class="line"><span class="comment">// 以bootstrap3.3.6版本中未压缩的bootstrap.js文件为例。</span></span><br><span class="line"><span class="comment">// 第一处在971行左右，删除这3句</span></span><br><span class="line"><span class="keyword">this</span>.checkScrollbar()</span><br><span class="line"><span class="keyword">this</span>.setScrollbar()</span><br><span class="line"><span class="keyword">this</span>.$body.addClass(<span class="string">'modal-open'</span>)</span><br><span class="line"><span class="comment">// 第二处1081行左右，也删除3句</span></span><br><span class="line">that.$body.removeClass(<span class="string">'modal-open'</span>)</span><br><span class="line">that.resetAdjustments()</span><br><span class="line">that.resetScrollbar()</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/07/boostrap/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/11/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/13/">Next &raquo;</a>
@@ -544,10 +539,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">excel</a>
               </li>
              
@@ -572,7 +563,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">-ES6</a>
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -580,15 +571,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">-ES6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JSONP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color5">打包工具</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">打包工具</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
             
             <div class="clearfix"></div>

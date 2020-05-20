@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>echarts-管理数据(dataset)-数据到图形的映射（encode） | DJM的博客</title>
+  <title>echarts-BUG-管理数据(dataset)-映射（encode） | DJM的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="tooltip提示框格式化便捷加入自带的小圆点标识formatter: function(params) {    var result = ‘’;    params.forEach(function (item) {        result += item.marker + “ “ + item.seriesName + “ : “ + item.value +”“;    });">
+  <meta name="description" content="Bug——echarts鼠标悬浮图表上时浏览器抖动1234tooltip: &amp;#123;       show: true,      transitionDuration:0,//echart防止tooltip的抖动&amp;#125; tooltip提示框格式化便捷加入自带的小圆点标识formatter: function(params) {    var result = ‘’;    params">
 <meta property="og:type" content="article">
-<meta property="og:title" content="echarts-管理数据(dataset)-数据到图形的映射（encode）">
+<meta property="og:title" content="echarts-BUG-管理数据(dataset)-映射（encode）">
 <meta property="og:url" content="http://yoursite.com/2018/05/12/echarts2/index.html">
 <meta property="og:site_name" content="DJM的博客">
-<meta property="og:description" content="tooltip提示框格式化便捷加入自带的小圆点标识formatter: function(params) {    var result = ‘’;    params.forEach(function (item) {        result += item.marker + “ “ + item.seriesName + “ : “ + item.value +”“;    });">
+<meta property="og:description" content="Bug——echarts鼠标悬浮图表上时浏览器抖动1234tooltip: &amp;#123;       show: true,      transitionDuration:0,//echart防止tooltip的抖动&amp;#125; tooltip提示框格式化便捷加入自带的小圆点标识formatter: function(params) {    var result = ‘’;    params">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-30T01:47:40.420Z">
+<meta property="og:updated_time" content="2020-03-31T02:05:37.410Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="echarts-管理数据(dataset)-数据到图形的映射（encode）">
-<meta name="twitter:description" content="tooltip提示框格式化便捷加入自带的小圆点标识formatter: function(params) {    var result = ‘’;    params.forEach(function (item) {        result += item.marker + “ “ + item.seriesName + “ : “ + item.value +”“;    });">
+<meta name="twitter:title" content="echarts-BUG-管理数据(dataset)-映射（encode）">
+<meta name="twitter:description" content="Bug——echarts鼠标悬浮图表上时浏览器抖动1234tooltip: &amp;#123;       show: true,      transitionDuration:0,//echart防止tooltip的抖动&amp;#125; tooltip提示框格式化便捷加入自带的小圆点标识formatter: function(params) {    var result = ‘’;    params">
   
     <link rel="alternative" href="/atom.xml" title="DJM的博客" type="application/atom+xml">
   
@@ -173,7 +173,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      echarts-管理数据(dataset)-数据到图形的映射（encode）
+      echarts-BUG-管理数据(dataset)-映射（encode）
     </h1>
   
 
@@ -186,7 +186,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="tooltip提示框格式化便捷加入自带的小圆点标识"><a href="#tooltip提示框格式化便捷加入自带的小圆点标识" class="headerlink" title="tooltip提示框格式化便捷加入自带的小圆点标识"></a>tooltip提示框格式化便捷加入自带的小圆点标识</h2><p>formatter: function(params) {<br>    var result = ‘’;<br>    params.forEach(function (item) {<br>        result += item.marker + “ “ + item.seriesName + “ : “ + item.value +”<br>“;<br>    });<br>    return result;<br>}</p>
+        <h2 id="Bug——echarts鼠标悬浮图表上时浏览器抖动"><a href="#Bug——echarts鼠标悬浮图表上时浏览器抖动" class="headerlink" title="Bug——echarts鼠标悬浮图表上时浏览器抖动"></a>Bug——echarts鼠标悬浮图表上时浏览器抖动</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tooltip: &#123; </span><br><span class="line">      show: <span class="literal">true</span>,</span><br><span class="line">      transitionDuration:<span class="number">0</span>,<span class="comment">//echart防止tooltip的抖动</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="tooltip提示框格式化便捷加入自带的小圆点标识"><a href="#tooltip提示框格式化便捷加入自带的小圆点标识" class="headerlink" title="tooltip提示框格式化便捷加入自带的小圆点标识"></a>tooltip提示框格式化便捷加入自带的小圆点标识</h2><p>formatter: function(params) {<br>    var result = ‘’;<br>    params.forEach(function (item) {<br>        result += item.marker + “ “ + item.seriesName + “ : “ + item.value +”<br>“;<br>    });<br>    return result;<br>}</p>
 <h2 id="柱图item"><a href="#柱图item" class="headerlink" title="柱图item"></a>柱图item</h2><p>柱图 itemStyle-normal-color 如果设置了渐变色，tooltip中就获取不到正确的颜色<br>解决方法：legend–&gt;selected, 通过波尔值控制tooltip显示的图例<br>selected:{<br>    ‘计划’:true,<br>    ‘实际’:true,<br>    ‘line’:false,<br>    ‘dotted’:false,<br>},<br>缺点：’line’ 和’dotted’ 被隐藏<br>背景效果、柱图渐变色、tooltip提示，三者有1个不能正常显示</p>
 <h2 id="tooltip的3种显示方式"><a href="#tooltip的3种显示方式" class="headerlink" title="tooltip的3种显示方式"></a>tooltip的3种显示方式</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">tooltip: &#123;</span><br><span class="line">    trigger: <span class="string">'axis'</span>,</span><br><span class="line">    axisPointer: &#123;</span><br><span class="line">        type: <span class="string">'shadow'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 方式一</span></span><br><span class="line">    <span class="comment">// 默认值配合legend--selected选项</span></span><br><span class="line">    <span class="comment">// 方式二</span></span><br><span class="line">    formatter: <span class="string">'&#123;b0&#125;&lt;br/&gt;&#123;a0&#125;: &#123;c0&#125;&lt;br/&gt;&#123;a1&#125;: &#123;c1&#125;'</span>,</span><br><span class="line">    <span class="comment">// 方式三</span></span><br><span class="line">    formatter: <span class="function"><span class="keyword">function</span> (<span class="params">params</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> result = params[<span class="number">0</span>].name + <span class="string">'&lt;/br&gt;'</span>;</span><br><span class="line">        params.length = <span class="number">2</span>;</span><br><span class="line">        params.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</span><br><span class="line">            result += item.marker + <span class="string">" "</span> + item.seriesName + <span class="string">" : "</span> + item.value + <span class="string">"&lt;/br&gt;"</span>;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">// 方式一</span></span><br><span class="line">legend: &#123;</span><br><span class="line">    data: [<span class="string">'计划'</span>, <span class="string">'实际'</span>],</span><br><span class="line">    selected:&#123;</span><br><span class="line">        <span class="string">'计划'</span>:<span class="literal">true</span>,</span><br><span class="line">        <span class="string">'实际'</span>:<span class="literal">true</span>,</span><br><span class="line">        <span class="string">'line'</span>:<span class="literal">false</span>,</span><br><span class="line">        <span class="string">'dotted'</span>:<span class="literal">false</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    textStyle: &#123;</span><br><span class="line">        color: <span class="string">'#ccc'</span></span><br><span class="line">    &#125;,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 <h2 id="多条柱颜色设置方式"><a href="#多条柱颜色设置方式" class="headerlink" title="多条柱颜色设置方式"></a>多条柱颜色设置方式</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 随机显示</span></span><br><span class="line"><span class="comment">//color:function(d)&#123;return "#"+Math.floor(Math.random()*(256*256*256-1)).toString(16);&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定制显示（按顺序）</span></span><br><span class="line">color: <span class="function"><span class="keyword">function</span>(<span class="params">params</span>) </span>&#123; </span><br><span class="line">    <span class="keyword">var</span> colorList = [<span class="string">'#C33531'</span>,<span class="string">'#EFE42A'</span>,<span class="string">'#64BD3D'</span>,<span class="string">'#EE9201'</span>,<span class="string">'#29AAE3'</span>, <span class="string">'#B74AE5'</span>,<span class="string">'#0AAF9F'</span>,<span class="string">'#E89589'</span>,<span class="string">'#16A085'</span>,<span class="string">'#4A235A'</span>,<span class="string">'#C39BD3 '</span>,<span class="string">'#F9E79F'</span>,<span class="string">'#BA4A00'</span>,<span class="string">'#ECF0F1'</span>,<span class="string">'#616A6B'</span>,<span class="string">'#EAF2F8'</span>,<span class="string">'#4A235A'</span>,<span class="string">'#3498DB'</span> ]; </span><br><span class="line">    <span class="keyword">return</span> colorList[params.dataIndex] </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//柱状图上显示数据</span></span><br><span class="line">label: &#123;</span><br><span class="line">    show: <span class="string">"true"</span>,</span><br><span class="line">    position: <span class="string">"top"</span>,</span><br><span class="line">    color: <span class="string">"#FFF"</span>,</span><br><span class="line">    fontWeight: <span class="string">"bolder"</span>,</span><br><span class="line">    backgroundColor: <span class="string">"auto"</span>,</span><br><span class="line">    fontSize: <span class="string">"20"</span></span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">//平均值</span></span><br><span class="line">markLine: &#123;</span><br><span class="line">    data: [&#123; <span class="attr">type</span>: <span class="string">"average"</span>, <span class="attr">name</span>: <span class="string">"平均值"</span> &#125;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -304,11 +305,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/06/13/seo/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/06/13/svn/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          前端SEO的常用知识点
+          SVN 的使用
         
       </div>
     </a>
@@ -343,7 +344,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="echarts2" data-title="echarts-管理数据(dataset)-数据到图形的映射（encode）" data-url="http://yoursite.com/2018/05/12/echarts2/"></div>
+	<div class="ds-thread" data-thread-key="echarts2" data-title="echarts-BUG-管理数据(dataset)-映射（encode）" data-url="http://yoursite.com/2018/05/12/echarts2/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -469,10 +470,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">excel</a>
               </li>
              
@@ -497,7 +494,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">-ES6</a>
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -505,15 +502,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">-ES6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JSONP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color5">打包工具</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">打包工具</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
             
             <div class="clearfix"></div>

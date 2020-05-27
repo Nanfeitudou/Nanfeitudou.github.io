@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="DJM的博客">
 <meta property="og:description" content="swiper  动态添加数据，轮播不会自己更新1234567observer:true,//修改swiper自己或子元素时，自动初始化swiperobserveParents:false,//修改swiper的父元素时，自动初始化swiperonSlideChangeEnd: function(swiper)&amp;#123;　　　swiper.update();　　　mySwiper.startAut">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-30T01:44:07.615Z">
+<meta property="og:updated_time" content="2020-05-27T15:47:22.902Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="swiper基础学习">
 <meta name="twitter:description" content="swiper  动态添加数据，轮播不会自己更新1234567observer:true,//修改swiper自己或子元素时，自动初始化swiperobserveParents:false,//修改swiper的父元素时，自动初始化swiperonSlideChangeEnd: function(swiper)&amp;#123;　　　swiper.update();　　　mySwiper.startAut">
@@ -187,6 +187,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="swiper-动态添加数据，轮播不会自己更新"><a href="#swiper-动态添加数据，轮播不会自己更新" class="headerlink" title="swiper  动态添加数据，轮播不会自己更新"></a>swiper  动态添加数据，轮播不会自己更新</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">observer:<span class="literal">true</span>,<span class="comment">//修改swiper自己或子元素时，自动初始化swiper</span></span><br><span class="line">observeParents:<span class="literal">false</span>,<span class="comment">//修改swiper的父元素时，自动初始化swiper</span></span><br><span class="line">onSlideChangeEnd: <span class="function"><span class="keyword">function</span>(<span class="params">swiper</span>)</span>&#123;</span><br><span class="line">　　　swiper.update();</span><br><span class="line">　　　mySwiper.startAutoplay();</span><br><span class="line">　　  mySwiper.reLoop();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="动态修改参数"><a href="#动态修改参数" class="headerlink" title="动态修改参数"></a>动态修改参数</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mySwiper = <span class="keyword">new</span> Swiper(<span class="string">'.swiper-container'</span>,&#123; </span><br><span class="line">　　autoplay : <span class="number">1000</span>, </span><br><span class="line">　　autoplayDisableOnInteraction : <span class="literal">false</span>, </span><br><span class="line"></span><br><span class="line">&#125;) </span><br><span class="line"></span><br><span class="line">　$(<span class="string">'#btn'</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; </span><br><span class="line"></span><br><span class="line">　　　mySwiper.params.autoplay=<span class="number">5000</span>; </span><br><span class="line"></span><br><span class="line">　&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="关于swiiper轮播的索引"><a href="#关于swiiper轮播的索引" class="headerlink" title="关于swiiper轮播的索引"></a>关于swiiper轮播的索引</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//loop 模式下，使用this.realIndex 获取真实索引</span></span><br><span class="line">on: &#123;</span><br><span class="line"> slideChange: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">     <span class="comment">//设置变量判断随意值0是否第一次,因为loop模式下第0个元素多创建了一个，会有两次 this.realIndex =0；</span></span><br><span class="line">   <span class="keyword">if</span> (<span class="keyword">this</span>.realIndex == <span class="number">0</span> &amp;&amp; <span class="keyword">this</span>.indexNum == <span class="number">0</span>) &#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> (<span class="keyword">this</span>.realIndex == <span class="number">0</span>) &#123;</span><br><span class="line">     <span class="keyword">this</span>.indexNum = <span class="number">0</span>;</span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">     <span class="keyword">this</span>.indexNum = <span class="number">1</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="comment">// console.log('当前索引' + this.activeIndex);</span></span><br><span class="line">   <span class="comment">// console.log('真实索引' + this.realIndex);</span></span><br><span class="line">   </span><br><span class="line">   <span class="comment">// slide改变获取当前元素</span></span><br><span class="line">   <span class="built_in">console</span>.log(<span class="keyword">this</span>.realIndex);</span><br><span class="line">   vm.curCamer = vm.vList[<span class="keyword">this</span>.realIndex];</span><br><span class="line">            </span><br><span class="line"> &#125;,</span><br><span class="line"></span><br><span class="line"> <span class="comment">// loop模式下，click方法中获取不到真实索引。</span></span><br><span class="line"> <span class="comment">//非loop模式下使用 this.clickedIndex 为真实索引</span></span><br><span class="line"></span><br><span class="line">  click: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="comment">// 点击获取当前元素，非loop模式下可启用</span></span><br><span class="line">        vm.curCamer = vm.vList[<span class="keyword">this</span>.clickedIndex];</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
       
 
       
@@ -279,11 +281,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/05/12/highChart/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/05/12/echarts/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Highcharts 用法
+          echarts
         
       </div>
     </a>
@@ -472,11 +474,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">自动化工具</a>
+                <a href="javascript:void(0)" class="js-tag color5">-ES6</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">-ES6</a>
+                <a href="javascript:void(0)" class="js-tag color1">自动化工具</a>
               </li>
              
               <li class="article-tag-list-item">

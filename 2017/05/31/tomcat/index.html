@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="DJM的博客">
 <meta property="og:description" content="linux tomcat安装及配置教程  1、下载tomcat  1将tomcat上传至linux，上传到/usr/local/tar  2、创建tomcat解压目录 1mkdir /usr/local/tomcat/tomcat_8090  3、解压tomcat压缩文件 1　　tar -xvf /usr/local/tar/apache-tomcat-8.5.23.tar.gz -C /usr/">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-08-27T07:41:39.216Z">
+<meta property="og:updated_time" content="2020-08-29T06:07:16.555Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tomcat">
 <meta name="twitter:description" content="linux tomcat安装及配置教程  1、下载tomcat  1将tomcat上传至linux，上传到/usr/local/tar  2、创建tomcat解压目录 1mkdir /usr/local/tomcat/tomcat_8090  3、解压tomcat压缩文件 1　　tar -xvf /usr/local/tar/apache-tomcat-8.5.23.tar.gz -C /usr/">
@@ -217,7 +217,7 @@
 <ul>
 <li>4、部署完后启动Tomcat</li>
 </ul>
-<h2 id="可能会用到的命令"><a href="#可能会用到的命令" class="headerlink" title="可能会用到的命令"></a>可能会用到的命令</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">一、查看Tomcat进程  </span><br><span class="line">ps -ef|grep java  </span><br><span class="line">  </span><br><span class="line">二、、杀死进程（<span class="number">10740</span>为进程Pid）  </span><br><span class="line">kill <span class="number">-9</span> <span class="number">10740</span>  </span><br><span class="line">  </span><br><span class="line">三、重启Linux服务器  </span><br><span class="line">reboot  </span><br><span class="line">  </span><br><span class="line">四、进入到Tomcat下的logs目录，动态查看日志文件，退出查看日志使用 ：Ctrl+Z  </span><br><span class="line"><span class="comment">// tail -f catalina.out  </span></span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">五、jar命令解压war包  </span><br><span class="line"><span class="comment">// jar -xvf game.war  </span></span><br><span class="line">解压到当前目录  </span><br><span class="line">  </span><br><span class="line">六、删除文件夹实例：  </span><br><span class="line">  </span><br><span class="line">rm -rf /<span class="keyword">var</span>/log/httpd/access  </span><br><span class="line">将会删除/<span class="keyword">var</span>/log/httpd/access目录以及其下所有文件、文件夹  </span><br><span class="line">  </span><br><span class="line">删除某文件夹下所有文件，不删除该文件夹  </span><br><span class="line"><span class="comment">// rm -rf /test/*   </span></span><br><span class="line">或者进入test文件夹：cd test,然后：rm -rf *  </span><br><span class="line">  </span><br><span class="line">删除单个文件夹：rmdir 文件夹名，如：rmdir aa  </span><br><span class="line">  </span><br><span class="line">七、删除文件使用实例：  </span><br><span class="line"><span class="comment">// rm -f /var/log/httpd/access.log  </span></span><br><span class="line">将会强制删除/<span class="keyword">var</span>/log/httpd/access.log这个文件  </span><br><span class="line"></span><br><span class="line">如果发现是浏览器返回的不可访问，则可能是防火墙没有放行端口，其相应命令如下：</span><br><span class="line"></span><br><span class="line">firewall-cmd --zone=public --add-port=<span class="number">8080</span>/tcp --permanent    -------放行<span class="number">8080</span>端口</span><br><span class="line">firewall-cmd --reload   -------重新载入防火墙信息</span><br><span class="line"></span><br><span class="line">firewall-cmd --zone=public --list-ports    -------查看开启的防火墙端口</span><br></pre></td></tr></table></figure>
+<h2 id="可能会用到的命令"><a href="#可能会用到的命令" class="headerlink" title="可能会用到的命令"></a>可能会用到的命令</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">一、查看Tomcat进程  </span><br><span class="line">ps -ef|grep java  </span><br><span class="line">  </span><br><span class="line">二、、杀死进程（<span class="number">10740</span>为进程Pid）  </span><br><span class="line">kill <span class="number">-9</span> <span class="number">10740</span>  </span><br><span class="line">  </span><br><span class="line">三、重启Linux服务器  </span><br><span class="line">reboot  </span><br><span class="line">  </span><br><span class="line">四、进入到Tomcat下的logs目录，动态查看日志文件，退出查看日志使用 ：Ctrl+Z  </span><br><span class="line">tail -f catalina.out  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">五、jar命令解压war包  </span><br><span class="line">jar -xvf game.war   <span class="comment">// 解压到当前目录  </span></span><br><span class="line">  </span><br><span class="line">六、删除文件夹实例：  </span><br><span class="line">  </span><br><span class="line">rm -rf /<span class="keyword">var</span>/log/httpd/access  </span><br><span class="line">将会删除/<span class="keyword">var</span>/log/httpd/access目录以及其下所有文件、文件夹  </span><br><span class="line">  </span><br><span class="line">删除某文件夹下所有文件，不删除该文件夹  </span><br><span class="line"><span class="comment">// rm -rf /test/*   </span></span><br><span class="line">或者进入test文件夹：cd test,然后：rm -rf *  </span><br><span class="line">  </span><br><span class="line">删除单个文件夹：rmdir 文件夹名，如：rmdir aa  </span><br><span class="line">  </span><br><span class="line">七、删除文件使用实例：  </span><br><span class="line"><span class="comment">// rm -f /var/log/httpd/access.log  </span></span><br><span class="line">将会强制删除/<span class="keyword">var</span>/log/httpd/access.log这个文件  </span><br><span class="line"></span><br><span class="line">如果发现是浏览器返回的不可访问，则可能是防火墙没有放行端口，其相应命令如下：</span><br><span class="line"></span><br><span class="line">firewall-cmd --zone=public --add-port=<span class="number">8080</span>/tcp --permanent    -------放行<span class="number">8080</span>端口</span><br><span class="line">firewall-cmd --reload   -------重新载入防火墙信息</span><br><span class="line"></span><br><span class="line">firewall-cmd --zone=public --list-ports    -------查看开启的防火墙端口</span><br></pre></td></tr></table></figure>
 
       
 
@@ -476,15 +476,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">excel</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -500,10 +504,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">-ES6</a>
               </li>
              
@@ -516,11 +516,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
+                <a href="javascript:void(0)" class="js-tag color5">打包工具</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">打包工具</a>
+                <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
             
             <div class="clearfix"></div>

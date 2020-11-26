@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="DJM的博客">
 <meta property="og:description" content="##  123456789101112131415在使用&amp;lt;script&amp;gt;嵌入 JavaScript代码时，记住不要在代码中的任何地方出现&quot;&amp;lt;/script&amp;gt;&quot;字符串。 例如，浏览器在加载下面所示的代码时就会产生一个错误：  &amp;lt;script type=&quot;text/javascript&quot;&amp;gt;         function sayScript()&amp;#123;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-09-12T16:44:08.994Z">
+<meta property="og:updated_time" content="2020-11-26T14:55:24.832Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Javascript 红宝书学习">
 <meta name="twitter:description" content="##  123456789101112131415在使用&amp;lt;script&amp;gt;嵌入 JavaScript代码时，记住不要在代码中的任何地方出现&quot;&amp;lt;/script&amp;gt;&quot;字符串。 例如，浏览器在加载下面所示的代码时就会产生一个错误：  &amp;lt;script type=&quot;text/javascript&quot;&amp;gt;         function sayScript()&amp;#123;">
@@ -217,6 +217,8 @@
 <p>3.1.5 语句<br>虽然条件控制语句（如 if 语句）只在执行多条语句的情况下才要求使用代码块，但佳实践是始 终在控制语句中使用代码块——即使代码块中只有一条语句，例如： </p>
 <p>if (test)<br>    alert(test);       // 有效但容易出错，不要使用 </p>
 <p>if (test){             // 推荐使用<br>    alert(test);<br>} </p>
+<h1 id="内存管理-P99"><a href="#内存管理-P99" class="headerlink" title="内存管理   P99"></a>内存管理   P99</h1><p>1、全局变量和全局对象的属性，不必要可以设置为null，从而释放引用。</p>
+<p>2、通过 const 和 let 声明提升性能<br> const 和 let 都以块（非函数）为作用域，相比使用var 能更早的回收内存。 </p>
 </script></p>
       
 

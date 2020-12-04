@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="DJM的博客">
 <meta property="og:description" content="##  123456789101112131415在使用&amp;lt;script&amp;gt;嵌入 JavaScript代码时，记住不要在代码中的任何地方出现&quot;&amp;lt;/script&amp;gt;&quot;字符串。 例如，浏览器在加载下面所示的代码时就会产生一个错误：  &amp;lt;script type=&quot;text/javascript&quot;&amp;gt;         function sayScript()&amp;#123;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-11-26T14:55:24.832Z">
+<meta property="og:updated_time" content="2020-12-04T14:59:54.750Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Javascript 红宝书学习">
 <meta name="twitter:description" content="##  123456789101112131415在使用&amp;lt;script&amp;gt;嵌入 JavaScript代码时，记住不要在代码中的任何地方出现&quot;&amp;lt;/script&amp;gt;&quot;字符串。 例如，浏览器在加载下面所示的代码时就会产生一个错误：  &amp;lt;script type=&quot;text/javascript&quot;&amp;gt;         function sayScript()&amp;#123;">
@@ -189,12 +189,12 @@
         <p>## </p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">在使用&lt;script&gt;嵌入 JavaScript代码时，记住不要在代码中的任何地方出现<span class="string">"&lt;/script&gt;"</span>字符串。 例如，浏览器在加载下面所示的代码时就会产生一个错误： </span><br><span class="line"> </span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;     </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">sayScript</span>(<span class="params"></span>)</span>&#123;         </span><br><span class="line">        alert(<span class="string">"&lt;/script&gt;"</span>);     </span><br><span class="line">    &#125; </span><br><span class="line">&lt;<span class="regexp">/script&gt; </span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp"> 因为按照解析嵌入式代码的规则，当浏览器遇到字符串"&lt;/</span>script&gt;<span class="string">"时，就会认为那是结束的 &lt;/script&gt;标签。而通过转义字符“/”可以解决这个问题，例如： </span></span><br><span class="line"><span class="string">&lt;script type="</span>text/javascript<span class="string">"&gt;     </span></span><br><span class="line"><span class="string">    function sayScript()&#123;         </span></span><br><span class="line"><span class="string">        alert("</span>&lt;\/script&gt;<span class="string">");     </span></span><br><span class="line"><span class="string">    &#125; </span></span><br><span class="line"><span class="string">&lt;/script&gt; </span></span><br><span class="line"><span class="string"> 这样写代码浏览器可以接受，因而也就不会导致错误了。</span></span><br></pre></td></tr></table></figure>
 <p> 需要注意的是，带有 src 属性的<script>元素不应该在其<script>和</script>标签之间再 包含额外的 JavaScript代码。如果包含了嵌入的代码，则只会下载并执行外部脚本文件，嵌入的代码 会被忽略。 </p>
-<h2 id="延迟脚本"><a href="#延迟脚本" class="headerlink" title="延迟脚本"></a>延迟脚本</h2><p> HTML 4.01为<script>标签定义了 defer 属性。这个属性的用途是表明脚本在执行时不会影响页 面的构造。也就是说，脚本会被延迟到整个页面都解析完毕后再运行。因此，在<script>元素中设置 defer 属性，相当于告诉浏览器立即下载，但延迟执行。<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt; </span><br><span class="line">    &lt;html&gt;   </span><br><span class="line">        &lt;head&gt;     </span><br><span class="line">            &lt;title&gt;Example HTML Page&lt;<span class="regexp">/title&gt;     </span></span><br><span class="line"><span class="regexp">            &lt;script type="text/</span>javascript<span class="string">" defer="</span>defer<span class="string">" src="</span>example1.js<span class="string">"&gt;&lt;/script&gt;     </span></span><br><span class="line"><span class="string">            &lt;script type="</span>text/javascript<span class="string">" defer="</span>defer<span class="string">" src="</span>example2.js<span class="string">"&gt;&lt;/script&gt;   </span></span><br><span class="line"><span class="string">        &lt;/head&gt;   </span></span><br><span class="line"><span class="string">        &lt;body&gt;     </span></span><br><span class="line"><span class="string">            &lt;!-- 这里放内容 --&gt;   </span></span><br><span class="line"><span class="string">        &lt;/body&gt; </span></span><br><span class="line"><span class="string">    &lt;/html&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="延迟脚本"><a href="#延迟脚本" class="headerlink" title="延迟脚本"></a>延迟脚本</h2> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  HTML 4.01为&lt;script&gt;标签定义了 defer 属性。这个属性的用途是表明脚本在执行时不会影响页 面的构造。也就是说，脚本会被延迟到整个页面都解析完毕后再运行。因此，在&lt;script&gt;元素中设置 defer 属性，相当于告诉浏览器立即下载，但延迟执行。 </span></span><br><span class="line">&lt;!DOCTYPE html&gt; </span><br><span class="line">    &lt;html&gt;   </span><br><span class="line">        &lt;head&gt;     </span><br><span class="line">            &lt;title&gt;Example HTML Page&lt;<span class="regexp">/title&gt;     </span></span><br><span class="line"><span class="regexp">            &lt;script type="text/</span>javascript<span class="string">" defer="</span>defer<span class="string">" src="</span>example1.js<span class="string">"&gt;&lt;/script&gt;     </span></span><br><span class="line"><span class="string">            &lt;script type="</span>text/javascript<span class="string">" defer="</span>defer<span class="string">" src="</span>example2.js<span class="string">"&gt;&lt;/script&gt;   </span></span><br><span class="line"><span class="string">        &lt;/head&gt;   </span></span><br><span class="line"><span class="string">        &lt;body&gt;     </span></span><br><span class="line"><span class="string">            &lt;!-- 这里放内容 --&gt;   </span></span><br><span class="line"><span class="string">        &lt;/body&gt; </span></span><br><span class="line"><span class="string">    &lt;/html&gt;</span></span><br></pre></td></tr></table></figure>
 <p> 在现实当中，延迟脚本(example1.js 和 example2.js )并不一定会按照顺序执行，也不一定会在 DOMContentLoaded 事件触发 前执行，因此好只包含一个延迟脚本。<br> 为此，把延迟脚本放在页面底部仍然是佳选择。<br> 同样与 defer 类似，async 只适用于外部脚本文件，并告诉浏览器立即下载文件。但与 defer 不同的是，标记为 async 的脚本并不保证按照指定它们的先后顺序执行。</p>
 <ul>
 <li>使用defer 属性可以让脚本在文档完全呈现之后再执行。延迟脚本总是按照指定它们的顺序执行。</li>
 <li>使用 async 属性可以表示当前脚本不必等待其他脚本，也不必阻塞文档呈现。不能保证异步脚 本按照它们在页面中出现的顺序执行。</li>
-<li>使用<noscript>元素可以指定在不支持脚本的浏览器中显示的替代内容。但在启用了脚本 的情况下，浏览器不会显示<noscript>元素中的任何内容。 </li>
+<li>使用<noscript>元素可以指定在不支持脚本的浏览器中显示的替代内容。但在启用了脚本 的情况下，浏览器不会显示<noscript>元素中的任何内容。 </noscript></noscript></li>
 </ul>
 <h2 id="嵌入代码与外部文件"><a href="#嵌入代码与外部文件" class="headerlink" title="嵌入代码与外部文件"></a>嵌入代码与外部文件</h2><p>  持使用外部文件的如下优点：</p>
 <ul>
@@ -219,7 +219,7 @@
 <p>if (test){             // 推荐使用<br>    alert(test);<br>} </p>
 <h1 id="内存管理-P99"><a href="#内存管理-P99" class="headerlink" title="内存管理   P99"></a>内存管理   P99</h1><p>1、全局变量和全局对象的属性，不必要可以设置为null，从而释放引用。</p>
 <p>2、通过 const 和 let 声明提升性能<br> const 和 let 都以块（非函数）为作用域，相比使用var 能更早的回收内存。 </p>
-</script></p>
+
       
 
       
@@ -311,6 +311,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/11/24/javascript/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Javascript第一部分—核心(ECMAScript)
+        
+      </div>
+    </a>
   
   
     <a href="/2020/08/10/ckeditor/" id="article-nav-older" class="article-nav-link-wrap">

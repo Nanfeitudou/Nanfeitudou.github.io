@@ -6,21 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>前端|加载的图片太多或者太大怎么办 | DJM的博客</title>
+  <title>图片设置及懒加载 | DJM的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="####一.当图片太多时方案一:将图片服务和应用服务分离(从架构师的角度思考) 对于这个方案对于经验尚浅的我来说是考虑不多的,通过跟leader沟通,了解到这一点,此方案是架构师在架构过程中必须要考虑到的.对于服务器来说,图片始终是最消耗系统资源的,如果将图片服务和应用服务放在同一服务器的话,应用服务器很容易会因为图片的高I/O负载而崩溃,所以当网站存在大量的图片读写操作时,建议使用图片服务器.(">
+  <meta name="description" content="img标签图片1、使用 width 属性如果 width 属性设置为 100%，图片会根据上下范围实现响应式功能：1234img &amp;#123;    width: 100%;    height: auto;&amp;#125; 2、使用 max-width 属性如果 max-width 属性设置为 100%, 图片永远不会大于其原始大小：1234img &amp;#123;    max-width: 100%">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前端|加载的图片太多或者太大怎么办">
+<meta property="og:title" content="图片设置及懒加载">
 <meta property="og:url" content="http://yoursite.com/2018/07/15/image/index.html">
 <meta property="og:site_name" content="DJM的博客">
-<meta property="og:description" content="####一.当图片太多时方案一:将图片服务和应用服务分离(从架构师的角度思考) 对于这个方案对于经验尚浅的我来说是考虑不多的,通过跟leader沟通,了解到这一点,此方案是架构师在架构过程中必须要考虑到的.对于服务器来说,图片始终是最消耗系统资源的,如果将图片服务和应用服务放在同一服务器的话,应用服务器很容易会因为图片的高I/O负载而崩溃,所以当网站存在大量的图片读写操作时,建议使用图片服务器.(">
+<meta property="og:description" content="img标签图片1、使用 width 属性如果 width 属性设置为 100%，图片会根据上下范围实现响应式功能：1234img &amp;#123;    width: 100%;    height: auto;&amp;#125; 2、使用 max-width 属性如果 max-width 属性设置为 100%, 图片永远不会大于其原始大小：1234img &amp;#123;    max-width: 100%">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6522842-55b914552b2d7808?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6522842-224aabf795968006?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-10-13T15:18:50.000Z">
+<meta property="og:updated_time" content="2021-01-06T14:40:49.445Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前端|加载的图片太多或者太大怎么办">
-<meta name="twitter:description" content="####一.当图片太多时方案一:将图片服务和应用服务分离(从架构师的角度思考) 对于这个方案对于经验尚浅的我来说是考虑不多的,通过跟leader沟通,了解到这一点,此方案是架构师在架构过程中必须要考虑到的.对于服务器来说,图片始终是最消耗系统资源的,如果将图片服务和应用服务放在同一服务器的话,应用服务器很容易会因为图片的高I/O负载而崩溃,所以当网站存在大量的图片读写操作时,建议使用图片服务器.(">
+<meta name="twitter:title" content="图片设置及懒加载">
+<meta name="twitter:description" content="img标签图片1、使用 width 属性如果 width 属性设置为 100%，图片会根据上下范围实现响应式功能：1234img &amp;#123;    width: 100%;    height: auto;&amp;#125; 2、使用 max-width 属性如果 max-width 属性设置为 100%, 图片永远不会大于其原始大小：1234img &amp;#123;    max-width: 100%">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/6522842-55b914552b2d7808?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="DJM的博客" type="application/atom+xml">
@@ -176,7 +176,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      前端|加载的图片太多或者太大怎么办
+      图片设置及懒加载
     </h1>
   
 
@@ -189,7 +189,29 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>####一.当图片太多时<br><strong>方案一:将图片服务和应用服务分离(从架构师的角度思考)</strong></p>
+        <h2 id="img标签图片"><a href="#img标签图片" class="headerlink" title="img标签图片"></a>img标签图片</h2><p>1、使用 width 属性<br>如果 width 属性设置为 100%，图片会根据上下范围实现响应式功能：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">img &#123;</span><br><span class="line">    width: <span class="number">100</span>%;</span><br><span class="line">    height: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>2、使用 max-width 属性<br>如果 max-width 属性设置为 100%, 图片永远不会大于其原始大小：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">img &#123;</span><br><span class="line">    max-width: <span class="number">100</span>%;</span><br><span class="line">    height: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="背景图片"><a href="#背景图片" class="headerlink" title="背景图片"></a>背景图片</h2><p>背景图片可以响应调整大小或缩放。以下是三个不同的方法：</p>
+<ol>
+<li><p>如果 background-size 属性设置为 “contain”, 背景图片将按比例自适应内容区域。图片保持其比例不变：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">div &#123;</span><br><span class="line">    width: <span class="number">100</span>%;</span><br><span class="line">    height: <span class="number">400</span>px;</span><br><span class="line">    background-image: url(<span class="string">'img_flowers.jpg'</span>);</span><br><span class="line">    background-repeat: no-repeat;</span><br><span class="line">    background-size: contain;</span><br><span class="line">    border: <span class="number">1</span>px solid red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果 background-size 属性设置为 “100% 100%” ，背景图片将延展覆盖整个区域：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">div &#123;</span><br><span class="line">    width: <span class="number">100</span>%;</span><br><span class="line">    height: <span class="number">400</span>px;</span><br><span class="line">    background-image: url(<span class="string">'img_flowers.jpg'</span>);</span><br><span class="line">    background-size: <span class="number">100</span>% <span class="number">100</span>%;</span><br><span class="line">    border: <span class="number">1</span>px solid red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果 background-size 属性设置为 “cover”，则会把背景图像扩展至足够大，以使背景图像完全覆盖背景区域。注意该属性保持了图片的比例因此 背景图像的某些部分无法显示在背景定位区域中。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">div &#123;</span><br><span class="line">    width: <span class="number">100</span>%;</span><br><span class="line">    height: <span class="number">400</span>px;</span><br><span class="line">    background-image: url(<span class="string">'img_flowers.jpg'</span>);</span><br><span class="line">    background-size: cover;</span><br><span class="line">    border: <span class="number">1</span>px solid red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li><p>不同设备显示不同图片<br>大尺寸图片可以显示在大屏幕上，但在小屏幕上确不能很好显示。我们没有必要在小屏幕上去加载大图片，这样很影响加载速度。所以我们可以使用媒体查询，根据不同的设备显示不同的图片。<br>以下大图片和小图片将显示在不同设备上：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* For width smaller than 400px: */</span></span><br><span class="line">body &#123;</span><br><span class="line">    background-image: url(<span class="string">'img_smallflower.jpg'</span>); </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* For width 400px and larger: */</span></span><br><span class="line">@media only screen and (min-width: <span class="number">400</span>px) &#123;</span><br><span class="line">    body &#123; </span><br><span class="line">        background-image: url(<span class="string">'img_flowers.jpg'</span>); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>你可以使用媒体查询的 min-device-width 替代 min-width 属性，它将检测的是设备宽度而不是浏览器宽度。浏览器大小重置时，图片大小不会改变。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 设备小于 400px: */</span></span><br><span class="line">body &#123;</span><br><span class="line">    background-image: url(<span class="string">'img_smallflower.jpg'</span>); </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 设备大于 400px (也等于): */</span></span><br><span class="line">@media only screen and (min-device-width: <span class="number">400</span>px) &#123;</span><br><span class="line">    body &#123; </span><br><span class="line">        background-image: url(<span class="string">'img_flowers.jpg'</span>); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>####一.当图片太多时<br><strong>方案一:将图片服务和应用服务分离(从架构师的角度思考)</strong></p>
 <p>对于这个方案对于经验尚浅的我来说是考虑不多的,通过跟leader沟通,了解到这一点,此方案是架构师在架构过程中必须要考虑到的.<br>对于服务器来说,图片始终是最消耗系统资源的,如果将图片服务和应用服务放在同一服务器的话,应用服务器很容易会因为图片的高I/O负载而崩溃,所以当网站存在大量的图片读写操作时,建议使用图片服务器.<br>(注:图片服务器是专门为图片读写操作优化的独立服务器,运行网站的服务器称为应用服务器)</p>
 <p>另外浏览器在同一时间对同一域名下的资源的并发请求数目是有限制的,一般在2-6之间,超过限制数目的请求就会被阻塞.一些主流浏览器对 HTTP1.1 和 HTTP 1.0 的最大并发连接数目，可以参考网上资料<br><img src="http://upload-images.jianshu.io/upload_images/6522842-55b914552b2d7808?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图1"></p>
 <p>把图片服务器与应用服务器分开,图片服务器采用独立域名 ,css、js和图片就可以并发请求了</p>
@@ -307,8 +329,8 @@
     </a>
   
   
-    <a href="/2018/07/15/time/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">时间、日期、边距、高宽问题</div>
+    <a href="/2018/07/15/npm/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">npm 用法</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -336,7 +358,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="image" data-title="前端|加载的图片太多或者太大怎么办" data-url="http://yoursite.com/2018/07/15/image/"></div>
+	<div class="ds-thread" data-thread-key="image" data-title="图片设置及懒加载" data-url="http://yoursite.com/2018/07/15/image/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -371,7 +393,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2020 DJM
+    		&copy; 2021 DJM
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -474,11 +496,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -495,10 +517,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">自动化工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JSONP</a>
               </li>
              
               <li class="article-tag-list-item">

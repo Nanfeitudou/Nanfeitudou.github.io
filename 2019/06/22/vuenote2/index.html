@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="DJM的博客">
 <meta property="og:description" content="学习 https://www.ctolib.com/mip/topics-128769.html 动态添加数据 注意：只有 data 中的数据才是响应式的，动态添加进来的数据默认为非响应式 可以通过以下方式实现动态添加数据的响应式 1 Vue.set(object, key, value) - 适用于添加单个属性 2 Object.assign() - 适用于添加多个属性12345/* Vue.s">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-03-05T04:08:01.823Z">
+<meta property="og:updated_time" content="2021-01-06T14:45:51.396Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue 知识点">
 <meta name="twitter:description" content="学习 https://www.ctolib.com/mip/topics-128769.html 动态添加数据 注意：只有 data 中的数据才是响应式的，动态添加进来的数据默认为非响应式 可以通过以下方式实现动态添加数据的响应式 1 Vue.set(object, key, value) - 适用于添加单个属性 2 Object.assign() - 适用于添加多个属性12345/* Vue.s">
@@ -205,7 +205,6 @@
 </ul>
 </li>
 </ul>
-<h2 id="监听数据变化"><a href="#监听数据变化" class="headerlink" title="监听数据变化"></a>监听数据变化</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  data: &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: &#123; <span class="attr">age</span>: <span class="number">10</span> &#125; &#125;,</span><br><span class="line">  watch: &#123;</span><br><span class="line">    a: <span class="function"><span class="keyword">function</span>(<span class="params">val, oldVal</span>) </span>&#123;</span><br><span class="line">      <span class="comment">// val 表示当前值</span></span><br><span class="line">      <span class="comment">// oldVal 表示旧值</span></span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'当前值为：'</span> + val, <span class="string">'旧值为：'</span> + oldVal)</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 监听对象属性的变化</span></span><br><span class="line">    b: &#123;</span><br><span class="line">      handler: <span class="function"><span class="keyword">function</span> (<span class="params">val, oldVal</span>) </span>&#123; <span class="comment">/* ... */</span> &#125;,</span><br><span class="line">      <span class="comment">// deep : true表示是否监听对象内部属性值的变化 </span></span><br><span class="line">      deep: <span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 只监视user对象中age属性的变化</span></span><br><span class="line">    <span class="string">'user.age'</span>: <span class="function"><span class="keyword">function</span> (<span class="params">val, oldVal</span>) </span>&#123;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <h2 id="注意：-axios中使用this的问题"><a href="#注意：-axios中使用this的问题" class="headerlink" title="注意： axios中使用this的问题"></a>注意： axios中使用this的问题</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(res)</span><br><span class="line">    &#125;)</span><br><span class="line">.catch(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(err)</span><br><span class="line">    &#125;)</span><br><span class="line"><span class="comment">// 问题：这两个回调函数都有各自独立的作用域，如果直接在里面访问 this，无法访问到 Vue 实例,</span></span><br><span class="line"><span class="comment">//解决方法1：.bind(this) </span></span><br><span class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.data)</span><br><span class="line">&#125;.bind(<span class="keyword">this</span>))</span><br><span class="line"><span class="comment">//解决方法2：es6箭头函数</span></span><br><span class="line">.then(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.data)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 一次性并发多个请求</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getUserAccount</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> axios.get(<span class="string">'/user/12345'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getUserPermissions</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> axios.get(<span class="string">'/user/12345/permissions'</span>);</span><br><span class="line">&#125;</span><br><span class="line">axios.all([getUserAccount(),getUserPermissions()])</span><br><span class="line">  .then(axios.spread(<span class="function"><span class="keyword">function</span>(<span class="params">acct,perms</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//当这两个请求都完成的时候会触发这个函数，两个参数分别代表返回的结果</span></span><br><span class="line">  &#125;))</span><br><span class="line"></span><br><span class="line"><span class="comment">// axios.request(config);</span></span><br><span class="line"><span class="comment">// axios.get(url[,config]);</span></span><br><span class="line"><span class="comment">// axios.delete(url[,config]);</span></span><br><span class="line"><span class="comment">// axios.head(url[,config]);</span></span><br><span class="line"><span class="comment">// axios.post(url[,data[,config]]);</span></span><br><span class="line"><span class="comment">// axios.put(url[,data[,config]])</span></span><br><span class="line"><span class="comment">// axios.patch(url[,data[,config]])</span></span><br></pre></td></tr></table></figure>
 <h2 id="注意：router-link不能动态绑定class"><a href="#注意：router-link不能动态绑定class" class="headerlink" title="注意：router-link不能动态绑定class"></a>注意：router-link不能动态绑定class</h2><p>vue中的router-link不能动态绑定class，动态绑定的active不生效，<br>解决办法：再套一层div</p>
 <h2 id="返回"><a href="#返回" class="headerlink" title="返回"></a>返回</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">go(<span class="number">-1</span>): 原页面表单中的内容会丢失；</span><br><span class="line">history.go(<span class="number">-1</span>):后退+刷新；</span><br><span class="line">history.go(<span class="number">1</span>) ：前进</span><br><span class="line"></span><br><span class="line">back(): 原页表表单中的内容会保留；</span><br><span class="line">history.back():后退 ；</span><br><span class="line">history.back(<span class="number">0</span>) 刷新；</span><br><span class="line">history.back(<span class="number">1</span>)：前进</span><br></pre></td></tr></table></figure>
@@ -328,18 +327,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/12/24/vue-codemirror/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/06/22/vuenote/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Vue-codemirror使用
+          Vue生命周期 指令等基础学习
         
       </div>
     </a>
   
   
     <a href="/2019/06/22/vuenote3/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Vue--keep-alive</div>
+      <div class="article-nav-title">Vue 保持路由状态</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -402,7 +401,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2020 DJM
+    		&copy; 2021 DJM
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -505,11 +504,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -526,10 +525,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">自动化工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JSONP</a>
               </li>
              
               <li class="article-tag-list-item">

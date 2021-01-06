@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="DJM的博客">
 <meta property="og:description" content="设置 Viewport一个常用的针对移动网页优化过的页面的 viewport meta 标签大致如下：1234&amp;lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no&quot;&amp;gt;//表示:设置屏幕按1：1的尺寸显示，在 iPhone 和其他智能手机的浏览器">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-27T14:12:13.000Z">
+<meta property="og:updated_time" content="2021-01-06T14:40:55.182Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="title标签、媒体查询及画布">
 <meta name="twitter:description" content="设置 Viewport一个常用的针对移动网页优化过的页面的 viewport meta 标签大致如下：1234&amp;lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no&quot;&amp;gt;//表示:设置屏幕按1：1的尺寸显示，在 iPhone 和其他智能手机的浏览器">
@@ -199,30 +199,7 @@
 <p>02_媒体查询语法_逗号或者or<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*当屏幕小于480px或者大于980px时应用样式*/</span></span><br><span class="line">@media screen and (max-width: <span class="number">480</span>px), (min-width: <span class="number">980</span>px) &#123;</span><br><span class="line">	.box &#123;</span><br><span class="line">		background-color: purple;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>03_媒体查询语法_only<br>方向：横屏/竖屏<br>orientation：竖屏portrait |横屏 landscape<br>portrait：指定输出设备中的页面可见区域高度大于或等于宽度<br>landscape： 除portrait值情况外，都是landscape<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@media only screen and (orientation: landscape) &#123;</span><br><span class="line">    body &#123;</span><br><span class="line">        background-color: lightblue;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>04_通过js实现响应式布局<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">	<span class="keyword">var</span> link = <span class="built_in">document</span>.getElementById(<span class="string">'mystyle'</span>);</span><br><span class="line">	<span class="built_in">window</span>.onresize = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">		event = event || <span class="built_in">window</span>.event;</span><br><span class="line">		<span class="keyword">var</span> screenWidth = event.target.innerWidth;</span><br><span class="line">		<span class="keyword">if</span>(screenWidth &gt;= <span class="number">1200</span> ) &#123;</span><br><span class="line">			link.href = <span class="string">'./pc.css'</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (screenWidth &gt;= <span class="number">980</span>) &#123;</span><br><span class="line">			link.href = <span class="string">'./pad.css'</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span>(screenWidth &gt;= <span class="number">768</span>) &#123;</span><br><span class="line">			link.href = <span class="string">'./phone.css'</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="img标签图片"><a href="#img标签图片" class="headerlink" title="img标签图片"></a>img标签图片</h2><p>1、使用 width 属性<br>如果 width 属性设置为 100%，图片会根据上下范围实现响应式功能：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">img &#123;</span><br><span class="line">    width: <span class="number">100</span>%;</span><br><span class="line">    height: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>2、使用 max-width 属性<br>如果 max-width 属性设置为 100%, 图片永远不会大于其原始大小：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">img &#123;</span><br><span class="line">    max-width: <span class="number">100</span>%;</span><br><span class="line">    height: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="背景图片"><a href="#背景图片" class="headerlink" title="背景图片"></a>背景图片</h2><p>背景图片可以响应调整大小或缩放。以下是三个不同的方法：</p>
-<ol>
-<li><p>如果 background-size 属性设置为 “contain”, 背景图片将按比例自适应内容区域。图片保持其比例不变：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">div &#123;</span><br><span class="line">    width: <span class="number">100</span>%;</span><br><span class="line">    height: <span class="number">400</span>px;</span><br><span class="line">    background-image: url(<span class="string">'img_flowers.jpg'</span>);</span><br><span class="line">    background-repeat: no-repeat;</span><br><span class="line">    background-size: contain;</span><br><span class="line">    border: <span class="number">1</span>px solid red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果 background-size 属性设置为 “100% 100%” ，背景图片将延展覆盖整个区域：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">div &#123;</span><br><span class="line">    width: <span class="number">100</span>%;</span><br><span class="line">    height: <span class="number">400</span>px;</span><br><span class="line">    background-image: url(<span class="string">'img_flowers.jpg'</span>);</span><br><span class="line">    background-size: <span class="number">100</span>% <span class="number">100</span>%;</span><br><span class="line">    border: <span class="number">1</span>px solid red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果 background-size 属性设置为 “cover”，则会把背景图像扩展至足够大，以使背景图像完全覆盖背景区域。注意该属性保持了图片的比例因此 背景图像的某些部分无法显示在背景定位区域中。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">div &#123;</span><br><span class="line">    width: <span class="number">100</span>%;</span><br><span class="line">    height: <span class="number">400</span>px;</span><br><span class="line">    background-image: url(<span class="string">'img_flowers.jpg'</span>);</span><br><span class="line">    background-size: cover;</span><br><span class="line">    border: <span class="number">1</span>px solid red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<ul>
-<li><p>不同设备显示不同图片<br>大尺寸图片可以显示在大屏幕上，但在小屏幕上确不能很好显示。我们没有必要在小屏幕上去加载大图片，这样很影响加载速度。所以我们可以使用媒体查询，根据不同的设备显示不同的图片。<br>以下大图片和小图片将显示在不同设备上：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* For width smaller than 400px: */</span></span><br><span class="line">body &#123;</span><br><span class="line">    background-image: url(<span class="string">'img_smallflower.jpg'</span>); </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* For width 400px and larger: */</span></span><br><span class="line">@media only screen and (min-width: <span class="number">400</span>px) &#123;</span><br><span class="line">    body &#123; </span><br><span class="line">        background-image: url(<span class="string">'img_flowers.jpg'</span>); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>你可以使用媒体查询的 min-device-width 替代 min-width 属性，它将检测的是设备宽度而不是浏览器宽度。浏览器大小重置时，图片大小不会改变。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 设备小于 400px: */</span></span><br><span class="line">body &#123;</span><br><span class="line">    background-image: url(<span class="string">'img_smallflower.jpg'</span>); </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 设备大于 400px (也等于): */</span></span><br><span class="line">@media only screen and (min-device-width: <span class="number">400</span>px) &#123;</span><br><span class="line">    body &#123; </span><br><span class="line">        background-image: url(<span class="string">'img_flowers.jpg'</span>); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
       
 
       
@@ -389,7 +366,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2020 DJM
+    		&copy; 2021 DJM
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -492,11 +469,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -513,10 +490,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">自动化工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JSONP</a>
               </li>
              
               <li class="article-tag-list-item">

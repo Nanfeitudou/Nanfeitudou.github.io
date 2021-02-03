@@ -305,7 +305,7 @@
 <h3 id="应用场景二：移花接木"><a href="#应用场景二：移花接木" class="headerlink" title="应用场景二：移花接木"></a>应用场景二：移花接木</h3><p>在讲下面的内容之前，我们首先来认识一下JavaScript 中的一个非标准专业术语：ArrayLike (类数组/伪数组)</p>
 <p>ArrayLike 对象即拥有数组的一部分行为，在DOM 中早已表现出来，而jQuery 的崛起让ArrayLike 在JavaScript 中大放异彩。ArrayLike 对象的精妙在于它和JS 原生的 Array 类似，但是它是自由构建的，它来自开发者对JavaScript 对象的扩展，也就是说：对于它的原型(prototype)我们可以自由定义，而不会污染到JS原生的Array。 </p>
 <p>ArrayLike 对象在JS中被广泛使用，比如DOM 中的NodeList, 函数中的arguments 都是类数组对象，这些对象像数组一样存储着每一个元素，但它没有操作数组的方法，而我们可以通过call 将数组的某些方法<code>移接</code>到ArrayLike 对象，从而达到操作其元素的目的。比如我们可以这样遍历函数中的arguments:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">function <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// 检测arguments是否为Array的实例</span></span><br><span class="line">    console.log(</span><br><span class="line">            arguments <span class="keyword">instanceof</span> Array, <span class="comment">//false</span></span><br><span class="line">            Array.isArray(arguments)  <span class="comment">//false</span></span><br><span class="line">    );</span><br><span class="line">    <span class="comment">// 判断arguments是否有forEach方法</span></span><br><span class="line">    console.log(arguments.forEach); <span class="comment">//undefined</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 将数组中的forEach应用到arguments上</span></span><br><span class="line">    Array.prototype.forEach.call(arguments,function(item)&#123;</span><br><span class="line">        console.log(item); <span class="comment">// 1 2 3 4</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">test(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>);</span><br></pre></td></tr></table></figure></p>
-<p>除此之外，对于apply 而言，我们上面提到了它独有的一个特性，即apply 接收的是数组，在传递给调用函数的时候是以参数列表传递的。 这个特性让apply 看起来比call 略胜一筹，比如有这样一个场景：给定一个数组[1,3,4,7]，然后求数组中的最大元素，而我们知道，数组中并没有获取最大值的方法，一般情况下，你需要通过编写代码来实现。而我们知道，Math 对象中有一个获取最大值的方法，即Math.max()， max方法需要传递一个参数列表，然后返回这些参数中的最大值。而apply 不仅可以将Math 对象的max 方法应用到其他对象上，还可以将一个数组转化为参数列表传递给max,看代码就能一目了然：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">4</span>];</span><br><span class="line"><span class="comment">// 方法一</span></span><br><span class="line">Math.max.apply(<span class="keyword">null</span>,arr); <span class="comment">// 5</span></span><br><span class="line"><span class="comment">// 方法二</span></span><br><span class="line">Math.max(...arr);</span><br></pre></td></tr></table></figure></p>
+<p>除此之外，对于apply 而言，我们上面提到了它独有的一个特性，即apply 接收的是数组，在传递给调用函数的时候是以参数列表传递的。 这个特性让apply 看起来比call 略胜一筹，比如有这样一个场景：给定一个数组[1,3,4,7]，然后求数组中的最大元素，而我们知道，数组中并没有获取最大值的方法，一般情况下，你需要通过编写代码来实现。而我们知道，Math 对象中有一个获取最大值的方法，即Math.max()， max方法需要传递一个参数列表，然后返回这些参数中的最大值。而apply 不仅可以将Math 对象的max 方法应用到其他对象上，还可以将一个数组转化为参数列表传递给max,看代码就能一目了然：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">4</span>];</span><br><span class="line"><span class="comment">// 方法一</span></span><br><span class="line">Math.max.apply(<span class="keyword">null</span>,arr); <span class="comment">// 5</span></span><br><span class="line"><span class="comment">// 方法二</span></span><br><span class="line">Math.max(...arr);</span><br><span class="line"><span class="comment">// 方法三</span></span><br><span class="line">arr.reduce((num1, num2) =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> num1 &gt; num2 ? num1 : num2&#125;</span><br><span class="line">)</span><br><span class="line"><span class="comment">// 方法四</span></span><br><span class="line">arr.sort((num1, num2) =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> num1 - num2 &lt; <span class="number">0</span></span><br><span class="line">&#125;)</span><br><span class="line">arr[<span class="number">0</span>]</span><br></pre></td></tr></table></figure></p>
 <p>以上学习来源于：一像素<br><a href="https://www.cnblogs.com/onepixel/p/7021506.html" target="_blank" rel="noopener">https://www.cnblogs.com/onepixel/p/7021506.html</a></p>
 
       
@@ -562,15 +562,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -583,6 +579,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">vue.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
               </li>
              
               <li class="article-tag-list-item">
